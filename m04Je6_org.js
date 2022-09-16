@@ -142,8 +142,7 @@
         switch (INC.config.pageType) {
             case "pdp":
                 var productId = INC.methods.getProductIdFromWebPage();
-                var clientATC = document.querySelector('.pdpForm button')
-                if (clientATC == null) {
+                if (document.querySelector('.pdpForm button') == null) {
                     if (!INC.config.VariantProduct) {
                         oosStatus = true
                         oosproduct(productId)
@@ -167,11 +166,11 @@
 
     function cartpageprodids() {
         INC.config.cartproductids = []
-        for (let u = 0; u < window.dataLayer.length; u++) {
+        for (var u = 0; u < window.dataLayer.length; u++) {
             if (window.dataLayer[u].ecommerce != undefined) {
                 if (window.dataLayer[u].ecommerce.checkout != undefined) {
-                    let prdLen = window.dataLayer[u].ecommerce.checkout.products.length;
-                    for (let r = 0; r < prdLen; r++) {
+                    var prdLen = window.dataLayer[u].ecommerce.checkout.products.length;
+                    for (var r = 0; r < prdLen; r++) {
                         INC.config.cartproductids.push(window.dataLayer[u].ecommerce.checkout.products[r].id)
                     }
                 }
@@ -717,19 +716,6 @@
                                         } else {
                                             if (productListObj[mainProductId][childProductId].option[1].text == opt_text) {
                                                 attr_flag = "sec_block"
-                                                if (productListObj[mainProductId][childProductId]["option"] != null && productListObj[mainProductId][childProductId]["option"]["2"] != null) {
-                                                    productSizesArrayObj[productListObj[mainProductId][childProductId]["option"]["2"]["text"]] = {};
-                                                    productSizesArrayObj[productListObj[mainProductId][childProductId]["option"]["2"]["text"]]["titleText"] = productListObj[mainProductId][childProductId]["option"]["2"]["text"];
-                                                    attr_code = productListObj[mainProductId][childProductId]["option"]["2"]["code"];
-                                                    c_pid = productListObj[mainProductId][childProductId]["option"]["2"]["cpid"];
-                                                    prc = productListObj[mainProductId][childProductId]["option"]["2"]["activePriceChild"];
-                                                    label = productListObj[mainProductId][childProductId]["option"]["2"]["label"];
-                                                    attid = productListObj[mainProductId][childProductId]["option"]["2"]["att_id"];
-                                                    productSizesArrayObj[productListObj[mainProductId][childProductId]["option"]["2"]["text"]]["opt_id"] = productListObj[mainProductId][childProductId]["option"]["2"]["opt_id"];
-
-                                                    productSizesArrayObj[productListObj[mainProductId][childProductId]["option"]["2"]["text"]]["colorCode"] = productListObj[mainProductId][childProductId]["option"]["2"]["colorCode"];
-                                                    productSizesArrayObj[productListObj[mainProductId][childProductId]["option"]["2"]["text"]]["imgSrc"] = productListObj[mainProductId][childProductId]["option"]["2"]["imgSrc"];
-                                                }
                                             }
                                         }
                                     } else if (productListObj[mainProductId][childProductId]["option"] != null && productListObj[mainProductId][childProductId]["option"]["2"] != null) {
@@ -2209,37 +2195,6 @@
                             document.querySelector('.inc_pdp_product-main_block .inc_product_modal_block .inc_product_desc_att_color_block .inc_product_desc_att_color_list_item_img_block[data-optid="' + client_let + '"] div').click()
                         }
                     }
-                    let all_list_el = document.querySelectorAll('.inc_pdp_bundle_block .inc_product_showcase_block');
-                    for (let ell in all_list_el) {
-                        if (Object.prototype.hasOwnProperty.call(all_list_el, ell)) {
-                            let prd_moduleb = all_list_el[ell].parentNode
-                            let main_idsd = prd_moduleb.getAttribute('data-main_id')
-                            if (all_list_el[ell] != null) {
-                                if (all_list_el[ell].querySelector('.inc_product_desc_att_zero_block.inc_active') != null) {
-                                    if (prd_moduleb.querySelector('.inc_product_desc_att_size_list_item_img_block[data-cpid="' + main_idsd + '"]') != null) {
-                                        if (prd_moduleb.querySelector('.inc_product_desc_att_size_list_item_img_block[data-cpid="' + main_idsd + '"] div') != null) {
-                                            prd_moduleb.querySelector('.inc_product_desc_att_size_list_item_img_block[data-cpid="' + main_idsd + '"] div').click()
-                                        }
-                                    } else if (all_list_el[ell].querySelector('.inc_product_desc_att_size_list_item_img_block[datasize="' + client_let + '"] div') != undefined) {
-                                        all_list_el[ell].querySelector('.inc_product_desc_att_size_list_item_img_block[datasize="' + client_let + '"] div').click()
-                                    } else if (all_list_el[ell].querySelector('.inc_product_desc_att_size_list_item_img_block') != null) {
-                                        all_list_el[ell].querySelector('.inc_product_desc_att_size_list_item_img_block').click()
-                                    }
-                                }
-                                if (all_list_el[ell].querySelector('.inc_product_desc_att_color_block.inc_active') != null) {
-                                    if (prd_moduleb.querySelector('.inc_product_desc_att_color_list_item_img_block[data-cpid="' + main_idsd + '"]') != null) {
-                                        if (prd_moduleb.querySelector('.inc_product_desc_att_color_list_item_img_block[data-cpid="' + main_idsd + '"]') != null) {
-                                            prd_moduleb.querySelector('.inc_product_desc_att_color_list_item_img_block[data-cpid="' + main_idsd + '"]').click()
-                                        }
-                                    } else if (all_list_el[ell].querySelector('.inc_product_desc_att_color_list_item_img_block[datacolor="' + client_let + '"] div') != undefined) {
-                                        all_list_el[ell].querySelector('.inc_product_desc_att_color_list_item_img_block[datacolor="' + client_let + '"] div').click()
-                                    } else if (all_list_el[ell].querySelector('.inc_product_desc_att_color_list_item_img_block') != null) {
-                                        all_list_el[ell].querySelector('.inc_product_desc_att_color_list_item_img_block').click()
-                                    }
-                                }
-                            }
-                        }
-                    }
 
                     if (document.querySelector('.inc_bundle_avail_block img') != null && document.querySelector('.inc_pdp_product-main_block .inc_product_img_block img') != null) {
                         document.querySelector('.inc_bundle_avail_block img').src = document.querySelector('.inc_pdp_product-main_block .inc_product_img_block img').getAttribute('data-src')
@@ -2751,39 +2706,10 @@
             let firstProductObjByMainId = INC.dataStore.methods().getFirstProductObjByMainId({
                 mainId: productListArray[pd]
             });
-            if (window.innerWidth < 820) {
-                if (firstProductObjByMainId["categoryId"] == productCategory) {
-                    if (INC.dataStore.dataStoreObj.undefined == undefined) {
-                        if (addCheck.indexOf(productListArray[pd]) == -1) {
-                            if (INC.config.sidebarremovedprod.indexOf(firstProductObjByMainId.id) == -1) {
-                                if (dupl_sidebar_prod.indexOf(firstProductObjByMainId.id) == -1) {
-                                    dupl_sidebar_prod.push(firstProductObjByMainId.id)
-                                    let prdblck = INC.methods.createProductModuleBlock(firstProductObjByMainId.id, "sidebar", false, elRecommendedProductsListBlock);
-                                    prdblck.querySelector('.inc_product_desc_add_block').addEventListener("click", function () {
-                                        sidebaraddprod(this)
-                                    });
-                                    prdblck.querySelector('.inc_product_add_collection_block').addEventListener("click", function () {
-                                        sidebaraddprod(this)
-                                    });
-
-                                    if (prdblck.getAttribute('data-bundle_id') != 'undefined') {
-                                        elRecommendedProductsListBlock.appendChild(prdblck);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            } else {
+            if (firstProductObjByMainId["categoryId"] == productCategory) {
                 if (INC.dataStore.dataStoreObj.undefined == undefined) {
-                    let cartProducts = document.querySelectorAll('.mini-cart-product')
-                    let cartpid = []
-                    for (let i = 0; i < cartProducts.length; i++) {
-                        let pid = cartProducts[i].getAttribute('data-product').split(',')[1].split(':')[1].replaceAll('"', "")
-                        cartpid.push(pid)
-                    }
                     if (addCheck.indexOf(productListArray[pd]) == -1) {
-                        if (INC.config.sidebarremovedprod.indexOf(firstProductObjByMainId.id) == -1 && cartpid.indexOf(productListArray[pd]) == -1) {
+                        if (INC.config.sidebarremovedprod.indexOf(firstProductObjByMainId.id) == -1) {
                             if (dupl_sidebar_prod.indexOf(firstProductObjByMainId.id) == -1) {
                                 dupl_sidebar_prod.push(firstProductObjByMainId.id)
                                 let prdblck = INC.methods.createProductModuleBlock(firstProductObjByMainId.id, "sidebar", false, elRecommendedProductsListBlock);
