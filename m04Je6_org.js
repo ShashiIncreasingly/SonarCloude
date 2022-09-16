@@ -1480,7 +1480,7 @@
         } else if (window.location.href.includes('/en/categories')) {
             PRODUCTID = window.location.href.split('/')[window.location.href.split('/').length - 1].split('.')[0]
         } else {
-            let prspl = window.location.href.split('/')
+            var prspl = window.location.href.split('/')
             prspl[prspl.length - 1].split('.html')[0]
         }
         INC.config.Product_id = PRODUCTID
@@ -1765,28 +1765,15 @@
                 }
                 let width_slide = ""
                 let wid_sld = document.querySelector('.inc_af_block .inc_product_module_block').clientWidth
-                if (INC.config.pageType == "pdp") {
-                    if (window.innerWidth > 1205) {
-                        width_slide = wid_sld;
-                    } else {
-                        width_slide = wid_sld;
-                    }
-                } else {
-                    width_slide = wid_sld;
-                }
+                width_slide = wid_sld;
                 if (INC.clientConfig.slidevalue_rec + cc_ounts < all_p_length) {
                     amBlock.parentNode.parentNode.querySelector('.inc_af_left_btn_block').setAttribute("style", "pointer-events: auto;opacity:1");
                     amBlock.parentNode.parentNode.querySelector('.inc_af_left_btn_img').setAttribute("style", "pointer-events: auto;opacity:1");
                     INC.clientConfig.slidevalue_rec++
                     let menu = null
                     INC.clientConfig.offset_rec = (parseInt(INC.clientConfig.offset_rec) - width_slide) + 'px';
-                    if (window.innerWidth < 500) {
-                        menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
+                    menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
                         menu.setAttribute('style', 'left:' + INC.clientConfig.offset_rec + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
-                    } else {
-                        menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
-                        menu.setAttribute('style', 'left:' + INC.clientConfig.offset_rec + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
-                    }
                     if (document.querySelector('.inc_af_product-list-dots-main_block .inc_dots.inc_active') != null) {
                         document.querySelector('.inc_af_product-list-dots-main_block .inc_dots.inc_active').classList.remove('inc_active')
                     }
@@ -1810,29 +1797,15 @@
                 }
                 let wid_sld = document.querySelector('.inc_af_block .inc_product_module_block').clientWidth
                 let width_slide = ""
-                if (INC.config.pageType == "pdp" && !INC.config.recommendation) {
-                    if (window.innerWidth > 1205) {
-                        width_slide = wid_sld;
-                    } else {
-                        width_slide = wid_sld
-                    }
-
-                } else {
-                    width_slide = wid_sld;
-                }
+                width_slide = wid_sld;
                 if (INC.clientConfig.slidevalue_rec > 0) {
                     amBlock.parentNode.parentNode.querySelector('.inc_af_right_btn_block').setAttribute("style", "pointer-events: auto;opacity:1");
                     amBlock.parentNode.parentNode.querySelector('.inc_af_right_btn_img').setAttribute("style", "pointer-events: auto;opacity:1");
                     INC.clientConfig.slidevalue_rec--
                     INC.clientConfig.offset_rec = (parseInt(INC.clientConfig.offset_rec) + width_slide) + 'px';
                     let menu = null
-                    if (window.innerWidth < 500) {
-                        menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
+                    menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
                         menu.setAttribute('style', 'left:' + INC.clientConfig.offset_rec + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
-                    } else {
-                        menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
-                        menu.setAttribute('style', 'left:' + INC.clientConfig.offset_rec + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
-                    }
                     if (document.querySelector('.inc_af_product-list-dots-main_block .inc_dots.inc_active') != null) {
                         document.querySelector('.inc_af_product-list-dots-main_block .inc_dots.inc_active').classList.remove('inc_active')
                     }
@@ -1982,11 +1955,7 @@
                 let pdpBundleProductListItemsBlock = pdpBlock.querySelector('.inc_pdp_bundle_product_list_items_block');
                 pdpBundleProductListItemsBlock.innerHTML = "";
                 let productVisibleCount = ""
-                if (window.innerWidth > 820) {
-                    productVisibleCount = (bundleProductsArray.length > 2) ? 2 : bundleProductsArray.length;
-                } else {
-                    productVisibleCount = (bundleProductsArray.length > 2) ? 2 : bundleProductsArray.length;
-                }
+                productVisibleCount = (bundleProductsArray.length > 2) ? 2 : bundleProductsArray.length;
                 for (let iq = 0; iq < productVisibleCount; iq++) {
                     firstProductObjByMainId = INC.dataStore.methods().getFirstProductObjByMainId({
                         mainId: bundleProductsArray[iq]
@@ -2340,7 +2309,7 @@
         let elBundleCartAddBtnBlock = pdpBlock.querySelector('.inc_pdp_bundle_cart_summary_add_btn_block');
         let elBundleCartAddBtncollectionBlock = pdpBlock.querySelector('.inc_pdp_bundle_cart_summary_add_btn_collection_block')
 
-        elBundleCartTitleText.innerText = INC.config.deviceType == "mobile" ? "Total Bundle Price " : "Total Bundle Price ";
+        elBundleCartTitleText.innerText = "Total Bundle Price ";
         elBundleCartAddedBlock.innerHTML = "";
         elBundleCartSummaryViewBtnText.innerText = "Added items";
 
@@ -2765,7 +2734,7 @@
                 }
             }
             let addCount = document.querySelectorAll('.inc_sidebar_cart_added_block .inc_cart_added_product_block').length
-            document.querySelector('.inc_sidebar_cart_added_block').className.replace(/\binc_added_.+?/g, '');
+            document.querySelector('.inc_sidebar_cart_added_block').className.replace('binc_added_');
             document.querySelector('.inc_sidebar_cart_added_block').classList.add("inc_added_" + addCount);
             if (sbBlock.querySelector('.inc_cart_added_product_block') == null) {
                 if (sbBlock.querySelector('.inc_header_title_text_block') != null) {
@@ -5901,7 +5870,7 @@
                 let colorSrc = ''
                 let colorAlt = ''
                 if (colorImg != null) {
-                    colorSrc - colorImg.src
+                    colorSrc = colorImg.src
                     colorAlt = colorImg.alt
                 }
                 let PrdVarSimTxt = productBlock.querySelector('.inc_product_variant_simple_text')
@@ -6019,13 +5988,8 @@
                     elGallerylefttArrow.style.display = "none"
                 }
             } else {
-                if (productObj.otherImageList == null || productObj.otherImageList.length < 1 || productObj.otherImageList.length == 1 || productObj.otherImageList == "") {
-                    elGalleryRightArrow.style.display = "none"
+                elGalleryRightArrow.style.display = "none"
                     elGallerylefttArrow.style.display = "none"
-                } else {
-                    elGalleryRightArrow.style.display = "none"
-                    elGallerylefttArrow.style.display = "none"
-                }
             }
             if (elTitleText.querySelector('strong') != null && INC.config.pageType == "pdp") {
                 elTitleText.querySelector('div').innerHTML = "<strong>This item: </strong>" + productObj.name
@@ -6730,17 +6694,7 @@
             let addProductURL = INC.config.addToBasketURL
             let params = ""
             console.log(productObj.option)
-            if (productObj.ProductType == "configurable") {
-                if (Object.keys(productObj.option).length == 2) {
-                   
-                    params = "Quantity=" + qty + "&cartAction=add&pid=" + productObj.id + "&prodFrSize=";
-
-                } else {
-                    params = "Quantity=" + qty + "&cartAction=add&pid=" + productObj.id + "&prodFrSize=";
-                }
-            } else {
-                params = "Quantity=" + qty + "&cartAction=add&pid=" + productObj.id + "&prodFrSize=";
-            }
+            params = "Quantity=" + qty + "&cartAction=add&pid=" + productObj.id + "&prodFrSize=";
 
             formData.push(params)
             url_add.push(addProductURL)
@@ -6809,7 +6763,7 @@
                 } else {
                     showClientSidebar()
                     addProductToClientSidebar(data)
-                    removecartfn(data)
+                    removecartfn()
                     showClientSidebar()
                 }
 
@@ -6817,7 +6771,7 @@
             if (formData[1] != undefined) {
                 showClientSidebar()
                 addProductToClientSidebar(data)
-                removecartfn(data)
+                removecartfn()
                 callprodB()
             }
         }
@@ -6829,7 +6783,7 @@
                 } else {
                     showClientSidebar()
                     addProductToClientSidebar(data)
-                    removecartfn(data)
+                    removecartfn()
                     showClientSidebar()
                 }
 
@@ -6837,7 +6791,7 @@
             if (formData[2] != undefined) {
                 showClientSidebar()
                 addProductToClientSidebar(data)
-                removecartfn(data)
+                removecartfn()
                 callprodC()
             }
         }
@@ -6848,13 +6802,13 @@
                     loadsidebarajax(btn_ca, recsType)
                 } else {
                     addProductToClientSidebar(data)
-                    removecartfn(data)
+                    removecartfn()
                     showClientSidebar()
                 }
             }
             if (formData[3] != undefined) {
                 addProductToClientSidebar(data)
-                removecartfn(data)
+                removecartfn()
                 callprodD()
             }
         }
