@@ -96,7 +96,6 @@
     INC.config.ddFlag = false;
     INC.config.catFlag = [];
     var fabricprod = [];
-    var addedProductIndex = [];
     INC.config.singleProd = false
     INC.config.VariantProduct = false
     INC.config.country = ""
@@ -1816,13 +1815,8 @@
                     INC.clientConfig.slidevalue_rec++
                     var menu = null
                     INC.clientConfig.offset_rec = (parseInt(INC.clientConfig.offset_rec) - width_slide) + 'px';
-                    if (window.innerWidth < 500) {
-                        menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
-                        menu.setAttribute('style', 'left:' + INC.clientConfig.offset_rec + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
-                    } else {
-                        menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
-                        menu.setAttribute('style', 'left:' + INC.clientConfig.offset_rec + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
-                    }
+                    menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
+                    menu.setAttribute('style', 'left:' + INC.clientConfig.offset_rec + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
                     if (document.querySelector('.inc_af_product-list-dots-main_block .inc_dots.inc_active') != null) {
                         document.querySelector('.inc_af_product-list-dots-main_block .inc_dots.inc_active').classList.remove('inc_active')
                     }
@@ -1854,13 +1848,8 @@
                     INC.clientConfig.slidevalue_rec--
                     INC.clientConfig.offset_rec = (parseInt(INC.clientConfig.offset_rec) + width_slide) + 'px';
                     var menu = null
-                    if (window.innerWidth < 500) {
-                        menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
-                        menu.setAttribute('style', 'left:' + INC.clientConfig.offset_rec + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
-                    } else {
-                        menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
-                        menu.setAttribute('style', 'left:' + INC.clientConfig.offset_rec + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
-                    }
+                    menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
+                    menu.setAttribute('style', 'left:' + INC.clientConfig.offset_rec + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
                     if (document.querySelector('.inc_af_product-list-dots-main_block .inc_dots.inc_active') != null) {
                         document.querySelector('.inc_af_product-list-dots-main_block .inc_dots.inc_active').classList.remove('inc_active')
                     }
@@ -2309,7 +2298,7 @@
         var elBundleCartAddBtnBlock = pdpBlock.querySelector('.inc_pdp_bundle_cart_summary_add_btn_block');
         var elBundleCartAddBtncollectionBlock = pdpBlock.querySelector('.inc_pdp_bundle_cart_summary_add_btn_collection_block')
 
-        elBundleCartTitleText.innerText = INC.config.deviceType == "mobile" ? "Total price " : "Total price ";
+        elBundleCartTitleText.innerText = "Total price ";
         elBundleCartAddedBlock.innerHTML = "";
         elBundleCartSummaryViewBtnText.innerText = "Added items";
 
@@ -6767,7 +6756,6 @@
             var findObj = new INC.classes.FindObj({
                 id: bundleCartProduct
             });
-            addedProductIndex.push(document.querySelector('.inc_product_module_block[data-sku="' + bundleCartProduct + '"]').getAttribute('b-index'))
            
             var productObj = INC.dataStore.methods().getProductById(findObj);
             var addProductURL = INC.config.addToBasketURL
@@ -8106,7 +8094,7 @@
                 isSpecial = true
             }
         }
-        let elProductPrice = isSpecial ? document.querySelector('.product-add-to-cart__inner .original-price') : document.querySelector('.product-add-to-cart__inner .original-price')
+        let elProductPrice = document.querySelector('.product-add-to-cart__inner .original-price');
         let elSpecialPrice = isSpecial ? document.querySelector('.product-add-to-cart__inner .sale-price') : null
 
         let clientSpecialPrice = elSpecialPrice ? Number(elSpecialPrice.innerText.replace(/[^0-9.-]+/g, "")) : null
