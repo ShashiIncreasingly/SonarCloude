@@ -6349,7 +6349,7 @@
                     if (INC.config.pageType == "pdp") {
                         if (INC.config.OutOfStock) {
                             importEventDataObj["rpt"] = "1";
-                        } else if (INC.config.recommendation == true) {
+                        } else if (INC.config.recommendation == trueflag_) {
                             importEventDataObj["rpt"] = "2";
                         } else if (INC.config.recommendationProduct.includes(eventDataObj.product_id)) {
                             importEventDataObj["rpt"] = "4";
