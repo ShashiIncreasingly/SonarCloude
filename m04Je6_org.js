@@ -1481,7 +1481,7 @@
             PRODUCTID = window.location.href.split('/')[window.location.href.split('/').length - 1].split('.')[0]
         } else {
             var prspl = window.location.href.split('/')
-            prspl[prspl.length - 1].split('.html')[0]
+            PRODUCTID = prspl[prspl.length - 1].split('.html')[0]
         }
         INC.config.Product_id = PRODUCTID
         return PRODUCTID
@@ -2733,7 +2733,7 @@
                     document.querySelector('.inc_sidebar_cart_added_block').classList.add('flex-start')
                 }
             }
-            let addCount = document.querySelectorAll('.inc_sidebar_cart_added_block .inc_cart_added_product_block').length
+            var addCount = document.querySelectorAll('.inc_sidebar_cart_added_block .inc_cart_added_product_block').length
             document.querySelector('.inc_sidebar_cart_added_block').className.replace('binc_added_');
             document.querySelector('.inc_sidebar_cart_added_block').classList.add("inc_added_" + addCount);
             if (sbBlock.querySelector('.inc_cart_added_product_block') == null) {
@@ -5979,18 +5979,8 @@
             } else {
                 productBlock.classList.add('inc_other_noimage')
             }
-            if (window.innerWidth > 820) {
-                if ((productObj.otherImageList == null) || productObj.otherImageList.length < 2 || productObj.otherImageList.length == 1 || productObj.otherImageList == "") {
-                    elGalleryRightArrow.style.display = "none"
-                    elGallerylefttArrow.style.display = "none"
-                } else {
-                    elGalleryRightArrow.style.display = "none"
-                    elGallerylefttArrow.style.display = "none"
-                }
-            } else {
-                elGalleryRightArrow.style.display = "none"
-                    elGallerylefttArrow.style.display = "none"
-            }
+            elGalleryRightArrow.style.display = "none"
+            elGallerylefttArrow.style.display = "none"
             if (elTitleText.querySelector('strong') != null && INC.config.pageType == "pdp") {
                 elTitleText.querySelector('div').innerHTML = "<strong>This item: </strong>" + productObj.name
             } else {
