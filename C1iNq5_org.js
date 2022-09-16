@@ -6358,6 +6358,7 @@
                         }
                     }
 
+
                 }
                 if (pageType == "100" && !INC.config.recommendationProduct.includes(eventDataObj.product_id)) {
                     importEventDataObj["db"] = INC.config.db_products.toString();
@@ -6970,6 +6971,7 @@
         style: 'currency',
         currency: 'GBP',
     });
+    
     function cb_tc(bundle_response) {
         var bundles_tc = bundle_response.Bundles;
         var bundleproductarrayTC = {}
@@ -7162,6 +7164,7 @@
             INC.methods.createPDPBlock("sidebar")
         }, 200)
     }
+
     function attribute_listing(valueArray) {
         var items = valueArray
         var sorting = ["Color", "Size","Shade","Weight","Volume"];
