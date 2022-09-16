@@ -7493,6 +7493,7 @@
                                 }
                             }
                         }
+
                     }
                     if (clickedElement.classList.contains('remove_link') == trueflag && INC.config.pageType == "cartPage") {
                         setTimeout(function () {
@@ -7522,6 +7523,7 @@
             }
         }
     }
+
     let clientColor = document.querySelector('.product-attributes .product-attributes__item--color .js-custom-select');
     let clientSize = document.querySelector('.product-attributes .product-attributes__item--size .js-custom-select');
     if (clientColor != null){
