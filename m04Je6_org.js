@@ -2734,7 +2734,6 @@
                 }
             }
             var addCount = document.querySelectorAll('.inc_sidebar_cart_added_block .inc_cart_added_product_block').length
-            document.querySelector('.inc_sidebar_cart_added_block').className.replace('binc_added_','');
             document.querySelector('.inc_sidebar_cart_added_block').classList.add("inc_added_" + addCount);
             if (sbBlock.querySelector('.inc_cart_added_product_block') == null) {
                 if (sbBlock.querySelector('.inc_header_title_text_block') != null) {
