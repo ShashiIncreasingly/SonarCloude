@@ -3737,32 +3737,7 @@
         }
         elTitleTextBlock.addEventListener("click", function (e) {
             e.preventDefault()
-            document.querySelector('html').classList.add('inc_overlay');
-            this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.inc_product_modal_block').classList.add('inc_active')
-            let element1_ = document.querySelector('.inc_product_modal_block.inc_active .inc_product_info_main_block')
-            let topOfElement1_ = element1_.offsetTop
-            element1_.scroll({
-                top: topOfElement1_,//+70,
-            });
-
-            let element2_ = document.querySelector('.inc_product_modal_block.inc_active .inc_product_img_gallery_list_block')
-            let topOfElement2_ = element2_.offsetTop - 100
-            element2_.scroll({
-                top: topOfElement2_,//+70,
-            });
-            if (document.querySelector('.inc_product_modal_block.inc_active .inc_product_img_gallery_list_item_img img') != null) {
-                document.querySelector('.inc_product_modal_block.inc_active .inc_product_img_gallery_list_item_img img').click()
-            }
-            if (document.querySelector('.sidebar_outer.sidebar_outer_active .inc_sidebar_modal_block') != null) {
-                document.querySelector('.sidebar_outer.sidebar_outer_active .inc_sidebar_modal_block').classList.add('overflow_visible')
-                document.querySelector('body').classList.add('inc_popup_open');
-            }
-            let trucheck = true;
-            if (productBlock.parentNode.parentNode.parentNode.classList.contains('inc_af_product-list_block') == trucheck) {
-                document.querySelector('html').classList.add('inc_overlay');
-            }
-            productBlock.parentNode.parentNode.querySelector('.inc_product_modal_block .inc_product_info_main_block').classList.add('inc_active');
-            productBlock.parentNode.parentNode.querySelector('.inc_product_modal_block .inc_product_description_main_block').classList.remove('inc_active');
+            
 
         });
         if (productObj.PromotionalMessage != null && productObj.PromotionalMessage != "") {
@@ -4109,20 +4084,6 @@
                 productBlock.parentNode.parentNode.querySelector('.inc_product_modal_block .inc_product_info_main_block').classList.add('inc_active');
                 productBlock.parentNode.parentNode.querySelector('.inc_product_modal_block .inc_product_description_main_block').classList.remove('inc_active');
 
-            } else if (blockType == "sidebar" && INC.config.pageType == "cartPage" && productObj.ProductType != "simple") {
-                document.querySelector('html').classList.add('inc_overlay');
-                this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.inc_product_modal_block').classList.add('inc_active')
-                if (document.querySelector('.sidebar_outer.sidebar_outer_active .inc_sidebar_modal_block') != null) {
-                    document.querySelector('.sidebar_outer.sidebar_outer_active .inc_sidebar_modal_block').classList.add('overflow_visible')
-                    document.querySelector('body').classList.add('inc_popup_open');
-                }
-                if (productBlock.parentNode.parentNode.parentNode.classList.contains('inc_af_product-list_block') == trueflag) {
-                    document.querySelector('html').classList.add('inc_overlay');
-                }
-                productBlock.parentNode.parentNode.querySelector('.inc_product_modal_block .inc_product_info_main_block').classList.add('inc_active');
-                productBlock.parentNode.parentNode.querySelector('.inc_product_modal_block .inc_product_description_main_block').classList.remove('inc_active');
-            } else if (INC.config.recommendation && productObj.ProductType == "simple") {
-                addprodsingle(this)
             }
             if (document.querySelector('.inc_product_desc_att_block.inc_active') != null) {
                 document.querySelector('.inc_product_desc_att_block.inc_active').classList.remove('inc_active')
