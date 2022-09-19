@@ -76,9 +76,9 @@
     INC.checkProdUserCookie();
     function readCookie(name) {
         let nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        for (var s of ca) {
-            var c = s;
+        let ca = document.cookie.split(';');
+        for (let s of ca) {
+            let c = s;
             while (c.charAt(0) == ' ') c = c.substring(1, c.length);
             if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
         }
@@ -167,16 +167,16 @@
             let bundleproductarray = {}
             let bundleProductsArray = [];
             if (bundleResponse.ProductsDetail != null) {
-                for (var prdetails of bundleResponse.ProductsDetail) {
+                for (let prdetails of bundleResponse.ProductsDetail) {
                     bundleproductarray[prdetails.ProductId] = prdetails
                 }
             } else if (bundleResponse.CategoryRecommendations != null) {
-                for (var catrecT of bundleResponse.CategoryRecommendations) {
+                for (let catrecT of bundleResponse.CategoryRecommendations) {
                     bundleproductarray[catrecT.ProductId] = catrecT
                 }
             }
             let pdpProductId = ""
-            for (var bundle_i of bundles) {
+            for (let bundle_i of bundles) {
                 if (INC.config.dupDataObjectProducts.indexOf(bundle_i.BundleId) == -1) {
                     if (INC.config.recommendation == recC) {
                         INC.config.dupDataObjectProducts.push(bundle_i.BundleId)
@@ -223,12 +223,12 @@
                     if (INC.config.recommendation == reccheck) {
                         bundleProductsArray.push(bundle_i["ProductId"]);
                     }
-                    for (var irbprdarray of irbProductsArray) {
+                    for (let irbprdarray of irbProductsArray) {
                         let product = bundleproductarray[irbprdarray] || irbprdarray
                         let pAttributes = product["Attributes"] || "";
                         
                         if (pAttributes != "" && pAttributes != null) {
-                            for (var p of pAttributes) {
+                            for (let p of pAttributes) {
                                 if (p.frontEndLabel == "color") {
                                     p.frontEndLabel = "Color"
                                 }
@@ -252,25 +252,25 @@
                         let pAttObj = {};
                         let attr_values = '';
                         let c_t = 0
-                        for (var t of pAttributes) {
+                        for (let t of pAttributes) {
                             if (pAttributes.length == 1) {
                                 if (pAttributes[0].attributeCode == "Color" || pAttributes[0].attributeCode == "color") {
                                     pAttributes[0].attributeId = 0;
                                     attr_values = t.attributeValues;
-                                    for (var v of attr_values) {
+                                    for (let v of attr_values) {
                                         v.optionId = 0;
                                     }
                                 } else {
                                     pAttributes[0].attributeId = 1;
                                     attr_values = t.attributeValues;
-                                    for (var vb of attr_values) {
+                                    for (let vb of attr_values) {
                                         vb.optionId = 1;
                                     }
                                 }
                             } else {
                                 t.attributeId = c_t
                                 attr_values = t.attributeValues;
-                                for (var va of attr_values) {
+                                for (let va of attr_values) {
                                     va.optionId = c_t;
                                 }
                             }
@@ -278,11 +278,11 @@
                         }
                         let productObj = '';
                         if (pAttributes.length) {
-                            for (var pattv of pAttributes) {
-                                var pAttributesObj = pattv;
-                                var pAttributesValues = pAttributesObj["attributeValues"];
-                                for (var patvalues of pAttributesValues) {
-                                    var childProduct = patvalues;
+                            for (let pattv of pAttributes) {
+                                let pAttributesObj = pattv;
+                                let pAttributesValues = pAttributesObj["attributeValues"];
+                                for (let patvalues of pAttributesValues) {
+                                    let childProduct = patvalues;
                                     if (childProduct["childProductId"] == null) {
                                         childProduct["childProductId"] = product["ProductId"];
                                         childProduct["childProductSku"] = product["ProductSku"];
@@ -339,7 +339,7 @@
                                         dataStoreObj[product['ProductId']][productObj['id']] = {}
                                     }
                                     pAttObj = dataStoreObj[product['ProductId']][productObj['id']];
-                                    for (var pAtt in productObj) {
+                                    for (let pAtt in productObj) {
                                         if (pAtt == "option") {
                                             if (!Object.prototype.hasOwnProperty.call(pAttObj, 'option')) {
                                                 pAttObj["option"] = {}
@@ -400,8 +400,8 @@
             let childProductObj = {};
             let productListObj = INC.dataStore.dataStoreObj;
             if (Object.prototype.hasOwnProperty.call(findObj, "id")) {
-                for (var mainProductId in productListObj) {
-                    for (var childProductId in productListObj[mainProductId]) {
+                for (let mainProductId in productListObj) {
+                    for (let childProductId in productListObj[mainProductId]) {
                         if (productListObj[mainProductId][childProductId]["id"] == findObj["id"]) {
                             childProductObj = productListObj[mainProductId][childProductId];
                             break;
@@ -411,8 +411,8 @@
             }
             if(Object.keys(childProductObj).length == 0){
                 if (Object.prototype.hasOwnProperty.call(findObj, "id")) {
-                    for (var mainProductIds in productListObj) {
-                        for (var childProductIds in productListObj[mainProductIds]) {
+                    for (let mainProductIds in productListObj) {
+                        for (let childProductIds in productListObj[mainProductIds]) {
                             if (productListObj[mainProductIds][childProductIds]["id"] == findObj["id"]) {
                                 childProductObj = productListObj[mainProductIds][childProductIds];
                                 break;
@@ -427,8 +427,8 @@
             let childProductObj = {};
             let productListObj = INC.dataStore.dataStoreObj;
             if (Object.prototype.hasOwnProperty.call(findObj, "sku")) {
-                for (var mainProductId in productListObj) {
-                    for (var childProductId in productListObj[mainProductId]) {
+                for (let mainProductId in productListObj) {
+                    for (let childProductId in productListObj[mainProductId]) {
                         if (productListObj[mainProductId][childProductId]["sku"] == findObj['sku']) {
                             childProductObj = productListObj[mainProductId][childProductId];
                             break;
@@ -443,8 +443,8 @@
             let productListObj = INC.dataStore.dataStoreObj;
             let bundleProductsArray = INC.dataStore.bundleProductsArray;
             bundleProductsArray.forEach(function (productId) {
-                for (var childProductId in productListObj[productId]) {
-                    var indexOfCategoryId = catergoriesArray.indexOf(productListObj[productId][childProductId]["categoryId"]);
+                for (let childProductId in productListObj[productId]) {
+                    let indexOfCategoryId = catergoriesArray.indexOf(productListObj[productId][childProductId]["categoryId"]);
                     if (indexOfCategoryId == -1 && productListObj[productId][childProductId]["categoryId"] != INC.dataStore.clientProductDealsCategory) {
                         catergoriesArray.push(productListObj[productId][childProductId]["categoryId"]);
                     }
@@ -458,9 +458,9 @@
             let productColorArrayObj = {}
             let productColorObjArray = [];
             if (Object.prototype.hasOwnProperty.call(findObj, "mainId")) {
-                for (var mainProductId in productListObj) {
+                for (let mainProductId in productListObj) {
                     if (mainProductId == findObj["mainId"]) {
-                        for (var childProductId in productListObj[mainProductId]) {
+                        for (let childProductId in productListObj[mainProductId]) {
                             if (productListObj[mainProductId][childProductId]["option"]["0"] != undefined) {
                                 if (productListObj[mainProductId][childProductId]["option"]["0"].code == "Color") {
                                     if (productListObj[mainProductId][childProductId]["option"] != null &&
@@ -468,15 +468,15 @@
                                         productListObj[mainProductId][childProductId]["option"]["0"] != null &&
                                         productListObj[mainProductId][childProductId]["option"]["0"] != undefined) {
                                         if (type_of != undefined) {
-                                            var attr_block = null;
-                                            var checB = false
+                                            let attr_block = null;
+                                            let checB = false
                                             if (type_of.parentNode.parentNode.parentNode.classList.contains('inc_product_desc_att_block') == checB) {
                                                 attr_block = type_of.parentNode.parentNode.parentNode.parentNode
                                             } else {
                                                 attr_block = type_of.parentNode.parentNode.parentNode
                                             }
-                                            var opt_text = ""
-                                            var opt_size_text = ""
+                                            let opt_text = ""
+                                            let opt_size_text = ""
                                             if (type_of.parentNode != null) {
                                                 opt_text = attr_block.getAttribute('data-zero');
                                                 if(attr_block.getAttribute('data-size') != undefined){
@@ -529,7 +529,7 @@
                 }
             }
             Object.keys(productColorArrayObj).forEach(function (colorText) {
-                var colorObj = {}
+                let colorObj = {}
                 colorObj["text"] = colorText;
                 colorObj["colorCode"] = productColorArrayObj[colorText]["colorCode"];
                 colorObj["imgSrc"] = productColorArrayObj[colorText]["imgSrc"];
@@ -558,20 +558,20 @@
             let c_pid = "";
             let prc = "";
             if (Object.prototype.hasOwnProperty.call(findObj, "mainId")) {
-                for (var mainProductId in productListObj) {
+                for (let mainProductId in productListObj) {
                     if (mainProductId == findObj["mainId"]) {
-                        for (var childProductId in productListObj[mainProductId]) {
-                            var attr_flag=""
+                        for (let childProductId in productListObj[mainProductId]) {
+                            let attr_flag=""
                             if (type_of != undefined) {
-                                var attr_block = null;
-                                var checB = false
+                                let attr_block = null;
+                                let checB = false
                                 if (type_of.parentNode.parentNode.parentNode.classList.contains('inc_product_desc_att_block') == checB) {
                                     attr_block = type_of.parentNode.parentNode.parentNode.parentNode
                                 } else {
                                     attr_block = type_of.parentNode.parentNode.parentNode
                                 }
-                                var opt_text = attr_block.getAttribute('data-zero');
-                                var opt_size_text = attr_block.getAttribute('data-color');
+                                let opt_text = attr_block.getAttribute('data-zero');
+                                let opt_size_text = attr_block.getAttribute('data-color');
 
                                 if (opt_size_text == undefined) {
                                     opt_size_text = ""
@@ -621,7 +621,7 @@
             }
 
             Object.keys(productSizesArrayObj).forEach(function (sizeText) {
-                var sizeObj = {};
+                let sizeObj = {};
                 sizeObj["text"] = sizeText;
                 sizeObj["code"] = attr_code;
                 sizeObj["cpid"] = c_pid;
@@ -637,16 +637,16 @@
             let product0ArrayObj = {}
             let product0ObjArray = [];
             if (Object.prototype.hasOwnProperty.call(findObj, "mainId")) {
-                for (var  mainProductId in productListObj) {
+                for (let  mainProductId in productListObj) {
                     if (mainProductId == findObj["mainId"]) {
-                        for (var  childProductId in productListObj[mainProductId]) {
+                        for (let  childProductId in productListObj[mainProductId]) {
                             if (productListObj[mainProductId][childProductId]["option"] != null &&
                                 productListObj[mainProductId][childProductId]["option"] != undefined &&
                                 productListObj[mainProductId][childProductId]["option"]["1"] != null &&
                                 productListObj[mainProductId][childProductId]["option"]["1"] != undefined) {
-                                var checT = true
-                                var attr_main = true;
-                                var first_attr_acodec = ["Connectivity", "Number of SIM", "Device"];
+                                let checT = true
+                                let attr_main = true;
+                                let first_attr_acodec = ["Connectivity", "Number of SIM", "Device"];
                                 if (productListObj[mainProductId][childProductId]["option"][0] != undefined || productListObj[mainProductId][childProductId]["option"][1].code != undefined) {
                                     if (first_attr_acodec.indexOf(productListObj[mainProductId][childProductId]["option"][0]) == -1 && first_attr_acodec.indexOf(productListObj[mainProductId][childProductId]["option"][1].code) == -1) {
                                         attr_main = false;
@@ -685,7 +685,7 @@
             }
 
             Object.keys(product0ArrayObj).forEach(function (colorText) {
-                var attr0Obj = {}
+                let attr0Obj = {}
                 attr0Obj["text"] = colorText;
                 attr0Obj["text1"] = colorText.replace('g','').replace('l','').replace('k','');
                 attr0Obj["imgSrc"] = product0ArrayObj[colorText]["imgSrc"];
@@ -706,15 +706,15 @@
             let checB = false
             let checTr = true
             if (Object.prototype.hasOwnProperty.call(findObj, "mainId")) {
-                for (var  mainProductId in productListObj) {
+                for (let  mainProductId in productListObj) {
                     if (mainProductId == findObj["mainId"]) {
-                        for (var  childProductId in productListObj[mainProductId]) {
+                        for (let  childProductId in productListObj[mainProductId]) {
                             if (productListObj[mainProductId][childProductId]["option"] != null &&
                                 productListObj[mainProductId][childProductId]["option"] != undefined &&
                                 productListObj[mainProductId][childProductId]["option"]["3"] != null &&
                                 productListObj[mainProductId][childProductId]["option"]["3"] != undefined) {
                                 if (type_of != undefined) {
-                                    var attr_block = null;
+                                    let attr_block = null;
                                     if(type_of.parentNode.parentNode != null){
                                         if (type_of.parentNode.parentNode.parentNode.classList.contains('inc_product_desc_att_block') == checB) {
                                             attr_block = type_of.parentNode.parentNode.parentNode.parentNode
@@ -730,9 +730,9 @@
                                     if(type_of.parentNode.parentNode.parentNode.parentNode.classList.contains('inc_product_desc_att_block') == checTr){
                                         attr_block = type_of.parentNode.parentNode.parentNode.parentNode
                                     }
-                                    var opt_text = attr_block.getAttribute('data-zero');
-                                    var opt_size_text = attr_block.getAttribute('data-size');
-                                    var opt_color_text = attr_block.getAttribute('data-color');
+                                    let opt_text = attr_block.getAttribute('data-zero');
+                                    let opt_size_text = attr_block.getAttribute('data-size');
+                                    let opt_color_text = attr_block.getAttribute('data-color');
 
                                     if (opt_size_text == undefined) {
                                         opt_size_text = ""
@@ -778,7 +778,7 @@
             }
 
             Object.keys(productColorArrayObj).forEach(function (colorText) {
-                var attr3Obj = {}
+                let attr3Obj = {}
                 attr3Obj["text"] = colorText;
                 attr3Obj["imgSrc"] = productColorArrayObj[colorText]["imgSrc"];
                 attr3Obj["titleText"] = productColorArrayObj[colorText]["titleText"];
@@ -797,7 +797,7 @@
             if(findObj.mainId != undefined && productListObj != undefined){
                 mainProductListObj = productListObj[findObj.mainId];
             }
-            for (var  childProductId in mainProductListObj) {
+            for (let  childProductId in mainProductListObj) {
                 if (findObj.zeroText != "" && findObj.sizeText != "" && findObj.colorText != "" && findObj.thirdText != "" && mainProductListObj[childProductId]["option"]["0"] != undefined && mainProductListObj[childProductId]["option"]["1"] != undefined && mainProductListObj[childProductId]["option"]["2"] != undefined && mainProductListObj[childProductId]["option"]["3"] != undefined) {
                     if (findObj.colorText == mainProductListObj[childProductId]["option"]["0"].text && findObj.zeroText == mainProductListObj[childProductId]["option"]["1"].text && findObj.sizeText == mainProductListObj[childProductId]["option"]["2"].text && findObj.thirdText == mainProductListObj[childProductId]["option"]["3"].text) {
                         childProductObj = mainProductListObj[childProductId];
