@@ -77,7 +77,7 @@
     function readCookie(name) {
         let nameEQ = name + "=";
         let ca = document.cookie.split(';');
-        for (let s of ca) {
+        for(let s of ca) {
             let c = s;
             while (c.charAt(0) == ' ') c = c.substring(1, c.length);
             if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
@@ -167,16 +167,16 @@
             let bundleproductarray = {}
             let bundleProductsArray = [];
             if (bundleResponse.ProductsDetail != null) {
-                for (let prdetails of bundleResponse.ProductsDetail) {
+                for(let prdetails of bundleResponse.ProductsDetail) {
                     bundleproductarray[prdetails.ProductId] = prdetails
                 }
             } else if (bundleResponse.CategoryRecommendations != null) {
-                for (let catrecT of bundleResponse.CategoryRecommendations) {
+                for(let catrecT of bundleResponse.CategoryRecommendations) {
                     bundleproductarray[catrecT.ProductId] = catrecT
                 }
             }
             let pdpProductId = ""
-            for (let bundle_i of bundles) {
+            for(let bundle_i of bundles) {
                 if (INC.config.dupDataObjectProducts.indexOf(bundle_i.BundleId) == -1) {
                     if (INC.config.recommendation == recC) {
                         INC.config.dupDataObjectProducts.push(bundle_i.BundleId)
@@ -223,12 +223,12 @@
                     if (INC.config.recommendation == reccheck) {
                         bundleProductsArray.push(bundle_i["ProductId"]);
                     }
-                    for (let irbprdarray of irbProductsArray) {
+                    for(let irbprdarray of irbProductsArray) {
                         let product = bundleproductarray[irbprdarray] || irbprdarray
                         let pAttributes = product["Attributes"] || "";
                         
                         if (pAttributes != "" && pAttributes != null) {
-                            for (let p of pAttributes) {
+                            for(let p of pAttributes) {
                                 if (p.frontEndLabel == "color") {
                                     p.frontEndLabel = "Color"
                                 }
@@ -252,25 +252,25 @@
                         let pAttObj = {};
                         let attr_values = '';
                         let c_t = 0
-                        for (let t of pAttributes) {
+                        for(let t of pAttributes) {
                             if (pAttributes.length == 1) {
                                 if (pAttributes[0].attributeCode == "Color" || pAttributes[0].attributeCode == "color") {
                                     pAttributes[0].attributeId = 0;
                                     attr_values = t.attributeValues;
-                                    for (let v of attr_values) {
+                                    for(let v of attr_values) {
                                         v.optionId = 0;
                                     }
                                 } else {
                                     pAttributes[0].attributeId = 1;
                                     attr_values = t.attributeValues;
-                                    for (let vb of attr_values) {
+                                    for(let vb of attr_values) {
                                         vb.optionId = 1;
                                     }
                                 }
                             } else {
                                 t.attributeId = c_t
                                 attr_values = t.attributeValues;
-                                for (let va of attr_values) {
+                                for(let va of attr_values) {
                                     va.optionId = c_t;
                                 }
                             }
@@ -278,10 +278,10 @@
                         }
                         let productObj = '';
                         if (pAttributes.length) {
-                            for (let pattv of pAttributes) {
+                            for(let pattv of pAttributes) {
                                 let pAttributesObj = pattv;
                                 let pAttributesValues = pAttributesObj["attributeValues"];
-                                for (let patvalues of pAttributesValues) {
+                                for(let patvalues of pAttributesValues) {
                                     let childProduct = patvalues;
                                     if (childProduct["childProductId"] == null) {
                                         childProduct["childProductId"] = product["ProductId"];
@@ -339,7 +339,7 @@
                                         dataStoreObj[product['ProductId']][productObj['id']] = {}
                                     }
                                     pAttObj = dataStoreObj[product['ProductId']][productObj['id']];
-                                    for (let pAtt in productObj) {
+                                    for(let pAtt in productObj) {
                                         if (pAtt == "option") {
                                             if (!Object.prototype.hasOwnProperty.call(pAttObj, 'option')) {
                                                 pAttObj["option"] = {}
@@ -400,8 +400,8 @@
             let childProductObj = {};
             let productListObj = INC.dataStore.dataStoreObj;
             if (Object.prototype.hasOwnProperty.call(findObj, "id")) {
-                for (let mainProductId in productListObj) {
-                    for (let childProductId in productListObj[mainProductId]) {
+                for(let mainProductId in productListObj) {
+                    for(let childProductId in productListObj[mainProductId]) {
                         if (productListObj[mainProductId][childProductId]["id"] == findObj["id"]) {
                             childProductObj = productListObj[mainProductId][childProductId];
                             break;
@@ -411,8 +411,8 @@
             }
             if(Object.keys(childProductObj).length == 0){
                 if (Object.prototype.hasOwnProperty.call(findObj, "id")) {
-                    for (let mainProductIds in productListObj) {
-                        for (let childProductIds in productListObj[mainProductIds]) {
+                    for(let mainProductIds in productListObj) {
+                        for(let childProductIds in productListObj[mainProductIds]) {
                             if (productListObj[mainProductIds][childProductIds]["id"] == findObj["id"]) {
                                 childProductObj = productListObj[mainProductIds][childProductIds];
                                 break;
@@ -427,8 +427,8 @@
             let childProductObj = {};
             let productListObj = INC.dataStore.dataStoreObj;
             if (Object.prototype.hasOwnProperty.call(findObj, "sku")) {
-                for (let mainProductId in productListObj) {
-                    for (let childProductId in productListObj[mainProductId]) {
+                for(let mainProductId in productListObj) {
+                    for(let childProductId in productListObj[mainProductId]) {
                         if (productListObj[mainProductId][childProductId]["sku"] == findObj['sku']) {
                             childProductObj = productListObj[mainProductId][childProductId];
                             break;
@@ -443,7 +443,7 @@
             let productListObj = INC.dataStore.dataStoreObj;
             let bundleProductsArray = INC.dataStore.bundleProductsArray;
             bundleProductsArray.forEach(function (productId) {
-                for (let childProductId in productListObj[productId]) {
+                for(let childProductId in productListObj[productId]) {
                     let indexOfCategoryId = catergoriesArray.indexOf(productListObj[productId][childProductId]["categoryId"]);
                     if (indexOfCategoryId == -1 && productListObj[productId][childProductId]["categoryId"] != INC.dataStore.clientProductDealsCategory) {
                         catergoriesArray.push(productListObj[productId][childProductId]["categoryId"]);
@@ -458,9 +458,9 @@
             let productColorArrayObj = {}
             let productColorObjArray = [];
             if (Object.prototype.hasOwnProperty.call(findObj, "mainId")) {
-                for (let mainProductId in productListObj) {
+                for(let mainProductId in productListObj) {
                     if (mainProductId == findObj["mainId"]) {
-                        for (let childProductId in productListObj[mainProductId]) {
+                        for(let childProductId in productListObj[mainProductId]) {
                             if (productListObj[mainProductId][childProductId]["option"]["0"] != undefined) {
                                 if (productListObj[mainProductId][childProductId]["option"]["0"].code == "Color") {
                                     if (productListObj[mainProductId][childProductId]["option"] != null &&
@@ -558,9 +558,9 @@
             let c_pid = "";
             let prc = "";
             if (Object.prototype.hasOwnProperty.call(findObj, "mainId")) {
-                for (let mainProductId in productListObj) {
+                for(let mainProductId in productListObj) {
                     if (mainProductId == findObj["mainId"]) {
-                        for (let childProductId in productListObj[mainProductId]) {
+                        for(let childProductId in productListObj[mainProductId]) {
                             let attr_flag=""
                             if (type_of != undefined) {
                                 let attr_block = null;
@@ -637,9 +637,9 @@
             let product0ArrayObj = {}
             let product0ObjArray = [];
             if (Object.prototype.hasOwnProperty.call(findObj, "mainId")) {
-                for (let  mainProductId in productListObj) {
+                for(let  mainProductId in productListObj) {
                     if (mainProductId == findObj["mainId"]) {
-                        for (let  childProductId in productListObj[mainProductId]) {
+                        for(let  childProductId in productListObj[mainProductId]) {
                             if (productListObj[mainProductId][childProductId]["option"] != null &&
                                 productListObj[mainProductId][childProductId]["option"] != undefined &&
                                 productListObj[mainProductId][childProductId]["option"]["1"] != null &&
@@ -706,9 +706,9 @@
             let checB = false
             let checTr = true
             if (Object.prototype.hasOwnProperty.call(findObj, "mainId")) {
-                for (let  mainProductId in productListObj) {
+                for(let  mainProductId in productListObj) {
                     if (mainProductId == findObj["mainId"]) {
-                        for (let  childProductId in productListObj[mainProductId]) {
+                        for(let  childProductId in productListObj[mainProductId]) {
                             if (productListObj[mainProductId][childProductId]["option"] != null &&
                                 productListObj[mainProductId][childProductId]["option"] != undefined &&
                                 productListObj[mainProductId][childProductId]["option"]["3"] != null &&
@@ -797,7 +797,7 @@
             if(findObj.mainId != undefined && productListObj != undefined){
                 mainProductListObj = productListObj[findObj.mainId];
             }
-            for (let  childProductId in mainProductListObj) {
+            for(let  childProductId in mainProductListObj) {
                 if (findObj.zeroText != "" && findObj.sizeText != "" && findObj.colorText != "" && findObj.thirdText != "" && mainProductListObj[childProductId]["option"]["0"] != undefined && mainProductListObj[childProductId]["option"]["1"] != undefined && mainProductListObj[childProductId]["option"]["2"] != undefined && mainProductListObj[childProductId]["option"]["3"] != undefined) {
                     if (findObj.colorText == mainProductListObj[childProductId]["option"]["0"].text && findObj.zeroText == mainProductListObj[childProductId]["option"]["1"].text && findObj.sizeText == mainProductListObj[childProductId]["option"]["2"].text && findObj.thirdText == mainProductListObj[childProductId]["option"]["3"].text) {
                         childProductObj = mainProductListObj[childProductId];
@@ -1262,7 +1262,7 @@
         
         setTimeout(function(){
             let allchecked = document.querySelectorAll('.inc_pdp_bundle_product_list_main_block .inc_product_showcase_block .inc_product_desc_add_img.checked')
-            for (let alcheckp of allchecked) {
+            for(let alcheckp of allchecked) {
                 if(alcheckp != undefined){
                     alcheckp.click()
                 }
@@ -3084,7 +3084,6 @@
                 },1200)
                 getTrackingPixel();
             });
-            // || window.innerWidth > 820
         } else if(window.innerWidth > 820 || blockType == "sidebar" || blockType == "am"){
             elImgMainImg.addEventListener("click", function () {
                 incscrollPgae(productBlock)
@@ -3613,9 +3612,7 @@
             productBlock.parentNode.classList.remove("inc_active");
             productBlock.parentNode.querySelector('.inc_product_header_title_block').classList.add('inc_active');
             productBlock.parentNode.querySelector('.inc_product_header_title_block_1').classList.remove('inc_active');
-            if (document.querySelector('.inc_product_modal_block.inc_active') == null && document.querySelector('body.active-gnav, body.product-shades-sidebar-active') == null) {
-                // document.querySelector('body').setAttribute('style', 'overflow:auto')
-            }
+            
             if(inc_scroll_height > 100){
                 window.scrollTo(0,inc_scroll_height);
             }
@@ -3656,7 +3653,6 @@
             }
         }
         let productLink = document.createElement('a');
-        // productLink.target = "_blank";
         productLink.setAttribute('rel', 'noopener noreferrer')
         productLink.href = productObj.url;
         productLink.appendChild(elImgTag1);
@@ -3689,7 +3685,6 @@
         let pLinkModal = document.createElement('a');
         pLinkModal.setAttribute("title", productObj.nameMain);
         pLinkModal.setAttribute("href", productObj.url);
-        // pLinkModal.setAttribute("target", "_blank");
         pLinkModal.setAttribute('rel', 'noopener noreferrer')
         pLinkModal.innerText = productObj.nameMain;
         productHeaderMainBlockTitle.appendChild(pLinkModal)
@@ -4833,7 +4828,6 @@
             let totalsaveper = get_discount_price_percentage(productObj.regularPrice, productObj.activePrice)
 
             elPriceActiveText.parentNode.parentNode.parentNode.classList.remove('is_special_ecirp')
-            // elPriceActiveMsg.textContent = " + VAT"
             elPriceRegularText.textContent = "";
             if (activePrice != regularPrice && regularPrice != "" && regularPrice != null && regularPrice != 0) {
                 elPriceActiveText.parentNode.parentNode.parentNode.classList.add('is_special_ecirp')
@@ -6857,71 +6851,70 @@
                     if(activedots != null){
                         let actind = activedots.getAttribute('index')
                         if(actind == 5){
-                                if(modal_dots.length >= 6){
-                                    for (let i1 in modal_dots) {
-                                        if(i1 == 0){
-                                            modal_dots[i1].setAttribute('style','display: none !important;')
-                                        }
-                                    }
-                                }
-                            }else if(actind == 6){
-                                if(modal_dots.length >= 7){
-                                    for (let i2 in modal_dots) {
-                                        if(i2 == 0 || i2 == 1){
-                                            modal_dots[i2].setAttribute('style','display: none !important;')
-                                        }
-                                    }
-                                }
-                            }else if(actind == 7){
-                                if(modal_dots.length >= 8){
-                                    for (let i3 in modal_dots) {
-                                        if(i3 == 0 || i3 == 1 || i3 == 2){
-                                            modal_dots[i3].setAttribute('style','display: none !important;')
-                                        }
-                                    }
-                                }
-                            }else if(actind == 8){
-                                if(modal_dots.length >= 9){
-                                    for (let i4 in modal_dots) {
-                                        if(i4 == 0 || i4 == 1 || i4 == 2 || i4 == 3){
-                                            modal_dots[i4].setAttribute('style','display: none !important;')
-                                        }
-                                    }
-                                }
-                            }else if(actind == 9){
-                                if(modal_dots.length >= 10){
-                                    for (let i5 in modal_dots) {
-                                        if(i5 == 0 || i5 == 1 || i5 == 2 || i5 == 3 || i5 == 4){
-                                            modal_dots[i5].setAttribute('style','display: none !important;')
-                                        }
-                                    }
-                                }
-                            }else if(actind == 10){
-                                if(modal_dots.length >= 11){
-                                    for (let i6 in modal_dots) {
-                                        if(i6 == 0 || i6 == 1 || i6 == 2 || i6 == 3 || i6 == 4 || i6 == 5){
-                                            modal_dots[i6].setAttribute('style','display: none !important;')
-                                        }
-                                    }
-                                }
-                            }else if(actind == 11){
-                                if(modal_dots.length >= 12){
-                                    for (let i7 in modal_dots) {
-                                        if(i7 == 0 || i7 == 1 || i7 == 2 || i7 == 3 || i7 == 4 || i7 == 5 || i7 == 6){
-                                            modal_dots[i7].setAttribute('style','display: none !important;')
-                                        }
-                                    }
-                                }
-                            }else {
-                                for (let iq in modal_dots) {
-                                    if(iq == 0 || iq == 1 || iq == 2 || iq == 3 || iq == 4 || iq == 5 || iq == 6){
-                                        if(modal_dots[iq] != undefined){
-                                            modal_dots[iq].style.display = "flex"
-                                        }
+                            if(modal_dots.length >= 6){
+                                for (let i1 in modal_dots) {
+                                    if(i1 == 0){
+                                        modal_dots[i1].setAttribute('style','display: none !important;')
                                     }
                                 }
                             }
-                        // }
+                        }else if(actind == 6){
+                            if(modal_dots.length >= 7){
+                                for (let i2 in modal_dots) {
+                                    if(i2 == 0 || i2 == 1){
+                                        modal_dots[i2].setAttribute('style','display: none !important;')
+                                    }
+                                }
+                            }
+                        }else if(actind == 7){
+                            if(modal_dots.length >= 8){
+                                for (let i3 in modal_dots) {
+                                    if(i3 == 0 || i3 == 1 || i3 == 2){
+                                        modal_dots[i3].setAttribute('style','display: none !important;')
+                                    }
+                                }
+                            }
+                        }else if(actind == 8){
+                            if(modal_dots.length >= 9){
+                                for (let i4 in modal_dots) {
+                                    if(i4 == 0 || i4 == 1 || i4 == 2 || i4 == 3){
+                                        modal_dots[i4].setAttribute('style','display: none !important;')
+                                    }
+                                }
+                            }
+                        }else if(actind == 9){
+                            if(modal_dots.length >= 10){
+                                for (let i5 in modal_dots) {
+                                    if(i5 == 0 || i5 == 1 || i5 == 2 || i5 == 3 || i5 == 4){
+                                        modal_dots[i5].setAttribute('style','display: none !important;')
+                                    }
+                                }
+                            }
+                        }else if(actind == 10){
+                            if(modal_dots.length >= 11){
+                                for (let i6 in modal_dots) {
+                                    if(i6 == 0 || i6 == 1 || i6 == 2 || i6 == 3 || i6 == 4 || i6 == 5){
+                                        modal_dots[i6].setAttribute('style','display: none !important;')
+                                    }
+                                }
+                            }
+                        }else if(actind == 11){
+                            if(modal_dots.length >= 12){
+                                for (let i7 in modal_dots) {
+                                    if(i7 == 0 || i7 == 1 || i7 == 2 || i7 == 3 || i7 == 4 || i7 == 5 || i7 == 6){
+                                        modal_dots[i7].setAttribute('style','display: none !important;')
+                                    }
+                                }
+                            }
+                        }else {
+                            for (let iq in modal_dots) {
+                                if(iq == 0 || iq == 1 || iq == 2 || iq == 3 || iq == 4 || iq == 5 || iq == 6){
+                                    if(modal_dots[iq] != undefined){
+                                        modal_dots[iq].style.display = "flex"
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
