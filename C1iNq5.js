@@ -1368,12 +1368,6 @@
             }
             let CartPos= document.querySelector('#main')
             if(document.querySelector('#main') != null){
-                // if(document.querySelector('#need-help-panel') != null && window.innerWidth < 821){
-                //     let elcart = document.querySelector('#need-help-panel').parentNode
-                //     elcart.parentNode.insertBefore(amBlock,elcart)
-                // }else{
-                   
-                // }
                 CartPos.appendChild(amBlock)
                 if(document.querySelector('.T133-wrapper') != null){
                     document.querySelector('.T133-wrapper').style.display = "none"
@@ -5642,7 +5636,6 @@
                 args1.HAS_MULTIPLE_SKUS = 1;
                 let bits1_ = 16 || 36;
                 let mathranvalue_ = generateRandomString(bits1_).toString().slice(2)
-                // Math.floor((Math.random() * 10000));
                 args1.COLLECTION_NAME = 'Kit ' + Math.floor((mathranvalue_ * 10000));
                 args1.action = 'add,edit,create_kit';
                 formData.push(args1);
