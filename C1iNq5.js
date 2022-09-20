@@ -1066,8 +1066,8 @@
                 "&no_of_bundles=" + bundleReqCount
                 ;
         }
-        var irbReqURL = decodeURI(irbPATH + btoa(irbReqParams));
-        var networkConfigObj = new INC.classes.NWConfig();
+        let irbReqURL = decodeURI(irbPATH + btoa(irbReqParams));
+        let networkConfigObj = new INC.classes.NWConfig();
         networkConfigObj["url"] = irbReqURL;
         return this.refreshBundles(networkConfigObj);
     }
@@ -1125,10 +1125,10 @@
             "&is_tc=" + "1" +
             "&no_of_bundles=" + bundleReqCount;
 
-        var irbReqURL1 = decodeURI(irbPATH + btoa(irbReqParams));
-        var networkConfigObj = new INC.classes.NWConfig();
+        let irbReqURL1 = decodeURI(irbPATH + btoa(irbReqParams));
+        let networkConfigObj = new INC.classes.NWConfig();
         networkConfigObj["url"] = irbReqURL1;
-        var xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
         xhr.open("GET", networkConfigObj["url"], true);
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status === 200) {
@@ -1153,15 +1153,15 @@
             count.textContent = "(" + field2 + ")";
             
         }
-        var stars = document.createElement('span');
+        let stars = document.createElement('span');
         if (filed3 != undefined && filed3 != "") {
-            var rating = filed3;
+            let rating = filed3;
             if (rating == "" || rating == undefined || rating == "NaN" || rating == "norating") {
                 rating = 0
             }
             rating = parseFloat(rating).toFixed(1)
             rating = rating.toString();
-            var rating_m = null;
+            let rating_m = null;
             if (rating != 0 && rating != 1 && rating != 2 && rating != 3 && rating != 4 && rating != 5) {
                 rating_m = rating.replace(".", "-");
             }
@@ -1261,8 +1261,8 @@
         }
         
         setTimeout(function(){
-            var allchecked = document.querySelectorAll('.inc_pdp_bundle_product_list_main_block .inc_product_showcase_block .inc_product_desc_add_img.checked')
-            for (var alcheckp of allchecked) {
+            let allchecked = document.querySelectorAll('.inc_pdp_bundle_product_list_main_block .inc_product_showcase_block .inc_product_desc_add_img.checked')
+            for (let alcheckp of allchecked) {
                 if(alcheckp != undefined){
                     alcheckp.click()
                 }
@@ -1295,17 +1295,17 @@
                 }
             }
             amBlock.querySelector(".inc_af_product-list_block").innerHTML = "";
-            var elAmTitleText = amBlock.querySelector(".inc_af_title_text_block")
+            let elAmTitleText = amBlock.querySelector(".inc_af_title_text_block")
             if (PDP_type == "PDP" || PDP_type == "productList") {
                 elAmTitleText.innerText = "Other customers also viewed";
             }
-            var amProductListBlock = amBlock.querySelector(".inc_af_product-list_block");
-            var bundleProductsArray = INC.dataStore.bundleProductsArray;
+            let amProductListBlock = amBlock.querySelector(".inc_af_product-list_block");
+            let bundleProductsArray = INC.dataStore.bundleProductsArray;
             if (INC.config.pageType == "pdp") {
                 if (INC.dataStore.bundleProductsArray.indexOf(INC.config.Product_id) == -1) INC.dataStore.bundleProductsArray.push(INC.config.Product_id)
                 INC.config.cartproductids = []
             }
-            var duplamid = []
+            let duplamid = []
             if (PDP_type == "PDP") {
                 bundleProductsArray.forEach(function (mainProductId) {
                     if(duplamid.indexOf(mainProductId) == -1){
@@ -1319,8 +1319,8 @@
                     if(duplamid.indexOf(mainProductId) == -1){
                         duplamid.push(mainProductId)
                         if (INC.config.cartproductids.indexOf(mainProductId) == -1) {
-                            var firstProductObjByMainId = INC.dataStore.methods().getFirstProductObjByMainId({ mainId: mainProductId });
-                            var prd_module = INC.methods.createProductModuleBlock(firstProductObjByMainId.id, "am", false, amBlock);
+                            let firstProductObjByMainId = INC.dataStore.methods().getFirstProductObjByMainId({ mainId: mainProductId });
+                            let prd_module = INC.methods.createProductModuleBlock(firstProductObjByMainId.id, "am", false, amBlock);
                             if (prd_module.getAttribute('data-id') != "undefined") {
                                 amProductListBlock.appendChild(prd_module);
                                 elAmTitleText.innerText = INC.config.BeforeYouChecktext ;
@@ -1330,29 +1330,29 @@
                 });
             }
 
-            var amProductBlocks = amBlock.querySelectorAll('.inc_product_block');
+            let amProductBlocks = amBlock.querySelectorAll('.inc_product_block');
             Array.prototype.forEach.call(amProductBlocks, function (productBlock) {
                 productBlock.querySelector('.inc_product_desc_add_block').addEventListener("click", function () {
-                    var productBlockNode = this.parentNode.parentNode;
-                    var flag_check = INC.methods.checkVariantSelection(productBlockNode)
+                    let productBlockNode = this.parentNode.parentNode;
+                    let flag_check = INC.methods.checkVariantSelection(productBlockNode)
                     if (this.parentNode.parentNode.className == "inc_product_desc_block") {
                         productBlockNode = this.parentNode.parentNode.parentNode.parentNode
                     }
-                    var checblock = true
+                    let checblock = true
                     if(productBlockNode.classList.contains('inc_product_block') == checblock){
                         productBlockNode = productBlockNode.parentNode.parentNode
                     }
-                    var sku = productBlockNode.getAttribute('data-sku');
-                    var findObj = new INC.classes.FindObj({
+                    let sku = productBlockNode.getAttribute('data-sku');
+                    let findObj = new INC.classes.FindObj({
                         id: sku
                     });
-                    var qty = productBlockNode.querySelector('input').value;
-                    var add_btn = productBlockNode.querySelector('.inc_product_add_text')
-                    var add_btn_click = productBlockNode.querySelector('.inc_product_add_text');
-                    var add_prod_im = productBlockNode.querySelectorAll('.inc_product_desc_add_img');
+                    let qty = productBlockNode.querySelector('input').value;
+                    let add_btn = productBlockNode.querySelector('.inc_product_add_text')
+                    let add_btn_click = productBlockNode.querySelector('.inc_product_add_text');
+                    let add_prod_im = productBlockNode.querySelectorAll('.inc_product_desc_add_img');
                     if (flag_check == 1) {
                         if (this.parentNode.parentNode.parentNode.parentNode.parentNode.classList.contains('inc_product_showcase_block') == checblock || this.parentNode.parentNode.parentNode.parentNode.parentNode.classList.contains('inc_product_modal_block') == checblock) {
-                            var popbtn=productBlockNode.querySelector('.inc_product_modal_block .inc_product_desc_add_text')
+                            let popbtn=productBlockNode.querySelector('.inc_product_modal_block .inc_product_desc_add_text')
                             popbtn.innerText = "Adding..."
                             productBlockNode.querySelector('.inc_product_add_text').innerText = "Adding..."
                             INC.methods.addProductToCart(findObj, qty, productBlockNode, add_btn_click, add_prod_im, add_btn,popbtn);
@@ -1360,16 +1360,16 @@
                     }
                 });
             });
-            var prod_sl_c = 1
+            let prod_sl_c = 1
             if (amBlock != null) {
                 Array.prototype.forEach.call(document.querySelectorAll('.inc_af_block'), function (el) {
                     el.parentNode.removeChild(el);
                 });
             }
-            var CartPos= document.querySelector('#main')
+            let CartPos= document.querySelector('#main')
             if(document.querySelector('#main') != null){
                 // if(document.querySelector('#need-help-panel') != null && window.innerWidth < 821){
-                //     var elcart = document.querySelector('#need-help-panel').parentNode
+                //     let elcart = document.querySelector('#need-help-panel').parentNode
                 //     elcart.parentNode.insertBefore(amBlock,elcart)
                 // }else{
                    
@@ -1387,8 +1387,8 @@
             amBlock.querySelector('.inc_af_right_btn_img').style.visibility = "hidden";
             amBlock.querySelector('.inc_af_left_btn_block').style.visibility = "hidden";
             amBlock.querySelector('.inc_af_left_btn_img').style.visibility = "hidden";
-            var productBlocks = amProductListBlock.querySelectorAll('.inc_product_module_block');
-            var sliderBtnCounter = 0;
+            let productBlocks = amProductListBlock.querySelectorAll('.inc_product_module_block');
+            let sliderBtnCounter = 0;
             if (productBlocks.length > prod_sl_c) {
                 amBlock.querySelector('.inc_af_right_btn_block').style.visibility = "visible";
                 amBlock.querySelector('.inc_af_left_btn_block').style.visibility = "visible";
@@ -1397,7 +1397,7 @@
                 amBlock.querySelector('.inc_af_left_btn_img').style.visibility = "visible";
                 amBlock.querySelector('.inc_af_left_btn_img').setAttribute("style", "pointer-events: none;opacity:0.5");
             }
-            var cc_ount = 1;
+            let cc_ount = 1;
             if (window.innerWidth > 768) {
                 cc_ount = 4
             }
@@ -1412,12 +1412,12 @@
                 if (sliderBtnCounter > productBlocks.length - 1) {
                     sliderBtnCounter--;
                 }
-                var all_p_length = document.querySelectorAll('.inc_af_product-list_block .inc_product_module_block').length
-                var cc_ounts = 1;
+                let all_p_length = document.querySelectorAll('.inc_af_product-list_block .inc_product_module_block').length
+                let cc_ounts = 1;
                 if (window.innerWidth > 768) {
                     cc_ounts = 4
                 }
-                var width_slide = ""
+                let width_slide = ""
                 if (INC.config.pageType == "pdp" || INC.config.pageType == "productList") {
                     width_slide = 265;
                 } else {
@@ -1428,7 +1428,7 @@
                     amBlock.parentNode.parentNode.querySelector('.inc_af_left_btn_img').setAttribute("style", "pointer-events: auto;opacity:1");
                     INC.clientConfig.slidevalue++
                     INC.clientConfig.offset = (parseInt(INC.clientConfig.offset) - width_slide) + 'px';
-                    var menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
+                    let menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
                     menu.setAttribute('style', 'margin-left:' + INC.clientConfig.offset + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
                     if (document.querySelector('.inc_af_product-list-dots-main_block .inc_dots.inc_active') != null) {
                         document.querySelector('.inc_af_product-list-dots-main_block .inc_dots.inc_active').classList.remove('inc_active')
@@ -1446,7 +1446,7 @@
                 sliderBtnCounter--;
                 if (sliderBtnCounter == -1) sliderBtnCounter = 0;
                 if (INC.clientConfig.slidevalue == -1) INC.clientConfig.slidevalue = 0;
-                var width_slide = ""
+                let width_slide = ""
                 if (INC.config.pageType == "pdp" || INC.config.pageType == "productList") {
                     width_slide = 265;
                 } else {
@@ -1457,7 +1457,7 @@
                     amBlock.parentNode.parentNode.querySelector('.inc_af_right_btn_img').setAttribute("style", "pointer-events: auto;opacity:1");
                     INC.clientConfig.slidevalue--
                     INC.clientConfig.offset = (parseInt(INC.clientConfig.offset) + width_slide) + 'px';
-                    var menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
+                    let menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
                     menu.setAttribute('style', 'margin-left:' + INC.clientConfig.offset + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
                     if (document.querySelector('.inc_af_product-list-dots-main_block .inc_dots.inc_active') != null) {
                         document.querySelector('.inc_af_product-list-dots-main_block .inc_dots.inc_active').classList.remove('inc_active')
@@ -1470,11 +1470,11 @@
                 }
             });
             setTimeout(function(){
-                var all_list_el = document.querySelectorAll('.inc_af_product-list_block .inc_product_showcase_block')
-                for (var all_list of all_list_el) {
+                let all_list_el = document.querySelectorAll('.inc_af_product-list_block .inc_product_showcase_block')
+                for(let all_list of all_list_el) {
                     if(all_list.querySelector('.inc_product_desc_att_zero_block.inc_active') != null){
-                        var prd_moduleb = all_list.parentNode
-                        var main_idsd = prd_moduleb.getAttribute('data-main_id')
+                        let prd_moduleb = all_list.parentNode
+                        let main_idsd = prd_moduleb.getAttribute('data-main_id')
                         if(prd_moduleb.querySelector('.inc_product_desc_att_size_list_item_img_block[data-cpid="'+main_idsd+'"]') != null){
                             if(prd_moduleb.querySelector('.inc_product_desc_att_size_list_item_img_block[data-cpid="'+main_idsd+'"] .inc_product_desc_att_size_list_item_img_block') != null){
                                 prd_moduleb.querySelector('.inc_product_desc_att_size_list_item_img_block[data-cpid="'+main_idsd+'"] .inc_product_desc_att_size_list_item_img_block').click()
@@ -1489,8 +1489,8 @@
                 onloadpdp = true
             },400)
             setTimeout(function(){
-                var inc_prod_img =  document.querySelectorAll('.inc_product_img_main_img img')
-                for (var i_prd_image of inc_prod_img) {
+                let inc_prod_img =  document.querySelectorAll('.inc_product_img_main_img img')
+                for(let i_prd_image of inc_prod_img) {
                     if(i_prd_image){
                         i_prd_image.setAttribute('style','left:0 !important;position: relative;')
                     }
@@ -1517,114 +1517,114 @@
                 }
             }
         }
-        var tr_ch = false;
+        let tr_ch = false;
         if (sidebar != "sidebar") {
             if (INC.dataStore.dataStoreObj.undefined != undefined || empty_sidebarflag == tr_ch) {
-                var pdpBlock = generate_html_tag('div','inc_pdp_block')
+                let pdpBlock = generate_html_tag('div','inc_pdp_block')
                 pdpBlock.innerHTML = pdp_html
                 pdpBlock.setAttribute('style', 'clear: both;')
-                var modalTitle = pdpBlock.querySelector('.inc_pdp_title_text');
+                let modalTitle = pdpBlock.querySelector('.inc_pdp_title_text');
                 modalTitle.innerText = INC.config.FBTTitle
                 if(document.querySelector('.js-right-column-section .elc-service-view-renderer[data-rendered-view="product-notify-me"] .elc-product-notify-me-button') != null){
                     pdpBlock.style.display = "none"
                 }
-                var elPdpMainProductBlock = pdpBlock.querySelector('.inc_pdp_product-main_block');
-                var pdpProductId = INC.dataStore.methods().getFirstProductObjByMainId({ mainId: INC.dataStore.pdpProductId }).id;
-                var firstProductObjByMainId = ''
-                var pdpBundleProductListMainBlock = null;
-                var bundarray = INC.dataStore.bundleProductsArray;
+                let elPdpMainProductBlock = pdpBlock.querySelector('.inc_pdp_product-main_block');
+                let pdpProductId = INC.dataStore.methods().getFirstProductObjByMainId({ mainId: INC.dataStore.pdpProductId }).id;
+                let firstProductObjByMainId = ''
+                let pdpBundleProductListMainBlock = null;
+                let bundarray = INC.dataStore.bundleProductsArray;
                 if (INC.config.db_products === 0) {
                     INC.config.db_products = bundarray.length
                 }
                 if(window.innerWidth > 820){
-                    var mainProductBlock = this.createProductModuleBlock(pdpProductId, "pdp", false, pdpBlock,"mainprod");
-                    var bundleProductsArray = INC.dataStore.bundleProductsArray;
+                    let mainProductBlock = this.createProductModuleBlock(pdpProductId, "pdp", false, pdpBlock,"mainprod");
+                    let bundleProductsArray = INC.dataStore.bundleProductsArray;
                     elPdpMainProductBlock = pdpBlock.querySelector('.inc_pdp_product-main_block');
-                    var mainprodtitletexts = elPdpMainProductBlock.querySelector('.mainprodtitletext');
+                    let mainprodtitletexts = elPdpMainProductBlock.querySelector('.mainprodtitletext');
                     if(mainprodtitletexts != undefined){
                         mainprodtitletexts.innerText = "This item"
                     }
                     elPdpMainProductBlock.appendChild(mainProductBlock);
                     pdpBundleProductListMainBlock = pdpBlock.querySelector('.inc_pdp_bundle_product_list_main_block');
                     pdpBundleProductListMainBlock.innerHTML = "";
-                    var pdpBundleProductListItemsBlock = pdpBlock.querySelector('.inc_pdp_bundle_product_list_items_block');
+                    let pdpBundleProductListItemsBlock = pdpBlock.querySelector('.inc_pdp_bundle_product_list_items_block');
                     pdpBundleProductListItemsBlock.innerHTML = "";
-                    var productVisibleCount = (bundleProductsArray.length > 5) ? 5 : bundleProductsArray.length;
+                    let productVisibleCount = (bundleProductsArray.length > 5) ? 5 : bundleProductsArray.length;
                     if (INC.config.deviceType == "mobile") productVisibleCount = (bundleProductsArray.length > 2) ? 2 : bundleProductsArray.length;
-                    for (var i = 0; i < productVisibleCount; i++) {
+                    for(let i = 0; i < productVisibleCount; i++) {
                         firstProductObjByMainId = INC.dataStore.methods().getFirstProductObjByMainId({ mainId: bundleProductsArray[i] });
-                        var productBlock = this.createProductModuleBlock(firstProductObjByMainId.id, "pdp", true, pdpBlock);
+                        let productBlock = this.createProductModuleBlock(firstProductObjByMainId.id, "pdp", true, pdpBlock);
                         pdpBundleProductListMainBlock.appendChild(productBlock);
-                        var productListItemBlock = this.createProductListItemBlock(firstProductObjByMainId, "pdp");
+                        let productListItemBlock = this.createProductListItemBlock(firstProductObjByMainId, "pdp");
                         pdpBundleProductListItemsBlock.appendChild(productListItemBlock);
                     }
                 }else{
-                    var pdpbl = pdpBlock.querySelector('.inc_pdp_bundle_block')
+                    let pdpbl = pdpBlock.querySelector('.inc_pdp_bundle_block')
                     if(pdpbl != null){
                         pdpbl.parentNode.removeChild(pdpbl)
                     }
-                    for (var bundid of INC.config.bundledid) {
-                        var bundleblockmain=generate_html_tag('div','inc_pdp_bundle_block')
-                        var htmlbundle = '<div class="inc_pdp_product-main_bundle_block"><div class="inc_pdp_product-main_block"></div><div class="inc_pdp_icon-add_block"><div class="inc_pdp_icon-add_img_block"><div class="inc_pdp_icon-add_img"></div></div></div><div class="inc_pdp_bundle_product_block"><div class="inc_pdp_bundle_product_list_block"><div class="inc_pdp_bundle_product_list_main_block"></div></div></div></div>'  
+                    for(let bundid of INC.config.bundledid) {
+                        let bundleblockmain=generate_html_tag('div','inc_pdp_bundle_block')
+                        let htmlbundle = '<div class="inc_pdp_product-main_bundle_block"><div class="inc_pdp_product-main_block"></div><div class="inc_pdp_icon-add_block"><div class="inc_pdp_icon-add_img_block"><div class="inc_pdp_icon-add_img"></div></div></div><div class="inc_pdp_bundle_product_block"><div class="inc_pdp_bundle_product_list_block"><div class="inc_pdp_bundle_product_list_main_block"></div></div></div></div>'  
                         bundleblockmain.innerHTML = htmlbundle
                         elPdpMainProductBlock = bundleblockmain.querySelector('.inc_pdp_product-main_block')
                         pdpBundleProductListMainBlock = bundleblockmain.querySelector(".inc_pdp_bundle_product_list_main_block");
                         pdpBlock.appendChild(bundleblockmain)
-                        var cartbundleblock = generate_html_tag('div','inc_pdp_bundle_cart_block')
-                        var cartblock = '<div class="inc_pdp_bundle_cart_block"><div class="inc_pdp_bundle_cart_summary_block"><div class="inc_pdp_bundle_cart_summary_title_block"><div class="inc_pdp_bundle_cart_summary_title_text_block"><div class="inc_pdp_bundle_cart_summary_title_text"></div></div></div><div class="inc_pdp_bundle_cart_summary_ecirp_block"><div class="inc_pdp_bundle_cart_summary_ecirp_active_block"><div class="inc_pdp_bundle_cart_summary_ecirp_active_text_block"><div class="inc_pdp_bundle_cart_summary_ecirp_active_text">£0.00</div></div></div><div class="inc_pdp_bundle_cart_summary_ecirp_regular_block"><div class="inc_pdp_bundle_cart_summary_ecirp_save_block"><div class="inc_pdp_bundle_cart_summary_ecirp_save_text"></div></div><div class="inc_pdp_bundle_cart_summary_ecirp_regular_text_block"><div class="inc_pdp_bundle_cart_summary_ecirp_regular_text"></div></div></div></div><div class="inc_pdp_bundle_cart_summary_add_block"><div class="inc_pdp_bundle_cart_summary_add_btn_block"><div class="inc_pdp_bundle_cart_summary_add_btn_text_block"><div class="inc_pdp_bundle_cart_summary_add_btn_text">Add To Bag</div></div><div class="inc_pdp_bundle_cart_summary_add_btn_img_block"><div class="inc_pdp_bundle_cart_summary_add_btn_img"></div></div></div><div class="inc_pdp_bundle_cart_summary_error_block"></div></div></div></div>'
+                        let cartbundleblock = generate_html_tag('div','inc_pdp_bundle_cart_block')
+                        let cartblock = '<div class="inc_pdp_bundle_cart_block"><div class="inc_pdp_bundle_cart_summary_block"><div class="inc_pdp_bundle_cart_summary_title_block"><div class="inc_pdp_bundle_cart_summary_title_text_block"><div class="inc_pdp_bundle_cart_summary_title_text"></div></div></div><div class="inc_pdp_bundle_cart_summary_ecirp_block"><div class="inc_pdp_bundle_cart_summary_ecirp_active_block"><div class="inc_pdp_bundle_cart_summary_ecirp_active_text_block"><div class="inc_pdp_bundle_cart_summary_ecirp_active_text">£0.00</div></div></div><div class="inc_pdp_bundle_cart_summary_ecirp_regular_block"><div class="inc_pdp_bundle_cart_summary_ecirp_save_block"><div class="inc_pdp_bundle_cart_summary_ecirp_save_text"></div></div><div class="inc_pdp_bundle_cart_summary_ecirp_regular_text_block"><div class="inc_pdp_bundle_cart_summary_ecirp_regular_text"></div></div></div></div><div class="inc_pdp_bundle_cart_summary_add_block"><div class="inc_pdp_bundle_cart_summary_add_btn_block"><div class="inc_pdp_bundle_cart_summary_add_btn_text_block"><div class="inc_pdp_bundle_cart_summary_add_btn_text">Add To Bag</div></div><div class="inc_pdp_bundle_cart_summary_add_btn_img_block"><div class="inc_pdp_bundle_cart_summary_add_btn_img"></div></div></div><div class="inc_pdp_bundle_cart_summary_error_block"></div></div></div></div>'
                         cartbundleblock.innerHTML = cartblock;
                         bundleblockmain.appendChild(cartbundleblock)
                         bundleblockmain.setAttribute('bundle_id',bundid.bundleids)
-                        for(var p=0;p<bundid.productids.length;p++){
+                        for(let p=0;p<bundid.productids.length;p++){
                             if(p == 0){
-                                var mainProductBlocka = this.createProductModuleBlock(pdpProductId, "pdp", false, pdpBlock,"mainprod");
+                                let mainProductBlocka = this.createProductModuleBlock(pdpProductId, "pdp", false, pdpBlock,"mainprod");
                                 elPdpMainProductBlock.innerHTML = "";
-                                var mainprodtitletext = document.createElement('div')
+                                let mainprodtitletext = document.createElement('div')
                                 mainprodtitletext.classList.add('mainprodtitletext')
                                 mainprodtitletext.innerText = "This Item:"
                                 elPdpMainProductBlock.appendChild(mainprodtitletext)
                                 elPdpMainProductBlock.appendChild(mainProductBlocka);
                             }else{
                                 firstProductObjByMainId = INC.dataStore.methods().getFirstProductObjByMainId({ mainId: bundid.productids[p] });
-                                var productBlocka = this.createProductModuleBlock(firstProductObjByMainId.id, "pdp", true, pdpBlock);
+                                let productBlocka = this.createProductModuleBlock(firstProductObjByMainId.id, "pdp", true, pdpBlock);
                                 pdpBundleProductListMainBlock.appendChild(productBlocka);
                             }
                         }
                         bundleblockmain.querySelector('.inc_pdp_bundle_cart_summary_add_block').addEventListener('click',function(e){
-                            var bundleb=this.parentNode.parentNode.parentNode.parentNode
-                            var bl=true
+                            let bundleb=this.parentNode.parentNode.parentNode.parentNode
+                            let bl=true
                             if (INC.config.disablebtn == bl) {
-                                var btn_cart = e.target
+                                let btn_cart = e.target
                                 INC.config.disablebtn = false
                                 btn_cart.classList.add('inc_loading')
-                                var mainProductId = bundleb.querySelector('.inc_pdp_product-main_block .inc_product_module_block').getAttribute('data-main_id');
-                                var total_length = 2;
-                                var formData = []
-                                var count_pr_to_add = 0
+                                let mainProductId = bundleb.querySelector('.inc_pdp_product-main_block .inc_product_module_block').getAttribute('data-main_id');
+                                let total_length = 2;
+                                let formData = []
+                                let count_pr_to_add = 0
                                 INC.dataStore['bundleCartProducts'] = {};
-                                var el_prod_modules=bundleb.querySelectorAll('.inc_product_module_block')
-                                for(var a=0;a<el_prod_modules.length;a++){
-                                    var prodid=el_prod_modules[a].getAttribute('data-id')
-                                    var findObj = new INC.classes.FindObj({ id: prodid });
-                                    var productObj = INC.dataStore.methods().getProductById(findObj);
+                                let el_prod_modules=bundleb.querySelectorAll('.inc_product_module_block')
+                                for(let a=0;a<el_prod_modules.length;a++){
+                                    let prodid=el_prod_modules[a].getAttribute('data-id')
+                                    let findObj = new INC.classes.FindObj({ id: prodid });
+                                    let productObj = INC.dataStore.methods().getProductById(findObj);
                                     INC.config.pdpaddedProductList.push(productObj.mainId)
                                     INC.config.bundle_tracking.push({
                                         id: productObj.mainId,
                                         bid: productObj.bundleId,
                                     });
-                                    var args = {}
+                                    let args = {}
                                     if(a == 0){
-                                        var qtysel = e.currentTarget.querySelector('.inc_pdp_bundle_cart_summary_add_btn_block').getAttribute('qty')
+                                        let qtysel = e.currentTarget.querySelector('.inc_pdp_bundle_cart_summary_add_btn_block').getAttribute('qty')
                                         args.qty = qtysel
                                         INC.dataStore["bundleCartProducts"][prodid] = qtysel;
                                     }else{
-                                        var qtysel1 = e.currentTarget.querySelector('.inc_pdp_bundle_cart_summary_add_btn_block').getAttribute('qty1')
+                                        let qtysel1 = e.currentTarget.querySelector('.inc_pdp_bundle_cart_summary_add_btn_block').getAttribute('qty1')
                                         args.qty = qtysel1
                                         INC.dataStore["bundleCartProducts"][prodid] = qtysel1
                                     }
                                     args.skuBaseId = productObj.childsku
-                                    var catBaseId = ""
-                                    var params = {
+                                    let catBaseId = ""
+                                    let params = {
                                         skus: [productObj.childsku],
                                         itemType: 'cart',
                                         INCREMENT: 1,
@@ -1643,18 +1643,18 @@
                         INC.methods.updateallbasketprice(bundleblockmain)
                     }
                     if(INC.config.bundledid.length > 2){
-                        var bundlecount = "incbundle"+INC.config.bundledid.length
+                        let bundlecount = "incbundle"+INC.config.bundledid.length
                         pdpBlock.classList.add(bundlecount)
-                        var inc_view_more_product_block = generate_html_tag('div','inc_view_more_product_block')
-                        var inc_view_more_product_text = generate_html_tag('div','inc_view_more_product_text')
+                        let inc_view_more_product_block = generate_html_tag('div','inc_view_more_product_block')
+                        let inc_view_more_product_text = generate_html_tag('div','inc_view_more_product_text')
                         inc_view_more_product_text.innerText = "Show More Bundles"
                         inc_view_more_product_block.appendChild(inc_view_more_product_text)
                         inc_view_more_product_block.addEventListener('click',function(){
-                            var b=true
+                            let b=true
                             if(pdpBlock.classList.contains('inc_more_bundle_active') == b){
                                 pdpBlock.classList.remove('inc_more_bundle_active')
                                 inc_view_more_product_text.innerText = "Show More Bundles"
-                                var elmnt = document.querySelector('.inc_pdp_block')
+                                let elmnt = document.querySelector('.inc_pdp_block')
                                 elmnt.scrollIntoView(b)
                             }else{
                                 pdpBlock.classList.add('inc_more_bundle_active')
@@ -1664,27 +1664,27 @@
                         pdpBlock.appendChild(inc_view_more_product_block)
                     }
                 }
-                var header = pdpBlock.querySelector('.inc_pdp_bundle_product_header_text');
+                let header = pdpBlock.querySelector('.inc_pdp_bundle_product_header_text');
                 if (header != null) {
                     header.innerText = "Frequently Bought with"
                     header.style.textTransform = "none"
                 }
                 if(window.innerWidth > 820){
                     pdpBlock.querySelector('.inc_pdp_bundle_product_list_items_block').classList.add("inc_active");
-                    var pdpBundleCartBlock = this.createPDPBundleCartBlock(pdpBlock);
-                    var rpdpBundleCartBlock = pdpBlock.querySelector('.inc_pdp_bundle_cart_block')
+                    let pdpBundleCartBlock = this.createPDPBundleCartBlock(pdpBlock);
+                    let rpdpBundleCartBlock = pdpBlock.querySelector('.inc_pdp_bundle_cart_block')
                     rpdpBundleCartBlock.parentNode.removeChild(rpdpBundleCartBlock);
                     pdpBlock.querySelector('.inc_pdp_bundle_block').appendChild(pdpBundleCartBlock);
                 }
                 INC.methods.clear();
-                var nextpdpsibling=null;
-                var mobileplacement = document.querySelector('.js-right-column-section .elc-product-overview') || document.querySelector('.js-right-column-section .js-product-overview');
-                var recsibling = document.querySelector('.qubit-recs-container');
-                var pdpsibling1 = document.querySelector('.spp-product-layout__content');
-                var pdpBlockeinstienSibling = document.querySelector('.sd-product-spp__product-full');
-                var pdpsibling2 = document.querySelector('.sd-product-spp.spp__container');
-                var pdpsibling3 = document.querySelector('.product-full__cross-sell');
-                var deployTemp = ""
+                let nextpdpsibling=null;
+                let mobileplacement = document.querySelector('.js-right-column-section .elc-product-overview') || document.querySelector('.js-right-column-section .js-product-overview');
+                let recsibling = document.querySelector('.qubit-recs-container');
+                let pdpsibling1 = document.querySelector('.spp-product-layout__content');
+                let pdpBlockeinstienSibling = document.querySelector('.sd-product-spp__product-full');
+                let pdpsibling2 = document.querySelector('.sd-product-spp.spp__container');
+                let pdpsibling3 = document.querySelector('.product-full__cross-sell');
+                let deployTemp = ""
                 if(window.innerWidth < 821 && document.querySelector('.device-mobile') != null){
                     if(window.innerWidth > 800){
                         deployTemp="mob"
@@ -1720,8 +1720,8 @@
                     }
                 }
                 
-                var elProductAddBlock = pdpBlock.querySelectorAll('.inc_product_desc_add_block')
-                var productBlocks = pdpBlock.querySelector('.inc_pdp_bundle_product_list_block').querySelectorAll('.inc_product_module_block');
+                let elProductAddBlock = pdpBlock.querySelectorAll('.inc_product_desc_add_block')
+                let productBlocks = pdpBlock.querySelector('.inc_pdp_bundle_product_list_block').querySelectorAll('.inc_product_module_block');
                 if (document.querySelector('.inc_pdp_product-main_block .inc_product_desc_title_text_header') != null) {
                     document.querySelector('.inc_pdp_product-main_block .inc_product_desc_title_text_header').innerHTML = "Selected Product"
                     document.querySelector('.inc_pdp_product-main_block .inc_product_desc_title_text_header').style.textTransform = "none"
@@ -1731,16 +1731,16 @@
                     pdpBlock.querySelector('.inc_pdp_bundle_product_left-btn_img').setAttribute("style", "opacity:0.5");
                     pdpBlock.querySelector('.inc_pdp_bundle_product_left-btn_img').setAttribute('title', 'Scroll left')
                     pdpBlock.querySelector('.inc_pdp_bundle_product_right-btn_img').setAttribute('title', 'Scroll right')
-                    var sliderBtnCounter = 0;
-                    var lengthCount = productBlocks.length + 1;
-                    var prd_length = 1
+                    let sliderBtnCounter = 0;
+                    let lengthCount = productBlocks.length + 1;
+                    let prd_length = 1
                     if (window.innerWidth > 1185) {
                         prd_length = 2
                     }
                     if (productBlocks.length > prd_length) {
                         pdpBlock.querySelector('.inc_pdp_bundle_product_right-btn_block').addEventListener("click", function () {
-                            var prod_c = 1;
-                            var width_prod = 256;
+                            let prod_c = 1;
+                            let width_prod = 256;
                             if(window.innerWidth >= 840 && window.innerWidth < 1190){
                                 width_prod = 266;
                                 if(window.innerWidth > 1139){
@@ -1760,7 +1760,7 @@
                                 pdpBlock.querySelector('.inc_pdp_bundle_product_left-btn_img').setAttribute("style", "opacity:1");
                                 INC.clientConfig.slidevalue++
                                 INC.clientConfig.offset = (parseInt(INC.clientConfig.offset) - width_prod) + 'px';
-                                var menu = pdpBlock.querySelector('.inc_pdp_bundle_product_list_main_block');
+                                let menu = pdpBlock.querySelector('.inc_pdp_bundle_product_list_main_block');
                                 menu.setAttribute('style', 'margin-left:' + INC.clientConfig.offset + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
                             }
                             if (INC.clientConfig.slidevalue + prod_c == productBlocks.length) {
@@ -1773,7 +1773,7 @@
                             }
                         });
                         pdpBlock.querySelector('.inc_pdp_bundle_product_left-btn_block').addEventListener("click", function () {
-                            var width_prod = 256;
+                            let width_prod = 256;
                             if(window.innerWidth >= 840 && window.innerWidth < 1190){
                                 width_prod = 266;
                                 if(window.innerWidth > 1139){
@@ -1792,7 +1792,7 @@
                                 pdpBlock.querySelector('.inc_pdp_bundle_product_right-btn_img').setAttribute("style", "opacity:1");
                                 INC.clientConfig.slidevalue--
                                 INC.clientConfig.offset = (parseInt(INC.clientConfig.offset) + width_prod) + 'px';
-                                var menu = pdpBlock.querySelector('.inc_pdp_bundle_product_list_main_block');
+                                let menu = pdpBlock.querySelector('.inc_pdp_bundle_product_list_main_block');
                                 menu.setAttribute('style', 'margin-left:' + INC.clientConfig.offset + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
                             }
                             if (INC.clientConfig.slidevalue == 0) {
@@ -1809,7 +1809,7 @@
                     }
                 }
                 setTimeout(function () {
-                    for (var n = 0; n < 8; n++) {
+                    for(let n = 0; n < 8; n++) {
                         if (typeof (elProductAddBlock[n]) != "undefined" && n % 2 != 0) {
                             if (window.innerWidth > 820) {
                                 if (n == 1) {
@@ -1820,15 +1820,15 @@
                     }
                 }, 100)
                 setTimeout(function(){
-                    var client_var = ""
+                    let client_var = ""
                     if(window.innerWidth < 821){
                         if(document.querySelector('.js-size-picker-label p') != null){
                             client_var = document.querySelector('.js-size-picker-label p').innerText.trim().toLocaleLowerCase()
                         }else if(document.querySelector('.js-size-picker-dropdown input[data-test-id="product_size_dropdown"]') != null){
                             client_var = document.querySelector('.js-size-picker-dropdown input[data-test-id="product_size_dropdown"]').value
                         }
-                        var elshowcase = document.querySelectorAll('.inc_pdp_product-main_block .inc_product_showcase_block')
-                        for (var shel of elshowcase) {
+                        let elshowcase = document.querySelectorAll('.inc_pdp_product-main_block .inc_product_showcase_block')
+                        for(let shel of elshowcase) {
                             if(shel.querySelector('.inc_product_desc_att_zero_block .inc_product_desc_att_size_list_item_img_block[datasize="'+client_var+'"]') != undefined){
                                 shel.querySelector('.inc_product_desc_att_zero_block .inc_product_desc_att_size_list_item_img_block[datasize="'+client_var+'"]').click()
                             }else if(shel.querySelector('.inc_product_desc_att_zero_block .inc_product_desc_att_size_list_item_img_block') != undefined){
@@ -1847,25 +1847,25 @@
                             document.querySelector('.inc_pdp_product-main_block .inc_product_showcase_block .inc_product_desc_att_zero_block .inc_product_desc_att_size_list_item_img_block').click()
                         }
                     }
-                    var client_varc = ""
+                    let client_varc = ""
                     if(document.querySelector('.js-product-shades-view-button') != null){
                         client_varc = document.querySelector('.js-product-shades-view-button').innerText.trim().toLocaleLowerCase()
                     }
-                    var el_all_list_main1 = document.querySelectorAll('.inc_pdp_product-main_block .inc_product_showcase_block')
-                    for (var main_list of el_all_list_main1) {
+                    let el_all_list_main1 = document.querySelectorAll('.inc_pdp_product-main_block .inc_product_showcase_block')
+                    for(let main_list of el_all_list_main1) {
                         if(main_list.querySelector('.inc_product_desc_att_color_block .inc_product_desc_att_color_list_item_img_block[datacolor="'+client_varc+'"] div') != null){
                             main_list.querySelector('.inc_product_desc_att_color_block .inc_product_desc_att_color_list_item_img_block[datacolor="'+client_varc+'"] div').click()
                         }
                     }
-                    var all_list_el = document.querySelectorAll('.inc_pdp_bundle_product_list_block .inc_product_showcase_block');
-                    for (var ell of all_list_el) {
+                    let all_list_el = document.querySelectorAll('.inc_pdp_bundle_product_list_block .inc_product_showcase_block');
+                    for(let ell of all_list_el) {
                         if(ell.querySelector('.inc_product_desc_att_zero_block.inc_active') != null){
-                            var clrtext = ""
+                            let clrtext = ""
                             if(document.querySelector('.js-size-picker-label p') != null){
                                 clrtext = document.querySelector('.js-size-picker-label p').innerText.trim().toLocaleLowerCase()
                             }
-                            var prd_moduleb = ell.parentNode
-                            var main_idsd = prd_moduleb.getAttribute('data-main_id')
+                            let prd_moduleb = ell.parentNode
+                            let main_idsd = prd_moduleb.getAttribute('data-main_id')
                             if(prd_moduleb.querySelector('.inc_product_desc_att_size_list_item_img_block[data-cpid="'+main_idsd+'"]') != null){
                                 if(prd_moduleb.querySelector('.inc_product_desc_att_size_list_item_img_block[data-cpid="'+main_idsd+'"] .inc_product_desc_att_size_list_item_img_block') != null){
                                     prd_moduleb.querySelector('.inc_product_desc_att_size_list_item_img_block[data-cpid="'+main_idsd+'"] .inc_product_desc_att_size_list_item_img_block').click()
@@ -1885,12 +1885,12 @@
                 setTimeout(function(){
                     onloadpdp = true
                     onloadpdp_delete = true
-                    var eltotalbundle = document.querySelectorAll('.inc_pdp_bundle_block')
-                    for (var tobundle of eltotalbundle) {
+                    let eltotalbundle = document.querySelectorAll('.inc_pdp_bundle_block')
+                    for(let tobundle of eltotalbundle) {
                         INC.methods.updateallbasketprice(tobundle)
                     }
-                    var inc_prod_img =  document.querySelectorAll('.inc_product_img_main_img img')
-                    for (var pr_img of inc_prod_img) {
+                    let inc_prod_img =  document.querySelectorAll('.inc_product_img_main_img img')
+                    for(let pr_img of inc_prod_img) {
                         if(pr_img){
                             pr_img.setAttribute('style','left:0 !important;position: relative;')
                         }
@@ -1919,7 +1919,7 @@
                 this.classList.add('inc_loading');
                 INC.clientConfig.offset = 0;
                 INC.clientConfig.slidevalue = 0;
-                var prd_length = 2
+                let prd_length = 2
                 if (window.innerWidth > 1185) {
                     prd_length = 3
                 }
@@ -1930,9 +1930,9 @@
                     document.querySelector('.inc_pdp_bundle_product_right-btn_block').setAttribute('style', 'pointer-events: auto;opacity:1')
                     document.querySelector('.inc_pdp_bundle_product_right-btn_img').setAttribute('style', 'opacity:1')
                 }
-                var tf=true
+                let tf=true
                 if (INC.config.disablebtn == tf) {
-                    var btn_cart = e.target
+                    let btn_cart = e.target
                     INC.config.disablebtn = false
                     btn_cart.classList.add('inc_loading')
                     INC.methods.addBundleToCart(btn_cart);
@@ -1982,18 +1982,18 @@
         let elheaditemblock = sbBlock.querySelector(".inc_header_item_block");
         let elheadtitleblock = sbBlock.querySelector(".inc_header_title_block");
         elheaditemblock.addEventListener('click', function () {
-            var cnt = document.querySelector('.inc_header_item_count_title_text').getAttribute('added_counts')
-            var bt=true
+            let cnt = document.querySelector('.inc_header_item_count_title_text').getAttribute('added_counts')
+            let bt=true
             if (cnt >= 1) {
                 if (document.querySelector('.inc_sidebar_cart_added_block').classList.contains('inc_active') == bt) {
                     document.querySelector('.inc_sidebar_cart_added_block').classList.remove('inc_active')
-                    var alladdedprodlength = document.querySelectorAll('.inc_cart_added_product_block').length;
-                    var morecount = 2
+                    let alladdedprodlength = document.querySelectorAll('.inc_cart_added_product_block').length;
+                    let morecount = 2
                     if (window.innerWidth < 821) {
                         morecount = 1
                     }
                     if (alladdedprodlength > morecount) {
-                        var tcount = alladdedprodlength - morecount + " more item(s)"
+                        let tcount = alladdedprodlength - morecount + " more item(s)"
                         document.querySelector('.inc_header_item_count_title_text').innerText = "+" + tcount
                         document.querySelector('.inc_header_item_count_title_text').setAttribute('added_counts', (alladdedprodlength - morecount))
                     } else {
@@ -2005,7 +2005,7 @@
                 }
             }
         })
-        var close_sisebar_icon = generate_html_tag('span', 'close_sisebar_icon')
+        let close_sisebar_icon = generate_html_tag('span', 'close_sisebar_icon')
         elheadtitleblock.appendChild(close_sisebar_icon)
         elRecommendedProductsListBlock.setAttribute('role', "contentinfo")
         elRecommendedProductsListBlock.setAttribute('tabindex', 0)
@@ -2017,25 +2017,25 @@
             elRecommendedTitleText.innerText = INC.config.BeforeYouChecktext 
             elRecommendedTitleText.style.textTransform = "none"
             elCheckoutContinueBtnText.innerText = "Continue Shopping";
-            var elCheckoutLink = elCheckoutBasketBtnText.querySelector('.view_basket_checkout')
+            let elCheckoutLink = elCheckoutBasketBtnText.querySelector('.view_basket_checkout')
             elCheckoutLink.setAttribute('href', INC.clientConfig.checkoutLink);
-            var productCategoriesArray = dataStore.methods().getUniqueCatergories();
+            let productCategoriesArray = dataStore.methods().getUniqueCatergories();
             elRecommendedTabsListBlock.innerHTML = "";
             elRecommendedProductsListBlock.innerHTML = "";
-            var category_count = 0
+            let category_count = 0
             elRecommendedTabsListBlock.classList.add('inc_categ_' + Object.keys(productCategoriesArray).length)
             productCategoriesArray.forEach(function (productCategory) {
                 if (category_count < 5 && productCategory != undefined) {
                     category_count++
-                    var sidebarTabsListItemBlock = generate_html_tag('div','inc_recommended_tabs_list_item_block')
-                    var tablistitm = '<div class="inc_recommended_tabs_list_item_text_block"><div class="inc_recommended_tabs_list_item_text"></div></div>'
+                    let sidebarTabsListItemBlock = generate_html_tag('div','inc_recommended_tabs_list_item_block')
+                    let tablistitm = '<div class="inc_recommended_tabs_list_item_text_block"><div class="inc_recommended_tabs_list_item_text"></div></div>'
                     sidebarTabsListItemBlock.innerHTML = tablistitm
-                    var sidebarTabsListItemText = sidebarTabsListItemBlock.querySelector('.inc_recommended_tabs_list_item_text');
+                    let sidebarTabsListItemText = sidebarTabsListItemBlock.querySelector('.inc_recommended_tabs_list_item_text');
                     sidebarTabsListItemText.parentNode.parentNode.setAttribute('title', productCategory)
                     sidebarTabsListItemText.innerText = productCategory.toLocaleLowerCase();
                     sidebarTabsListItemText.setAttribute('style', 'text-transform:capitalize;')
                     sidebarTabsListItemBlock.addEventListener("click", function () {
-                        var elrecprdlistblk = sbBlock.querySelector(".inc_recommended_products_list_block")
+                        let elrecprdlistblk = sbBlock.querySelector(".inc_recommended_products_list_block")
                         if(elrecprdlistblk != null){
                             elrecprdlistblk.innerHTML = "";
                         }
@@ -2054,7 +2054,7 @@
             } else {
                 elRecommendedTitleText.style.display = "none";
             }
-            var sbcontinue=sbBlock.querySelector(".inc_header_continue_block")
+            let sbcontinue=sbBlock.querySelector(".inc_header_continue_block")
             sbcontinue.addEventListener("click", function () {
                 closesidebar()
             });
@@ -2068,14 +2068,14 @@
                 this.querySelector('.inc_checkout_basket_btn_block').classList.add('inc_loading')
                 window.location.href = INC.clientConfig.checkoutLink;
             });
-            var body = document.querySelector('.header-gnav-cart__overlay .cart-confirm-wrapper');
+            let body = document.querySelector('.header-gnav-cart__overlay .cart-confirm-wrapper');
             if(window.innerWidth < 767 && document.querySelector('.device-mobile') != null){
                 body = document.querySelector('body');
             }
             if(body != null){
                 body.appendChild(sidebar_dialoge_block);
             }
-            var elSideBarOverlayBlock = document.createElement('div');
+            let elSideBarOverlayBlock = document.createElement('div');
             elSideBarOverlayBlock.setAttribute("class", "inc_sidebar_overlay_block");
             elSideBarOverlayBlock.addEventListener("click", function () {
                 closesidebar()
@@ -2089,7 +2089,7 @@
                     document.querySelector('.inc_recommended_products_block').style.display = "none"
                 }
                 if (document.querySelector('.s7staticimage img') != null && document.querySelector('.inc_cart_added_product_img') != null) {
-                    var p_img = document.querySelector('.s7staticimage img').src
+                    let p_img = document.querySelector('.s7staticimage img').src
                     document.querySelector('.inc_cart_added_product_img').src = p_img
                 }
             }
@@ -2098,8 +2098,8 @@
             if (document.querySelector('.inc_recommended_products_list_block') != null) {
                 document.querySelector('.inc_recommended_products_list_block').setAttribute('role', "contentinfo")
             }
-            var inc_prod_img =  document.querySelectorAll('.inc_product_img_main_img img')
-            for (var prodimg of inc_prod_img) {
+            let inc_prod_img =  document.querySelectorAll('.inc_product_img_main_img img')
+            for(let prodimg of inc_prod_img) {
                 if(prodimg){
                     prodimg.setAttribute('style','left:0 !important;position: relative;')
                 }
@@ -2114,10 +2114,10 @@
         INC.clientConfig.slidevalue = 0;
     }
     INC.methods.updateSidebarBlock = function () {
-        var subtotalactiveprice = 0
-        var subtotalregukarprice = 0
-        var dataStore = INC.dataStore;
-        var sbBlock = document.querySelector('.inc_sidebar_modal_block');
+        let subtotalactiveprice = 0
+        let subtotalregukarprice = 0
+        let dataStore = INC.dataStore;
+        let sbBlock = document.querySelector('.inc_sidebar_modal_block');
         if (sbBlock != null) {
             let sidebarHeaderItemCountTitleText = sbBlock.querySelector(".inc_header_item_count_title_text");
             let elHeadersubtotalactivetext = sbBlock.querySelector(".inc_cart_added_product_desc_subtotal_ecirp_active_text");
@@ -2128,22 +2128,22 @@
             sbCartBlock.innerHTML = "";
             let bundleCartProductsArray = Object.keys(dataStore.bundleCartProducts);
             sidebarHeaderItemCountTitleText.innerHTML = "Subtotal (" + Object.keys(dataStore.bundleCartProducts).length + " item)";
-            var headerItemCountFigureText = 0;
+            let headerItemCountFigureText = 0;
             subtotalactiveprice = 0
             subtotalregukarprice = 0
-            var error_message = ""
-            var oosname=[]
-            var oosids=[]
-            var remerrorjust=document.querySelectorAll('.inc_justerror')
-            for (var r of remerrorjust) {
+            let error_message = ""
+            let oosname=[]
+            let oosids=[]
+            let remerrorjust=document.querySelectorAll('.inc_justerror')
+            for(let r of remerrorjust) {
                 if(r != null){
                     r.parentNode.removeChild(r)
                 }
             }
             bundleCartProductsArray.forEach(function (productSKU) {
                 if (dataStore.bundleCartProducts[productSKU] < 1) dataStore.bundleCartProducts[productSKU] = 1
-                var findObj = new INC.classes.FindObj({ sku: productSKU });
-                var productObj = INC.dataStore.methods().getProductBySKU(findObj);
+                let findObj = new INC.classes.FindObj({ sku: productSKU });
+                let productObj = INC.dataStore.methods().getProductBySKU(findObj);
                 if (INC.clientConfig.OOS.indexOf(productObj.mainId) >= 0) {
                     if(oosname.indexOf(productObj.name) == -1 && oosids.indexOf(productObj.mainId) == -1){
                         error_message = ""
@@ -2154,18 +2154,18 @@
                         }else{
                             error_message = error_message + " <br> " + "<span>"+productObj.name +"</span>" + " - " + "<span>Cannot be purchased at this time</span>"
                         }
-                        var headertitle=sbBlock.querySelector('.inc_sidebar_modal_cart_and_title_block')
-                        var errormes = generate_html_tag('div','inc_justerror')
-                        var errorimg = generate_html_tag('img','errorimg')
+                        let headertitle=sbBlock.querySelector('.inc_sidebar_modal_cart_and_title_block')
+                        let errormes = generate_html_tag('div','inc_justerror')
+                        let errorimg = generate_html_tag('img','errorimg')
                         errorimg.src = productObj.imageURL
                         errormes.appendChild(errorimg)
-                        var errormestext = generate_html_tag('span','inc_justerror_text')
+                        let errormestext = generate_html_tag('span','inc_justerror_text')
                         errormestext.innerHTML = error_message
                         errormes.appendChild(errormestext)
                         headertitle.parentNode.insertBefore(errormes,headertitle)
                         setTimeout(function(){
-                            var remoerroblk=document.querySelectorAll('.inc_justerror')
-                            for (var re of remoerroblk) {
+                            let remoerroblk=document.querySelectorAll('.inc_justerror')
+                            for(let re of remoerroblk) {
                                 if(re != null){
                                     re.parentNode.removeChild(re)
                                 }
@@ -2174,9 +2174,9 @@
                     }
                 }else{
                     headerItemCountFigureText = headerItemCountFigureText + parseInt(dataStore.bundleCartProducts[productSKU]);
-                    var color = "";
-                    var size = "";
-                    var just_check_prod_block = document.querySelector('.inc_product_module_block[data-main_id="' + productObj.mainId + '"]')
+                    let color = "";
+                    let size = "";
+                    let just_check_prod_block = document.querySelector('.inc_product_module_block[data-main_id="' + productObj.mainId + '"]')
                     if (just_check_prod_block != null) {
                         if (just_check_prod_block.querySelector('.inc_product_desc_att_size_list_item_img_block.inc_active div') != null) {
                             size = just_check_prod_block.querySelector('.inc_product_desc_att_size_list_item_img_block.inc_active div').innerText
@@ -2185,18 +2185,18 @@
                             color = just_check_prod_block.querySelector('.inc_product_desc_att_color_list_item_block.inc_active .inc_product_desc_att_color_list_item_img_block').getAttribute('data-color')
                         }
                     }
-                    var sel_size = ""
+                    let sel_size = ""
                     if (color != "" && color != undefined && color != null) {
                         sel_size = "Color" + color;
                     } else if (size != "" && size != undefined && size != null) {
                         sel_size = "Size" + size;
                     }
-                    var activePrice = parseFloat(productObj.activePrice).toFixed(2);
+                    let activePrice = parseFloat(productObj.activePrice).toFixed(2);
                     subtotalactiveprice = (+subtotalactiveprice + (+productObj.activePrice * dataStore.bundleCartProducts[productSKU]));
                     subtotalregukarprice = (+subtotalregukarprice + (+productObj.regularPrice * dataStore.bundleCartProducts[productSKU]));
 
-                    var addedhtml = '<div class="inc_cart_added_product_img_block"><div class="inc_cart_added_product_img"><img class="inc_lazy" src="'+productObj.imageURL+'" data-src="'+productObj.imageURL+'" alt="'+productObj.name+'"><div class="sidebar_product_quantity_label">'+dataStore.bundleCartProducts[productSKU]+'</div></div><div class="inc_cart_added_product_desc_block"><div class="inc_cart_added_product_desc_title_block"><div class="inc_cart_added_product_desc_title_text_block"><div class="inc_cart_added_product_desc_title_text" title="Easidri Cooling Coat Wide Fit" style="text-transform: unset;">'+dataStore.bundleCartProducts[productSKU] + ' X ' + productObj.name+'</div></div></div><div class="inc_cart_added_product_desc_att_block"><div class="inc_cart_added_product_desc_att_color_block"><div class="inc_cart_added_product_desc_att_color_text_block"><div class="inc_cart_added_product_desc_att_color_text_block"></div></div></div><div class="inc_cart_added_product_desc_att_size_block"><div class="inc_cart_added_product_desc_att_size_text_block"><div class="inc_cart_added_product_desc_att_size_text">'+sel_size+'</div></div></div></div><div class="inc_cart_added_product_desc_ecirp_block"><div class="inc_cart_added_product_desc_ecirp_active_block"><div class="inc_cart_added_product_desc_ecirp_active_text_block"><div class="inc_cart_added_product_desc_ecirp_active_text">'+formatter.format(activePrice)+'</div><div class="inc_cart_added_product_desc_ecirp_active_text_msg"></div></div></div><div class="inc_cart_added_product_desc_ecirp_regular_block"><div class="inc_cart_added_product_desc_ecirp_regular_text_block"><div class="inc_cart_added_product_desc_ecirp_regular_text"></div></div></div></div><div class="inc_cart_added_product_qty_block"></div></div></div>'
-                    var productBlock = generate_html_tag('div','inc_cart_added_product_block');
+                    let addedhtml = '<div class="inc_cart_added_product_img_block"><div class="inc_cart_added_product_img"><img class="inc_lazy" src="'+productObj.imageURL+'" data-src="'+productObj.imageURL+'" alt="'+productObj.name+'"><div class="sidebar_product_quantity_label">'+dataStore.bundleCartProducts[productSKU]+'</div></div><div class="inc_cart_added_product_desc_block"><div class="inc_cart_added_product_desc_title_block"><div class="inc_cart_added_product_desc_title_text_block"><div class="inc_cart_added_product_desc_title_text" title="Easidri Cooling Coat Wide Fit" style="text-transform: unset;">'+dataStore.bundleCartProducts[productSKU] + ' X ' + productObj.name+'</div></div></div><div class="inc_cart_added_product_desc_att_block"><div class="inc_cart_added_product_desc_att_color_block"><div class="inc_cart_added_product_desc_att_color_text_block"><div class="inc_cart_added_product_desc_att_color_text_block"></div></div></div><div class="inc_cart_added_product_desc_att_size_block"><div class="inc_cart_added_product_desc_att_size_text_block"><div class="inc_cart_added_product_desc_att_size_text">'+sel_size+'</div></div></div></div><div class="inc_cart_added_product_desc_ecirp_block"><div class="inc_cart_added_product_desc_ecirp_active_block"><div class="inc_cart_added_product_desc_ecirp_active_text_block"><div class="inc_cart_added_product_desc_ecirp_active_text">'+formatter.format(activePrice)+'</div><div class="inc_cart_added_product_desc_ecirp_active_text_msg"></div></div></div><div class="inc_cart_added_product_desc_ecirp_regular_block"><div class="inc_cart_added_product_desc_ecirp_regular_text_block"><div class="inc_cart_added_product_desc_ecirp_regular_text"></div></div></div></div><div class="inc_cart_added_product_qty_block"></div></div></div>'
+                    let productBlock = generate_html_tag('div','inc_cart_added_product_block');
                     productBlock.innerHTML = addedhtml
                     productBlock.setAttribute('data-id', productObj.id);
                     productBlock.setAttribute('data-sku', productObj.sku);
@@ -2242,36 +2242,36 @@
         let productListArray = INC.dataStore.bundleProductsArray;
         let dupl_sidebar_prod = []
         let addCheck = INC.config.pdpaddedProductList;
-        for (var pdlistarray of productListArray) {
-            var firstProductObjByMainId = INC.dataStore.methods().getFirstProductObjByMainId({ mainId: pdlistarray });
+        for(let pdlistarray of productListArray) {
+            let firstProductObjByMainId = INC.dataStore.methods().getFirstProductObjByMainId({ mainId: pdlistarray });
             if (firstProductObjByMainId["categoryId"] == productCategory) {
                 if (INC.dataStore.dataStoreObj.undefined == undefined) {
                     if (addCheck.indexOf(pdlistarray) == -1) {
                         if (INC.config.sidebarremovedprod.indexOf(firstProductObjByMainId.id) == -1) {
                             if (dupl_sidebar_prod.indexOf(firstProductObjByMainId.id) == -1) {
                                 dupl_sidebar_prod.push(firstProductObjByMainId.id)
-                                var falsflg=false;
-                                var truflg=true;
-                                var prdblck = INC.methods.createProductModuleBlock(firstProductObjByMainId.id, "sidebar", false, elRecommendedProductsListBlock);
+                                let falsflg=false;
+                                let truflg=true;
+                                let prdblck = INC.methods.createProductModuleBlock(firstProductObjByMainId.id, "sidebar", false, elRecommendedProductsListBlock);
                                 prdblck.querySelector('.inc_product_desc_add_block').addEventListener("click", function () {
-                                    var productModuleBlock = this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+                                    let productModuleBlock = this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
                                     if (productModuleBlock.classList.contains('inc_product_module_block') == falsflg) {
                                         productModuleBlock = this.parentNode.parentNode.parentNode.parentNode.parentNode
                                     }
-                                    var flag_check = INC.methods.checkVariantSelection(productModuleBlock)
-                                    var sku = productModuleBlock.getAttribute('data-sku');
-                                    var findObj = new INC.classes.FindObj({ id: sku });
-                                    var qty = productModuleBlock.querySelector('input').value;
-                                    var add_prod_im = productModuleBlock.querySelector('.inc_product_desc_add_img')
+                                    let flag_check = INC.methods.checkVariantSelection(productModuleBlock)
+                                    let sku = productModuleBlock.getAttribute('data-sku');
+                                    let findObj = new INC.classes.FindObj({ id: sku });
+                                    let qty = productModuleBlock.querySelector('input').value;
+                                    let add_prod_im = productModuleBlock.querySelector('.inc_product_desc_add_img')
                                     if (flag_check == 1) {
                                         if (this.parentNode.parentNode.parentNode.parentNode.parentNode.classList.contains('inc_product_showcase_block') == truflg || this.parentNode.parentNode.parentNode.parentNode.parentNode.classList.contains('inc_product_modal_block') == truflg) {
                                             if (INC.config.disablebtn == truflg) {
                                                 INC.config.disablebtn = false;
-                                                var newbtntext = productModuleBlock.querySelector('.inc_product_modal_block .inc_product_desc_add_text')
-                                                var btnclick = productModuleBlock.querySelector('.inc_product_add_text')
+                                                let newbtntext = productModuleBlock.querySelector('.inc_product_modal_block .inc_product_desc_add_text')
+                                                let btnclick = productModuleBlock.querySelector('.inc_product_add_text')
                                                 newbtntext.innerText = "Adding..."
                                                 btnclick.innerText = "Adding...";
-                                                var selbtn=productModuleBlock.querySelector('.inc_product_variant_simple_text')
+                                                let selbtn=productModuleBlock.querySelector('.inc_product_variant_simple_text')
                                                 selbtn.innerText = "Adding...";
                                                 INC.methods.addProductToCart(findObj, qty, productModuleBlock, btnclick, add_prod_im, selbtn,newbtntext);
                                             }
@@ -2303,22 +2303,22 @@
             elRecommendedProductsListBlock.parentNode.parentNode.querySelector('.inc_recommended_products_left_block').setAttribute("style", "pointer-events: none;opacity:0.5");
         }
         elRecommendedProductsListBlock.parentNode.parentNode.querySelector('.inc_recommended_products_left_btn_img').setAttribute("style", "opacity:0.5");
-        var sliderBtnCounter = 0;
+        let sliderBtnCounter = 0;
         elRecommendedProductsListBlock.parentNode.parentNode.querySelector('.inc_recommended_products_left_btn_img').setAttribute('title', 'Scroll left')
         elRecommendedProductsListBlock.parentNode.parentNode.querySelector('.inc_recommended_products_right_btn_img').setAttribute('title', 'Scroll right')
         elRecommendedProductsListBlock.parentNode.parentNode.querySelector('.inc_recommeded_products_right_btn_block').addEventListener("click", function () {
-            var productBlocks = document.querySelectorAll('.inc_recommended_products_list_block .inc_product_module_block')
+            let productBlocks = document.querySelectorAll('.inc_recommended_products_list_block .inc_product_module_block')
             if (INC.clientConfig.slidevalue + 1 < productBlocks.length) {
                 elRecommendedProductsListBlock.parentNode.parentNode.querySelector('.inc_recommended_products_left_btn_block').setAttribute("style", "pointer-events: auto;opacity:1");
                 elRecommendedProductsListBlock.parentNode.parentNode.querySelector('.inc_recommended_products_left_block').setAttribute("style", "pointer-events: auto;opacity:1");
                 elRecommendedProductsListBlock.parentNode.parentNode.querySelector('.inc_recommended_products_left_btn_img').setAttribute("style", "opacity:1");
                 INC.clientConfig.slidevalue++
-                var slide_w = 274
+                let slide_w = 274
                 INC.clientConfig.offset = (parseInt(INC.clientConfig.offset) - slide_w) + 'px';
-                var menu = elRecommendedProductsListBlock.parentNode.parentNode.querySelector('.inc_recommended_products_list_block');
+                let menu = elRecommendedProductsListBlock.parentNode.parentNode.querySelector('.inc_recommended_products_list_block');
                 menu.setAttribute('style', 'margin-left:' + INC.clientConfig.offset + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
             }
-            var cc_ount = 1;
+            let cc_ount = 1;
             if (window.innerWidth > 820) {
                 cc_ount = 2
             }
@@ -2336,13 +2336,13 @@
         elRecommendedProductsListBlock.parentNode.parentNode.querySelector('.inc_recommended_products_left_btn_block').addEventListener("click", function () {
             if (INC.clientConfig.slidevalue == -1) INC.clientConfig.slidevalue = 0;
             if (INC.clientConfig.slidevalue > 0) {
-                var slide_w = 274
+                let slide_w = 274
                 elRecommendedProductsListBlock.parentNode.parentNode.querySelector('.inc_recommeded_products_right_btn_block').setAttribute("style", "pointer-events: auto;opacity:1");
                 document.querySelector('.inc_recommended_products_right_btn_img').setAttribute("style", "pointer-events: auto;opacity:1");
                 elRecommendedProductsListBlock.parentNode.parentNode.querySelector('.inc_recommended_products_right_btn_img').setAttribute("style", "opacity:1");
                 INC.clientConfig.slidevalue--
                 INC.clientConfig.offset = (parseInt(INC.clientConfig.offset) + slide_w) + 'px';
-                var menu = elRecommendedProductsListBlock.parentNode.parentNode.querySelector('.inc_recommended_products_list_block');
+                let menu = elRecommendedProductsListBlock.parentNode.parentNode.querySelector('.inc_recommended_products_list_block');
                 menu.setAttribute('style', 'margin-left:' + INC.clientConfig.offset + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
             }
             if (INC.clientConfig.slidevalue == 0) {
@@ -2354,11 +2354,11 @@
             if (sliderBtnCounter == -1) sliderBtnCounter = 0;
         });
         setTimeout(function(){
-            var all_list_el = document.querySelectorAll('.inc_recommended_products_list_block .inc_product_showcase_block')
+            let all_list_el = document.querySelectorAll('.inc_recommended_products_list_block .inc_product_showcase_block')
             for (let listel of all_list_el) {
                 if(listel.querySelector('.inc_product_desc_att_zero_block.inc_active') != null){
-                    var prd_moduleb = listel.parentNode
-                    var main_idsd = prd_moduleb.getAttribute('data-main_id')
+                    let prd_moduleb = listel.parentNode
+                    let main_idsd = prd_moduleb.getAttribute('data-main_id')
                     if(prd_moduleb.querySelector('.inc_product_desc_att_size_list_item_img_block[data-cpid="'+main_idsd+'"]') != null){
                         if(prd_moduleb.querySelector('.inc_product_desc_att_size_list_item_img_block[data-cpid="'+main_idsd+'"] .inc_product_desc_att_size_list_item_img_block') != null){
                             prd_moduleb.querySelector('.inc_product_desc_att_size_list_item_img_block[data-cpid="'+main_idsd+'"] .inc_product_desc_att_size_list_item_img_block').click()
@@ -2370,13 +2370,13 @@
                     }
                 }
             }
-            var allimgSid = document.querySelectorAll('.inc_sidebar_modal_block img[data-src]')
-            for (var imglist of allimgSid) {
+            let allimgSid = document.querySelectorAll('.inc_sidebar_modal_block img[data-src]')
+            for(let imglist of allimgSid) {
                 imglist.src = imglist.getAttribute('data-src')
             }
             setTimeout(function(){
-                var inc_prod_img =  document.querySelectorAll('.inc_product_img_main_img img')
-                for (var prodimg of inc_prod_img) {
+                let inc_prod_img =  document.querySelectorAll('.inc_product_img_main_img img')
+                for(let prodimg of inc_prod_img) {
                     if(prodimg){
                         prodimg.setAttribute('style','left:0 !important;position: relative;')
                     }
@@ -2427,21 +2427,21 @@
 
             if (INC.clientConfig.OOS.indexOf(productObj.mainId) >= 0) {
                 productBlock.classList.add('cross')
-                for (var e = 0; e < INC.clientConfig.OOS.length; e++) {
+                for(let e = 0; e < INC.clientConfig.OOS.length; e++) {
                     if (INC.clientConfig.OOS_MESG[e] != undefined) {
-                        var remerrorjust=document.querySelector('.inc_justerror')
+                        let remerrorjust=document.querySelector('.inc_justerror')
                         if(remerrorjust != null){
                             remerrorjust.parentNode.removeChild(remerrorjust)
                         }
                         if(document.querySelector('.inc_justerror') == null){
-                            var headertitle=sbBlock.querySelector('.inc_sidebar_modal_cart_and_title_block')
-                            var errormes = generate_html_tag('div','inc_justerror')
-                            var errormestext = generate_html_tag('span','inc_justerror_text')
+                            let headertitle=sbBlock.querySelector('.inc_sidebar_modal_cart_and_title_block')
+                            let errormes = generate_html_tag('div','inc_justerror')
+                            let errormestext = generate_html_tag('span','inc_justerror_text')
                                 errormestext.innerHTML = "<span>"+productObj.name +"</span>" + " - " + "<span>Cannot be purchased at this time</span>"
                             errormes.appendChild(errormestext)
                             headertitle.parentNode.insertBefore(errormes,headertitle)
                             setTimeout(function(){
-                                var remel=document.querySelector('.inc_justerror')
+                                let remel=document.querySelector('.inc_justerror')
                                 if(remel != null){
                                     remel.parentNode.removeChild(remel)
                                 }
@@ -2450,9 +2450,9 @@
                     }
                 }
             }else{
-                var color = "";
-                var size = "";
-                var just_check_prod_block = ""
+                let color = "";
+                let size = "";
+                let just_check_prod_block = ""
                 if (document.querySelector('.inc_sidebar_modal_block.inc_active') != null) {
                     just_check_prod_block = document.querySelector('.inc_sidebar_modal_block .inc_product_module_block[data-main_id="' + productObj.sku + '"]')
                 } else {
@@ -2467,15 +2467,15 @@
                     }
                 }
                 if (btn_addtocart != undefined) {
-                    var trflg=true;
+                    let trflg=true;
                     if (btn_addtocart.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.classList.contains('inc_product_module_block') == trflg) {
-                        var module_blk = btn_addtocart.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+                        let module_blk = btn_addtocart.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
                         if (module_blk.querySelector('.inc_product_modal_block .inc_product_desc_att_block') != null) {
-                            var sel_attr = module_blk.querySelector('.inc_product_modal_block .inc_product_desc_att_block')
-                            var zero_text = sel_attr.getAttribute('data-zero');
-                            var size_text = sel_attr.getAttribute('data-size');
-                            var color_text = sel_attr.getAttribute('data-color');
-                            var third_text = sel_attr.getAttribute('data-third');
+                            let sel_attr = module_blk.querySelector('.inc_product_modal_block .inc_product_desc_att_block')
+                            let zero_text = sel_attr.getAttribute('data-zero');
+                            let size_text = sel_attr.getAttribute('data-size');
+                            let color_text = sel_attr.getAttribute('data-color');
+                            let third_text = sel_attr.getAttribute('data-third');
                             size = ""
                             color = ""
                             if (color_text != undefined) {
@@ -2497,22 +2497,22 @@
                         }
                     }
                 }
-                var sel_size = "";
+                let sel_size = "";
                 if (color != "" && color != undefined && color != null) {
                     sel_size = "Color" + color;
                 } else if (size != "" && size != undefined && size != null) {
                     sel_size = "Size : " + size;
                 }
-                var pdpprice = 0
+                let pdpprice = 0
                 if (client_add_btn == "client_add_btn" && INC.config.pageType == "pdp" && document.querySelector('.js-product-original-price') != null) {
                     pdpprice =  document.querySelector('.sd-product-spp__product-full .js-product-original-price').innerText.replace('£','').replace(',','').trim()
                 }
-                var activepriceClnt = 0
+                let activepriceClnt = 0
                 if(document.querySelector('.sd-product-spp__product-full .elc-product-prices-wrapper .js-product-price') != null){
                     activepriceClnt = document.querySelector('.sd-product-spp__product-full .elc-product-prices-wrapper .js-product-price').innerText.replace('£','')
                 }
-                var activePrice = 0;
-                var regularPrice = 0;
+                let activePrice = 0;
+                let regularPrice = 0;
                 if(client_add_btn == "client_add_btn"){
                     if(activepriceClnt != 0 && pdpprice != 0){
                         activePrice = parseFloat(activepriceClnt).toFixed(2).toString();
@@ -2530,11 +2530,11 @@
                     regularPrice = parseFloat(productObj.regularPrice).toFixed(2).toString();
                 }
                 
-                var addedhtml = '<div class="inc_cart_added_product_img_block"><div class="inc_cart_added_product_img"><img class="inc_lazy" src="'+productObj.imageURL+'" data-src="'+productObj.imageURL+'"  alt="'+productObj.name+'"><div class="sidebar_product_quantity_label">'+qty+'</div></div></div><div class="inc_cart_added_product_desc_block"><div class="inc_cart_added_product_desc_title_block"><div class="inc_cart_added_product_desc_title_text_block"><div class="inc_cart_added_product_desc_title_text" title="Easidri Cooling Coat Wide Fit" style="text-transform: unset;">'+qty + ' X ' + productObj.name+'</div></div></div><div class="inc_cart_added_product_desc_att_block"><div class="inc_cart_added_product_desc_att_color_block"><div class="inc_cart_added_product_desc_att_color_text_block"><div class="inc_cart_added_product_desc_att_color_text_block"></div></div></div><div class="inc_cart_added_product_desc_att_size_block"><div class="inc_cart_added_product_desc_att_size_text_block"><div class="inc_cart_added_product_desc_att_size_text">'+sel_size+'</div></div></div></div><div class="inc_cart_added_product_desc_ecirp_block"><div class="inc_cart_added_product_desc_ecirp_active_block"><div class="inc_cart_added_product_desc_ecirp_active_text_block"><div class="inc_cart_added_product_desc_ecirp_active_text">'+formatter.format(activePrice)+'</div><div class="inc_cart_added_product_desc_ecirp_active_text_msg"></div></div></div><div class="inc_cart_added_product_desc_ecirp_regular_block"><div class="inc_cart_added_product_desc_ecirp_regular_text_block"><div class="inc_cart_added_product_desc_ecirp_regular_text"></div></div></div></div><div class="inc_cart_added_product_qty_block"></div></div>'
+                let addedhtml = '<div class="inc_cart_added_product_img_block"><div class="inc_cart_added_product_img"><img class="inc_lazy" src="'+productObj.imageURL+'" data-src="'+productObj.imageURL+'"  alt="'+productObj.name+'"><div class="sidebar_product_quantity_label">'+qty+'</div></div></div><div class="inc_cart_added_product_desc_block"><div class="inc_cart_added_product_desc_title_block"><div class="inc_cart_added_product_desc_title_text_block"><div class="inc_cart_added_product_desc_title_text" title="Easidri Cooling Coat Wide Fit" style="text-transform: unset;">'+qty + ' X ' + productObj.name+'</div></div></div><div class="inc_cart_added_product_desc_att_block"><div class="inc_cart_added_product_desc_att_color_block"><div class="inc_cart_added_product_desc_att_color_text_block"><div class="inc_cart_added_product_desc_att_color_text_block"></div></div></div><div class="inc_cart_added_product_desc_att_size_block"><div class="inc_cart_added_product_desc_att_size_text_block"><div class="inc_cart_added_product_desc_att_size_text">'+sel_size+'</div></div></div></div><div class="inc_cart_added_product_desc_ecirp_block"><div class="inc_cart_added_product_desc_ecirp_active_block"><div class="inc_cart_added_product_desc_ecirp_active_text_block"><div class="inc_cart_added_product_desc_ecirp_active_text">'+formatter.format(activePrice)+'</div><div class="inc_cart_added_product_desc_ecirp_active_text_msg"></div></div></div><div class="inc_cart_added_product_desc_ecirp_regular_block"><div class="inc_cart_added_product_desc_ecirp_regular_text_block"><div class="inc_cart_added_product_desc_ecirp_regular_text"></div></div></div></div><div class="inc_cart_added_product_qty_block"></div></div>'
                 productBlock.innerHTML = addedhtml
                 productBlock.querySelector('.inc_cart_added_product_img img').setAttribute('onerror',"this.src='"+INC.config.noimage+"'" );
-                var subtotalactiveprice = 0;
-                var subtotalregukarprice = 0;
+                let subtotalactiveprice = 0;
+                let subtotalregukarprice = 0;
                 if (subtotal_regular == "" && +regularPrice != 0 && regularPrice != "") {
                     subtotalactiveprice = +subtotal_activeprice + (+activePrice * qty)
                     subtotalregukarprice = +subtotal_activeprice + (+regularPrice * qty)
@@ -2542,7 +2542,7 @@
                     subtotalactiveprice = +subtotal_activeprice + (+activePrice * qty)
                     subtotalregukarprice = +subtotal_regular + (+regularPrice * qty)
                 }
-                var old_qty = 0
+                let old_qty = 0
                 if (document.querySelector('.inc_header_item_count_title_text') != null) old_qty = document.querySelector('.inc_header_item_count_title_text').textContent.split('(')[1].split('ite')[0].trim();
                 if (sbCartBlock != null) {
                     sbCartBlock.insertBefore(productBlock, sbCartBlock.querySelector('.inc_cart_added_product_block'));
@@ -2695,7 +2695,7 @@
         return prodtypeflag;
     }
     function incscrollPgae(productBlock){
-        var doc = null;
+        let doc = null;
         if(document.querySelector('.inc_pdp_block') != null){
             doc = document.querySelector('.inc_pdp_block');
             inc_scroll_height = (window.scrollY || doc.scrollTop)  - (doc.clientTop || 0);
@@ -2713,16 +2713,16 @@
         }
     }
     function prepareAdditionalimages(elImgGalleryListBlock,productObj,productBlock){
-        var otimg = 0
+        let otimg = 0
         productObj.otherImageList.forEach(function (otherImgURLs) {
-            var otherImgURL = otherImgURLs;
-            var elImgGalleryListItemBlock = generate_html_tag('div','inc_product_img_gallery_list_item_block')
-            var imglist = '<div class="inc_product_img_gallery_list_item_img_block"><div class="inc_product_img_gallery_list_item_img"><img class="inc_lazy" data-src="'+otherImgURL+'" src="'+otherImgURL+'" role="img" aria-label="Image"  alt="'+productObj.name+'"></div></div><div class="inc_product_img_gallery_list_item_text_block"><div class="inc_product_img_gallery_list_item_text"></div></div>'
+            let otherImgURL = otherImgURLs;
+            let elImgGalleryListItemBlock = generate_html_tag('div','inc_product_img_gallery_list_item_block')
+            let imglist = '<div class="inc_product_img_gallery_list_item_img_block"><div class="inc_product_img_gallery_list_item_img"><img class="inc_lazy" data-src="'+otherImgURL+'" src="'+otherImgURL+'" role="img" aria-label="Image"  alt="'+productObj.name+'"></div></div><div class="inc_product_img_gallery_list_item_text_block"><div class="inc_product_img_gallery_list_item_text"></div></div>'
             elImgGalleryListItemBlock.innerHTML = imglist
         
-            var elImgGalleryListItemImg = elImgGalleryListItemBlock.querySelector('.inc_product_img_gallery_list_item_img');
+            let elImgGalleryListItemImg = elImgGalleryListItemBlock.querySelector('.inc_product_img_gallery_list_item_img');
         
-            var elOtherImgTag = elImgGalleryListItemBlock.querySelector('.inc_product_img_gallery_list_item_img img')
+            let elOtherImgTag = elImgGalleryListItemBlock.querySelector('.inc_product_img_gallery_list_item_img img')
             elOtherImgTag.src = otherImgURL
             elOtherImgTag.setAttribute('alt', productObj.name)
             elOtherImgTag.setAttribute('role', 'img')
@@ -2740,8 +2740,8 @@
                     galleryListItemBlock.classList.remove("inc_active");
                 });
                 elImgGalleryListItemBlock.classList.add("inc_active");
-                var imgotherlist = this.querySelector('img').src
-                var elImgMainImg = productBlock.querySelector('.inc_product_img_main_img')
+                let imgotherlist = this.querySelector('img').src
+                let elImgMainImg = productBlock.querySelector('.inc_product_img_main_img')
                 elImgMainImg.querySelector('img').src = imgotherlist;
                 elImgMainImg.querySelector('img').setAttribute('onerror', "this.src='" + INC.config.noimage + "'");
             })
@@ -2777,14 +2777,14 @@
         elQtyInput.setAttribute("oninput", "validity.valid||(value='');");
         elQtyInput.setAttribute('readOnly', '');
         elQtyInput.addEventListener("keydown", function (event) {
-            var elmth = this
-            var keyCode = event.which || event.keyCode;
+            let elmth = this
+            let keyCode = event.which || event.keyCode;
             if (keyCode === 13) {
                 event.preventDefault();
             } else if ((window.$.inArray(event.keyCode, incallowedKeys) !== -1) || (keyCode === 65 && (event.ctrlKey || event.metaKey)) || (keyCode >= 35 && keyCode <= 40)) {
                 return;
             }
-            var charValue = String.fromCharCode(keyCode)
+            let charValue = String.fromCharCode(keyCode)
                 , valid = /^\d+$/.test(charValue);
             if (!valid) {
                 event.preventDefault();
@@ -2795,7 +2795,7 @@
             }
         });
         elQtyInput.addEventListener('focusout', function () {
-            var elmt=this
+            let elmt=this
             setTimeout(function () {
                 qtyupdateInc(elmt,productBlock,elAddText)
             }, 50);
@@ -2805,27 +2805,27 @@
             if (_elm.value == 0) _elm.value = 1;
             if (_elm.value > 8) _elm.value = 8;
 
-            var productModuleBlock = prdblk.parentNode.parentNode;
-            var showcaseProductBlock = productModuleBlock.querySelector('.inc_product_showcase_block').querySelector('.inc_product_block');
-            var modalProductBlock = productModuleBlock.querySelector('.inc_product_modal_block').querySelector('.inc_product_block')
+            let productModuleBlock = prdblk.parentNode.parentNode;
+            let showcaseProductBlock = productModuleBlock.querySelector('.inc_product_showcase_block').querySelector('.inc_product_block');
+            let modalProductBlock = productModuleBlock.querySelector('.inc_product_modal_block').querySelector('.inc_product_block')
             showcaseProductBlock.querySelector('.inc_product_qty_block').querySelector('input').value = parseInt(_elm.value);
             modalProductBlock.querySelector('.inc_product_qty_input_text input').value = parseInt(_elm.value);
 
-            var id = prdblk.getAttribute('data-id');
-            var qty = parseInt(_elm.value);
-            var main_id = prdblk.getAttribute('data-main_id');
-            var bundle_id = prdblk.getAttribute('data-bundle_id');
-            var pname = prdblk.querySelector('.inc_product_desc_title_text').textContent;
-            var pprice = prdblk.querySelector('.inc_product_desc_ecirp_active_text').textContent.replace('£', '');
+            let id = prdblk.getAttribute('data-id');
+            let qty = parseInt(_elm.value);
+            let main_id = prdblk.getAttribute('data-main_id');
+            let bundle_id = prdblk.getAttribute('data-bundle_id');
+            let pname = prdblk.querySelector('.inc_product_desc_title_text').textContent;
+            let pprice = prdblk.querySelector('.inc_product_desc_ecirp_active_text').textContent.replace('£', '');
             if (eladtext.textContent == 'Added' || eladtext.textContent == "Update") {
                 INC.methods.updateBundleCart({ sku: id, qty: qty }, "add", main_id, bundle_id, pname, pprice);
             }
             if (_elm.value == 1) {
                 elQtyBlock.classList.add('singleqty')
             }
-            var bundleblock = prdblk
-            var gflg=true
-            var hflg=false;
+            let bundleblock = prdblk
+            let gflg=true
+            let hflg=false;
             if(prdblk.parentNode.parentNode.parentNode.classList.contains('inc_pdp_product-main_block') == gflg){
                 bundleblock = prdblk.parentNode.parentNode.parentNode.parentNode.parentNode
                 if(bundleblock.classList.contains('inc_pdp_bundle_block') == gflg){
@@ -2840,28 +2840,28 @@
         }
         productDescQtyInputText.appendChild(elQtyInput);
     
-        var added_text = document.createElement('span');
+        let added_text = document.createElement('span');
         added_text.classList.add("inc_add_text");
         productDescQtyInputText.appendChild(added_text);
     
         elQtyDownBlock.addEventListener('click', function () {
-            var elinput = this.parentNode.parentNode.parentNode.querySelector('.inc_product_qty_input_text input')
+            let elinput = this.parentNode.parentNode.parentNode.querySelector('.inc_product_qty_input_text input')
             elinput.value = (elinput.value - 1 < 1) ? 1 : elinput.value - 1;
-            var productModuleBlock = productBlock.parentNode.parentNode;
-            var showcaseProductBlock = productModuleBlock.querySelector('.inc_product_showcase_block').querySelector('.inc_product_block');
-            var modalProductBlock = productModuleBlock.querySelector('.inc_product_modal_block').querySelector('.inc_product_block')
+            let productModuleBlock = productBlock.parentNode.parentNode;
+            let showcaseProductBlock = productModuleBlock.querySelector('.inc_product_showcase_block').querySelector('.inc_product_block');
+            let modalProductBlock = productModuleBlock.querySelector('.inc_product_modal_block').querySelector('.inc_product_block')
             
             showcaseProductBlock.querySelector('.inc_product_qty_block').querySelector('input').value = parseInt(elinput.value);
             modalProductBlock.querySelector('.inc_product_qty_input_text input').value = parseInt(elinput.value);
     
-            var id = productBlock.getAttribute('data-id');
-            var qty = parseInt(elinput.value);
-            var bundle_id = productBlock.getAttribute('data-bundle_id');
-            var main_id = productBlock.getAttribute('data-main_id');
-            var pname = productBlock.querySelector('.inc_product_desc_title_text').innerText;
-            var pprice = productBlock.querySelector('.inc_product_desc_ecirp_active_text').innerText.replace('£', '');
-            var jt=true;
-            var fts=false;
+            let id = productBlock.getAttribute('data-id');
+            let qty = parseInt(elinput.value);
+            let bundle_id = productBlock.getAttribute('data-bundle_id');
+            let main_id = productBlock.getAttribute('data-main_id');
+            let pname = productBlock.querySelector('.inc_product_desc_title_text').innerText;
+            let pprice = productBlock.querySelector('.inc_product_desc_ecirp_active_text').innerText.replace('£', '');
+            let jt=true;
+            let fts=false;
             if (parseInt(elinput.value) == 1 && productDescQtyBlock.classList.contains('singleqty') == jt) {
                 if (elAddText.textContent == "Added" || elAddText.textContent == "Update" || elAddText.textContent == INC.config.AddedText || elAddText.textContent == INC.config.UpdateText) {
                     document.querySelector('html').classList.remove('inc_overlay')
@@ -2878,7 +2878,7 @@
                 modalProductBlock.querySelector('.inc_product_qty_input_text input').parentNode.parentNode.parentNode.parentNode.classList.add('singleqty');
             }
             setTimeout(function(){
-                var bundleblock = productBlock
+                let bundleblock = productBlock
                 if(productBlock.parentNode.parentNode.parentNode.classList.contains('inc_pdp_product-main_block') == jt){
                     bundleblock = productBlock.parentNode.parentNode.parentNode.parentNode.parentNode
                     if(bundleblock.classList.contains('inc_pdp_bundle_block') == jt){
@@ -2894,11 +2894,11 @@
         });
     
         elQtyUpBlock.addEventListener('click', function () {
-            var elinpt = this.parentNode.parentNode.parentNode.querySelector('.inc_product_qty_input_text input')
+            let elinpt = this.parentNode.parentNode.parentNode.querySelector('.inc_product_qty_input_text input')
             elinpt.value = (parseInt(elinpt.value) + 1 > 8) ? 8 : parseInt(elinpt.value) + 1;
-            var productModuleBlock = productBlock.parentNode.parentNode;
-            var showcaseProductBlock = productModuleBlock.querySelector('.inc_product_showcase_block').querySelector('.inc_product_block');
-            var modalProductBlock = productModuleBlock.querySelector('.inc_product_modal_block').querySelector('.inc_product_block')
+            let productModuleBlock = productBlock.parentNode.parentNode;
+            let showcaseProductBlock = productModuleBlock.querySelector('.inc_product_showcase_block').querySelector('.inc_product_block');
+            let modalProductBlock = productModuleBlock.querySelector('.inc_product_modal_block').querySelector('.inc_product_block')
     
             showcaseProductBlock.querySelector('.inc_product_qty_block').querySelector('input').value = parseInt(elinpt.value);
             modalProductBlock.querySelector('.inc_product_qty_input_text input').value = parseInt(elinpt.value);
@@ -2907,19 +2907,19 @@
     
             productDescQtyBlock.classList.remove('singleqty')
             productModuleBlock.querySelector('.inc_product_showcase_block .inc_product_qty_block').classList.remove('singleqty')
-            var id = productBlock.getAttribute('data-id');
-            var qty = parseInt(elinpt.value);
-            var bundle_id = productBlock.getAttribute('data-bundle_id');
-            var main_id = productBlock.getAttribute('data-main_id');
-            var pname = productBlock.querySelector('.inc_product_desc_title_text').innerText;
-            var pprice = productBlock.querySelector('.inc_product_desc_ecirp_active_text').innerText.replace('£', '');
+            let id = productBlock.getAttribute('data-id');
+            let qty = parseInt(elinpt.value);
+            let bundle_id = productBlock.getAttribute('data-bundle_id');
+            let main_id = productBlock.getAttribute('data-main_id');
+            let pname = productBlock.querySelector('.inc_product_desc_title_text').innerText;
+            let pprice = productBlock.querySelector('.inc_product_desc_ecirp_active_text').innerText.replace('£', '');
             if (elAddText.textContent == "Added" || elAddText.textContent == "Update" || elAddText.textContent == INC.config.AddedText || elAddText.textContent == INC.config.UpdateText) {
                 INC.methods.updateBundleCart({ sku: id, qty: qty }, "add", main_id, bundle_id, pname, pprice);
             }
             setTimeout(function(){
-                var trf=true;
-                var sf=false;
-                var bundleblocks = productBlock;
+                let trf=true;
+                let sf=false;
+                let bundleblocks = productBlock;
                 if (productBlock.parentNode.parentNode.parentNode.classList.contains('inc_pdp_product-main_block') == trf) {
                     bundleblocks = productBlock.parentNode.parentNode.parentNode.parentNode.parentNode;
                     if (bundleblocks.classList.contains('inc_pdp_bundle_block') == trf) {
@@ -3011,9 +3011,9 @@
             })
             producttypedetails_mobile_view.appendChild(producttypedetails)
             prodtypeflag = prodtypedesc(productObj,producttypedetails,prodtypeflag)
-            var ft=true;
+            let ft=true;
             if(prodtypeflag == ft){
-                var prod_quick_view_btn = generate_html_tag('div','prod_quick_view_btn')
+                let prod_quick_view_btn = generate_html_tag('div','prod_quick_view_btn')
                 prod_quick_view_btn.innerText = "More Info"
                 prod_quick_view_btn.addEventListener('click',function(){
                     if(productBlock.querySelector('.inc_details_mobile_quick_view.quick_view_active') != null){
@@ -3029,7 +3029,7 @@
                     }
                     
                 })
-                var prodplacement = productBlock.querySelector('.inc_product_desc_block')
+                let prodplacement = productBlock.querySelector('.inc_product_desc_block')
                 if(prodplacement != null){
                     prodplacement.appendChild(prod_quick_view_btn)
                     prodplacement.appendChild(producttypedetails_mobile_view)
@@ -3054,8 +3054,8 @@
         elHeader.querySelector('.inc_product_header_img_block').addEventListener("click", function () {
             productBlock.parentNode.classList.remove("inc_active");
         });
-        var elImgMainImg = elImgBlock.querySelector('.inc_product_img_main_img');
-        var elImgTag1 = generate_html_tag('img');
+        let elImgMainImg = elImgBlock.querySelector('.inc_product_img_main_img');
+        let elImgTag1 = generate_html_tag('img');
         elImgTag1.src = productObj.imageURLMain
         elImgTag1.setAttribute('data-src',productObj.imageURLMain)
         elImgTag1.setAttribute('onerror', "this.src='" + INC.config.noimage + "'");
@@ -3064,7 +3064,7 @@
         elImgTag1.setAttribute('alt', productObj.nameMain)
         elImgTag1.setAttribute('data-mouseover', productObj["otherImageList"])
         elImgTag1.setAttribute('data-imageURL', productObj["imageURLMain"])
-        var productLink = document.createElement('a');
+        let productLink = document.createElement('a');
         productLink.target = "_blank";
         productLink.setAttribute('rel', 'noopener noreferrer')
         productLink.href = productObj.url;
@@ -3084,7 +3084,7 @@
             productLink.setAttribute("href", productObj.url);
             elImgMainImg.addEventListener("click", function () {
                 INC.methods.sendBundleClickTracking(productObj.mainId);
-                var href = productBlock.querySelector('.inc_product_desc_title_text a').href
+                let href = productBlock.querySelector('.inc_product_desc_title_text a').href
                 setTimeout(function(){
                     window.location.href = href
                 },1200)
@@ -3116,7 +3116,7 @@
             elTitleTextBlock.addEventListener("click", function () {
                 INC.methods.sendBundleClickTracking(productObj.mainId);
                 getTrackingPixel();
-                var href = productBlock.querySelector('.inc_product_desc_title_text a').href
+                let href = productBlock.querySelector('.inc_product_desc_title_text a').href
                 setTimeout(function(){
                     window.location.href = href
                 },1200)
@@ -3137,16 +3137,16 @@
             });
         }
 
-        var pTitleDiv = document.createElement('div');
+        let pTitleDiv = document.createElement('div');
         if(window.innerWidth < 821 && mainprod == "mainprod" && INC.config.pageType == "pdp"){
             pTitleDiv.innerHTML = "<strong>This item </strong>" + productObj.nameMain;
         }else{
             pTitleDiv.innerHTML = productObj.nameMain;
         }
-        var field1 = productObj.ratingsCount
-        var field2 = productObj.reviewsCount
+        let field1 = productObj.ratingsCount
+        let field2 = productObj.reviewsCount
         INC.methods.get_product_ratings(field1, field2, elratingsBlock);
-        var pLink = document.createElement('a');
+        let pLink = document.createElement('a');
         pLink.setAttribute('style', 'cursor: default;text-decoration: none;')
         pLink.href = productObj.url;
         pLink.addEventListener('click', function (e) {
@@ -3161,8 +3161,8 @@
         }
         pLink.appendChild(pTitleDiv);
         elTitleText.appendChild(pLink);
-        var activePrice = parseFloat(productObj.activePriceMain).toFixed(2).toString();
-        var regularPrice = parseFloat(productObj.regularPriceMain).toFixed(2).toString();
+        let activePrice = parseFloat(productObj.activePriceMain).toFixed(2).toString();
+        let regularPrice = parseFloat(productObj.regularPriceMain).toFixed(2).toString();
         elPriceRegularText.textContent = "";
         if (activePrice != regularPrice && regularPrice != "" && regularPrice != null && regularPrice != 0) {
             elPriceActiveText.parentNode.parentNode.parentNode.classList.add('is_special_ecirp')
@@ -3173,7 +3173,7 @@
             elworthPrice.innerHTML = ""
         }
         if (window.innerWidth < 821) {
-            var inc_empty_popup = generate_html_tag('div', 'inc_empty_popup');
+            let inc_empty_popup = generate_html_tag('div', 'inc_empty_popup');
             eldetailsprodblock.appendChild(inc_empty_popup);
         }
         if (blockType == "am") {
@@ -3191,10 +3191,10 @@
 
         findObj = new INC.classes.FindObj({ mainId: productObj.mainId });
 
-        var productColorsObj = INC.dataStore.methods().getProductColorsObj(findObj);
-        var product0Obj = INC.dataStore.methods().getProductopt0Obj(findObj);
-        var productSizesObj = INC.dataStore.methods().getProductSizesObj(findObj);
-        var product3Obj = INC.dataStore.methods().getProductopt3Obj(findObj);
+        let productColorsObj = INC.dataStore.methods().getProductColorsObj(findObj);
+        let product0Obj = INC.dataStore.methods().getProductopt0Obj(findObj);
+        let productSizesObj = INC.dataStore.methods().getProductSizesObj(findObj);
+        let product3Obj = INC.dataStore.methods().getProductopt3Obj(findObj);
 
         elAtt0ListBlock.innerHTML = "";
         elAttSizeListBlock.innerHTML = "";
@@ -3217,7 +3217,7 @@
         
         if (product0Obj["att0Array"].length > 0) {
             productBlock.querySelector('.inc_product_desc_att_zero_title_block').addEventListener('click', function (e) {
-                var droflg=false;
+                let droflg=false;
                 if(document.querySelector('.inc_product_desc_att_zero_block.show_dropdown') != e.currentTarget){
                     if(document.querySelector('.inc_product_desc_att_zero_block.show_dropdown') != null){
                         if(e.currentTarget.parentNode.classList.contains('show_dropdown') == droflg){
@@ -3235,7 +3235,7 @@
             productBlock.querySelector('.inc_product_desc_att_color_title_block').addEventListener('click', function (e) {
                 if(document.querySelector('.inc_product_desc_att_color_block.show_dropdown') != e.currentTarget){
                     if(document.querySelector('.inc_product_desc_att_color_block.show_dropdown') != null){
-                        var ctfg=false
+                        let ctfg=false
                         if(e.currentTarget.parentNode.classList.contains('show_dropdown') == ctfg){
                             document.querySelector('.inc_product_desc_att_color_block.show_dropdown').classList.remove('show_dropdown')
                         }
@@ -3247,7 +3247,7 @@
                 this.parentNode.classList.toggle('show_dropdown')
             })
         }
-        var sizezero = INC.dataStore.methods().getProductopt0Obj(findObj)
+        let sizezero = INC.dataStore.methods().getProductopt0Obj(findObj)
         if (productColorsObj["colorArray"].length == 0 && sizezero["att0Array"].length == 0) {
             elAttBlock.classList.add('attributes_not_avail')
             eladdvarianttext.textContent = "Add"
@@ -3284,9 +3284,9 @@
         }
 
         elvariantaddbtn.addEventListener('click', function () {
-            var moduleblk = this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode
-            var flag_check = INC.methods.checkVariantSelection(moduleblk)
-            var cngf=true;
+            let moduleblk = this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode
+            let flag_check = INC.methods.checkVariantSelection(moduleblk)
+            let cngf=true;
             if ((this.textContent.trim() == "Update" || this.parentNode.classList.contains('config_avail') == cngf) && this.innerText.trim() != "Add To Bag") {
                 if (flag_check == 1 || flag_check == 3) {
                     if (document.querySelector('.inc_product_modal_block.inc_active') == null && document.querySelector('.inc_sidebar_modal_block.inc_active') == null) {
@@ -3403,7 +3403,7 @@
                     document.querySelector('.sidebar_outer.sidebar_outer_active .inc_sidebar_modal_block').classList.add('overflow_visible')
                     document.querySelector('body').classList.add('inc_popup_open');
                 }
-                var trucheck=true;
+                let trucheck=true;
                 if (productBlock.parentNode.parentNode.parentNode.classList.contains('inc_af_product-list_block') == trucheck) {
                     document.querySelector('html').classList.add('inc_overlay');
                 }
@@ -3417,22 +3417,22 @@
             case "am": elAddText.textContent = "Add To Bag"; break;
         }
         elAddBlock.addEventListener("click", function () {
-            var productModuleBlock = productBlock.parentNode.parentNode;
-            var modalProductBlock = productModuleBlock.querySelector('.inc_product_modal_block').querySelector('.inc_product_block')
-            var flag_check = INC.methods.checkVariantSelection(productModuleBlock)
-            var sku = productBlock.getAttribute('data-sku');
-            var mainId = productBlock.getAttribute('data-main_id');
-            var main_id = productBlock.getAttribute('data-main_id');
-            var bundle_id = productBlock.getAttribute('data-bundle_id');
-            var pname = productBlock.querySelector('.inc_product_desc_title_text').textContent;
-            var pprice = productBlock.querySelector('.inc_product_desc_ecirp_active_text').textContent.replace('£', '');
-            var elqtyvalue = productModuleBlock.querySelector('.inc_product_showcase_block .inc_product_qty_block input')
-            var qty = parseInt(elqtyvalue.value);
+            let productModuleBlock = productBlock.parentNode.parentNode;
+            let modalProductBlock = productModuleBlock.querySelector('.inc_product_modal_block').querySelector('.inc_product_block')
+            let flag_check = INC.methods.checkVariantSelection(productModuleBlock)
+            let sku = productBlock.getAttribute('data-sku');
+            let mainId = productBlock.getAttribute('data-main_id');
+            let main_id = productBlock.getAttribute('data-main_id');
+            let bundle_id = productBlock.getAttribute('data-bundle_id');
+            let pname = productBlock.querySelector('.inc_product_desc_title_text').textContent;
+            let pprice = productBlock.querySelector('.inc_product_desc_ecirp_active_text').textContent.replace('£', '');
+            let elqtyvalue = productModuleBlock.querySelector('.inc_product_showcase_block .inc_product_qty_block input')
+            let qty = parseInt(elqtyvalue.value);
             if (qty < 1) qty = 1
-            var prod_card = elAddText.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode
-            var flgfalse=false;
-            var trflg=true;
-            var prodflag=false;
+            let prod_card = elAddText.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode
+            let flgfalse=false;
+            let trflg=true;
+            let prodflag=false;
             if (document.querySelector('.inc_sidebar_modal_block.inc_active') == null) {
                 if (flag_check == 1 || onloadpdp == flgfalse || onloadpdp_delete == flgfalse) {
                     prodflag = true
@@ -3466,7 +3466,7 @@
                         elAddText.classList.add('added');
                         productDescAddText.textContent = "Added"
                         elAddText.parentNode.parentNode.parentNode.querySelector('.inc_product_desc_add_block').classList.add('Inc_checked');
-                        var pListItemBlock = document.querySelector('.inc_pdp_bundle_product_list_item_block' + "[data-main_id=\"" + mainId + "\"]");
+                        let pListItemBlock = document.querySelector('.inc_pdp_bundle_product_list_item_block' + "[data-main_id=\"" + mainId + "\"]");
                         modalProductBlock.querySelector('.inc_product_desc_add_text').textContent = "Update";
                         if (pListItemBlock != null) {
                             pListItemBlock.classList.add('product_added');
@@ -3500,7 +3500,7 @@
                         elAddText.classList.remove('added');
                         elAddText.parentNode.parentNode.classList.remove('Inc_checked');
                         modalProductBlock.querySelector('.inc_product_desc_add_text').textContent = "Add To Bundle";
-                        var pListItemBlock1 = document.querySelector('.inc_pdp_bundle_product_list_item_block' + "[data-main_id=\"" + mainId + "\"]");
+                        let pListItemBlock1 = document.querySelector('.inc_pdp_bundle_product_list_item_block' + "[data-main_id=\"" + mainId + "\"]");
                         if (pListItemBlock1 != null) {
                             pListItemBlock1.classList.remove('product_added');
                             pListItemBlock1.querySelector('.inc_pdp_bundle_product_list_item_added_btn_img').classList.remove("checked");
@@ -3516,7 +3516,7 @@
                             elAddText.classList.remove('added');
                             elAddText.parentNode.parentNode.classList.remove('Inc_checked');
                             modalProductBlock.querySelector('.inc_product_desc_add_text').textContent = "Add To Bundle";
-                            var pListItemBlock2 = document.querySelector('.inc_pdp_bundle_product_list_item_block' + "[data-main_id=\"" + mainId + "\"]");
+                            let pListItemBlock2 = document.querySelector('.inc_pdp_bundle_product_list_item_block' + "[data-main_id=\"" + mainId + "\"]");
                             if (pListItemBlock2 != null) {
                                 pListItemBlock2.classList.remove('product_added');
                                 pListItemBlock2.querySelector('.inc_pdp_bundle_product_list_item_added_btn_img').classList.remove("checked");
@@ -3627,22 +3627,22 @@
             }
         });
         if(window.innerWidth > 820){
-            var prodtypeflag = false;
-            var producttypedetails = generate_html_tag('div','inc_producttype_details_block')
+            let prodtypeflag = false;
+            let producttypedetails = generate_html_tag('div','inc_producttype_details_block')
             prodtypeflag = prodtypedesc(productObj,producttypedetails,prodtypeflag)
-            var gg=true;
+            let gg=true;
             if(prodtypeflag == gg){
-                var prodplacement = productBlock.querySelector('.inc_product_desc_att_details_block')
+                let prodplacement = productBlock.querySelector('.inc_product_desc_att_details_block')
                 if(prodplacement != null){
                     prodplacement.parentNode.insertBefore(producttypedetails,prodplacement)
                 }
             }
         }
-        var elImgMainImg = elImgBlock.querySelector('.inc_product_img_main_img');
-        var elImgTag1 = generate_html_tag('img');
+        let elImgMainImg = elImgBlock.querySelector('.inc_product_img_main_img');
+        let elImgTag1 = generate_html_tag('img');
         elImgTag1.src = productObj.imageURLMain
         elImgTag1.setAttribute('data-src',productObj.imageURLMain)
-        var s=true;
+        let s=true;
         if(elImgTag1 == s){
             elImgTag1.src = productObj.imageURLMain
         }
@@ -3661,7 +3661,7 @@
                 elGallerylefttArrow.style.display ='none';
             }
         }
-        var productLink = document.createElement('a');
+        let productLink = document.createElement('a');
         // productLink.target = "_blank";
         productLink.setAttribute('rel', 'noopener noreferrer')
         productLink.href = productObj.url;
@@ -3690,9 +3690,9 @@
             INC.methods.sendBundleClickTracking(productBlock.getAttribute('data-main_id'));
             getTrackingPixel();
         });
-        var pTitleDiv = document.createElement('div');
+        let pTitleDiv = document.createElement('div');
         pTitleDiv.innerText = productObj.nameMain;
-        var pLinkModal = document.createElement('a');
+        let pLinkModal = document.createElement('a');
         pLinkModal.setAttribute("title", productObj.nameMain);
         pLinkModal.setAttribute("href", productObj.url);
         // pLinkModal.setAttribute("target", "_blank");
@@ -3709,22 +3709,22 @@
             }, 1500)
         });
 
-        var field1 = productObj.ratingsCount
-        var field2 = productObj.reviewsCount
+        let field1 = productObj.ratingsCount
+        let field2 = productObj.reviewsCount
         INC.methods.get_product_ratings(field1, field2, elratingsBlock);
-        var pLinkModalSKU = document.createElement('span');
+        let pLinkModalSKU = document.createElement('span');
         pLinkModalSKU.classList.add("product_modal_sku");
         pLinkModalSKU.innerText = "#" + productObj.sku
         productHeaderMainBlockRating.appendChild(pLinkModalSKU)
 
-        var pLink = document.createElement('a');
+        let pLink = document.createElement('a');
         pLink.href = productObj.url;
         pLink.setAttribute('style', 'text-transform: unset;')
         pLink.setAttribute('title', productObj.nameMain)
         pLink.appendChild(pTitleDiv);
         elTitleText.appendChild(pLink);
-        var activePrice = parseFloat(productObj.activePriceMain).toFixed(2).toString();
-        var regularPrice = parseFloat(productObj.regularPriceMain).toFixed(2).toString();
+        let activePrice = parseFloat(productObj.activePriceMain).toFixed(2).toString();
+        let regularPrice = parseFloat(productObj.regularPriceMain).toFixed(2).toString();
 
         elPriceRegularText.innerText = "";
         if (activePrice != regularPrice && regularPrice != "" && regularPrice != null && regularPrice != 0) {
@@ -3744,38 +3744,38 @@
                 elHeader.querySelector('.inc_product_header_title_text').innerText = "Overview";
             }
         }
-        var inc_product_header_title_block_1 = productBlock.querySelector('.inc_product_header_title_block_1')
-        var inc_product_header_title_text_1 = productBlock.querySelector('.inc_product_header_title_text_1')
+        let inc_product_header_title_block_1 = productBlock.querySelector('.inc_product_header_title_block_1')
+        let inc_product_header_title_text_1 = productBlock.querySelector('.inc_product_header_title_text_1')
         inc_product_header_title_text_1.innerText = "Product Details";
 
-        var descriptionhtml = generate_html_tag('div','inc_descriptionhtml')
+        let descriptionhtml = generate_html_tag('div','inc_descriptionhtml')
         descriptionhtml.innerHTML = productObj.description;
-        var eldes =  descriptionhtml.innerText
-        var htmlappend = generate_html_tag('div','inc_form_desc')
+        let eldes =  descriptionhtml.innerText
+        let htmlappend = generate_html_tag('div','inc_form_desc')
         if(eldes != "" && (eldes.indexOf('What It Is') >= 0 || eldes.indexOf('What It Does') >= 0 || eldes.indexOf('How To Use') >= 0)){
             if(eldes.indexOf('What It Is') >= 0){
-                var wdtitle = generate_html_tag('span','inc_whatdoestext_title')
+                let wdtitle = generate_html_tag('span','inc_whatdoestext_title')
                 wdtitle.innerText = ""
-                var whatdoesttile = generate_html_tag('span','inc_whatdoestext_title')
+                let whatdoesttile = generate_html_tag('span','inc_whatdoestext_title')
                 whatdoesttile.innerText = "What It Is"
-                var whatdoestext = generate_html_tag('div','inc_whatdoestext')
+                let whatdoestext = generate_html_tag('div','inc_whatdoestext')
                 whatdoestext.innerHTML = eldes.split('What It Is')[1].split('What It Does')[0].replace(':','')
                 htmlappend.appendChild(wdtitle)
                 htmlappend.appendChild(whatdoesttile)
                 htmlappend.appendChild(whatdoestext)
             }
             if(eldes.indexOf('What It Does') >= 0){
-                var whatdoesttileg = generate_html_tag('span','inc_whatdoestext_title')
+                let whatdoesttileg = generate_html_tag('span','inc_whatdoestext_title')
                 whatdoesttileg.innerText = "What It Does"
-                var whatdoestextg = generate_html_tag('div','inc_whatdoestext')
+                let whatdoestextg = generate_html_tag('div','inc_whatdoestext')
                 whatdoestextg.innerHTML = eldes.split('What It Does')[1].split('How To Use')[0].replace(':','')
                 htmlappend.appendChild(whatdoesttileg)
                 htmlappend.appendChild(whatdoestextg)
             }
             if(eldes.indexOf('How To Use') >= 0){
-                var whatdoesttilef = generate_html_tag('span','inc_whatdoestext_title')
+                let whatdoesttilef = generate_html_tag('span','inc_whatdoestext_title')
                 whatdoesttilef.innerText = "How To Use"
-                var whatdoestextf = generate_html_tag('div','inc_whatdoestext')
+                let whatdoestextf = generate_html_tag('div','inc_whatdoestext')
                 if(eldes.indexOf('We recommend') >= 0){
                     whatdoestextf.innerHTML = eldes.split('How To Use')[1].split('We recommend:')[0].replace(':','')
                 }else if(eldes.indexOf('Please note') >= 0){
@@ -3788,9 +3788,9 @@
             }
             if(eldes.indexOf('We recommend') >= 0){
                 if(eldes.split('We recommend:')[1] != undefined){
-                    var werectitle = generate_html_tag('span','inc_whatdoestext_title')
+                    let werectitle = generate_html_tag('span','inc_whatdoestext_title')
                     werectitle.innerText = "We recommend"
-                    var werectext = generate_html_tag('div','inc_whatdoestext')
+                    let werectext = generate_html_tag('div','inc_whatdoestext')
                     werectext.innerHTML = eldes.split('We recommend:')[1].replace(':','')
                     htmlappend.appendChild(werectitle)
                     htmlappend.appendChild(werectext)
@@ -3798,9 +3798,9 @@
             }
             if(eldes.indexOf('Please note') >= 0){
                 if(eldes.split('Please note:')[1] != undefined){
-                    var notetitle = generate_html_tag('span','inc_whatdoestext_title')
+                    let notetitle = generate_html_tag('span','inc_whatdoestext_title')
                     notetitle.innerText = "Please note"
-                    var notetext = generate_html_tag('div','inc_whatdoestext')
+                    let notetext = generate_html_tag('div','inc_whatdoestext')
                     notetext.innerHTML = eldes.split('Please note:')[1].replace(':','')
                     htmlappend.appendChild(notetitle)
                     htmlappend.appendChild(notetext)
@@ -3809,28 +3809,28 @@
             productDescriptionMainBlock.appendChild(htmlappend)
         }else if(eldes != "" && (eldes.indexOf('Who it’s for') >= 0 || eldes.indexOf('What it is') >= 0 || eldes.indexOf('What it does') >= 0)){
             if(eldes.indexOf('Who it’s for') >= 0){
-                var whatdoesttile1 = generate_html_tag('span','inc_whatdoestext_title')
+                let whatdoesttile1 = generate_html_tag('span','inc_whatdoestext_title')
                 whatdoesttile1.innerText = ""
-                var whatdoesttilee = generate_html_tag('span','inc_whatdoestext_title')
+                let whatdoesttilee = generate_html_tag('span','inc_whatdoestext_title')
                 whatdoesttilee.innerText = "Who it’s for"
-                var whatdoestextd = generate_html_tag('div','inc_whatdoestext')
+                let whatdoestextd = generate_html_tag('div','inc_whatdoestext')
                 whatdoestextd.innerHTML = eldes.split('Who it’s for')[1].split('What it is')[0].replace(':','')
                 htmlappend.appendChild(whatdoesttile1)
                 htmlappend.appendChild(whatdoesttilee)
                 htmlappend.appendChild(whatdoestextd)
             }
             if(eldes.indexOf('What it is') >= 0){
-                var whatdoesttil = generate_html_tag('span','inc_whatdoestext_title')
+                let whatdoesttil = generate_html_tag('span','inc_whatdoestext_title')
                 whatdoesttil.innerText = "What it is"
-                var whatdoestextc = generate_html_tag('div','inc_whatdoestext')
+                let whatdoestextc = generate_html_tag('div','inc_whatdoestext')
                 whatdoestextc.innerHTML = eldes.split('What it is')[1].split('What it does')[0].replace(':','')
                 htmlappend.appendChild(whatdoesttil)
                 htmlappend.appendChild(whatdoestextc)
             }
             if(eldes.indexOf('What it does') >= 0){
-                var whatdoesttileb = generate_html_tag('span','inc_whatdoestext_title')
+                let whatdoesttileb = generate_html_tag('span','inc_whatdoestext_title')
                 whatdoesttileb.innerText = "What it does"
-                var whatdoestextb = generate_html_tag('div','inc_whatdoestext')
+                let whatdoestextb = generate_html_tag('div','inc_whatdoestext')
                 
                 if(eldes.indexOf('We recommend') >= 0){
                     whatdoestextb.innerHTML = eldes.split('What it does')[1].split('We recommend:')[0].replace(':','')
@@ -3844,9 +3844,9 @@
             }
             if(eldes.indexOf('We recommend') >= 0){
                 if(eldes.split('We recommend:')[1] != undefined){
-                    var werectitlea = generate_html_tag('span','inc_whatdoestext_title')
+                    let werectitlea = generate_html_tag('span','inc_whatdoestext_title')
                     werectitlea.innerText = "We recommend"
-                    var werectexta = generate_html_tag('div','inc_whatdoestext')
+                    let werectexta = generate_html_tag('div','inc_whatdoestext')
                     werectexta.innerHTML = eldes.split('We recommend:')[1].replace(':','')
                     htmlappend.appendChild(werectitlea)
                     htmlappend.appendChild(werectexta)
@@ -3854,9 +3854,9 @@
             }
             if(eldes.indexOf('Please note') >= 0){
                 if(eldes.split('Please note:')[1] != undefined){
-                    var notetitles = generate_html_tag('span','inc_whatdoestext_title')
+                    let notetitles = generate_html_tag('span','inc_whatdoestext_title')
                     notetitles.innerText = "Please note"
-                    var notetexts = generate_html_tag('div','inc_whatdoestext')
+                    let notetexts = generate_html_tag('div','inc_whatdoestext')
                     notetexts.innerHTML = eldes.split('Please note:')[1].replace(':','')
                     htmlappend.appendChild(notetitles)
                     htmlappend.appendChild(notetexts)
@@ -3873,10 +3873,10 @@
         
         //Who it’s for: What it is: What it does:
 
-        var inc_product_header_title_block = inc_product_header_title_block_1.parentNode.querySelector('.inc_product_header_title_block');
+        let inc_product_header_title_block = inc_product_header_title_block_1.parentNode.querySelector('.inc_product_header_title_block');
 
-        var inc_product_header_new_page = productBlock.querySelector('.inc_product_header_new_page')
-        var inc_product_header_new_page_text = productBlock.querySelector('.inc_product_header_new_page .inc_product_header_new_page_text')
+        let inc_product_header_new_page = productBlock.querySelector('.inc_product_header_new_page')
+        let inc_product_header_new_page_text = productBlock.querySelector('.inc_product_header_new_page .inc_product_header_new_page_text')
         inc_product_header_new_page_text.innerText = "Open In A New Tab"
         inc_product_header_new_page_text.setAttribute("href", productObj.url)
         inc_product_header_new_page_text.setAttribute("target", "_blank")
@@ -3903,13 +3903,13 @@
             inc_product_header_title_block_1.classList.remove('inc_active');
         });
 
-        var product0Obj = INC.dataStore.methods().getProductopt0Obj(findObj);
+        let product0Obj = INC.dataStore.methods().getProductopt0Obj(findObj);
 
-        var productSizesObj = INC.dataStore.methods().getProductSizesObj(findObj);
+        let productSizesObj = INC.dataStore.methods().getProductSizesObj(findObj);
 
-        var productColorsObj = INC.dataStore.methods().getProductColorsObj(findObj);
+        let productColorsObj = INC.dataStore.methods().getProductColorsObj(findObj);
 
-        var product3Obj = INC.dataStore.methods().getProductopt3Obj(findObj);
+        let product3Obj = INC.dataStore.methods().getProductopt3Obj(findObj);
 
         elAtt0ListBlock.innerHTML = "";
         elAttSizeListBlock.innerHTML = "";
@@ -3952,13 +3952,13 @@
         elGalleryRightArrow.setAttribute('title', 'Scroll right')
 
         elGalleryRightArrow.addEventListener("click", function () {
-            var prod_card=this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
-            var pr_id=prod_card.getAttribute('data-main_id')
+            let prod_card=this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+            let pr_id=prod_card.getAttribute('data-main_id')
             slideTo(pr_id,0,prod_card,"right","arrow")
         });
         elGallerylefttArrow.addEventListener("click", function () {
-            var prod_card=this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
-            var pr_id=prod_card.getAttribute('data-main_id')
+            let prod_card=this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+            let pr_id=prod_card.getAttribute('data-main_id')
             slideTo(pr_id,0,prod_card,"left","arrow")
         });
         if ((productObj.otherImageList == null) || productObj.otherImageList.length < 2) {
@@ -3974,18 +3974,18 @@
             productBlock.parentNode.querySelector('.inc_product_header_title_block').classList.add('inc_active');
             productBlock.parentNode.querySelector('.inc_product_header_title_block_1').classList.remove('inc_active');
 
-            var productModuleBlock = productBlock.parentNode.parentNode;
-            var flag_check = INC.methods.checkVariantSelection(productModuleBlock)
+            let productModuleBlock = productBlock.parentNode.parentNode;
+            let flag_check = INC.methods.checkVariantSelection(productModuleBlock)
             if (document.querySelector('.sidebar_outer.sidebar_outer_active') == null) {
                 document.querySelector('body').classList.remove('inc_popup_open')
                 document.querySelector('html').classList.remove('inc_overlay')
             }
-            var showcaseProductBlock = productModuleBlock.querySelector('.inc_product_showcase_block').querySelector('.inc_product_block');
+            let showcaseProductBlock = productModuleBlock.querySelector('.inc_product_showcase_block').querySelector('.inc_product_block');
             
             if (INC.config.pageType != "cartPage" && !INC.config.recommendation && INC.config.pageType != "ticket" && productModuleBlock.parentNode.className.indexOf('inc_af_product-list_block') == -1) {
                 showcaseProductBlock.querySelector('.inc_product_desc_add_block').click();
             }
-            var modfl=true
+            let modfl=true
             if (productModuleBlock.classList.contains('configurable') == modfl) {
                 if (flag_check == 1) {
                     setTimeout(function () {
@@ -4000,7 +4000,7 @@
                     }, 200)
                 } else {
                     productModuleBlock.querySelector('.inc_product_desc_add_title_text_block').setAttribute('style', 'color:#E52B45')
-                    var element = document.querySelector('.inc_product_modal_block.inc_active .inc_product_block .inc_product_desc_att_color_block')
+                    let element = document.querySelector('.inc_product_modal_block.inc_active .inc_product_block .inc_product_desc_att_color_block')
                     if (element != null) {
                         document.querySelector('html').classList.add('inc_popup_open')
                         document.querySelector('html').classList.add('inc_overlay')
@@ -4033,20 +4033,20 @@
         elAtt0Block.classList.add("inc_active");
         elAtt0Block.classList.add("inc_total_"+product0Obj["att0Array"].length)
         product0Obj["att0Array"].forEach(function (sizeObj) {
-            var attSizeImgBlock0 = generate_html_tag('div', 'inc_product_desc_att_size_list_item_img_block');
-            var attSizeImg0 = generate_html_tag('div', 'inc_product_desc_att_size_list_item_img');
+            let attSizeImgBlock0 = generate_html_tag('div', 'inc_product_desc_att_size_list_item_img_block');
+            let attSizeImg0 = generate_html_tag('div', 'inc_product_desc_att_size_list_item_img');
             attSizeImgBlock0.setAttribute('blocktype', blockType)
             attSizeImgBlock0.setAttribute('varianttypes', 'zero')
             attSizeImgBlock0.addEventListener('click',function(){
-                var elvariant = this;
-                var elblktype=this.getAttribute('blocktype')
-                var elvtype=this.getAttribute('varianttypes')
+                let elvariant = this;
+                let elblktype=this.getAttribute('blocktype')
+                let elvtype=this.getAttribute('varianttypes')
                 INC.methods.mappvariants(elvariant,elblktype,elvtype)
             })
             attSizeImgBlock0.classList.add('avail')
             if (sizeObj["imgSrc"].length > 0) {
                 if (sizeObj["colorCode"] == "" || sizeObj["colorCode"] == undefined) {
-                    var sizeimg = generate_html_tag('img');
+                    let sizeimg = generate_html_tag('img');
                     sizeimg.setAttribute('alt', sizeObj["text"])
                     sizeimg.src = sizeObj["imgSrc"]
                     attSizeImgBlock0.setAttribute('data-optionimge', sizeObj["imgSrc"])
@@ -4081,24 +4081,24 @@
                 elAttColorListBlock.innerHTML = "";
                 elAttColorBlock.classList.add("inc_active");
                 elAttColorTitleText.innerText = "Color";
-                var one_attr_flag = false
+                let one_attr_flag = false
                 if (productColorsObj["colorArray"].length == 1) {
                     one_attr_flag = true
                 }
                 productColorsObj["colorArray"].forEach(function (colorObj) {
-                    var attColorBlock = generate_html_tag('div', 'inc_product_desc_att_color_list_item_block')
-                    var attColorImgBlock = generate_html_tag('div', 'inc_product_desc_att_color_list_item_img_block');
-                    var attColorImg = generate_html_tag('div', 'inc_product_desc_att_color_list_item_img_block');
+                    let attColorBlock = generate_html_tag('div', 'inc_product_desc_att_color_list_item_block')
+                    let attColorImgBlock = generate_html_tag('div', 'inc_product_desc_att_color_list_item_img_block');
+                    let attColorImg = generate_html_tag('div', 'inc_product_desc_att_color_list_item_img_block');
                     attColorImgBlock.setAttribute('blocktype', blockType)
                     attColorImgBlock.setAttribute('varianttypes', 'color')
                     attColorImgBlock.addEventListener('click',function(){
-                        var elvariantc = this;
-                        var elblktypec=this.getAttribute('blocktype')
-                        var elvtypec=this.getAttribute('varianttypes')
+                        let elvariantc = this;
+                        let elblktypec=this.getAttribute('blocktype')
+                        let elvtypec=this.getAttribute('varianttypes')
                         INC.methods.mappvariants(elvariantc,elblktypec,elvtypec)
                     })
                     imgcolorgen(colorObj,attColorImg)
-                    var colorTitle = generate_html_tag('a');
+                    let colorTitle = generate_html_tag('a');
                     colorTitle.innerText = colorObj["text"]
                     colorTitle.title = colorObj["text"].toUpperCase();
                     colorTitle.addEventListener('click', function (e) { e.preventDefault(); })
@@ -4114,8 +4114,8 @@
                     attColorImgBlock.appendChild(attColorImg);
                     attColorBlock.appendChild(attColorImgBlock);
                     elAttColorListBlock.appendChild(attColorBlock);
-                    var prod_id = productBlock.getAttribute('data-main_id');
-                    var mt=true;
+                    let prod_id = productBlock.getAttribute('data-main_id');
+                    let mt=true;
                     if (one_attr_flag == mt) {
                         setTimeout(function () {
                             if (INC.methods.getProductIdFromWebPage() == prod_id) {
@@ -4135,16 +4135,16 @@
                 elAttSizeTitleText.innerText = productSizesObj["sizeArray"][0].code;
                 elAttSizeBlock.classList.add("inc_active");
                 productSizesObj["sizeArray"].forEach(function (sizeObj) {
-                    var attSizeImgBlock = generate_html_tag('div', 'inc_product_desc_att_size_list_item_img_block');
-                    var attSizeImg = generate_html_tag('div', 'inc_product_desc_att_size_list_item_img');
+                    let attSizeImgBlock = generate_html_tag('div', 'inc_product_desc_att_size_list_item_img_block');
+                    let attSizeImg = generate_html_tag('div', 'inc_product_desc_att_size_list_item_img');
                     elAttSizeTitleTextSelected.innerText = "Please select option"
                     attSizeImgBlock.classList.add('avail')
                     attSizeImgBlock.setAttribute('blocktype', blockType)
                     attSizeImgBlock.setAttribute('varianttypes', 'size')
                     attSizeImgBlock.addEventListener('click',function(){
-                        var elvariants = this;
-                        var elblktypes=this.getAttribute('blocktype')
-                        var elvtypes = this.getAttribute('varianttypes')
+                        let elvariants = this;
+                        let elblktypes=this.getAttribute('blocktype')
+                        let elvtypes = this.getAttribute('varianttypes')
                         INC.methods.mappvariants(elvariants,elblktypes,elvtypes)
                     })
                     attSizeImg.innerText = sizeObj["text"];
@@ -4176,14 +4176,14 @@
                 product3Obj["att3Array"].forEach(function (sizeObj) {
                     elAtt3TitleText.innerText = product3Obj["att3Array"][0].code;
                     elAtt3Block.classList.add("inc_active");
-                    var attSizeImgBlock3 = generate_html_tag('div', 'inc_product_desc_att_third_list_item_img_block');
-                    var attSizeImg3 = generate_html_tag('div', 'inc_product_desc_att_third_list_item_img');
+                    let attSizeImgBlock3 = generate_html_tag('div', 'inc_product_desc_att_third_list_item_img_block');
+                    let attSizeImg3 = generate_html_tag('div', 'inc_product_desc_att_third_list_item_img');
                     attSizeImgBlock3.setAttribute('blocktype', blockType)
                     attSizeImgBlock3.setAttribute('varianttypes', 'third')
                     attSizeImgBlock3.addEventListener('click',function(){
-                        var elvariantd = this;
-                        var elblktyped=this.getAttribute('blocktype')
-                        var elvtyped=this.getAttribute('varianttypes')
+                        let elvariantd = this;
+                        let elblktyped=this.getAttribute('blocktype')
+                        let elvtyped=this.getAttribute('varianttypes')
                         INC.methods.mappvariants(elvariantd,elblktyped,elvtyped)
                     })
                     attSizeImgBlock3.classList.add('avail')
@@ -4200,41 +4200,41 @@
     }
     INC.methods.mappvariants = function (obj, blocktype, type_of_variant) {
         if (obj.parentNode != undefined) {
-            var productModuleBlck = obj.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
-            var vtrflg=true;
+            let productModuleBlck = obj.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+            let vtrflg=true;
             if (productModuleBlck.classList.contains('inc_product_showcase_block') == vtrflg || productModuleBlck.classList.contains('inc_product_modal_block') == vtrflg) {
                 productModuleBlck = productModuleBlck.parentNode
             }
 
-            var productblockshow = productModuleBlck.querySelector('.inc_product_showcase_block .inc_product_block')
-            var productblockmod = productModuleBlck.querySelector('.inc_product_modal_block .inc_product_block')
+            let productblockshow = productModuleBlck.querySelector('.inc_product_showcase_block .inc_product_block')
+            let productblockmod = productModuleBlck.querySelector('.inc_product_modal_block .inc_product_block')
 
-            var mainprdid = productblockshow.getAttribute('data-main_id')
+            let mainprdid = productblockshow.getAttribute('data-main_id')
 
             if (type_of_variant == "zero") {
-                var sel_variantz = obj.getAttribute('data-size')
+                let sel_variantz = obj.getAttribute('data-size')
                 productblockmod.querySelector('.inc_product_desc_att_block').setAttribute('data-zero', sel_variantz)
                 productblockshow.querySelector('.inc_product_desc_att_block').setAttribute('data-zero', sel_variantz)
             } else if (type_of_variant == "color") {
-                var sel_variantC = obj.getAttribute('data-color')
+                let sel_variantC = obj.getAttribute('data-color')
                 productblockmod.querySelector('.inc_product_desc_att_block').setAttribute('data-color', sel_variantC)
                 productblockshow.querySelector('.inc_product_desc_att_block').setAttribute('data-color', sel_variantC)
             } else if (type_of_variant == "size") {
-                var sel_variantS = obj.getAttribute('data-size')
+                let sel_variantS = obj.getAttribute('data-size')
                 productblockmod.querySelector('.inc_product_desc_att_block').setAttribute('data-size', sel_variantS)
                 productblockshow.querySelector('.inc_product_desc_att_block').setAttribute('data-size', sel_variantS)
             } else if (type_of_variant == "third") {
-                var sel_variantT = obj.getAttribute('data-size')
+                let sel_variantT = obj.getAttribute('data-size')
                 productblockmod.querySelector('.inc_product_desc_att_block').setAttribute('data-third', sel_variantT)
                 productblockshow.querySelector('.inc_product_desc_att_block').setAttribute('data-third', sel_variantT)
             }
 
-            var main_p_id = INC.dataStore.methods().getFirstProductObjByMainId({ mainId: mainprdid }).id;
-            var findobj = new INC.classes.FindObj({ id: main_p_id });
-            var zero_text = productblockmod.querySelector('.inc_product_desc_att_block').getAttribute('data-zero');
-            var size_text = productblockmod.querySelector('.inc_product_desc_att_block').getAttribute('data-size');
-            var color_text = productblockmod.querySelector('.inc_product_desc_att_block').getAttribute('data-color');
-            var third_text = productblockmod.querySelector('.inc_product_desc_att_block').getAttribute('data-third');
+            let main_p_id = INC.dataStore.methods().getFirstProductObjByMainId({ mainId: mainprdid }).id;
+            let findobj = new INC.classes.FindObj({ id: main_p_id });
+            let zero_text = productblockmod.querySelector('.inc_product_desc_att_block').getAttribute('data-zero');
+            let size_text = productblockmod.querySelector('.inc_product_desc_att_block').getAttribute('data-size');
+            let color_text = productblockmod.querySelector('.inc_product_desc_att_block').getAttribute('data-color');
+            let third_text = productblockmod.querySelector('.inc_product_desc_att_block').getAttribute('data-third');
 
             findobj.mainId = mainprdid
             findobj.colorText = ""
@@ -4270,23 +4270,23 @@
             productblockshow.querySelector('.inc_product_variant_simple_text').setAttribute('style', '')
             productblockshow.querySelector('.inc_product_desc_add_title_text_block').setAttribute('style', '')
 
-            var productSizesObj = INC.dataStore.methods().getProductSizesObj(findobj, obj);
-            var productColorsObj = INC.dataStore.methods().getProductColorsObj(findobj, obj);
-            var product3rdObj = INC.dataStore.methods().getProductopt3Obj(findobj, obj);
+            let productSizesObj = INC.dataStore.methods().getProductSizesObj(findobj, obj);
+            let productColorsObj = INC.dataStore.methods().getProductColorsObj(findobj, obj);
+            let product3rdObj = INC.dataStore.methods().getProductopt3Obj(findobj, obj);
 
-            var elAttSizeBlock = productblockmod.querySelector('.inc_product_desc_att_size_block')
-            var elAttColorBlock = productblockmod.querySelector('.inc_product_desc_att_color_block')
-            var elAtt3rdBlock = productblockmod.querySelector('.inc_product_desc_att_third_block')
-            var elAttSizeListBlock = productblockmod.querySelector('.inc_product_desc_att_size_list_block')
-            var elAttColorListBlock = productblockmod.querySelector('.inc_product_desc_att_color_list_block')
-            var elAtt3ListBlock = productblockmod.querySelector('.inc_product_desc_att_third_list_block')
-            var elselcolortextmodal=productblockmod.querySelector('.inc_product_desc_att_color_title_text_selected')
-            var elcolortextmodal=productblockmod.querySelector('.inc_product_desc_att_color_title_text')
-            var elAttSizeListBlockshow = productblockshow.querySelector('.inc_product_desc_att_size_list_block')
-            var elAttColorListBlockshow = productblockshow.querySelector('.inc_product_desc_att_color_list_block')
-            var elAtt3ListBlockshow = productblockshow.querySelector('.inc_product_desc_att_third_list_block')
-            var elselcolortextshow=productblockshow.querySelector('.inc_product_desc_att_color_title_text_selected')
-            var elcolortextshow=productblockmod.querySelector('.inc_product_desc_att_color_title_text')
+            let elAttSizeBlock = productblockmod.querySelector('.inc_product_desc_att_size_block')
+            let elAttColorBlock = productblockmod.querySelector('.inc_product_desc_att_color_block')
+            let elAtt3rdBlock = productblockmod.querySelector('.inc_product_desc_att_third_block')
+            let elAttSizeListBlock = productblockmod.querySelector('.inc_product_desc_att_size_list_block')
+            let elAttColorListBlock = productblockmod.querySelector('.inc_product_desc_att_color_list_block')
+            let elAtt3ListBlock = productblockmod.querySelector('.inc_product_desc_att_third_list_block')
+            let elselcolortextmodal=productblockmod.querySelector('.inc_product_desc_att_color_title_text_selected')
+            let elcolortextmodal=productblockmod.querySelector('.inc_product_desc_att_color_title_text')
+            let elAttSizeListBlockshow = productblockshow.querySelector('.inc_product_desc_att_size_list_block')
+            let elAttColorListBlockshow = productblockshow.querySelector('.inc_product_desc_att_color_list_block')
+            let elAtt3ListBlockshow = productblockshow.querySelector('.inc_product_desc_att_third_list_block')
+            let elselcolortextshow=productblockshow.querySelector('.inc_product_desc_att_color_title_text_selected')
+            let elcolortextshow=productblockmod.querySelector('.inc_product_desc_att_color_title_text')
             
             if (type_of_variant == "zero" || type_of_variant == "third" || type_of_variant == "color") {
                 elAttSizeListBlock.innerHTML = "";
@@ -4294,14 +4294,14 @@
                 if (productSizesObj["sizeArray"].length > 0) {
                     elAttSizeBlock.classList.add("inc_active");
                     productSizesObj["sizeArray"].forEach(function (sizeObj) {
-                        var attSizeImgBlock = generate_html_tag('div', 'inc_product_desc_att_size_list_item_img_block');
-                        var attSizeImg = generate_html_tag('div', 'inc_product_desc_att_size_list_item_img');
+                        let attSizeImgBlock = generate_html_tag('div', 'inc_product_desc_att_size_list_item_img_block');
+                        let attSizeImg = generate_html_tag('div', 'inc_product_desc_att_size_list_item_img');
                         attSizeImgBlock.setAttribute('blocktype', blocktype)
                         attSizeImgBlock.setAttribute('varianttypes', 'size')
                         attSizeImgBlock.addEventListener('click',function(){
-                            var elvariants2 = this;
-                            var elblktypes2=this.getAttribute('blocktype')
-                            var elvtypes2=this.getAttribute('varianttypes')
+                            let elvariants2 = this;
+                            let elblktypes2=this.getAttribute('blocktype')
+                            let elvtypes2=this.getAttribute('varianttypes')
                             INC.methods.mappvariants(elvariants2,elblktypes2,elvtypes2)
                         })
                         attSizeImgBlock.classList.add('avail')
@@ -4310,11 +4310,11 @@
                         attSizeImgBlock.setAttribute("datasize", sizeObj["text"].toLocaleLowerCase());
                         attSizeImgBlock.setAttribute('data-option', "2");
                         attSizeImgBlock.appendChild(attSizeImg);
-                        var attSizeImgBlockclone = attSizeImgBlock.cloneNode(attSizeImgBlock);
+                        let attSizeImgBlockclone = attSizeImgBlock.cloneNode(attSizeImgBlock);
                         attSizeImgBlockclone.addEventListener('click', function () {
-                            var elvariants_ = this;
-                            var elblktypes_ = this.getAttribute('blocktype')
-                            var elvtypes_ = this.getAttribute('varianttypes')
+                            let elvariants_ = this;
+                            let elblktypes_ = this.getAttribute('blocktype')
+                            let elvtypes_ = this.getAttribute('varianttypes')
                             INC.methods.mappvariants(elvariants_, elblktypes_, elvtypes_)
                         })
                         elAttSizeListBlock.appendChild(attSizeImgBlock);
@@ -4328,7 +4328,7 @@
                     });
                 }
             } else {
-                var sizelowertext = size_text.toLocaleLowerCase()
+                let sizelowertext = size_text.toLocaleLowerCase()
                 if (productblockmod.querySelector('.inc_product_desc_att_size_list_block .inc_product_desc_att_size_list_item_img_block.inc_active') != null) {
                     productblockmod.querySelector('.inc_product_desc_att_size_list_block .inc_product_desc_att_size_list_item_img_block.inc_active').classList.remove('inc_active')
                 }
@@ -4345,10 +4345,10 @@
                     productModuleBlck.querySelector('.inc_product_modal_block .inc_product_desc_att_color_title_text_selected').innerText = ""
                     productModuleBlck.querySelector('.inc_product_desc_att_color_title_text_selected').innerText = ""
                 }
-                var selcol = findobj.colorText
+                let selcol = findobj.colorText
                 if (productColorsObj["colorArray"].length > 0) {
                     elAttColorBlock.classList.add("inc_active");
-                    var clrselflag=false;
+                    let clrselflag=false;
                     productColorsObj["colorArray"].forEach(function (colorObj) {
                         if (selcol == colorObj["text"]) {
                             findobj.colorText = colorObj["text"]
@@ -4357,21 +4357,21 @@
                             findobj.colorText = ""
                             findobj.color_text = ""
                         }
-                        var attColorBlock = generate_html_tag('div', 'inc_product_desc_att_color_list_item_block')
-                        var attColorImgBlock = generate_html_tag('div', 'inc_product_desc_att_color_list_item_img_block');
-                        var attColorImg = generate_html_tag('div', 'inc_product_desc_att_color_list_item_img_block');
+                        let attColorBlock = generate_html_tag('div', 'inc_product_desc_att_color_list_item_block')
+                        let attColorImgBlock = generate_html_tag('div', 'inc_product_desc_att_color_list_item_img_block');
+                        let attColorImg = generate_html_tag('div', 'inc_product_desc_att_color_list_item_img_block');
                         
                         attColorImgBlock.setAttribute('blocktype', blocktype)
                         attColorImgBlock.setAttribute('varianttypes', 'color')
                         attColorImgBlock.addEventListener('click',function(){
-                            var elvariantc2 = this;
-                            var elblktypec2=this.getAttribute('blocktype')
-                            var elvtypec2=this.getAttribute('varianttypes')
+                            let elvariantc2 = this;
+                            let elblktypec2=this.getAttribute('blocktype')
+                            let elvtypec2=this.getAttribute('varianttypes')
                             INC.methods.mappvariants(elvariantc2,elblktypec2,elvtypec2)
                         })
                         imgcolorgen(colorObj,attColorImg)
 
-                        var colorTitle = generate_html_tag('a');
+                        let colorTitle = generate_html_tag('a');
                         colorTitle.innerText = colorObj["text"]
                         colorTitle.title = colorObj["text"];
                         colorTitle.addEventListener('click', function (e) { e.preventDefault(); })
@@ -4385,11 +4385,11 @@
                         attColorImgBlock.setAttribute('data-optionimge', colorObj["imgSrc"])
                         attColorImgBlock.appendChild(attColorImg);
                         attColorBlock.appendChild(attColorImgBlock);
-                        var attColorBlockclone = attColorBlock.cloneNode(attColorBlock);
+                        let attColorBlockclone = attColorBlock.cloneNode(attColorBlock);
                         attColorBlockclone.querySelector('.inc_product_desc_att_color_list_item_img_block').addEventListener('click', function () {
-                            var elvariantc1s = this;
-                            var elblktypec2s = this.getAttribute('blocktype')
-                            var elvtypec2s = this.getAttribute('varianttypes')
+                            let elvariantc1s = this;
+                            let elblktypec2s = this.getAttribute('blocktype')
+                            let elvtypec2s = this.getAttribute('varianttypes')
                             INC.methods.mappvariants(elvariantc1s, elblktypec2s, elvtypec2s)
                         })
                         elAttColorListBlock.appendChild(attColorBlock);
@@ -4416,10 +4416,10 @@
                             }
                         }
                     });
-                    var flg=false;
+                    let flg=false;
                     if(clrselflag == flg){
-                        var ctext=productblockmod.querySelector('.inc_product_desc_att_color_list_item_block .inc_product_desc_att_color_list_item_img_block').getAttribute('data-color')
-                        var color_colorcodesel = productblockmod.querySelector('.inc_product_desc_att_color_list_item_block .inc_product_desc_att_color_list_item_img_block').getAttribute('data-colorcode');
+                        let ctext=productblockmod.querySelector('.inc_product_desc_att_color_list_item_block .inc_product_desc_att_color_list_item_img_block').getAttribute('data-color')
+                        let color_colorcodesel = productblockmod.querySelector('.inc_product_desc_att_color_list_item_block .inc_product_desc_att_color_list_item_img_block').getAttribute('data-colorcode');
                         productblockmod.querySelector('.inc_product_desc_att_block').setAttribute('data-color',ctext)
                         productblockshow.querySelector('.inc_product_desc_att_block').setAttribute('data-color',ctext)
                         elAttColorListBlock.querySelector('.inc_product_desc_att_color_list_item_block .inc_product_desc_att_color_list_item_img_block').parentNode.classList.add('inc_active')
@@ -4431,8 +4431,8 @@
                     }
                 }
             } else {
-                var colorlowertext = color_text.toLocaleLowerCase()
-                var colortxt = color_text
+                let colorlowertext = color_text.toLocaleLowerCase()
+                let colortxt = color_text
                 if (productblockmod.querySelector('.inc_product_desc_att_color_list_item_block.inc_active') != null) {
                     productblockmod.querySelector('.inc_product_desc_att_color_list_item_block.inc_active').classList.remove('inc_active')
                 }
@@ -4444,7 +4444,7 @@
                 elselcolortextshow.innerText= colortxt
                 elselcolortextmodal.innerText= colortxt
                 if(productblockmod.querySelector('.inc_product_desc_att_color_list_item_block.inc_active div') != null){
-                    var color_colorcode = productblockmod.querySelector('.inc_product_desc_att_color_list_item_block.inc_active div').getAttribute('data-colorcode');
+                    let color_colorcode = productblockmod.querySelector('.inc_product_desc_att_color_list_item_block.inc_active div').getAttribute('data-colorcode');
                     elcolortextmodal.style.backgroundColor = color_colorcode;
                     elcolortextshow.style.backgroundColor = color_colorcode;
                 }
@@ -4456,15 +4456,15 @@
                     elAtt3rdBlock.classList.add("inc_active");
 
                     product3rdObj["att3Array"].forEach(function (sizeObj) {
-                        var attSizeImgBlock3 = generate_html_tag('div', 'inc_product_desc_att_third_list_item_img_block');
-                        var attSizeImg3 = generate_html_tag('div', 'inc_product_desc_att_third_list_item_img');
+                        let attSizeImgBlock3 = generate_html_tag('div', 'inc_product_desc_att_third_list_item_img_block');
+                        let attSizeImg3 = generate_html_tag('div', 'inc_product_desc_att_third_list_item_img');
                         
                         attSizeImgBlock3.setAttribute('blocktype', blocktype)
                         attSizeImgBlock3.setAttribute('varianttypes', 'third')
                         attSizeImgBlock3.addEventListener('click',function(){
-                            var elvarianttd = this;
-                            var elblktypetd=this.getAttribute('blocktype')
-                            var elvtypetd=this.getAttribute('varianttypes')
+                            let elvarianttd = this;
+                            let elblktypetd=this.getAttribute('blocktype')
+                            let elvtypetd=this.getAttribute('varianttypes')
                             INC.methods.mappvariants(elvarianttd,elblktypetd,elvtypetd)
                         })
                         attSizeImg3.innerText = sizeObj["text"];
@@ -4472,7 +4472,7 @@
                         attSizeImgBlock3.setAttribute("datasize", sizeObj["text"].toLocaleLowerCase());
                         attSizeImgBlock3.setAttribute('data-option', "3");
                         attSizeImgBlock3.appendChild(attSizeImg3);
-                        var attSizeImgBlock3clone = attSizeImgBlock3.cloneNode(attSizeImgBlock3);
+                        let attSizeImgBlock3clone = attSizeImgBlock3.cloneNode(attSizeImgBlock3);
                         elAtt3ListBlock.appendChild(attSizeImgBlock3);
                         elAtt3ListBlockshow.appendChild(attSizeImgBlock3clone);
                         if (third_text != undefined) {
@@ -4484,7 +4484,7 @@
                     });
                 }
             } else {
-                var thirdlowertext = third_text.toLocaleLowerCase()
+                let thirdlowertext = third_text.toLocaleLowerCase()
                 if (productblockmod.querySelector('.inc_product_desc_att_third_list_block .inc_product_desc_att_size_list_item_img_block.inc_active') != null) {
                     productblockmod.querySelector('.inc_product_desc_att_third_list_block .inc_product_desc_att_size_list_item_img_block.inc_active').classList.remove('inc_active')
                 }
@@ -4494,13 +4494,13 @@
                 productblockmod.querySelector('.inc_product_desc_att_third_list_block .inc_product_desc_att_size_list_item_img_block[datacolor="' + thirdlowertext + '"]').classList.add('inc_active')
                 productblockshow.querySelector('.inc_product_desc_att_third_list_block .inc_product_desc_att_size_list_item_img_block[datacolor="' + thirdlowertext + '"]').classList.add('inc_active')
             }
-            var checkzeroselflag=false
+            let checkzeroselflag=false
             if (productblockmod.querySelector('.inc_product_desc_att_zero_list_block .inc_product_desc_att_size_list_item_img_block.inc_active') == null) {
                 checkzeroselflag = true
             }
-            var sfl=true;
+            let sfl=true;
             if (type_of_variant == "zero" || checkzeroselflag == sfl && type_of_variant != "color") {
-                var zerolowertext = ""
+                let zerolowertext = ""
                 zero_text = ""
                 if(checkzeroselflag == sfl){
                     if(obj != null){
@@ -4541,14 +4541,14 @@
         }
     }
     INC.methods.checkVariantSelection = function (prod_module_block) {
-        var attr_flag_color = false;
-        var attr_flag_size = false;
-        var attr__flag_zero = false;
-        var attr__flag_third = false;
-        var elSize = prod_module_block.querySelector('.inc_product_desc_att_size_block.inc_active')
-        var elColor = prod_module_block.querySelector('.inc_product_desc_att_color_block.inc_active')
-        var elattr0 = prod_module_block.querySelector('.inc_product_desc_att_zero_block.inc_active')
-        var elthird3 = prod_module_block.querySelector('.inc_product_desc_att_third_block.inc_active')
+        let attr_flag_color = false;
+        let attr_flag_size = false;
+        let attr__flag_zero = false;
+        let attr__flag_third = false;
+        let elSize = prod_module_block.querySelector('.inc_product_desc_att_size_block.inc_active')
+        let elColor = prod_module_block.querySelector('.inc_product_desc_att_color_block.inc_active')
+        let elattr0 = prod_module_block.querySelector('.inc_product_desc_att_zero_block.inc_active')
+        let elthird3 = prod_module_block.querySelector('.inc_product_desc_att_third_block.inc_active')
         if (elColor != null && elattr0 != null && elthird3 != null && elSize != null) {
             if ((elColor.querySelector('.inc_product_desc_att_color_list_item_block.inc_active') != null && elattr0.querySelector('.inc_product_desc_att_size_list_item_img_block.inc_active') != null && elthird3.querySelector('.inc_product_desc_att_size_list_item_img_block.inc_active') != null && elSize.querySelector('.inc_product_desc_att_size_list_item_img_block.inc_active') != null)) {
                 attr_flag_color = true
@@ -4600,8 +4600,8 @@
                 attr__flag_third = true
             }
         } 
-        var vc=true
-        var vf=false
+        let vc=true
+        let vf=false
         if (attr_flag_color == vc && attr__flag_zero == vc && attr__flag_third == vc) {
             return 1
         } else {
@@ -4618,13 +4618,13 @@
     }
     function imgcolorgen(colorObj,attColorImg){
         if (colorObj["colorCode"] != "" && colorObj["colorCode"] != undefined) {
-            var spancolorcode = generate_html_tag('span');
+            let spancolorcode = generate_html_tag('span');
             spancolorcode.setAttribute('alt', colorObj["text"])
             spancolorcode.style.backgroundColor = colorObj["colorCode"];
             attColorImg.appendChild(spancolorcode);
         }else if (colorObj["imgSrc"].length > 0) {
             if (colorObj["colorCode"] == "") {
-                var colorImg = generate_html_tag('img');
+                let colorImg = generate_html_tag('img');
                 colorImg.setAttribute('alt', colorObj["text"])
                 colorImg.src = colorObj["imgSrc"]
                 attColorImg.appendChild(colorImg);
@@ -4632,16 +4632,16 @@
         }
     }
     INC.methods.updateProductBlock = function (productBlockel, findObj, blockType) {
-        var dataStore = INC.dataStore;
-        var productBlock = productBlockel;
-        var productModuleBlock = productBlock.parentNode.parentNode;
-        var modal_attr_block = productModuleBlock.querySelector('.inc_product_modal_block')
-        var zero_text = modal_attr_block.querySelector('.inc_product_desc_att_block').getAttribute('data-zero');
-        var size_text = modal_attr_block.querySelector('.inc_product_desc_att_block').getAttribute('data-size');
-        var color_text = modal_attr_block.querySelector('.inc_product_desc_att_block').getAttribute('data-color');
-        var third_text = modal_attr_block.querySelector('.inc_product_desc_att_block').getAttribute('data-third');
+        let dataStore = INC.dataStore;
+        let productBlock = productBlockel;
+        let productModuleBlock = productBlock.parentNode.parentNode;
+        let modal_attr_block = productModuleBlock.querySelector('.inc_product_modal_block')
+        let zero_text = modal_attr_block.querySelector('.inc_product_desc_att_block').getAttribute('data-zero');
+        let size_text = modal_attr_block.querySelector('.inc_product_desc_att_block').getAttribute('data-size');
+        let color_text = modal_attr_block.querySelector('.inc_product_desc_att_block').getAttribute('data-color');
+        let third_text = modal_attr_block.querySelector('.inc_product_desc_att_block').getAttribute('data-third');
        
-        var sel_attr_text = ""
+        let sel_attr_text = ""
         if (zero_text != undefined) {
             findObj.zero_text = zero_text
             findObj.zeroText = zero_text
@@ -4684,17 +4684,17 @@
                 }
             }
             if (color_text != null) {
-                var PrdVarSimTxt = productBlock.querySelector('.inc_product_variant_simple_text')
-                var colorTitle = generate_html_tag('div');
+                let PrdVarSimTxt = productBlock.querySelector('.inc_product_variant_simple_text')
+                let colorTitle = generate_html_tag('div');
 
                 colorTitle.addEventListener('click', function (e) { e.preventDefault(); })
                 PrdVarSimTxt.appendChild(colorTitle);
                 colorTitle.classList.add("colorCircle")
             }
         }
-        var productObj = INC.dataStore.methods().getProductByAtt(findObj);
+        let productObj = INC.dataStore.methods().getProductByAtt(findObj);
         if (Object.keys(productObj).length != 0) {
-            var previousSKU = "";
+            let previousSKU = "";
             previousSKU = productBlock.getAttribute('data-sku');
             productBlock.setAttribute('data-id', productObj.id);
             productBlock.setAttribute('data-sku', productObj.sku);
@@ -4706,7 +4706,7 @@
             productModuleBlock.setAttribute('data-bundle_id', productObj.bundleId);
 
             if (document.querySelector('.inc_pdp_bundle_cart_added_product_block[data-main_id="' + productObj.mainId + '"]') != null && sel_attr_text != "") {
-                var added_sum_prod = document.querySelector('.inc_pdp_bundle_cart_added_product_block[data-main_id="' + productObj.mainId + '"]')
+                let added_sum_prod = document.querySelector('.inc_pdp_bundle_cart_added_product_block[data-main_id="' + productObj.mainId + '"]')
                 added_sum_prod.querySelector('.inc_pdp_bundle_cart_added_product_att_color_text_block').textContent = sel_attr_text
                 added_sum_prod.querySelector('.inc_pdp_bundle_cart_added_product_att_color_text_block').setAttribute('style', '')
                 added_sum_prod.querySelector('.inc_pdp_bundle_cart_added_product_att_block').setAttribute('title', sel_attr_text)
@@ -4715,11 +4715,11 @@
                 productModuleBlock.querySelector('.inc_product_desc_att_size_title_text').textContent = sel_attr_text
                 productModuleBlock.querySelector('.inc_product_desc_att_size_title_text').setAttribute('title', sel_attr_text)
                 if(modal_attr_block.querySelector('.inc_product_desc_att_size_list_item_img_block.inc_active') != null){
-                    var optionimage = modal_attr_block.querySelector('.inc_product_desc_att_size_list_item_img_block.inc_active').getAttribute('data-optionimge');
+                    let optionimage = modal_attr_block.querySelector('.inc_product_desc_att_size_list_item_img_block.inc_active').getAttribute('data-optionimge');
                     if(optionimage != undefined && optionimage != ""){
                         productModuleBlock.querySelector('.inc_product_showcase_block .inc_product_desc_att_zero_title_text').innerHTML = ""
                         productModuleBlock.querySelector('.inc_product_modal_block .inc_product_desc_att_zero_title_text').innerHTML = ""
-                        var optimg = generate_html_tag('img')
+                        let optimg = generate_html_tag('img')
                         optimg.src = optionimage
                         productModuleBlock.querySelector('.inc_product_showcase_block .inc_product_desc_att_zero_title_text').appendChild(optimg)
                         productModuleBlock.querySelector('.inc_product_modal_block .inc_product_desc_att_zero_title_text').appendChild(optimg)
@@ -4727,22 +4727,22 @@
                 }
             }
             if (color_text != undefined) {
-                var ccode = modal_attr_block.querySelector('.inc_product_desc_att_color_list_item_block.inc_active div').getAttribute('data-colorcode');
+                let ccode = modal_attr_block.querySelector('.inc_product_desc_att_color_list_item_block.inc_active div').getAttribute('data-colorcode');
                 productModuleBlock.querySelector('.inc_product_showcase_block .inc_product_desc_att_color_title_text').style.backgroundColor = ccode
                 productModuleBlock.querySelector('.inc_product_modal_block .inc_product_desc_att_color_title_text').style.backgroundColor = ccode
             }
 
-            var elImgBlock = productBlock.querySelector('.inc_product_img_block');
-            var elImgGalleryListBlock = productBlock.querySelector('.inc_product_img_gallery_list_block');
-            var elTitleText =  productBlock.querySelector('.inc_product_desc_title_text');
-            var elheaderTitleText =  productBlock.querySelector('.inc_product_header_main_title_block');
-            var elPriceActiveText = productBlock.querySelector('.inc_product_desc_ecirp_active_text');
-            var elPriceRegularText = productBlock.querySelector('.inc_product_desc_ecirp_regular_text');
-            var elAddText = productBlock.querySelector('.inc_product_desc_add_text');
-            var elworthPrice = productBlock.querySelector('.inc_product_desc_ecirp_worth_text');
-            var elGalleryRightArrow = productBlock.querySelector('.inc_product_img_gallery_right_block');
-            var elGallerylefttArrow = productBlock.querySelector('.inc_product_img_gallery_left_block');
-            var eladdbtnqtyblock = productBlock.querySelector('.inc_product_desc_qty_add_btn_block');
+            let elImgBlock = productBlock.querySelector('.inc_product_img_block');
+            let elImgGalleryListBlock = productBlock.querySelector('.inc_product_img_gallery_list_block');
+            let elTitleText =  productBlock.querySelector('.inc_product_desc_title_text');
+            let elheaderTitleText =  productBlock.querySelector('.inc_product_header_main_title_block');
+            let elPriceActiveText = productBlock.querySelector('.inc_product_desc_ecirp_active_text');
+            let elPriceRegularText = productBlock.querySelector('.inc_product_desc_ecirp_regular_text');
+            let elAddText = productBlock.querySelector('.inc_product_desc_add_text');
+            let elworthPrice = productBlock.querySelector('.inc_product_desc_ecirp_worth_text');
+            let elGalleryRightArrow = productBlock.querySelector('.inc_product_img_gallery_right_block');
+            let elGallerylefttArrow = productBlock.querySelector('.inc_product_img_gallery_left_block');
+            let eladdbtnqtyblock = productBlock.querySelector('.inc_product_desc_qty_add_btn_block');
             if (productBlock.parentNode.className.indexOf('inc_product_showcase_block') >= 0) {
                 if (blockType != "pdp") {
                     eladdbtnqtyblock.classList.add('inc_active')
@@ -4776,7 +4776,7 @@
                     productBlock.querySelector('.inc_prod_skinType_text').innerText = ""
                 }
             }
-            var elImgMainImg = elImgBlock.querySelector('.inc_product_img_main_img');
+            let elImgMainImg = elImgBlock.querySelector('.inc_product_img_main_img');
 
             elImgMainImg.querySelectorAll('img')[0].setAttribute('src', productObj["imageURL"]);
             if (productBlock.parentNode.className.indexOf('inc_product_showcase_block') == -1) {
@@ -4793,9 +4793,9 @@
             elImgMainImg.querySelectorAll('img')[0].setAttribute('data-mouseover', productObj["otherImageList"])
             elImgMainImg.querySelectorAll('img')[0].setAttribute('data-imageURL', productObj["imageURL"])
 
-            var prod_ids = productModuleBlock.getAttribute('data-main_id')
+            let prod_ids = productModuleBlock.getAttribute('data-main_id')
             if (document.querySelector('.inc_pdp_bundle_product_list_items_block .inc_pdp_bundle_product_list_item_block[data-main_id="' + prod_ids + '"]') != null) {
-                var tab_img = document.querySelector('.inc_pdp_bundle_product_list_items_block .inc_pdp_bundle_product_list_item_block[data-main_id="' + prod_ids + '"]');
+                let tab_img = document.querySelector('.inc_pdp_bundle_product_list_items_block .inc_pdp_bundle_product_list_item_block[data-main_id="' + prod_ids + '"]');
                 if (tab_img.querySelector('img') != null) {
                     tab_img.querySelector('img').src = productObj["imageURL"]
                 }
@@ -4817,7 +4817,7 @@
                     elGallerylefttArrow.style.display = "none"
                 }
             }
-            var prdname= productObj.name.charAt(0).toUpperCase() +  productObj.name.slice(1)
+            let prdname= productObj.name.charAt(0).toUpperCase() +  productObj.name.slice(1)
             if (elTitleText.querySelector('strong') != null && window.innerWidth < 821 && INC.config.pageType == "pdp") {
                 if(elTitleText.querySelector('div') != null){
                     elTitleText.querySelector('div').innerHTML = "<strong>This item </strong>" +prdname
@@ -4833,10 +4833,10 @@
                 elheaderTitleText.querySelector('a').textContent =prdname
             }
             elTitleText.querySelector('a').setAttribute('title',prdname)
-            var activePrice = parseFloat(productObj.activePrice).toFixed(2).toString();
-            var regularPrice = parseFloat(productObj.regularPrice).toFixed(2).toString();
-            var totalsaveprc = get_discount_price(productObj.regularPrice, productObj.activePrice)
-            var totalsaveper = get_discount_price_percentage(productObj.regularPrice, productObj.activePrice)
+            let activePrice = parseFloat(productObj.activePrice).toFixed(2).toString();
+            let regularPrice = parseFloat(productObj.regularPrice).toFixed(2).toString();
+            let totalsaveprc = get_discount_price(productObj.regularPrice, productObj.activePrice)
+            let totalsaveper = get_discount_price_percentage(productObj.regularPrice, productObj.activePrice)
 
             elPriceActiveText.parentNode.parentNode.parentNode.classList.remove('is_special_ecirp')
             // elPriceActiveMsg.textContent = " + VAT"
@@ -4863,21 +4863,21 @@
                     delete dataStore["bundleCartProducts"][previousSKU];
                 }
             }
-            var elQtyInput = productBlock.parentNode.parentNode.querySelector('.inc_product_modal_block .inc_product_desc_qty_add_btn_block .inc_product_qty_block input');
-            var sku = productBlock.getAttribute('data-sku');
-            var bundle_id = productBlock.getAttribute('data-bundle_id');
-            var main_id = productBlock.getAttribute('data-main_id');
-            var qty = parseInt(elQtyInput.value);
-            var pname = productBlock.querySelector('.inc_product_desc_title_text').textContent;
-            var pprice = productBlock.querySelector('.inc_product_desc_ecirp_active_text').textContent.replace('£', '');
+            let elQtyInput = productBlock.parentNode.parentNode.querySelector('.inc_product_modal_block .inc_product_desc_qty_add_btn_block .inc_product_qty_block input');
+            let sku = productBlock.getAttribute('data-sku');
+            let bundle_id = productBlock.getAttribute('data-bundle_id');
+            let main_id = productBlock.getAttribute('data-main_id');
+            let qty = parseInt(elQtyInput.value);
+            let pname = productBlock.querySelector('.inc_product_desc_title_text').textContent;
+            let pprice = productBlock.querySelector('.inc_product_desc_ecirp_active_text').textContent.replace('£', '');
 
             if (elAddText.parentNode.parentNode.querySelector('.inc_product_desc_add_img.checked') != null) {
                 INC.methods.updateBundleCart({ sku: sku, qty: qty }, "add", main_id, bundle_id, pname, pprice);
             }
             if(window.innerWidth < 821){
-                var pdpbundleblock = null
+                let pdpbundleblock = null
                 if(productModuleBlock.parentNode != null){
-                    var trfl=true;
+                    let trfl=true;
                     if(productModuleBlock.parentNode.parentNode.parentNode.classList.contains('inc_pdp_bundle_block') == trfl){
                         pdpbundleblock = productModuleBlock.parentNode.parentNode.parentNode
                     }else{
@@ -4898,16 +4898,16 @@
     }
 
     INC.methods.createProductListItemBlock = function (productObjs) {
-        var productListItemBlock = generate_html_tag('div','inc_pdp_bundle_product_list_item_block');
-        var findObj = new INC.classes.FindObj({ id: productObjs.id, mainId: productObjs.mainId });
-        var productObj = INC.dataStore.methods().getProductById(findObj);
+        let productListItemBlock = generate_html_tag('div','inc_pdp_bundle_product_list_item_block');
+        let findObj = new INC.classes.FindObj({ id: productObjs.id, mainId: productObjs.mainId });
+        let productObj = INC.dataStore.methods().getProductById(findObj);
         productListItemBlock.style.userSelect = "none";
         productListItemBlock.setAttribute('data-id', productObj.id);
         productListItemBlock.setAttribute('data-sku', productObj.sku);
         productListItemBlock.setAttribute('data-main_id', productObj.mainId);
         productListItemBlock.setAttribute('data-bundle_id', productObj.bundleId);
 
-        var seemoreprodhtml='<div class="inc_pdp_bundle_product_list_item_added_block"><div class="inc_pdp_bundle_product_list_item_added_btn_block"><div class="inc_pdp_bundle_product_list_item_added_btn_img_block"><div class="inc_pdp_bundle_product_list_item_added_btn_img"></div></div><div class="inc_pdp_bundle_product_list_item_added_btn_text_block"><div class="inc_pdp_bundle_product_list_item_added_btn_text"></div></div></div></div><div class="inc_pdp_bundle_product_list_item_img_block"><div class="inc_pdp_bundle_product_list_item_img"><img class="inc_lazy" data-src="'+productObj.imageURL+'" src="'+productObj.imageURL+'"></div></div><div class="inc_pdp_bundle_product_list_item_title_block"><div class="inc_pdp_bundle_product_list_item_title_text_block"><div class="inc_pdp_bundle_product_list_item_title_text"></div></div></div><div class="inc_pdp_bundle_product_list_item_ecirp_block"><div class="inc_pdp_bundle_product_list_item_ecirp_active_block"><div class="inc_pdp_bundle_product_list_item_ecirp_active_text_block"><div class="inc_pdp_bundle_product_list_item_ecirp_active_text"></div></div></div></div>'
+        let seemoreprodhtml='<div class="inc_pdp_bundle_product_list_item_added_block"><div class="inc_pdp_bundle_product_list_item_added_btn_block"><div class="inc_pdp_bundle_product_list_item_added_btn_img_block"><div class="inc_pdp_bundle_product_list_item_added_btn_img"></div></div><div class="inc_pdp_bundle_product_list_item_added_btn_text_block"><div class="inc_pdp_bundle_product_list_item_added_btn_text"></div></div></div></div><div class="inc_pdp_bundle_product_list_item_img_block"><div class="inc_pdp_bundle_product_list_item_img"><img class="inc_lazy" data-src="'+productObj.imageURL+'" src="'+productObj.imageURL+'"></div></div><div class="inc_pdp_bundle_product_list_item_title_block"><div class="inc_pdp_bundle_product_list_item_title_text_block"><div class="inc_pdp_bundle_product_list_item_title_text"></div></div></div><div class="inc_pdp_bundle_product_list_item_ecirp_block"><div class="inc_pdp_bundle_product_list_item_ecirp_active_block"><div class="inc_pdp_bundle_product_list_item_ecirp_active_text_block"><div class="inc_pdp_bundle_product_list_item_ecirp_active_text"></div></div></div></div>'
 
         productListItemBlock.innerHTML=seemoreprodhtml
         productListItemBlock.querySelector('.inc_pdp_bundle_product_list_item_img img').setAttribute('onerror',"this.src='"+INC.config.noimage+"'" );
@@ -4916,7 +4916,7 @@
                 attSizeListBlock.classList.remove("inc_active");
             });
 
-            var elListMainBlock = document.querySelector('.inc_pdp_bundle_product_list_main_block');
+            let elListMainBlock = document.querySelector('.inc_pdp_bundle_product_list_main_block');
             Array.prototype.forEach.call(elListMainBlock.querySelectorAll('.inc_product_module_block'), function (productBlock) {
                 productBlock.setAttribute('style', 'display: none!important');
             });
@@ -4932,8 +4932,8 @@
         return productListItemBlock;
     }
     INC.methods.updateBundleCart = function (bundleCartObj, type, main_id, bundle_id, pname, pprice) {
-        var dataStore = INC.dataStore;
-        var listToDelete = []
+        let dataStore = INC.dataStore;
+        let listToDelete = []
         if (!Object.prototype.hasOwnProperty.call(dataStore, "bundleCartProducts")) {
             dataStore['bundleCartProducts'] = {};
             INC.config.pdpaddedProductList = []
@@ -4960,7 +4960,7 @@
                 break;
             case "sub": delete dataStore["bundleCartProducts"][bundleCartObj["sku"]];
                 INC.config.pdpaddedProductList.remove_prod_list = function () {
-                    var what, a = arguments, L = a.length, ax;
+                    let what, a = arguments, L = a.length, ax;
                     while (L && this.length) {
                         what = a[--L];
                         while ((ax = this.indexOf(what)) !== -1) {
@@ -4970,8 +4970,8 @@
                     return this;
                 };
                 listToDelete[0] = main_id
-                for (var i = 0; i < INC.config.bundle_tracking.length; i++) {
-                    var obj = INC.config.bundle_tracking[i];
+                for(let i = 0; i < INC.config.bundle_tracking.length; i++) {
+                    let obj = INC.config.bundle_tracking[i];
                     if (obj != undefined) {
                         if (listToDelete.indexOf(obj.id) !== -1) {
                             INC.config.bundle_tracking.splice(i, 1);
@@ -4979,7 +4979,7 @@
                     }
                 }
                 INC.config.bundle_skuPushed.remove_prod_list = function () {
-                    var what1, a1 = arguments, L1 = a1.length, ax1;
+                    let what1, a1 = arguments, L1 = a1.length, ax1;
                     while (L1 && this.length) {
                         what1 = a1[--L1];
                         while ((ax1 = this.indexOf(what1)) !== -1) {
@@ -4997,28 +4997,28 @@
     }
 
     INC.methods.calculateBundleTotal = function () {
-        var dataStore = INC.dataStore;
-        var bundleCartProducts = dataStore["bundleCartProducts"];
-        var productListObj = dataStore.dataStoreObj;
-        var duplicate_check_produ = []
-        var totalRegularPrice = 0;
-        var totalActivePrice = 0;
-        var totalMainProduct = 0;
-        var totalAddonProducts = 0;
-        var totalAddonProductsCount = 0;
-        var totalProductCount = 0;
-        var total_qty = 0
-        var total_collect_point = 0
-        var mainId = INC.methods.getProductIdFromWebPage();
+        let dataStore = INC.dataStore;
+        let bundleCartProducts = dataStore["bundleCartProducts"];
+        let productListObj = dataStore.dataStoreObj;
+        let duplicate_check_produ = []
+        let totalRegularPrice = 0;
+        let totalActivePrice = 0;
+        let totalMainProduct = 0;
+        let totalAddonProducts = 0;
+        let totalAddonProductsCount = 0;
+        let totalProductCount = 0;
+        let total_qty = 0
+        let total_collect_point = 0
+        let mainId = INC.methods.getProductIdFromWebPage();
         if (bundleCartProducts != null && bundleCartProducts != undefined) {
             Object.keys(bundleCartProducts).forEach(function (sku) {
-                for (var mainProductId in productListObj) {
-                    for (var childProductId in productListObj[mainProductId]) {
+                for(let mainProductId in productListObj) {
+                    for(let childProductId in productListObj[mainProductId]) {
                         if (sku == productListObj[mainProductId][childProductId]["sku"]) {
                             if (duplicate_check_produ.indexOf(productListObj[mainProductId][childProductId]["sku"]) == -1) {
                                 duplicate_check_produ.push(productListObj[mainProductId][childProductId]["sku"])
-                                var regularPrice = productListObj[mainProductId][childProductId]["regularPrice"];
-                                var activePrice = productListObj[mainProductId][childProductId]["activePrice"];
+                                let regularPrice = productListObj[mainProductId][childProductId]["regularPrice"];
+                                let activePrice = productListObj[mainProductId][childProductId]["activePrice"];
                                 totalRegularPrice = totalRegularPrice + (parseFloat(bundleCartProducts[sku]) * regularPrice);
                                 totalActivePrice = totalActivePrice + (parseFloat(bundleCartProducts[sku])) * activePrice;
 
@@ -5042,7 +5042,7 @@
                 }
             });
         }
-        var priceObj = {
+        let priceObj = {
             totalActivePrice: parseFloat(totalActivePrice).toFixed(2),
             totalRegularPrice: parseFloat(totalRegularPrice).toFixed(2),
             totalMainProduct: totalMainProduct,
@@ -5058,41 +5058,41 @@
     }
 
     INC.methods.updateBundleCartBlock = function (priceObj) {
-        var dataStore = INC.dataStore;
-        var bundleCartProducts = dataStore["bundleCartProducts"];
-        var totalRegularPrice = priceObj.totalRegularPrice;
-        var totalActivePrice = priceObj.totalActivePrice;
-        var totalMainProduct = priceObj.totalMainProduct;
-        var totalAddonProducts = priceObj.totalAddonProducts;
-        var totalAddonProductsCount = priceObj.totalAddonProductsCount;
-        var totalProductCount = priceObj.totalProductCount;
-        var elPdpBundleCartBlock = document.querySelector('.inc_pdp_bundle_cart_block');
+        let dataStore = INC.dataStore;
+        let bundleCartProducts = dataStore["bundleCartProducts"];
+        let totalRegularPrice = priceObj.totalRegularPrice;
+        let totalActivePrice = priceObj.totalActivePrice;
+        let totalMainProduct = priceObj.totalMainProduct;
+        let totalAddonProducts = priceObj.totalAddonProducts;
+        let totalAddonProductsCount = priceObj.totalAddonProductsCount;
+        let totalProductCount = priceObj.totalProductCount;
+        let elPdpBundleCartBlock = document.querySelector('.inc_pdp_bundle_cart_block');
         if (elPdpBundleCartBlock != null) {
-            var elBundleCartAddedBlock = document.querySelector('.inc_pdp_bundle_cart_added_block')
-            var elBundleCartSummaryViewBtnCount = document.querySelector('.inc_pdp_bundle_cart_summary_view_btn_count')
-            var elBundleCartPriceRegularText =document.querySelector('.inc_pdp_bundle_cart_summary_ecirp_regular_text')
-            var elBundleCartPriceActiveText = document.querySelector('.inc_pdp_bundle_cart_summary_ecirp_active_text')
-            var elBundleCartTitleTextcount = document.querySelector('.inc_pdp_bundle_cart_title_text')
-            var elbundlesavetext = document.querySelector('.inc_pdp_bundle_cart_summary_ecirp_save_text')
-            var elCartsummaryMainPrdtxtBlock = document.querySelector('.inc_pdp_bundle_cart_summary_main_prd_txt')
-            var elCartsummaryMainPrdPrcBlock = document.querySelector('.inc_pdp_bundle_cart_summary_main_prd_prc')
-            var elCartsummaryAddonPrdtxtBlock = document.querySelector('.inc_pdp_bundle_cart_summary_addon_prd_txt')
-            var elCartsummaryAddonPrdPrcBlock = document.querySelector('.inc_pdp_bundle_cart_summary_addon_prd_prc')
-            var elBundleCartAddBtnText = document.querySelector('.inc_pdp_bundle_cart_summary_add_btn_text')
+            let elBundleCartAddedBlock = document.querySelector('.inc_pdp_bundle_cart_added_block')
+            let elBundleCartSummaryViewBtnCount = document.querySelector('.inc_pdp_bundle_cart_summary_view_btn_count')
+            let elBundleCartPriceRegularText =document.querySelector('.inc_pdp_bundle_cart_summary_ecirp_regular_text')
+            let elBundleCartPriceActiveText = document.querySelector('.inc_pdp_bundle_cart_summary_ecirp_active_text')
+            let elBundleCartTitleTextcount = document.querySelector('.inc_pdp_bundle_cart_title_text')
+            let elbundlesavetext = document.querySelector('.inc_pdp_bundle_cart_summary_ecirp_save_text')
+            let elCartsummaryMainPrdtxtBlock = document.querySelector('.inc_pdp_bundle_cart_summary_main_prd_txt')
+            let elCartsummaryMainPrdPrcBlock = document.querySelector('.inc_pdp_bundle_cart_summary_main_prd_prc')
+            let elCartsummaryAddonPrdtxtBlock = document.querySelector('.inc_pdp_bundle_cart_summary_addon_prd_txt')
+            let elCartsummaryAddonPrdPrcBlock = document.querySelector('.inc_pdp_bundle_cart_summary_addon_prd_prc')
+            let elBundleCartAddBtnText = document.querySelector('.inc_pdp_bundle_cart_summary_add_btn_text')
             elBundleCartAddedBlock.innerHTML = "";
-            var bundleCartProductsArray = Object.keys(bundleCartProducts);
+            let bundleCartProductsArray = Object.keys(bundleCartProducts);
             elBundleCartSummaryViewBtnCount.textContent = bundleCartProductsArray.length;
             if (window.innerWidth < 821) {
                 elBundleCartTitleTextcount.textContent = "Items you've added"
             }
-            for (var skup of INC.config.bundle_skuPushed) {
-                var elcont = skup
-                for (var bundaray of bundleCartProductsArray) {
-                    var findObj = new INC.classes.FindObj({ sku: bundaray });
-                    var productObj = INC.dataStore.methods().getProductBySKU(findObj);
+            for(let skup of INC.config.bundle_skuPushed) {
+                let elcont = skup
+                for(let bundaray of bundleCartProductsArray) {
+                    let findObj = new INC.classes.FindObj({ sku: bundaray });
+                    let productObj = INC.dataStore.methods().getProductBySKU(findObj);
                     if (elcont == productObj.id) {
-                        var productId = productObj.id;
-                        var prepen_elm = this.createBundleCartAddedProductBlock(productId, bundleCartProducts[bundaray], "pdp")
+                        let productId = productObj.id;
+                        let prepen_elm = this.createBundleCartAddedProductBlock(productId, bundleCartProducts[bundaray], "pdp")
                         if (elBundleCartAddedBlock != null || elBundleCartAddedBlock != undefined) {
                             elBundleCartAddedBlock.insertBefore(prepen_elm, elBundleCartAddedBlock.childNodes[0]);
                         }
@@ -5116,8 +5116,8 @@
             elBundleCartPriceRegularText.parentNode.parentNode.parentNode.classList.remove('is_special_ecirp')
             elBundleCartPriceRegularText.parentNode.parentNode.parentNode.parentNode.classList.remove('simple_ecirp')
             elBundleCartPriceRegularText.parentNode.parentNode.parentNode.parentNode.classList.remove('is_special_ecirp')
-            var totalsaveprcs = get_discount_price(totalRegularPrice, totalActivePrice)
-            var totalsavepers = get_discount_price_percentage(totalRegularPrice, totalActivePrice)
+            let totalsaveprcs = get_discount_price(totalRegularPrice, totalActivePrice)
+            let totalsavepers = get_discount_price_percentage(totalRegularPrice, totalActivePrice)
             if (totalRegularPrice != "0.00" && totalRegularPrice != totalActivePrice && totalRegularPrice != null && totalRegularPrice != "") {
                 elBundleCartPriceRegularText.innerHTML =  formatter.format(totalRegularPrice)
                 elBundleCartPriceRegularText.parentNode.parentNode.parentNode.parentNode.classList.add('is_special_ecirp')
@@ -5166,8 +5166,8 @@
             }
 
             if (elPdpBundleCartBlock != null && elPdpBundleCartBlock != undefined) {
-                var elBundleCartTitleText = document.querySelector('.inc_pdp_bundle_cart_title_text')
-                var elBundleCartAddBtnTexts = document.querySelector('.inc_pdp_bundle_cart_summary_add_btn_text')
+                let elBundleCartTitleText = document.querySelector('.inc_pdp_bundle_cart_title_text')
+                let elBundleCartAddBtnTexts = document.querySelector('.inc_pdp_bundle_cart_summary_add_btn_text')
                 elBundleCartAddBtnTexts.style.textTransform = "none"
                 elBundleCartTitleText.textContent = "Price Summary";
                 elBundleCartAddBtnTexts.textContent = "Add To Bag";
@@ -5176,11 +5176,11 @@
                 }
             }
 
-            var elPriceMainTitleText = elPdpBundleCartBlock.querySelector('.inc_pdp_bundle-cart_ecirp_main_title_text');
-            var elPriceMainFigureText = elPdpBundleCartBlock.querySelector('.inc_pdp_bundle-cart_ecirp_main_figure_text');
-            var elPriceAddonTitleText = elPdpBundleCartBlock.querySelector('.inc_pdp_bundle-cart_ecirp_addon_title_text');
-            var elPriceAddonFigureText = elPdpBundleCartBlock.querySelector('.inc_pdp_bundle-cart_ecirp_addon_figure_text');
-            var elPriceActiveText = elPdpBundleCartBlock.querySelector('.inc_pdp_bundle_cart_summary_ecirp_active_text');
+            let elPriceMainTitleText = elPdpBundleCartBlock.querySelector('.inc_pdp_bundle-cart_ecirp_main_title_text');
+            let elPriceMainFigureText = elPdpBundleCartBlock.querySelector('.inc_pdp_bundle-cart_ecirp_main_figure_text');
+            let elPriceAddonTitleText = elPdpBundleCartBlock.querySelector('.inc_pdp_bundle-cart_ecirp_addon_title_text');
+            let elPriceAddonFigureText = elPdpBundleCartBlock.querySelector('.inc_pdp_bundle-cart_ecirp_addon_figure_text');
+            let elPriceActiveText = elPdpBundleCartBlock.querySelector('.inc_pdp_bundle_cart_summary_ecirp_active_text');
 
             elPriceMainTitleText.textContent = "Main Product Price ";
             elPriceAddonTitleText.textContent = "Add-on(s) Selected  " + ((totalAddonProductsCount > 0) ? totalAddonProductsCount : "");
@@ -5204,22 +5204,22 @@
     }
 
     INC.methods.createBundleCartAddedProductBlock = function (productId, qty) {
-        var addedProductBlock = generate_html_tag('div','inc_pdp_bundle_cart_added_product_block')
-        var findObj = new INC.classes.FindObj({ id: productId });
-        var productObj = INC.dataStore.methods().getProductById(findObj);
+        let addedProductBlock = generate_html_tag('div','inc_pdp_bundle_cart_added_product_block')
+        let findObj = new INC.classes.FindObj({ id: productId });
+        let productObj = INC.dataStore.methods().getProductById(findObj);
         addedProductBlock.setAttribute('data-id', productObj.id);
         addedProductBlock.setAttribute('data-sku', productObj.sku);
         addedProductBlock.setAttribute('data-main_id', productObj.mainId);
         addedProductBlock.setAttribute('data-bundle_id', productObj.bundleId);
 
-        var prod_module_elm = document.querySelector('.inc_pdp_block .inc_product_module_block[data-main_id="' + productObj.mainId + '"]')
-        var modal_attr_block = prod_module_elm.querySelector('.inc_product_modal_block')
-        var zero_text = modal_attr_block.querySelector('.inc_product_desc_att_block').getAttribute('data-zero');
-        var size_text = modal_attr_block.querySelector('.inc_product_desc_att_block').getAttribute('data-size');
-        var color_text = modal_attr_block.querySelector('.inc_product_desc_att_block').getAttribute('data-color');
-        var third_text = modal_attr_block.querySelector('.inc_product_desc_att_block').getAttribute('data-third');
+        let prod_module_elm = document.querySelector('.inc_pdp_block .inc_product_module_block[data-main_id="' + productObj.mainId + '"]')
+        let modal_attr_block = prod_module_elm.querySelector('.inc_product_modal_block')
+        let zero_text = modal_attr_block.querySelector('.inc_product_desc_att_block').getAttribute('data-zero');
+        let size_text = modal_attr_block.querySelector('.inc_product_desc_att_block').getAttribute('data-size');
+        let color_text = modal_attr_block.querySelector('.inc_product_desc_att_block').getAttribute('data-color');
+        let third_text = modal_attr_block.querySelector('.inc_product_desc_att_block').getAttribute('data-third');
 
-        var sel_attr_text = ""
+        let sel_attr_text = ""
         if (color_text != undefined) {
             sel_attr_text = color_text
         }
@@ -5236,14 +5236,14 @@
         if (third_text != undefined) {
             sel_attr_text = sel_attr_text + " / " + third_text
         }
-        var addedsumprodhtml = '<div class="inc_pdp_bundle_cart_added_product_img_block"><div class="inc_pdp_bundle_cart_added_product_img"><img src="'+productObj.imageURL+'" data-src="'+productObj.imageURL+'"></div></div><div class="inc_pdp_bundle_cart_added_product_title_block"><div class="inc_pdp_bundle_cart_added_product_title_text_block"><div class="inc_pdp_bundle_cart_added_product_title_text"><a title="'+productObj.name+'"><div style="text-transform: unset;"><span>'+qty+' <small>x</small> </span>'+productObj.name+'</div></a></div></div></div><div class="inc_pdp_bundle_cart_added_product_qty_block"><div class="inc_pdp_bundle_cart_added_product_qty_text_block"><div class="inc_pdp_bundle_cart_addeed_product_qty_text">'+qty+'</div></div></div><div class="inc_pdp_bundle_cart_added_product_ecirp_block"><div class="inc_pdp_bundle_cart_added_product_ecirp_text_block"><div class="inc_pdp_bundle_cart_added_product_ecirp_text">'+formatter.format(productObj.activePrice * qty)+'</div></div></div><div class="inc_pdp_bundle_cart_added_product_att_block" title="'+sel_attr_text+'"><div class="inc_pdp_bundle_cart_added_product_att_color_block"><div class="inc_pdp_bundle_cart_added_product_att_color_text_block" style="text-transform: none;">'+sel_attr_text+'</div></div><div class="inc_pdp_bundle_cart_added_product_att_size_block"><div class="inc_pdp_bundle_cart_added_product_att_size_text_block"><div class="inc_pdp_bundle_cart_added_product_att_size_text"></div></div></div></div><div class="inc_pdp_bundle_cart_added_product_edit_block"><div class="inc_pdp_bundle_cart_added_product_edit_text_block"><div class="inc_pdp_bundle_cart_added_product_edit_text"></div></div><div class="inc_pdp_bundle_cart_added_product_edit_img_block"><div class="inc_pdp_bundle_cart_added_product_edit_img"></div></div></div>'
+        let addedsumprodhtml = '<div class="inc_pdp_bundle_cart_added_product_img_block"><div class="inc_pdp_bundle_cart_added_product_img"><img src="'+productObj.imageURL+'" data-src="'+productObj.imageURL+'"></div></div><div class="inc_pdp_bundle_cart_added_product_title_block"><div class="inc_pdp_bundle_cart_added_product_title_text_block"><div class="inc_pdp_bundle_cart_added_product_title_text"><a title="'+productObj.name+'"><div style="text-transform: unset;"><span>'+qty+' <small>x</small> </span>'+productObj.name+'</div></a></div></div></div><div class="inc_pdp_bundle_cart_added_product_qty_block"><div class="inc_pdp_bundle_cart_added_product_qty_text_block"><div class="inc_pdp_bundle_cart_addeed_product_qty_text">'+qty+'</div></div></div><div class="inc_pdp_bundle_cart_added_product_ecirp_block"><div class="inc_pdp_bundle_cart_added_product_ecirp_text_block"><div class="inc_pdp_bundle_cart_added_product_ecirp_text">'+formatter.format(productObj.activePrice * qty)+'</div></div></div><div class="inc_pdp_bundle_cart_added_product_att_block" title="'+sel_attr_text+'"><div class="inc_pdp_bundle_cart_added_product_att_color_block"><div class="inc_pdp_bundle_cart_added_product_att_color_text_block" style="text-transform: none;">'+sel_attr_text+'</div></div><div class="inc_pdp_bundle_cart_added_product_att_size_block"><div class="inc_pdp_bundle_cart_added_product_att_size_text_block"><div class="inc_pdp_bundle_cart_added_product_att_size_text"></div></div></div></div><div class="inc_pdp_bundle_cart_added_product_edit_block"><div class="inc_pdp_bundle_cart_added_product_edit_text_block"><div class="inc_pdp_bundle_cart_added_product_edit_text"></div></div><div class="inc_pdp_bundle_cart_added_product_edit_img_block"><div class="inc_pdp_bundle_cart_added_product_edit_img"></div></div></div>'
 
         addedProductBlock.innerHTML = addedsumprodhtml
 
         addedProductBlock.querySelector('.inc_pdp_bundle_cart_added_product_img img').setAttribute('onerror',"this.src='"+INC.config.noimage+"'" )
 
-        var elEditTextBlock = addedProductBlock.querySelector(".inc_pdp_bundle_cart_added_product_edit_text_block") 
-        var elEditImgBlock = addedProductBlock.querySelector(".inc_pdp_bundle_cart_added_product_edit_img_block");
+        let elEditTextBlock = addedProductBlock.querySelector(".inc_pdp_bundle_cart_added_product_edit_text_block") 
+        let elEditImgBlock = addedProductBlock.querySelector(".inc_pdp_bundle_cart_added_product_edit_img_block");
         
         elEditTextBlock.addEventListener("click", function () {
             if (INC.config.deviceType == "mobile") {
@@ -5282,12 +5282,12 @@
             document.querySelector('html').classList.remove('inc_overlay')
         }
         if (qty < 1) qty = 1
-        var findObj = new INC.classes.FindObj(findObjd);
-        var productObj = INC.dataStore.methods().getProductById(findObj);
-        var formData = []
-        var mainids = productBlock.getAttribute('data-main_id')
-        var args = {}
-        var skuc = productObj.childsku
+        let findObj = new INC.classes.FindObj(findObjd);
+        let productObj = INC.dataStore.methods().getProductById(findObj);
+        let formData = []
+        let mainids = productBlock.getAttribute('data-main_id')
+        let args = {}
+        let skuc = productObj.childsku
         args.qty = qty
         args.skuBaseId = productObj.childsku.split('-');
         args.cartId = false
@@ -5296,8 +5296,8 @@
         args.kitCat = ""
         args.kitSkus = skuc.replace('-',',') 
         args.kitType = skuc + "_KIT"
-        var catBaseId = ""
-        var params = {
+        let catBaseId = ""
+        let params = {
             skus: [productObj.childsku],
             itemType: 'cart',
             INCREMENT: 1,
@@ -5306,9 +5306,9 @@
         };
         formData.push(params)
         if(skuc.indexOf('-') >= 0){
-            var args1 = {}
-            var callback = '';
-            var eventName = 'addToCartKitItem.success';
+            let args1 = {}
+            let callback = '';
+            let eventName = 'addToCartKitItem.success';
             args1.COLLECTION_SUBTYPE = args.kitType.replace('-','_');
             args1.COLLECTION_NAME =  args.collectionName
             args1.CAT_BASE_ID = args.kitCat;
@@ -5320,8 +5320,8 @@
             args1.QTY = args.QTY ? args.QTY : 1;
             args1._SUBMIT = 'alter_collection';
             args1.HAS_MULTIPLE_SKUS = 1;
-            var bits1_1 = 16 || 36;
-            var mathranvalue_1 = generateRandomString(bits1_1).toString().slice(2)
+            let bits1_1 = 16 || 36;
+            let mathranvalue_1 = generateRandomString(bits1_1).toString().slice(2)
             args1.COLLECTION_NAME = 'Kit ' + Math.floor((mathranvalue_1 * 10000));
             args1.action = 'add,edit,create_kit';
             if(window.site.cartConfirm != undefined){
@@ -5372,8 +5372,8 @@
                 params: formData[0],
                 onSuccess: function(r) {
                     setTimeout(function () {
-                        var messages = r.getMessages();
-                        var offerCriteriaMessages = '';
+                        let messages = r.getMessages();
+                        let offerCriteriaMessages = '';
                         if (messages) {
                             messages.forEach(function(message) {
                             if (message.key === 'offer_criteria_not_met') {
@@ -5392,7 +5392,7 @@
                             }
                             });
                         } else {
-                            var resultData = r.getData();
+                            let resultData = r.getData();
                             if (INC.config.pageType != "cartPage") {
                                 if(resultData.ac_results != undefined){
                                     window.$(document).trigger('addToCart.success', [resultData]);
@@ -5418,7 +5418,7 @@
                             productBlock.parentNode.removeChild(productBlock);
                         }
                     }
-                    var errorObjectsArray = ss.getMessages();
+                    let errorObjectsArray = ss.getMessages();
                     window.$(document).trigger('addToCart.failure', [errorObjectsArray]);
                     onerror_message(errorObjectsArray[0].text)
                     if(window.innerWidth < 821){
@@ -5480,10 +5480,10 @@
             if (INC.config.pageType != "cartPage") {
                 setTimeout(function () {
                     loadsidebarajax()
-                    var allprd = document.querySelectorAll('.inc_recommended_products_list_block .inc_product_module_block').length
+                    let allprd = document.querySelectorAll('.inc_recommended_products_list_block .inc_product_module_block').length
                     if(document.querySelector('.inc_recommended_products_list_block .inc_product_module_block') == null || allprd == 1){
                         if(document.querySelector('.inc_recommended_tabs_list_item_block.inc_active') != null){
-                            var remcat = document.querySelector('.inc_recommended_tabs_list_item_block.inc_active')
+                            let remcat = document.querySelector('.inc_recommended_tabs_list_item_block.inc_active')
                             if(remcat != null){
                             remcat.parentNode.removeChild(remcat)
                                 if(document.querySelector('.inc_recommended_tabs_list_item_block') == null){
@@ -5513,7 +5513,7 @@
             }
         }
         document.querySelector('body').classList.remove('inc_popup_open');
-        var pageType = "";
+        let pageType = "";
         switch (INC.config.pageType) {
             case "pdp": pageType = "107"; break;
             case "productList": pageType = "101"; break;
@@ -5538,21 +5538,21 @@
                 window.location.reload()
             }
         },3000)
-        var eventDataObj = {};
+        let eventDataObj = {};
         if(document.querySelector('.header-gnav-cart__overlay.visible') != null && INC.config.pageType == "pdp"){
             pageType = "107"
         }
         if (document.querySelector(".inc_sidebar_modal_block.inc_active") != null && INC.config.pageType != "productList") {
             pageType = "107";
         }
-        var falseflag = false
-        var trueflag = true
+        let falseflag = false
+        let trueflag = true
         if (INC.config.recommendation == falseflag && productObj.bundleId == 'undefined' || productObj.bundleId == undefined && INC.config.pageType == 'pdp') {
-            var eventdata__ = {
+            let eventdata__ = {
                 "core_product_id": INC.config.Product_id,
                 "product_id": productObj.mainId ? productObj.mainId.toString() : "",
             }
-            var rpt_val = '4'
+            let rpt_val = '4'
             if (INC.config.pageType == "pdp") {
                 if (INC.config.OutOfStock) {
                     rpt_val = "1";
@@ -5564,7 +5564,7 @@
                     rpt_val = "3";
                 }
             }
-            var data__ = {
+            let data__ = {
                 "eventData": btoa((JSON.stringify({
                     "event_data": eventdata__,
                     "page_type": pageType,
@@ -5600,16 +5600,16 @@
     }
     INC.methods.addBundleToCart = function (btn_cart) {
         INC.clientConfig.OOS = []
-        var dataStore = INC.dataStore;
-        var mainProductId = document.querySelector('.inc_pdp_product-main_block .inc_product_module_block').getAttribute('data-main_id');
-        var formData = []
-        var count_pr_to_add = 0
-        var total_length = Object.keys(dataStore.bundleCartProducts);
+        let dataStore = INC.dataStore;
+        let mainProductId = document.querySelector('.inc_pdp_product-main_block .inc_product_module_block').getAttribute('data-main_id');
+        let formData = []
+        let count_pr_to_add = 0
+        let total_length = Object.keys(dataStore.bundleCartProducts);
         Object.keys(dataStore.bundleCartProducts).forEach(function (bundleCartProduct) {
-            var findObj = new INC.classes.FindObj({ id: bundleCartProduct });
-            var productObj = INC.dataStore.methods().getProductById(findObj);
-            var args = {}
-            var skuc = productObj.childsku
+            let findObj = new INC.classes.FindObj({ id: bundleCartProduct });
+            let productObj = INC.dataStore.methods().getProductById(findObj);
+            let args = {}
+            let skuc = productObj.childsku
             args.qty = dataStore.bundleCartProducts[bundleCartProduct]
             args.skuBaseId = productObj.childsku.split('-');
             args.cartId = false
@@ -5619,8 +5619,8 @@
             args.kitSkus = skuc.replace('-',',') 
             args.kitType = skuc + "_KIT"
             
-            var catBaseId = ""
-            var params = {
+            let catBaseId = ""
+            let params = {
                 skus: [productObj.childsku],
                 itemType: 'cart',
                 INCREMENT: 1,
@@ -5628,7 +5628,7 @@
                 QTY: args.qty || 1,
             };
             if(skuc.indexOf('-') >= 0){
-                var args1 = {}
+                let args1 = {}
                 args1.COLLECTION_SUBTYPE = args.kitType.replace('-','_');
                 args1.COLLECTION_NAME =  args.collectionName
                 args1.CAT_BASE_ID = args.kitCat;
@@ -5640,8 +5640,8 @@
                 args1.QTY = args.QTY ? args.QTY : 1;
                 args1._SUBMIT = 'alter_collection';
                 args1.HAS_MULTIPLE_SKUS = 1;
-                var bits1_ = 16 || 36;
-                var mathranvalue_ = generateRandomString(bits1_).toString().slice(2)
+                let bits1_ = 16 || 36;
+                let mathranvalue_ = generateRandomString(bits1_).toString().slice(2)
                 // Math.floor((Math.random() * 10000));
                 args1.COLLECTION_NAME = 'Kit ' + Math.floor((mathranvalue_ * 10000));
                 args1.action = 'add,edit,create_kit';
@@ -5657,20 +5657,20 @@
         add_to_cart_tracking_multiple(mainProductId)
     }
     function onerror_message(error_mesg){
-        var inc_div_er = document.createElement('div')
+        let inc_div_er = document.createElement('div')
         document.querySelector('body').appendChild(inc_div_er);
-        var mesgty = ""
+        let mesgty = ""
         if(error_mesg != undefined){
             mesgty = error_mesg
         }else{
             mesgty = INC.config.ajaxerr
         }
-        var styleObj = {};
-        var cssClass = "";
+        let styleObj = {};
+        let cssClass = "";
         styleObj.width = "324px";
         styleObj.padding = "25px";
         inc_div_er.textContent = mesgty
-        var content = inc_div_er;
+        let content = inc_div_er;
         window.generic.overlay.launch({
             content: content,
             includeBackground: true,
@@ -5682,8 +5682,8 @@
         INC.clientConfig.OOS = []
         INC.clientConfig.OOS_MESG = []
         callprodA()
-        var callback = '';
-        var eventName = 'addToCartKitItem.success';
+        let callback = '';
+        let eventName = 'addToCartKitItem.success';
         if(window.site.cartConfirm != undefined){
             callback = window.site.cartConfirm.prepareCart;
         }
@@ -5717,8 +5717,8 @@
                 window.generic.checkout.cart.updateCart({
                     params: formData[0],
                     onSuccess: function(r) {
-                        var messaged = r.getMessages();
-                        var offerCriteriaMessages = '';
+                        let messaged = r.getMessages();
+                        let offerCriteriaMessages = '';
                         if (messaged) {
                             messaged.forEach(function(messages) {
                                 if (messages.key === 'offer_criteria_not_met') {
@@ -5737,7 +5737,7 @@
                             }
                             });
                         } else {
-                            var resultData = r.getData();
+                            let resultData = r.getData();
                             if(window.innerWidth > 820){
                                 if (formData[1] == undefined) {
                                     if(resultData.ac_results != undefined){
@@ -5762,7 +5762,7 @@
                         }
                     },
                     onFailure: function(ss) {
-                        var errorObjectsArray = ss.getMessages();
+                        let errorObjectsArray = ss.getMessages();
                         window.$(document).trigger('addToCart.failure', [errorObjectsArray]);
                         onerror_message(errorObjectsArray[0].text)
                         if (formData[1] == undefined) {
@@ -5805,8 +5805,8 @@
                 window.generic.checkout.cart.updateCart({
                     params: formData[1],
                     onSuccess: function(r) {
-                        var messaged1 = r.getMessages();
-                        var offerCriteriaMessages = '';
+                        let messaged1 = r.getMessages();
+                        let offerCriteriaMessages = '';
                         if (messaged1) {
                             messaged1.forEach(function(messagee) {
                             if (messagee.key === 'offer_criteria_not_met') {
@@ -5825,7 +5825,7 @@
                             }
                             });
                         } else {
-                            var resultData = r.getData();
+                            let resultData = r.getData();
                             if(resultData.ac_results != undefined){
                                 if(window.innerWidth > 820){
                                     if (formData[2] == undefined) {
@@ -5848,7 +5848,7 @@
                         }
                     },
                     onFailure: function(ss) {
-                        var errorObjectsArray = ss.getMessages();
+                        let errorObjectsArray = ss.getMessages();
                         window.$(document).trigger('addToCart.failure', [errorObjectsArray]);
                         onerror_message(errorObjectsArray[0].text)
                         if (formData[2] == undefined) {
@@ -5891,8 +5891,8 @@
                 window.generic.checkout.cart.updateCart({
                     params: formData[2],
                     onSuccess: function(r) {
-                        var messages = r.getMessages();
-                        var offerCriteriaMessages = '';
+                        let messages = r.getMessages();
+                        let offerCriteriaMessages = '';
                         if (messages) {
                             messages.forEach(function(message1) {
                             if (message1.key === 'offer_criteria_not_met') {
@@ -5911,7 +5911,7 @@
                             }
                             });
                         } else {
-                            var resultData = r.getData();
+                            let resultData = r.getData();
                             if(resultData.ac_results != undefined){
                                 if (formData[3] == undefined) {
                                     window.$(document).trigger('addToCart.success', [resultData]);
@@ -5928,7 +5928,7 @@
                         }
                     },
                     onFailure: function(ss) {
-                        var errorObjectsArray = ss.getMessages();
+                        let errorObjectsArray = ss.getMessages();
                         window.$(document).trigger('addToCart.failure', [errorObjectsArray]);
                         onerror_message(errorObjectsArray[0].text)
                         if (formData[3] == undefined) {
@@ -5971,8 +5971,8 @@
                 window.generic.checkout.cart.updateCart({
                     params: formData[3],
                     onSuccess: function(r) {
-                        var messages = r.getMessages();
-                        var offerCriteriaMessages = '';
+                        let messages = r.getMessages();
+                        let offerCriteriaMessages = '';
                         if (messages) {
                             messages.forEach(function(message2) {
                                 if (message2.key === 'offer_criteria_not_met') {
@@ -5991,7 +5991,7 @@
                             }
                             });
                         } else {
-                            var resultData = r.getData();
+                            let resultData = r.getData();
                             if(resultData.ac_results != undefined){
                                 if (formData[4] == undefined) {
                                     window.$(document).trigger('addToCart.success', [resultData]);
@@ -6008,7 +6008,7 @@
                         }
                     },
                     onFailure: function(ss) {
-                        var errorObjectsArray = ss.getMessages();
+                        let errorObjectsArray = ss.getMessages();
                         window.$(document).trigger('addToCart.failure', [errorObjectsArray]);
                         onerror_message(errorObjectsArray[0].text)
                         if (formData[4] == undefined) {
@@ -6051,8 +6051,8 @@
                 window.generic.checkout.cart.updateCart({
                     params: formData[4],
                     onSuccess: function(r) {
-                        var messages = r.getMessages();
-                        var offerCriteriaMessages = '';
+                        let messages = r.getMessages();
+                        let offerCriteriaMessages = '';
                         if (messages) {
                             messages.forEach(function(message3) {
                             if (message3.key === 'offer_criteria_not_met') {
@@ -6071,7 +6071,7 @@
                             }
                             });
                         } else {
-                            var resultData = r.getData();
+                            let resultData = r.getData();
                             if(resultData.ac_results != undefined){
                                 if (formData[5] == undefined) {
                                     window.$(document).trigger('addToCart.success', [resultData]);
@@ -6088,7 +6088,7 @@
                         }
                     },
                     onFailure: function(ss) {
-                        var errorObjectsArray = ss.getMessages();
+                        let errorObjectsArray = ss.getMessages();
                         window.$(document).trigger('addToCart.failure', [errorObjectsArray]);
                         onerror_message(errorObjectsArray[0].text)
                         if (formData[5] == undefined) {
@@ -6119,8 +6119,8 @@
                 window.generic.checkout.cart.updateCart({
                     params: formData[5],
                     onSuccess: function(r) {
-                        var messages = r.getMessages();
-                        var offerCriteriaMessages = '';
+                        let messages = r.getMessages();
+                        let offerCriteriaMessages = '';
                         if (messages) {
                             messages.forEach(function(messageq) {
                             if (messageq.key === 'offer_criteria_not_met') {
@@ -6139,7 +6139,7 @@
                             }
                             });
                         } else {
-                            var resultData = r.getData();
+                            let resultData = r.getData();
                             if(resultData.ac_results != undefined){
                                 window.$(document).trigger('addToCart.success', [resultData]);
                             }else{
@@ -6149,7 +6149,7 @@
                         loadsidebarajax(btn_cart)
                     },
                     onFailure: function(ss) {
-                        var errorObjectsArray = ss.getMessages();
+                        let errorObjectsArray = ss.getMessages();
                         window.$(document).trigger('addToCart.failure', [errorObjectsArray]);
                         onerror_message(errorObjectsArray[0].text)
                         loadsidebarajax(btn_cart)
@@ -6157,7 +6157,7 @@
                 });
             }
         }
-        var timer_count = 0;
+        let timer_count = 0;
         let checkpopup = setInterval(function(){
             timer_count++
             if(document.querySelector('.cart-confirm-wrapper .item.js-item') != null){
@@ -6186,7 +6186,7 @@
         }
         
         if(window.innerWidth > 767 || document.querySelector('.device-mobile') == null){
-            var checkcartpopup = setInterval(function(){
+            let checkcartpopup = setInterval(function(){
                 if(document.querySelector('body.active-gnav') != null && document.querySelector('.header-gnav-cart__overlay') != null && document.querySelector('.js-header-gnav-cart__overlay.visible') != null){
                     clearInterval(checkcartpopup)
                     setTimeout(function(){
@@ -6203,13 +6203,13 @@
         }
     }
     function checkAddedProductInJustAdded(){
-        var addCheckCategory = INC.config.pdpaddedProductList;
-        var productListArrayprod = INC.dataStore.bundleProductsArray;
-        var categoryList = INC.dataStore.methods().getUniqueCatergories();
-        for (var catlist of categoryList) {
-            var count = 0;
-            for (var prdlistar of productListArrayprod) {
-                var firstProductObjByMainId = INC.dataStore.methods().getFirstProductObjByMainId({ mainId: prdlistar });
+        let addCheckCategory = INC.config.pdpaddedProductList;
+        let productListArrayprod = INC.dataStore.bundleProductsArray;
+        let categoryList = INC.dataStore.methods().getUniqueCatergories();
+        for(let catlist of categoryList) {
+            let count = 0;
+            for(let prdlistar of productListArrayprod) {
+                let firstProductObjByMainId = INC.dataStore.methods().getFirstProductObjByMainId({ mainId: prdlistar });
                 if (firstProductObjByMainId["categoryName"] == catlist) {
                     if (addCheckCategory.indexOf(prdlistar) == -1) {
                         count++
@@ -6218,7 +6218,7 @@
             }
             if (count == 0) {
                 if (document.querySelector('.inc_recommended_tabs_list_item_block[title="' + catlist + '"]') != null) {
-                    var categrem = document.querySelector('.inc_recommended_tabs_list_item_block[title="' + catlist + '"]')
+                    let categrem = document.querySelector('.inc_recommended_tabs_list_item_block[title="' + catlist + '"]')
                     if (categrem != null) {
                         categrem.parentNode.removeChild(categrem)
                     }
@@ -6231,7 +6231,7 @@
         if (document.querySelector('.inc_recommended_tabs_list_item_block') != null) {
             document.querySelector('.inc_recommended_tabs_list_item_block').click()
             if (document.querySelector('.inc_recommended_products_list_block .inc_product_module_block') == null) {
-                var remcateg = document.querySelector('.inc_recommended_tabs_list_item_block.inc_active')
+                let remcateg = document.querySelector('.inc_recommended_tabs_list_item_block.inc_active')
                 if (remcateg != null) {
                     remcateg.parentNode.removeChild(remcateg)
                 }
@@ -6239,19 +6239,19 @@
         }
     }
     function add_to_cart_tracking_multiple(mainProductId) {
-        var event_type = "bundle_add_to_cart";
-        var core_prod_id = "";
-        var productIdsforTracking = []
+        let event_type = "bundle_add_to_cart";
+        let core_prod_id = "";
+        let productIdsforTracking = []
         core_prod_id = mainProductId;
 
-        var pageType = "100";
-        var all_data = [];
-        for (var trkdata of INC.config.bundle_tracking) {
-            var bundlePos = 0
-            var bundleProdsList = document.querySelectorAll('.inc_pdp_bundle_block .inc_product_module_block')
-            var prodBlock = document.querySelector('.inc_pdp_bundle_block .inc_product_module_block[data-main_id="' + trkdata.id + '"]')
+        let pageType = "100";
+        let all_data = [];
+        for(let trkdata of INC.config.bundle_tracking) {
+            let bundlePos = 0
+            let bundleProdsList = document.querySelectorAll('.inc_pdp_bundle_block .inc_product_module_block')
+            let prodBlock = document.querySelector('.inc_pdp_bundle_block .inc_product_module_block[data-main_id="' + trkdata.id + '"]')
 
-            for (var index in bundleProdsList) {
+            for(let index in bundleProdsList) {
                 if (bundleProdsList[index] == prodBlock) {
                     bundlePos = index
                     break
@@ -6282,7 +6282,7 @@
             }
         }
         let dbCount = document.querySelectorAll('.inc_pdp_bundle_product_list_main_block .inc_product_module_block').length
-        var data = {
+        let data = {
             "eventData": btoa((JSON.stringify({
                 "event_data": {
                     "bundle_data": all_data
@@ -6304,12 +6304,12 @@
 
     }
     function makeTrackingApiCall(eventdata) {
-        var p_url = '//optimizedby.increasingly.co/ImportData';
-        var xhr = new XMLHttpRequest();
+        let p_url = '//optimizedby.increasingly.co/ImportData';
+        let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status === 200) {
                 if (xhr.responseText != "" && xhr.responseText != null) {
-                    var resul = xhr.responseText;
+                    let resul = xhr.responseText;
                     console.log("track" + resul)
                 }
             }
@@ -6325,15 +6325,15 @@
         document.querySelector('html').classList.remove('inc_overlay')
     }
     function getCurrentFormattedTime() {
-        var d = new Date();
+        let d = new Date();
         return (d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + "." + d.getMilliseconds());
     }
     INC.methods.trackingEvents = function (eventType, eventDataObj, pageType) {
-        var importEventDataObj = {};
-        var importDataObj = {};
+        let importEventDataObj = {};
+        let importDataObj = {};
 
         importEventDataObj["event_data"] = eventDataObj;
-        var trueflag_ = true
+        let trueflag_ = true
         switch (eventType) {
             case "productPageVisit":
                 importEventDataObj["event_type"] = "product_page_visit";
@@ -6384,9 +6384,9 @@
         INC.methods.sendTrackingEvents(importDataObj);
     }
     INC.methods.sendTrackingEvents = function (importDataObj) {
-        var xhr = new XMLHttpRequest();
-        var method = "POST";
-        var url = INC.config.trackingURL;
+        let xhr = new XMLHttpRequest();
+        let method = "POST";
+        let url = INC.config.trackingURL;
         xhr.onreadystatechange = handleStateChange;
 
         xhr.open(method, url, true);
@@ -6400,23 +6400,23 @@
     }
     INC.methods.addVisitorID = function () {
         function generateUniqueINCVisitorId(len, bits) {
-            var bits1 = bits || 36;
-            var outStr = "";
-            var newStr;
+            let bits1 = bits || 36;
+            let outStr = "";
+            let newStr;
             while (outStr.length < len) {
                 newStr = generateRandomString(bits1).toString().slice(2);
                 outStr += newStr.slice(0, Math.min(newStr.length, (len - outStr.length)));
             }
             return outStr;
         }
-        var ivid = "";
+        let ivid = "";
         if (readCookie('ivid') != undefined) {
             ivid = readCookie('ivid')
         }
-        var clientdomain = window.location.host
-        var arr = clientdomain.split(".");
-        var d = new Date();
-        var expires = "expires=" + d.toUTCString();
+        let clientdomain = window.location.host
+        let arr = clientdomain.split(".");
+        let d = new Date();
+        let expires = "expires=" + d.toUTCString();
         if (ivid.length == 0) {
             ivid = generateUniqueINCVisitorId(42, 16);
             arr.shift();
@@ -6444,9 +6444,9 @@
     document.onclick = clickListener;
 
     function clickListener(e) {
-        var clickedElement = e.target;
-        var trf=true;
-        var flfalse=false;
+        let clickedElement = e.target;
+        let trf=true;
+        let flfalse=false;
         console.log("clicked elemnt")
         if (clickedElement != null) {
             try {
@@ -6542,13 +6542,13 @@
                     if (clickedElement.className != "inc_product_details_prod_block" && clickedElement.className != "inc_product_variant_simple_block" && clickedElement.className != "inc_product_variant_simple_text config" && clickedElement.className != "inc_product_desc_variant_popup_close_block" && clickedElement.className != "inc_product_desc_add_title_text_block" && clickedElement.tagName != "SELECT" && clickedElement.className != "inc_product_header_block active" && clickedElement.className != "inc_product_desc_att_color_list_item_img_block active" && clickedElement.className != "inc_product_desc_att_block attributes_avail active" && clickedElement.className != "inc_product_qty_block active" && clickedElement.tagName != "LABEL" && clickedElement.tagName != "INPUT" && clickedElement.className != "inc_product_qty_block" && clickedElement.className != "inc_product_desc_att_color_list_item_img_block" && clickedElement.className != "inc_product_header_block" && clickedElement.className != "select_option_inc_title" && clickedElement.className != "inc_product_desc_att_color_list_item_img" && clickedElement.className != "inc_product_desc_att_color_title_text" && clickedElement.className != "inc_product_desc_att_color_list_block" && clickedElement.classList.contains('inc_product_desc_att_block') == flfalse && clickedElement.className != "select_option_inc_block" && clickedElement.className != "inc_product_desc_att_color_title_text_block" && clickedElement.className != "inc_product_desc_att_variant_text" && clickedElement.className != "inc_product_desc_add_img" &&clickedElement.className != "inc_product_qty_up_btn" && clickedElement.className != "inc_product_qty_down_btn") {
                         if (clickedElement.classList != undefined) {
                             if (clickedElement.classList.contains('variantoption') == flfalse && clickedElement.classList.contains('inc_product_desc_att_size_list_item_img_block') == flfalse && clickedElement.classList.contains('inc_product_desc_att_color_list_block') == flfalse && clickedElement.className != "inc_product_desc_add_img checked" && clickedElement.classList.contains('inc_product_desc_add_block') == flfalse && clickedElement.classList.contains('inc_pdp_bundle_cart_added_product_edit_img') == flfalse && clickedElement.className != "inc_product_desc_att_color_title_block" && clickedElement.className != "inc_product_desc_qty_up_btn" && clickedElement.className != "inc_product_desc_qty_down_btn" && clickedElement.classList.contains('inc_product_desc_att_color_block') == flfalse && clickedElement.classList.contains('inc_product_desc_att_color_list_item_block') == flfalse && clickedElement.classList.contains('inc_product_desc_att_zero_title_text_selected') == flfalse && clickedElement.classList.contains('inc_product_desc_att_zero_title_text') == flfalse && clickedElement.classList.contains('inc_product_desc_att_size_list_item_img') == flfalse && clickedElement.classList.contains('inc_product_desc_att_color_list_item_img') != trf) {
-                                var allact = document.querySelectorAll('.inc_product_desc_att_block.inc_active')
+                                let allact = document.querySelectorAll('.inc_product_desc_att_block.inc_active')
 
                                 if (document.querySelector('.inc_product_modal_block.inc_active') == null && document.querySelector('.inc_sidebar_modal_block.inc_active') == null) {
                                     document.querySelector('html').classList.remove('inc_overlay');
                                     document.querySelector('body').classList.remove('inc_popup_open');
                                 }
-                                for (var actelm of allact) {
+                                for(let actelm of allact) {
                                     actelm.classList.remove('inc_active')
                                 }
 
@@ -6561,7 +6561,7 @@
                     if(INC.config.pageType == "pdp"){
                         if(clickedElement.classList.contains('js-add-to-bag-button') == trf && clickedElement.getAttribute('data-test-id') == "add_to_bag_btn" || clickedElement.classList.contains('js-btn-add-to-bag') == trf && clickedElement.getAttribute('data-test-id') == "add-to-cart"){
                             if(window.innerWidth > 767){
-                                var checkpdpcartopen = setInterval(function(){
+                                let checkpdpcartopen = setInterval(function(){
                                     if(document.querySelector('body.active-gnav') != null && document.querySelector('.header-gnav-cart__overlay') != null && document.querySelector('.js-header-gnav-cart__overlay.visible') != null){
                                         clearInterval(checkpdpcartopen)
                                         if(INC.dataStore.bundleProductsArray != undefined){
@@ -6570,12 +6570,12 @@
                                     }
                                 },100)
                             }else{
-                                var findObj = new INC.classes.FindObj();
-                                var p_ids = INC.methods.getProductIdFromWebPage()
+                                let findObj = new INC.classes.FindObj();
+                                let p_ids = INC.methods.getProductIdFromWebPage()
                                 findObj["id"] = INC.dataStore.methods().getFirstProductObjByMainId({ mainId: p_ids }).id;
-                                var qty = document.querySelector('p[data-test-id="cart_product_quantity"]').innerText.trim()
-                                var orgprice = 0
-                                var activeprice = 0
+                                let qty = document.querySelector('p[data-test-id="cart_product_quantity"]').innerText.trim()
+                                let orgprice = 0
+                                let activeprice = 0
                                 if(document.querySelector('.elc-product-prices-wrapper .js-product-original-price') != null){
                                     orgprice = document.querySelector('.elc-product-prices-wrapper .js-product-original-price').innerText.replace('£','')
                                 }
@@ -6588,21 +6588,21 @@
                         }  
                         if(clickedElement.parentNode != null){
                             if(clickedElement.classList.contains('js-shade-picker-item-name') == trf || clickedElement.classList.contains('js-shade-swatch--image-wrapper') == trf || clickedElement.classList.contains('elc-shade-picker-item--selected') == trf || clickedElement.classList.contains('js-dropdown-option') == trf || clickedElement.parentNode.parentNode.classList.contains('sells-with-grid') == trf || clickedElement.parentNode.classList.contains('sells-with-grid') == trf || clickedElement.classList.contains('sells-with-grid') == trf){
-                                var textsel = clickedElement.textContent.trim()
+                                let textsel = clickedElement.textContent.trim()
                                 if(textsel == ""){
                                     textsel = clickedElement.parentNode.textContent.trim()
                                 }
-                                var imgscrsel = ""
+                                let imgscrsel = ""
                                 if(clickedElement.tagName == "IMG"){
                                     imgscrsel = clickedElement.src
                                 }else if(clickedElement.querySelector('img') != null){
                                     imgscrsel = clickedElement.querySelector('img').src
                                 }
-                                var all_list_el = document.querySelectorAll('.inc_pdp_product-main_block .inc_product_showcase_block')
+                                let all_list_el = document.querySelectorAll('.inc_pdp_product-main_block .inc_product_showcase_block')
                                 if(textsel != undefined){
                                     textsel = textsel.trim().toLocaleLowerCase()
                                 }
-                                for (var alistel of all_list_el) {
+                                for(let alistel of all_list_el) {
                                     if(alistel.querySelector('.inc_product_desc_att_zero_block.inc_active') != null){
                                         if(imgscrsel == ""){
                                             if(alistel.querySelector('.inc_product_desc_att_size_list_item_img_block[datasize="'+textsel+'"] div') != undefined){
@@ -6635,7 +6635,7 @@
                             } 
                         }   
                         if(clickedElement.classList.contains('svgicon--bag') == trf || clickedElement.classList.contains('header-gnav-cart__icon')  == trf || clickedElement.classList.contains('header-gnav-cart__trigger')  == trf || clickedElement.classList.contains('header-gnav-cart__count') == trf){
-                            var checkcartpopups = setInterval(function(){
+                            let checkcartpopups = setInterval(function(){
                                 if(document.querySelector('body.active-gnav') != null && document.querySelector('.header-gnav-cart__overlay') != null && document.querySelector('.js-header-gnav-cart__overlay.visible') != null){
                                     clearInterval(checkcartpopups)
                                     setTimeout(function(){
@@ -6657,13 +6657,13 @@
                     if (INC.config.pageType == "productList") {
                         if(clickedElement.classList.contains('js-add-to-bag-button') == trf){
                             if(clickedElement.getAttribute('data-test-id') == "add_to_bag_btn"){
-                                var checkplpcartopen = setInterval(function(){
+                                let checkplpcartopen = setInterval(function(){
                                     if(document.querySelector('body.active-gnav') != null && document.querySelector('.header-gnav-cart__overlay') != null && document.querySelector('.js-header-gnav-cart__overlay.visible') != null){
                                         clearInterval(checkplpcartopen)
                                         setTimeout(function(){
-                                            var classpid=document.querySelector('.cart-confirm-wrapper .cart-overlay-products .prod').classList
-                                            var pidplp = ""
-                                            for (var cls of classpid) {
+                                            let classpid=document.querySelector('.cart-confirm-wrapper .cart-overlay-products .prod').classList
+                                            let pidplp = ""
+                                            for(let cls of classpid) {
                                                 if(cls.indexOf('prod-PROD') >= 0){
                                                     if(cls.split('SKU')[0] != undefined){
                                                         pidplp = cls.split('SKU')[0].replace('prod-','')
@@ -6682,17 +6682,17 @@
                     }
                 }
                 setTimeout(function(){
-                    var inc_prod_img1 =  document.querySelector('.inc_product_modal_block.inc_active .inc_product_img_main_img img')
+                    let inc_prod_img1 =  document.querySelector('.inc_product_modal_block.inc_active .inc_product_img_main_img img')
                     if(inc_prod_img1){
                         inc_prod_img1.setAttribute('style','left:0 !important;position: relative;')
                     }
                 },2000)
             } catch (err) {
-                var formData = new FormData();
+                let formData = new FormData();
                 formData.append("EmailId", "shashi@increasingly.com");
                 formData.append("Subject", 'JS Error on ');
                 formData.append("Message", err + 'Error Stack' + err.stack);
-                var xhr = new XMLHttpRequest();
+                let xhr = new XMLHttpRequest();
                 xhr.open("POST", '//api.increasingly.co/SendEmail', trf);
                 xhr.send(formData);
             }
@@ -6705,7 +6705,7 @@
         INC.methods.showSidebar();
     }
     function plp_listeners(prod_id) {
-        var productId = prod_id.replace('PROD','');
+        let productId = prod_id.replace('PROD','');
         INC.methods.irbReq(productId, 10, "catalog_product_view");
     }
     setTimeout(function () {
@@ -6714,16 +6714,16 @@
                 if (window.matchMedia("(orientation: portrait)").matches) {
                     console.log("PORTRAIT")
                     INC.config.deviceMode = "PORTRAIT"
-                    var inc_pdp_block_rem = document.querySelector(".inc_pdp_block");
+                    let inc_pdp_block_rem = document.querySelector(".inc_pdp_block");
                     if (inc_pdp_block_rem != null) {
                         inc_pdp_block_rem.parentNode.removeChild(inc_pdp_block_rem);
                     }
                     onloadpdp = false
-                    var sidebar_rem = document.querySelector(".inc_sidebar_modal_block");
+                    let sidebar_rem = document.querySelector(".inc_sidebar_modal_block");
                     if (sidebar_rem != null) {
                         sidebar_rem.parentNode.removeChild(sidebar_rem);
                     }
-                    var over_rem = document.querySelector(".inc_sidebar_overlay_block");
+                    let over_rem = document.querySelector(".inc_sidebar_overlay_block");
                     if (over_rem != null) {
                         over_rem.parentNode.removeChild(over_rem);
                     }
@@ -6735,15 +6735,15 @@
                     console.log("LANSCAPE")
                     INC.config.deviceMode = "LANSCAPE";
                     onloadpdp = false
-                    var inc_pdp_block_remove = document.querySelector(".inc_pdp_block");
+                    let inc_pdp_block_remove = document.querySelector(".inc_pdp_block");
                     if (inc_pdp_block_remove != null) {
                         inc_pdp_block_remove.parentNode.removeChild(inc_pdp_block_remove);
                     }
-                    var sidebar_remove = document.querySelector(".inc_sidebar_modal_block");
+                    let sidebar_remove = document.querySelector(".inc_sidebar_modal_block");
                     if (sidebar_remove != null) {
                         sidebar_remove.parentNode.removeChild(sidebar_remove);
                     }
-                    var over_remove = document.querySelector(".inc_sidebar_overlay_block");
+                    let over_remove = document.querySelector(".inc_sidebar_overlay_block");
                     if (over_remove != null) {
                         over_remove.parentNode.removeChild(over_remove);
                     }
@@ -6772,7 +6772,7 @@
         window.addEventListener('resize', function() {
             if (document.querySelector('.inc_pdp_block .inc_pdp_bundle_product_list_main_block') != null) {
                 document.querySelector('.inc_pdp_block .inc_pdp_bundle_product_list_main_block').setAttribute("style", "margin-left:0");
-                var prd_length = 2
+                let prd_length = 2
                 if (window.innerWidth > 1185) {
                     prd_length = 3
                 }
@@ -6792,42 +6792,42 @@
         if( elem.length == 0 ) {
             return;
         }
-        var $window = window.$(window)
-        var viewport_top = $window.scrollTop()
-        var viewport_height = $window.height()
-        var viewport_bottom = viewport_top + viewport_height
-        var $elem = window.$(elem)
-        var top = $elem.offset().top
-        var height = $elem.height()
-        var bottom = top + height
+        let $window = window.$(window)
+        let viewport_top = $window.scrollTop()
+        let viewport_height = $window.height()
+        let viewport_bottom = viewport_top + viewport_height
+        let $elem = window.$(elem)
+        let top = $elem.offset().top
+        let height = $elem.height()
+        let bottom = top + height
         return (top >= viewport_top && top < viewport_bottom) ||
         (bottom > viewport_top && bottom <= viewport_bottom) ||
         (height > viewport_height && top <= viewport_top && bottom >= viewport_bottom)
     }
     function slideTo(_id, _n, elm, type_of,arrow) {
         if (elm.className == "left_arrow" || elm.className == "left_arrow inc_active" || type_of == "left") {
-            var nn2 = -1
-            var indslid=INC.config.inc_slideIndex += nn2
+            let nn2 = -1
+            let indslid=INC.config.inc_slideIndex += nn2
             inc_showSlides(indslid, nn2, elm, type_of,arrow);
         } else {
-            var nn1 = 1
-            var indslid1=INC.config.inc_slideIndex += nn1
+            let nn1 = 1
+            let indslid1=INC.config.inc_slideIndex += nn1
             inc_showSlides(indslid1, nn1, elm, type_of,arrow);
         }
     }
     function inc_showSlides(n, _ind, elm,_type_of,arrow) {
-        var showcase_other_img_list = elm.querySelector('.inc_product_showcase_block .inc_product_img_main_img a')
-        var showcase_dots=elm.querySelectorAll('.inc_product_showcase_block .inc_product_img_gallery_list_block .inc_product_img_gallery_list_item_block')
-        var modal_dots=elm.querySelectorAll('.inc_product_modal_block .inc_product_img_gallery_list_block .inc_product_img_gallery_list_item_block')
+        let showcase_other_img_list = elm.querySelector('.inc_product_showcase_block .inc_product_img_main_img a')
+        let showcase_dots=elm.querySelectorAll('.inc_product_showcase_block .inc_product_img_gallery_list_block .inc_product_img_gallery_list_item_block')
+        let modal_dots=elm.querySelectorAll('.inc_product_modal_block .inc_product_img_gallery_list_block .inc_product_img_gallery_list_item_block')
 
-        var showcase_other_img = elm.querySelector('.inc_product_showcase_block .inc_product_img_main_img a img')
+        let showcase_other_img = elm.querySelector('.inc_product_showcase_block .inc_product_img_main_img a img')
 
-        var modal_other_img = elm.querySelector('.inc_product_modal_block .inc_product_img_main_img a img')
+        let modal_other_img = elm.querySelector('.inc_product_modal_block .inc_product_img_main_img a img')
 
-        var otherImg_list=showcase_other_img_list.getAttribute('otherImageList');
-        var additional_img=[]
+        let otherImg_list=showcase_other_img_list.getAttribute('otherImageList');
+        let additional_img=[]
         additional_img = otherImg_list.split(',');
-        var get_org_img = showcase_other_img_list.getAttribute('imageURL')
+        let get_org_img = showcase_other_img_list.getAttribute('imageURL')
         if (n > additional_img.length) {
             INC.config.inc_slideIndex = 1
         }
@@ -6835,20 +6835,20 @@
             INC.config.inc_slideIndex = additional_img.length
         }
         
-        for (var im = 0; im < showcase_dots.length; im++) {
+        for(let im = 0; im < showcase_dots.length; im++) {
             showcase_dots[im].classList.remove('inc_active')
             if(modal_dots[im] != undefined){
                 modal_dots[im].classList.remove('inc_active')
             }
         }
-        var img_src = additional_img[INC.config.inc_slideIndex - 1].replace('160x90','2000x1500');
+        let img_src = additional_img[INC.config.inc_slideIndex - 1].replace('160x90','2000x1500');
         if(img_src != "null"){
             showcase_other_img.setAttribute('src',img_src);
             modal_other_img.setAttribute('src',img_src)
             showcase_other_img.setAttribute('onerror',"this.src='"+get_org_img+"'" );
             modal_other_img.setAttribute('onerror',"this.src='"+get_org_img+"'" );
             
-            for (var r = 0; r < showcase_dots.length; r++) {
+            for(let r = 0; r < showcase_dots.length; r++) {
                 showcase_dots[r].classList.remove('inc_active');
                 modal_dots[r].classList.remove('inc_active');
             }
@@ -6860,9 +6860,9 @@
             }
             if(arrow == "arrow"){
                 if(modal_dots.length > 6){
-                    var activedots=elm.querySelector('.inc_product_modal_block .inc_product_img_gallery_list_block .inc_product_img_gallery_list_item_block.inc_active')
+                    let activedots=elm.querySelector('.inc_product_modal_block .inc_product_img_gallery_list_block .inc_product_img_gallery_list_item_block.inc_active')
                     if(activedots != null){
-                        var actind = activedots.getAttribute('index')
+                        let actind = activedots.getAttribute('index')
                         if(actind == 5){
                                 if(modal_dots.length >= 6){
                                     for (let i1 in modal_dots) {
@@ -6935,8 +6935,8 @@
         }
     }
     // SWIPE FEATURE
-    var xDown = null;
-    var yDown = null;
+    let xDown = null;
+    let yDown = null;
     function add_swipe(element) {
         element.addEventListener('touchstart', handleTouchStart, {passive: true});
         element.addEventListener('touchmove', handleTouchMove, {passive: true});
@@ -6946,14 +6946,14 @@
         yDown = evt.touches[0].clientY;
     }
     function handleTouchMove(evt) {
-        var prod_card= null;
+        let prod_card= null;
         if (!xDown || !yDown) {
             return;
         }
-        var xUp = evt.touches[0].clientX;
-        var yUp = evt.touches[0].clientY;
-        var xDiff = xDown - xUp;
-        var yDiff = yDown - yUp;
+        let xUp = evt.touches[0].clientX;
+        let yUp = evt.touches[0].clientY;
+        let xDiff = xDown - xUp;
+        let yDiff = yDown - yUp;
         if (Math.abs(xDiff) + Math.abs(yDiff) > 150 || Math.abs(xDiff) + Math.abs(yDiff) < 150) { 
             if (Math.abs(xDiff) > Math.abs(yDiff)) { /*most significant*/
                 if (xDiff > 0) {
@@ -6969,32 +6969,32 @@
             yDown = null;
         }
     }
-    var formatter = new Intl.NumberFormat('en-US', {
+    let formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'GBP',
     });
     function cb_tc(bundle_response) {
-        var bundles_tc = bundle_response.Bundles;
-        var bundleproductarrayTC = {}
-        var pdpProductId = ""
+        let bundles_tc = bundle_response.Bundles;
+        let bundleproductarrayTC = {}
+        let pdpProductId = ""
         if (bundle_response.ProductsDetail != null) {
-            for (var prdetails of bundle_response.ProductsDetail) {
+            for(let prdetails of bundle_response.ProductsDetail) {
                 bundleproductarrayTC[prdetails.ProductId] = prdetails
             }
         } else if (bundle_response.ProductsDetail == null || bundle_response.ProductsDetail == "null") {
-            for (var catrec of bundle_response.CategoryRecommendations) {
+            for(let catrec of bundle_response.CategoryRecommendations) {
                 bundleproductarrayTC[catrec.ProductId] = catrec
             }
         }
 
-        var bundle_count = bundles_tc.length
-        for (var i = 0; i < bundle_count; i++) {
+        let bundle_count = bundles_tc.length
+        for(let i = 0; i < bundle_count; i++) {
             if (INC.config.dupDataObjectProducts.indexOf(bundles_tc[i].BundleId) == -1) {
                 INC.config.dupDataObjectProducts.push(bundles_tc[i].BundleId)
-                var irbBundleObj = bundles_tc[i];
-                var bundleObj = {};
+                let irbBundleObj = bundles_tc[i];
+                let bundleObj = {};
                 bundleObj.id = irbBundleObj["BundleId"];
-                var fltr=false;
+                let fltr=false;
                 if (INC.config.recommendation == fltr) {
                     bundleObj.totalRegularPrice = irbBundleObj["TotalPrice"];
                     bundleObj.totalActivePrice = irbBundleObj["TotalSpecialPrice"];
@@ -7002,18 +7002,18 @@
                     bundleObj.totalBundleDiscountPrice = irbBundleObj["DiscountPrice"];
                     bundleObj.productCount = irbBundleObj["ProductCount"];
                 }
-                var irbProductsArray = irbBundleObj["ProductIds"]
+                let irbProductsArray = irbBundleObj["ProductIds"]
                 if (irbProductsArray.length) {
                     if (INC.dataStore.bundleProductsArray != undefined) {
                         pdpProductId = irbProductsArray[0];
                         INC.dataStore.bundleProductsArray.push(irbProductsArray[1]);
                     }
                 }
-                for (var irbprdarray of irbProductsArray) {
-                    var product = bundleproductarrayTC[irbprdarray]
-                    var pAttributes = product["Attributes"] || "";
+                for(let irbprdarray of irbProductsArray) {
+                    let product = bundleproductarrayTC[irbprdarray]
+                    let pAttributes = product["Attributes"] || "";
                     if (pAttributes != "" && pAttributes != null) {
-                        for (var patt1 of pAttributes) {
+                        for(let patt1 of pAttributes) {
                             if (patt1.frontEndLabel == "color") {
                                 patt1.frontEndLabel = "Color"
                             }
@@ -7034,28 +7034,28 @@
                         }
                         pAttributes = attribute_listing(pAttributes)
                     }
-                    var pAttObj = {};
-                    var attr_values =""
-                    var tcount = 0
-                    for (var p2 of pAttributes) {
+                    let pAttObj = {};
+                    let attr_values =""
+                    let tcount = 0
+                    for(let p2 of pAttributes) {
                         if (pAttributes.length == 1) {
                             if (pAttributes[0].attributeCode == "Color" || pAttributes[0].attributeCode == "color") {
                                 pAttributes[0].attributeId = 0;
                                 attr_values = p2.attributeValues;
-                                for (var v of attr_values) {
+                                for(let v of attr_values) {
                                     v.optionId = 0;
                                 }
                             } else {
                                 pAttributes[0].attributeId = 1;
                                 attr_values = p2.attributeValues;
-                                for (var v1 of attr_values) {
+                                for(let v1 of attr_values) {
                                     v1.optionId = 1;
                                 }
                             }
                         } else {
                             p2.attributeId = tcount
                             attr_values = p2.attributeValues;
-                            for (var v2 of attr_values) {
+                            for(let v2 of attr_values) {
                                 v2.optionId = tcount;
                             }
                         }
@@ -7063,11 +7063,11 @@
                     }
 
                     if (pAttributes.length) {
-                        for (var k of pAttributes) {
-                            var pAttributesObj = k;
-                            var pAttributesValues = pAttributesObj["attributeValues"];
-                            for (var l of pAttributesValues) {
-                                var childProduct = l;
+                        for(let k of pAttributes) {
+                            let pAttributesObj = k;
+                            let pAttributesValues = pAttributesObj["attributeValues"];
+                            for(let l of pAttributesValues) {
+                                let childProduct = l;
                                 if (childProduct["childProductId"] == null) {
                                     childProduct["childProductId"] = product["ProductId"];
                                     childProduct["childProductSku"] = product["ProductSku"];
@@ -7107,7 +7107,7 @@
                                 if(childProduct["childProductField4"] == null){
                                     childProduct["childProductField4"] = product["Field4"];
                                 }
-                                var productObj = new INC.classes.ProductAttObj(childProduct);
+                                let productObj = new INC.classes.ProductAttObj(childProduct);
 
                                 productObj["bundledProductId"] = pdpProductId;
                                 productObj.mainId = product["ProductId"];
@@ -7125,7 +7125,7 @@
                                     INC.dataStore.dataStoreObj[product['ProductId']][productObj['id']] = {}
                                 }
                                 pAttObj = INC.dataStore.dataStoreObj[product['ProductId']][productObj['id']];
-                                for (var pAttcb in productObj) {
+                                for(let pAttcb in productObj) {
                                     if (pAttcb == "option") {
                                         if (!Object.prototype.hasOwnProperty.call(pAttObj, 'option')) {
                                             pAttObj["option"] = {}
@@ -7141,7 +7141,7 @@
                         }
                     }
                     if (pAttributes.length == 0) {
-                        var productObjS = new INC.classes.ProductObj(product);
+                        let productObjS = new INC.classes.ProductObj(product);
                         productObjS["bundleId"] = irbBundleObj["BundleId"];
                         productObjS["bundledProductId"] = pdpProductId;
                         productObjS.sku = productObjS.id;
@@ -7166,11 +7166,11 @@
         }, 200)
     }
     function attribute_listing(valueArray) {
-        var items = valueArray
-        var sorting = ["Color", "Size","Shade","Weight","Volume"];
-        var result = []
+        let items = valueArray
+        let sorting = ["Color", "Size","Shade","Weight","Volume"];
+        let result = []
         sorting.forEach(function (key) {
-            var found = false;
+            let found = false;
             items = items.filter(function (item) {
                 if (!found && item.attributeCode == key) {
                     result.push(item);
@@ -7183,10 +7183,10 @@
         return result;
     }
     function getTrackingPixel() {
-        var url = ''
+        let url = ''
         /*-------------------Tracking with Image Pixel---------------------------*/
         if(url != ''){
-            var oImg = document.createElement("img");
+            let oImg = document.createElement("img");
             oImg.setAttribute('id', 'cstracking')
             oImg.setAttribute('src', url);
             oImg.setAttribute('height', '1px');
@@ -7204,40 +7204,40 @@
     }
     INC.methods.updateallbasketprice = function (bundle_card) {
         if(window.innerWidth < 821 && INC.config.pageType == "pdp" && document.querySelector('.header-gnav-cart__overlay.visible') == null && document.querySelector('.sidebar_outer.sidebar_outer_active') == null){
-            var p_id = bundle_card.querySelectorAll('.inc_product_module_block')[0].getAttribute('data-id')
-            var p_mainid = bundle_card.querySelectorAll('.inc_product_module_block')[0].getAttribute('data-main_id')
-            var p_sku = bundle_card.querySelectorAll('.inc_product_module_block')[0].getAttribute('data-sku')
-            var p_bid = bundle_card.querySelectorAll('.inc_product_module_block')[0].getAttribute('data-bundle_id')
-            var p_qty = bundle_card.querySelectorAll('.inc_product_module_block .inc_product_qty_input_text input')[0].value
-            var activePrice = bundle_card.querySelectorAll('.inc_product_desc_ecirp_active_text')[0].innerText.replace('£','')
-            var regularPrice = bundle_card.querySelectorAll('.inc_product_desc_ecirp_regular_text')[0].innerText.replace('Was','').replace('WAS','').replace('£','').trim()
+            let p_id = bundle_card.querySelectorAll('.inc_product_module_block')[0].getAttribute('data-id')
+            let p_mainid = bundle_card.querySelectorAll('.inc_product_module_block')[0].getAttribute('data-main_id')
+            let p_sku = bundle_card.querySelectorAll('.inc_product_module_block')[0].getAttribute('data-sku')
+            let p_bid = bundle_card.querySelectorAll('.inc_product_module_block')[0].getAttribute('data-bundle_id')
+            let p_qty = bundle_card.querySelectorAll('.inc_product_module_block .inc_product_qty_input_text input')[0].value
+            let activePrice = bundle_card.querySelectorAll('.inc_product_desc_ecirp_active_text')[0].innerText.replace('£','')
+            let regularPrice = bundle_card.querySelectorAll('.inc_product_desc_ecirp_regular_text')[0].innerText.replace('Was','').replace('WAS','').replace('£','').trim()
             if(regularPrice== ""){
                 regularPrice = activePrice
             }
-            var secondprd=bundle_card.querySelectorAll('.inc_product_module_block')[1]
+            let secondprd=bundle_card.querySelectorAll('.inc_product_module_block')[1]
             if(secondprd != null){
-                var p_id1 = secondprd.getAttribute('data-id')
-                var p_mainid1 = secondprd.getAttribute('data-main_id')
-                var p_sku1 = secondprd.getAttribute('data-sku')
-                var p_bid1 = secondprd.getAttribute('data-bundle_id')
-                var p_qty1 = secondprd.querySelector('.inc_product_qty_input_text input').value
-                var activePrice1 = secondprd.querySelectorAll('.inc_product_desc_ecirp_active_text')[0].innerText.replace('£','')
-                var regularPrice1 = secondprd.querySelectorAll('.inc_product_desc_ecirp_regular_text')[0].innerText.replace('Was','').replace('WAS','').replace('£','').trim()
+                let p_id1 = secondprd.getAttribute('data-id')
+                let p_mainid1 = secondprd.getAttribute('data-main_id')
+                let p_sku1 = secondprd.getAttribute('data-sku')
+                let p_bid1 = secondprd.getAttribute('data-bundle_id')
+                let p_qty1 = secondprd.querySelector('.inc_product_qty_input_text input').value
+                let activePrice1 = secondprd.querySelectorAll('.inc_product_desc_ecirp_active_text')[0].innerText.replace('£','')
+                let regularPrice1 = secondprd.querySelectorAll('.inc_product_desc_ecirp_regular_text')[0].innerText.replace('Was','').replace('WAS','').replace('£','').trim()
                 if(regularPrice1== ""){
                     regularPrice1 = activePrice1
                 }
-                var elBundleCartPriceActiveText = bundle_card.querySelector('.inc_pdp_bundle_cart_summary_ecirp_active_text')
-                var elBundleCartPriceRegularText = bundle_card.querySelector('.inc_pdp_bundle_cart_summary_ecirp_regular_text')
-                var elBundleCartPriceActiveTextMsg = bundle_card.querySelector('.inc_pdp_bundle_cart_summary_ecirp_save_text')
-                var totalActivePrice = (+activePrice * parseInt(p_qty)) + (+activePrice1 * parseInt(p_qty1))
-                var totalRegularPrice = (+regularPrice * parseInt(p_qty)) + (+regularPrice1 * parseInt(p_qty1))
+                let elBundleCartPriceActiveText = bundle_card.querySelector('.inc_pdp_bundle_cart_summary_ecirp_active_text')
+                let elBundleCartPriceRegularText = bundle_card.querySelector('.inc_pdp_bundle_cart_summary_ecirp_regular_text')
+                let elBundleCartPriceActiveTextMsg = bundle_card.querySelector('.inc_pdp_bundle_cart_summary_ecirp_save_text')
+                let totalActivePrice = (+activePrice * parseInt(p_qty)) + (+activePrice1 * parseInt(p_qty1))
+                let totalRegularPrice = (+regularPrice * parseInt(p_qty)) + (+regularPrice1 * parseInt(p_qty1))
                 if(elBundleCartPriceActiveText != null){
                     elBundleCartPriceActiveText.innerText = formatter.format(totalActivePrice);
                     elBundleCartPriceRegularText.parentNode.parentNode.parentNode.classList.remove('simple_ecirp')
                     elBundleCartPriceRegularText.parentNode.parentNode.parentNode.classList.remove('is_special_ecirp')
                     elBundleCartPriceRegularText.parentNode.parentNode.parentNode.parentNode.classList.remove('simple_ecirp')
                     elBundleCartPriceRegularText.parentNode.parentNode.parentNode.parentNode.classList.remove('is_special_ecirp')
-                    var totalsaveprcs = get_discount_price(totalRegularPrice, totalActivePrice)
+                    let totalsaveprcs = get_discount_price(totalRegularPrice, totalActivePrice)
                     if (totalRegularPrice != totalActivePrice && totalRegularPrice != null && totalRegularPrice != "") {
                         elBundleCartPriceRegularText.innerText = formatter.format(totalRegularPrice)
                         elBundleCartPriceRegularText.parentNode.parentNode.parentNode.parentNode.classList.add('is_special_ecirp')
@@ -7248,7 +7248,7 @@
                         elBundleCartPriceRegularText.innerHTML = "";
                         elBundleCartPriceRegularText.parentNode.parentNode.parentNode.classList.add('simple_ecirp')
                     }
-                    var elsummaryblock = bundle_card.querySelector('.inc_pdp_bundle_cart_summary_add_btn_block')
+                    let elsummaryblock = bundle_card.querySelector('.inc_pdp_bundle_cart_summary_add_btn_block')
                     elsummaryblock.setAttribute('id',p_id)
                     elsummaryblock.setAttribute('psku',p_sku)
                     elsummaryblock.setAttribute('mainid',p_mainid)
