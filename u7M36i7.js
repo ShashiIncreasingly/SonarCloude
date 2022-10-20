@@ -4251,18 +4251,7 @@
                         ".inc_af_block .inc_product_module_block"
                     ).clientWidth;
                     var width_slide = "";
-                    if (
-                        INC.config.pageType == "pdp" &&
-                        !INC.config.recommendation
-                    ) {
-                        if (window.innerWidth > 1205) {
-                            width_slide = wid_sld;
-                        } else {
-                            width_slide = wid_sld;
-                        }
-                    } else {
-                        width_slide = wid_sld;
-                    }
+                    width_slide = wid_sld;
                     if (INC.clientConfig.slidevalue_rec > 0) {
                         amBlock.parentNode.parentNode
                             .querySelector(".inc_af_right_btn_block")
@@ -4983,7 +4972,7 @@
                         }
                     }
                 }
-                if (oosStatus || recsUrl.includes(window.location.href)) {
+                if (oosStatus) {
                     inc_bundle_avail_block.style.display = "none";
                     pdpBlock.style.display = "none";
                 }
@@ -5647,9 +5636,7 @@
         );
 
         elBundleCartTitleText.innerText =
-            INC.config.deviceType == "mobile"
-                ? "Total Bundle Price "
-                : "Total Bundle Price ";
+            INC.config.deviceType == "Total Bundle Price "
         elBundleCartAddedBlock.innerHTML = "";
         elBundleCartSummaryViewBtnText.innerText = "Added items";
 
@@ -6501,7 +6488,7 @@
             ).length;
             document
                 .querySelector(".inc_sidebar_cart_added_block")
-                .className.replace(/\binc_added_.+?/g, "");
+                .className.replace('inc_added_', "");
             document
                 .querySelector(".inc_sidebar_cart_added_block")
                 .classList.add("inc_added_" + addCount);
@@ -7679,11 +7666,7 @@
                                 clientPrice = clientPrice;
                                 clientPrice = 0;
                             }
-                            if (
-                                parseFloat(clientSpPrice) != null &&
-                                parseFloat(clientSpPrice) <
-                                    parseFloat(clientPrice)
-                            ) {
+                            if ( parseFloat(clientSpPrice) != null && parseFloat(clientSpPrice) < parseFloat(clientPrice) ) {
                                 var activprice =
                                     parseFloat(clientSpPrice).toFixed(2) * qty;
                                 var reglprice =
@@ -17862,7 +17845,7 @@
             ? document.querySelector(".price-section.price-section--withTax.non-sale-price--withTax")
             : null;
 
-        let clientSpecialPrice =0
+        let clientSpecialPrice = null
         if(elSpecialPrice== null){
             clientSpecialPrice = elSpecialPrice
             ? Number(elSpecialPrice.innerText.replace(/[^0-9.-]+/g, ""))
