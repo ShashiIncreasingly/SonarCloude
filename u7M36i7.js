@@ -1865,12 +1865,12 @@
                 product0ObjArray.push(attr0Obj);
             });
             product0Obj["att0Array"] = sortByKey(product0ObjArray, "colorText");
-            product0Obj["att0Array"] = product0ObjArray.sort(function (a, b) {
-                return (
-                    sizesArray.indexOf(a["text"]) -
-                    sizesArray.indexOf(b["text"])
-                );
-            });
+            // product0Obj["att0Array"] = product0ObjArray.sort(function (a, b) {
+            //     return (
+            //         sizesArray.indexOf(a["text"]) -
+            //         sizesArray.indexOf(b["text"])
+            //     );
+            // });
             return product0Obj;
         }
 
@@ -4041,12 +4041,7 @@
                     .querySelector(".inc_af_product-list_block")
                     .classList.add("inc_one_product");
             }
-            // if (!oosStatus && INC.config.pageType == 'pdp') {
-            //     amBlock.style.display = 'none'
-            // }
-            if (recsUrl.includes(window.location.href)) {
-                amBlock.style.display = "";
-            }
+           
             if (PDP_type == "PDP") {
                 var pdpBlockSibling = document.querySelector(".inc_pdp_block");
                 if (pdpBlockSibling != null) {
