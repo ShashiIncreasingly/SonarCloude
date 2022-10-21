@@ -674,6 +674,7 @@
             let prc = "";
             let label = "";
             let attid = "";
+            let childseldetails=false;
             if (Object.prototype.hasOwnProperty.call(findObj, "mainId")) {
                 for (var mainProductId in productListObj) {
                     if (mainProductId == findObj["mainId"]) {
@@ -705,18 +706,10 @@
                                         }else{
                                             if (productListObj[mainProductId][childProductId].option[1].text == opt_text) {
                                                 attr_flag = "sec_block"
+                                                
                                                 if (productListObj[mainProductId][childProductId]["option"] != null && productListObj[mainProductId][childProductId]["option"]["2"] != null) {
-                                                    productSizesArrayObj[productListObj[mainProductId][childProductId]["option"]["2"]["text"]] = {};
-                                                    productSizesArrayObj[productListObj[mainProductId][childProductId]["option"]["2"]["text"]]["titleText"] = productListObj[mainProductId][childProductId]["option"]["2"]["text"];
-                                                    attr_code = productListObj[mainProductId][childProductId]["option"]["2"]["code"];
-                                                    c_pid = productListObj[mainProductId][childProductId]["option"]["2"]["cpid"];
-                                                    prc = productListObj[mainProductId][childProductId]["option"]["2"]["activePriceChild"];
-                                                    label = productListObj[mainProductId][childProductId]["option"]["2"]["label"];
-                                                    attid = productListObj[mainProductId][childProductId]["option"]["2"]["att_id"];
-                                                    productSizesArrayObj[productListObj[mainProductId][childProductId]["option"]["2"]["text"]]["opt_id"] = productListObj[mainProductId][childProductId]["option"]["2"]["opt_id"];
-
-                                                    productSizesArrayObj[productListObj[mainProductId][childProductId]["option"]["2"]["text"]]["colorCode"] = productListObj[mainProductId][childProductId]["option"]["2"]["colorCode"];
-                                                    productSizesArrayObj[productListObj[mainProductId][childProductId]["option"]["2"]["text"]]["imgSrc"] = productListObj[mainProductId][childProductId]["option"]["2"]["imgSrc"];
+                                                    childseldetails = true
+                                                    
                                                 }
                                             }
                                         }
@@ -731,17 +724,21 @@
                                 if(attr_flag == "fir_block" || attr_flag == "sec_block" || attr_flag == "empty" || attr_flag == "empty_"){
                                     if (productListObj[mainProductId][childProductId]["option"] != null &&
                                     productListObj[mainProductId][childProductId]["option"]["2"] != null) {
-                                        productSizesArrayObj[productListObj[mainProductId][childProductId]["option"]["2"]["text"]] = {};
-                                        productSizesArrayObj[productListObj[mainProductId][childProductId]["option"]["2"]["text"]]["titleText"] = productListObj[mainProductId][childProductId]["option"]["2"]["text"];
-                                        attr_code = productListObj[mainProductId][childProductId]["option"]["2"]["code"];
-                                        c_pid = productListObj[mainProductId][childProductId]["option"]["2"]["cpid"];
-                                        prc = productListObj[mainProductId][childProductId]["option"]["2"]["activePriceChild"];
-                                        label = productListObj[mainProductId][childProductId]["option"]["2"]["label"];
-                                        attid = productListObj[mainProductId][childProductId]["option"]["2"]["att_id"];
-                                        productSizesArrayObj[productListObj[mainProductId][childProductId]["option"]["2"]["text"]]["opt_id"] = productListObj[mainProductId][childProductId]["option"]["2"]["opt_id"];
-                                        productSizesArrayObj[productListObj[mainProductId][childProductId]["option"]["2"]["text"]]["colorCode"] = productListObj[mainProductId][childProductId]["option"]["2"]["colorCode"];
-                                        productSizesArrayObj[productListObj[mainProductId][childProductId]["option"]["2"]["text"]]["imgSrc"] = productListObj[mainProductId][childProductId]["option"]["2"]["imgSrc"];
+                                        childseldetails = true
                                     }
+                                }
+                                if(childseldetails == true){
+                                    productSizesArrayObj[productListObj[mainProductId][childProductId]["option"]["2"]["text"]] = {};
+                                    productSizesArrayObj[productListObj[mainProductId][childProductId]["option"]["2"]["text"]]["titleText"] = productListObj[mainProductId][childProductId]["option"]["2"]["text"];
+                                    attr_code = productListObj[mainProductId][childProductId]["option"]["2"]["code"];
+                                    c_pid = productListObj[mainProductId][childProductId]["option"]["2"]["cpid"];
+                                    prc = productListObj[mainProductId][childProductId]["option"]["2"]["activePriceChild"];
+                                    label = productListObj[mainProductId][childProductId]["option"]["2"]["label"];
+                                    attid = productListObj[mainProductId][childProductId]["option"]["2"]["att_id"];
+                                    productSizesArrayObj[productListObj[mainProductId][childProductId]["option"]["2"]["text"]]["opt_id"] = productListObj[mainProductId][childProductId]["option"]["2"]["opt_id"];
+
+                                    productSizesArrayObj[productListObj[mainProductId][childProductId]["option"]["2"]["text"]]["colorCode"] = productListObj[mainProductId][childProductId]["option"]["2"]["colorCode"];
+                                    productSizesArrayObj[productListObj[mainProductId][childProductId]["option"]["2"]["text"]]["imgSrc"] = productListObj[mainProductId][childProductId]["option"]["2"]["imgSrc"];
                                 }
                             }
                         }
