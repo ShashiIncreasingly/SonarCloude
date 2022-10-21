@@ -5431,33 +5431,6 @@
                     elBundleCartAddBtnTexts.textContent = "まとめてカートに入れる";
                 }
             }
-
-            let elPriceMainTitleText = elPdpBundleCartBlock.querySelector('.inc_pdp_bundle-cart_ecirp_main_title_text');
-            let elPriceMainFigureText = elPdpBundleCartBlock.querySelector('.inc_pdp_bundle-cart_ecirp_main_figure_text');
-            let elPriceAddonTitleText = elPdpBundleCartBlock.querySelector('.inc_pdp_bundle-cart_ecirp_addon_title_text');
-            let elPriceAddonFigureText = elPdpBundleCartBlock.querySelector('.inc_pdp_bundle-cart_ecirp_addon_figure_text');
-            let elPriceActiveText = elPdpBundleCartBlock.querySelector('.inc_pdp_bundle_cart_summary_ecirp_active_text');
-
-            elPriceMainTitleText.textContent = "Main Product Price ";
-            elPriceAddonTitleText.textContent = "Add-on(s) Selected  " + ((totalAddonProductsCount > 0) ? totalAddonProductsCount : "");
-
-            elPriceMainFigureText.innerHTML = formatter.format(totalMainProduct)
-            elPriceAddonFigureText.innerHTML = formatter.format(totalAddonProducts)
-            elPriceActiveText.innerHTML = formatter.format(totalActivePrice) + "<span>("+INC.config.prcText+") </span>"
-            if (totalRegularPrice != "0.00" && totalRegularPrice != totalActivePrice && totalRegularPrice != null && totalRegularPrice != "") {
-                elPriceActiveText.innerHTML = formatter.format(totalActivePrice) + "<span>("+INC.config.prcText+") </span>"
-            }
-
-            setTimeout(function () {
-                if (INC.dataStore.bundleCartProducts != null) {
-                    if (Object.keys(INC.dataStore.bundleCartProducts).length == 0) {
-                        elBundleCartAddBtnText.textContent = "ADD BUNDLE TO BASKET";
-                        elBundleCartAddBtnText.parentNode.parentNode.setAttribute('style', 'pointer-events: none;opacity: 0.5;')
-                    } else {
-                        elBundleCartAddBtnText.parentNode.parentNode.setAttribute('style', 'pointer-events: auto;opacity: 1;')
-                    }
-                }
-            }, 100);
         }
 
     }
