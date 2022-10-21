@@ -3853,25 +3853,7 @@
                         modalProductBlock.querySelector('.inc_product_desc_add_img').classList.add("checked");
                         // elAddText.parentNode.parentNode.parentNode.parentNode.parentNode.style.opacity="1"
                         // if (window.innerWidth > 760){
-                            if (elAddText.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.className == 'inc_pdp_bundle_product_list_main_block'){
-                                let prdMdu = elAddText.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
-                                let prdNme = prdMdu.querySelector('.inc_product_desc_title_text').innerText.trim();
-                                if (document.querySelectorAll('.inc_goes_img_block')[0] != null){
-                                        document.querySelectorAll('.inc_goes_img_block')[0].style.display = "block"
-                                    }
-                                    if (document.querySelectorAll('.inc_plus_icon')[0] != null){
-                                        document.querySelectorAll('.inc_plus_icon')[0].style.display = "block"
-                                    }
-                                    if (document.querySelector('.inc_pdp_bundle_product_list_main_block .inc_product_desc_title_block') != null){
-                                        document.querySelector('.inc_pdp_bundle_product_list_main_block .inc_product_desc_title_block').style.pointerEvents = "auto";
-                                    }
-                                    if (document.querySelector('.inc_pdp_bundle_product_list_main_block .inc_product_variant_simple_text').classList.contains('config')){
-                                        document.querySelector('.inc_pdp_bundle_product_list_main_block .inc_product_variant_simple_block').style.pointerEvents = "auto"
-                                        document.querySelector('.inc_pdp_bundle_product_list_main_block .inc_product_variant_simple_text').style.pointerEvents = "auto"
-                                    }
-                            } else {
-                                if (elAddText.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.className == "inc_pdp_product-main_block"){
-                                    if (document.querySelector('.inc_main_img_block') != null){
+                            if (document.querySelector('.inc_main_img_block') != null){
                                         document.querySelector('.inc_main_img_block').style.display = "block"
                                     }
                                     if (document.querySelector('.inc_plus_icon') != null){
@@ -3883,9 +3865,7 @@
                                     if (document.querySelector('.inc_product_variant_simple_text').classList.contains('config')){
                                         document.querySelector('.inc_product_variant_simple_block').style.pointerEvents = "auto"
                                         document.querySelector('.inc_product_variant_simple_text').style.pointerEvents = "auto"
-                                    }
-                                }
-                            }
+                                    }   
                         // }
                         if (INC.config.pageType == "pdp" && blockType == "pdp") {
                             INC.methods.updateBundleCart({ sku: sku, qty: qty }, "add", main_id, bundle_id, pname, pprice);
@@ -3948,21 +3928,6 @@
                                     ) {
                                 // elAddText.parentNode.parentNode.parentNode.parentNode.parentNode.style.opacity="0.5"
                             }
-                            // if(window.innerWidth > 760){
-                               if (document.querySelectorAll('.inc_goes_img_block')[0] != null){
-                                            document.querySelectorAll('.inc_goes_img_block')[0].style.display = "none"
-                                        }
-                                        if (document.querySelectorAll('.inc_plus_icon')[0] != null){
-                                            document.querySelectorAll('.inc_plus_icon')[0].style.display = "none"
-                                        }
-                                        if (document.querySelector('.inc_pdp_bundle_product_list_main_block .inc_product_desc_title_block') != null){
-                                            document.querySelector('.inc_pdp_bundle_product_list_main_block .inc_product_desc_title_block').style.pointerEvents = "auto";
-                                        }
-                                        if (document.querySelector('.inc_pdp_bundle_product_list_main_block .inc_product_variant_simple_text').classList.contains('config')){
-                                            document.querySelector('.inc_pdp_bundle_product_list_main_block .inc_product_variant_simple_block').style.pointerEvents = "auto"
-                                            document.querySelector('.inc_pdp_bundle_product_list_main_block .inc_product_variant_simple_text').style.pointerEvents = "auto"
-                                        }
-                            // }
                             modalProductBlock.querySelector('.inc_product_desc_add_text').textContent = "Add To Bundle";
                             let pListItemBlock2 = document.querySelector('.inc_pdp_bundle_product_list_item_block' + "[data-main_id=\"" + mainId + "\"]");
                             if (pListItemBlock2 != null) {
@@ -4876,26 +4841,6 @@
             }
             INC.methods.updateProductBlock(productblockshow, findobj, blocktype);
             INC.methods.updateProductBlock(productblockmod, findobj, blocktype);
-            if(window.innerWidth < 821){
-                if(document.querySelector(".inc_product_block.show_overlay") != null){
-                    if (productblockshow.querySelector('.inc_product_desc_att_block').classList.contains('moreThanOne') == falseflag){
-                        let allact = document.querySelectorAll('.inc_product_desc_att_block.inc_active')
-                        if (document.querySelector('.inc_product_modal_block.inc_active') == null && document.querySelector('.inc_sidebar_modal_block.inc_active') == null) {
-                            document.querySelector('html').classList.remove('inc_overlay');
-                            document.querySelector('body').classList.remove('inc_popup_open');
-                        }
-                        for (var actelm in allact) {
-                            if(allact[actelm] != null && Object.prototype.hasOwnProperty.call(allact, actelm)){
-                                allact[actelm].classList.remove('inc_active')
-                            }
-                        }
-
-                        if (document.querySelector('.inc_product_block.show_overlay') != null) {
-                            document.querySelector('.inc_product_block.show_overlay').classList.remove('show_overlay')
-                        }
-                    }
-                }
-            }
         }
     }
     INC.methods.checkVariantSelection = function (prod_module_block) {
@@ -6155,23 +6100,7 @@
         let all_data = [];
         let bundlpos = "";
         for (var tc in INC.config.bundle_tracking) {
-            if (INC.config.bundle_tracking.length == 1) {
-                productIdsforTracking.push(mainProductId)
-                productIdsforTracking.push(INC.config.bundle_tracking[tc].id)
-                if(document.querySelector('.inc_pdp_block .inc_product_module_block[data-main_id="'+INC.config.bundle_tracking[tc].id+'"]') != null){
-                    bundlpos = document.querySelector('.inc_pdp_block .inc_product_module_block[data-main_id="'+INC.config.bundle_tracking[tc].id+'"]').getAttribute('b-index')
-                }else if(document.querySelector('.inc_pdp_block .inc_product_module_block[data-sku="' + INC.config.bundle_tracking[tc].id + '"]') != null){
-                    bundlpos = document.querySelector('.inc_pdp_block .inc_product_module_block[data-sku="' + INC.config.bundle_tracking[tc].id + '"]').getAttribute('b-index')
-                }
-                all_data.push({
-                    id: parseInt(INC.config.bundle_tracking[tc].bid),
-                    product_ids: productIdsforTracking,
-                    product_id: core_prod_id,
-                    "bundle_pos": bundlpos
-                })
-                productIdsforTracking = []
-            } else {
-                if (mainProductId != INC.config.bundle_tracking[tc].id) {
+            if (mainProductId != INC.config.bundle_tracking[tc].id) {
                     productIdsforTracking.push(mainProductId)
                     productIdsforTracking.push(INC.config.bundle_tracking[tc].id)
                     if(document.querySelector('.inc_pdp_block .inc_product_module_block[data-main_id="'+INC.config.bundle_tracking[tc].id+'"]') != null){
@@ -6187,7 +6116,6 @@
                     })
                     productIdsforTracking = []
                 }
-            }
         }
         let bundlec_1 = document.querySelectorAll('.inc_pdp_bundle_product_list_main_block .inc_product_module_block').length
         let data = {
@@ -6451,31 +6379,6 @@
                     } else if (document.querySelector('.sidebar_outer.sidebar_outer_active .inc_sidebar_modal_block .inc_product_modal_block.inc_active') != null) {
                         document.querySelector('.sidebar_outer.sidebar_outer_active .inc_sidebar_modal_block').classList.add('overflow_visible')
                         document.querySelector('body').classList.add('inc_popup_open');
-                    }
-                    if (clickedElement.className != 'inc_product_block configurable inc_other_noimage show_overlay' && clickedElement.className != 'inc_product_desc_att_zero_title_text_block' && clickedElement.className != "inc_product_details_prod_block" && clickedElement.className != "inc_product_variant_simple_block" && clickedElement.className != "inc_product_variant_simple_text config" && clickedElement.className != "inc_product_desc_variant_popup_close_block" && clickedElement.className != "inc_product_desc_add_title_text_block" && clickedElement.tagName != "SELECT" && clickedElement.className != "inc_product_header_block active" && clickedElement.className != "inc_product_desc_att_color_list_item_img_block active" && clickedElement.className != "inc_product_desc_att_block attributes_avail active" && clickedElement.className != "inc_product_qty_block active" && clickedElement.tagName != "LABEL" && clickedElement.tagName != "INPUT" && clickedElement.className != "inc_product_qty_block" && clickedElement.className != "inc_product_desc_att_color_list_item_img_block" && clickedElement.className != "inc_product_header_block" && clickedElement.className != "select_option_inc_title" && clickedElement.className != "inc_product_desc_att_color_list_item_img" && clickedElement.className != "inc_product_desc_att_color_title_text" && clickedElement.className != "inc_product_desc_att_color_list_block" && clickedElement.classList.contains('inc_product_desc_att_block') == falseflag && clickedElement.className != "select_option_inc_block" && clickedElement.className != "inc_product_desc_att_color_title_text_block" && clickedElement.className != "inc_product_desc_att_variant_text" && clickedElement.className != "inc_product_desc_add_img" &&clickedElement.className != "inc_product_qty_up_btn" && clickedElement.className != "inc_product_qty_down_btn" && clickedElement.className != 'variant_span') {
-                        if (clickedElement.classList != undefined) {
-                            if (clickedElement.classList.contains('variantoption') == falseflag && clickedElement.classList.contains('inc_product_desc_att_size_list_item_img_block') == falseflag && clickedElement.classList.contains('inc_product_desc_att_color_list_block') == falseflag && clickedElement.className != "inc_product_desc_add_img checked" && clickedElement.classList.contains('inc_product_desc_add_block') == falseflag && clickedElement.classList.contains('inc_pdp_bundle_cart_added_product_edit_img') == falseflag && clickedElement.className != "inc_product_desc_att_color_title_block" && clickedElement.className != "inc_product_desc_qty_up_btn" && clickedElement.className != "inc_product_desc_qty_down_btn" && clickedElement.classList.contains('inc_product_desc_att_color_block') == falseflag && clickedElement.classList.contains('inc_product_desc_att_color_list_item_block') == falseflag && clickedElement.classList.contains('inc_product_desc_att_zero_title_text_selected') == falseflag && clickedElement.classList.contains('inc_product_desc_att_zero_title_text') == falseflag  && clickedElement.classList.contains('inc_product_desc_att_color_list_item_img') != trueflag && clickedElement.className != 'inc_product_desc_att_size_title_text_selected' && clickedElement.className != 'inc_product_desc_att_third_title_text_selected') {
-                                if (document.querySelector('.inc_product_desc_att_block') != null){
-                                    if (document.querySelector('.inc_product_desc_att_block').classList.contains('moreThanOne') == falseflag){
-                                        let allact = document.querySelectorAll('.inc_product_desc_att_block.inc_active')
-
-                                        if (document.querySelector('.inc_product_modal_block.inc_active') == null && document.querySelector('.inc_sidebar_modal_block.inc_active') == null) {
-                                            document.querySelector('html').classList.remove('inc_overlay');
-                                            document.querySelector('body').classList.remove('inc_popup_open');
-                                        }
-                                        for (var actelm in allact) {
-                                            if(allact[actelm] != null && Object.prototype.hasOwnProperty.call(allact, actelm)){
-                                                allact[actelm].classList.remove('inc_active')
-                                            }
-                                        }
-
-                                        if (document.querySelector('.inc_product_block.show_overlay') != null) {
-                                            document.querySelector('.inc_product_block.show_overlay').classList.remove('show_overlay')
-                                        }
-                                    }
-                                }
-                            }
-                        }
                     }
                     if(INC.config.pageType == "pdp"){
                         if(clickedElement.parentNode != null){
