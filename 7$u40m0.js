@@ -1908,19 +1908,11 @@
                 rpdpBundleCartBlock.parentNode.removeChild(rpdpBundleCartBlock);
                 pdpBlock.querySelector('.inc_pdp_bundle_block').appendChild(pdpBundleCartBlock);
                 var pdpBlockSibling = null
-                if (window.innerWidth > 1139){
-                    if (document.querySelector('.goods-body section') != null){
+                if (document.querySelector('.goods-body section') != null){
                         pdpBlockSibling = document.querySelector('.goods-body section')
                     } else {
                         pdpBlockSibling = document.querySelector('#wrapper .title01__common')
                     }
-                } else {
-                    if (document.querySelector('.goods-body section') != null){
-                        pdpBlockSibling = document.querySelector('.goods-body section')
-                    } else {
-                        pdpBlockSibling = document.querySelector('#wrapper .title01__common')
-                    }
-                }
                 var fabricavail=false
                 var client_var = ""
                 if(document.querySelector('.wrapDetailImage .variationImage li.checked') != null){
