@@ -825,7 +825,6 @@
                 attr0Obj["att_id"] = product0ArrayObj[colorText]["att_id"];
                 product0ObjArray.push(attr0Obj);
             });
-            product0Obj["att0Array"] = sortByKey(product0ObjArray, 'colorText');
             product0Obj["att0Array"] = product0ObjArray.sort(function(a, b) {
                 return sizesArray.indexOf(a["text"]) - sizesArray.indexOf(b["text"])
             });
@@ -2670,7 +2669,7 @@
                 }
             }
             let addCount = document.querySelectorAll('.inc_sidebar_cart_added_block .inc_cart_added_product_block').length 
-            document.querySelector('.inc_sidebar_cart_added_block').className.replace(/\binc_added_.+?/g, '');
+            document.querySelector('.inc_sidebar_cart_added_block').className.replace('inc_added_', '');
             document.querySelector('.inc_sidebar_cart_added_block').classList.add("inc_added_"+addCount);
             if (sbBlock.querySelector('.inc_cart_added_product_block') == null) {
                 if (sbBlock.querySelector('.inc_header_title_text_block') != null) {
@@ -7153,21 +7152,7 @@
         console.log(ivid);
         return ivid;
     }
-    INC.methods.getSizeCategoryType = (productObj) => {
-        let category = null
-        const categoryNames = ['leather', 'trousers', 'gloves', 'jackets', 'hats', 'wellington', 'outers-and-midlayers', 'bug-clothing', 'socks']
-        categoryNames.map((name) => {
-            let categoryCheck = productObj.categoryName.toLocaleLowerCase().includes(name)
-            let productNameCheck = null
-            if (categoryCheck) {
-                category = name
-            }
-            if (productNameCheck) {
-                category = name
-            }
-        })
-        return category
-    }
+
 
     document.onclick = clickListener;
     function clickListener(e) {
@@ -8550,23 +8535,27 @@
         let elSpecialPrice = ""
         if(document.querySelector('#product-content .product-price.clearance') != null){
             if(document.querySelector('#product-content .product-price .price-was').innerText.trim() != 'N/A' && document.querySelector('#product-content .product-price .price-was').innerText.trim() != ''){
-                elProductPrice = isSpecial ? document.querySelector('#product-content .product-price .price-was'): document.querySelector('#product-content .product-price .price-was')
+                elProductPrice = document.querySelector('#product-content .product-price .price-was')
+
             }else{
-                elProductPrice = isSpecial ? document.querySelector('#product-content .product-price .price-standard '): document.querySelector('#product-content .product-price .price-standard ')
+                elProductPrice = document.querySelector('#product-content .product-price .price-standard ')
             }
         }else{
             if(document.querySelector('#product-content .product-price .price-standard.has-club-price') != null){
-                elProductPrice = isSpecial ? document.querySelector('#product-content .product-price .price-standard.has-club-price'): document.querySelector('#product-content .product-price .price-standard.has-club-price')
+                elProductPrice = document.querySelector('#product-content .product-price .price-standard.has-club-price')
             }else{
-                elProductPrice = isSpecial ? document.querySelector('#product-content .product-price .price-value'): document.querySelector('#product-content .product-price .price-value')
+                elProductPrice = document.querySelector('#product-content .product-price .price-value')
             }
         }
-        if(document.querySelector('#product-content .product-price .price-sales.club-price') != null){
-            elSpecialPrice = isSpecial ? document.querySelector('#product-content .product-price .price-sales.club-price .price-value') : null
+        if(document.querySelector('#product-content .product-price .price-sales.club-price .price-value') != null){
+            elSpecialPrice = document.querySelector('#product-content .product-price .price-sales.club-price .price-value')
         }else{
-            elSpecialPrice = isSpecial ? document.querySelector('#product-content .product-price .has-sales-price .price-value') : null
+            elSpecialPrice = document.querySelector('#product-content .product-price .has-sales-price .price-value')
         }
-        let clientSpecialPrice = elSpecialPrice ? Number(elSpecialPrice.innerText.replace(/[^0-9.-]+/g, "")) : null
+        let clientSpecialPrice = null
+        if(elSpecialPrice != null){
+             Number(elSpecialPrice.innerText.replace(/[^0-9.-]+/g, ""))
+        }
         let clientProductPrice = Number(elProductPrice.innerText.replace(/[^0-9.-]+/g, ""))
 
         let final_product_price = clientProductPrice
