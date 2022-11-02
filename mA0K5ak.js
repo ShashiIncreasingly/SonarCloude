@@ -1751,13 +1751,8 @@
                     INC.clientConfig.slidevalue_rec++
                     let menu = null
                     INC.clientConfig.offset_rec = (parseInt(INC.clientConfig.offset_rec) - width_slide) + 'px';
-                    if (PDP_type == "PDP") {
-                        menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
-                        menu.setAttribute('style', 'margin-left:' + INC.clientConfig.offset_rec + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
-                    } else {
-                        menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
+                    menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
                         menu.setAttribute('style', 'left:' + INC.clientConfig.offset_rec + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
-                    }
                     if (document.querySelector('.inc_af_product-list-dots-main_block .inc_dots.inc_active') != null) {
                         document.querySelector('.inc_af_product-list-dots-main_block .inc_dots.inc_active').classList.remove('inc_active')
                     }
@@ -1798,13 +1793,8 @@
                     INC.clientConfig.slidevalue_rec--
                     INC.clientConfig.offset_rec = (parseInt(INC.clientConfig.offset_rec) + width_slide) + 'px';
                     let menu = null
-                    if (PDP_type == "PDP") {
-                        menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
-                        menu.setAttribute('style', 'margin-left:' + INC.clientConfig.offset_rec + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
-                    } else {
-                        menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
+                    menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
                         menu.setAttribute('style', 'left:' + INC.clientConfig.offset_rec + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
-                    }
                     if (document.querySelector('.inc_af_product-list-dots-main_block .inc_dots.inc_active') != null) {
                         document.querySelector('.inc_af_product-list-dots-main_block .inc_dots.inc_active').classList.remove('inc_active')
                     }
@@ -2178,56 +2168,6 @@
                         }
                     }
                 }, 800)
-
-                setTimeout(function() {
-                    if (fabricavail == trueflag && client_var != "" && client_var != undefined) {
-                        if (document.querySelector('.inc_pdp_product-main_block .inc_product_modal_block .inc_product_desc_att_color_block .inc_product_desc_att_color_list_item_img_block[data-optid="' + client_var + '"] div') != null) {
-                            document.querySelector('.inc_pdp_product-main_block .inc_product_modal_block .inc_product_desc_att_color_block .inc_product_desc_att_color_list_item_img_block[data-optid="' + client_var + '"] div').click()
-                        }
-                    }
-                    let all_list_el = document.querySelectorAll('.inc_pdp_bundle_product_list_block .inc_product_showcase_block');
-                    for (let ell in all_list_el) {
-                        if (Object.prototype.hasOwnProperty.call(all_list_el, ell)) {
-                            let prd_moduleb = all_list_el[ell].parentNode
-                            let main_idsd = prd_moduleb.getAttribute('data-main_id')
-                            if (all_list_el[ell] != null) {
-                                if (all_list_el[ell].querySelector('.inc_product_desc_att_zero_block.inc_active') != null) {
-                                    if (prd_moduleb.querySelector('.inc_product_desc_att_size_list_item_img_block[data-cpid="' + main_idsd + '"]') != null) {
-                                        if (prd_moduleb.querySelector('.inc_product_desc_att_size_list_item_img_block[data-cpid="' + main_idsd + '"] div') != null) {
-                                            prd_moduleb.querySelector('.inc_product_desc_att_size_list_item_img_block[data-cpid="' + main_idsd + '"] div').click()
-                                        }
-                                    } else if (all_list_el[ell].querySelector('.inc_product_desc_att_size_list_item_img_block[datasize="' + client_var + '"] div') != undefined) {
-                                        all_list_el[ell].querySelector('.inc_product_desc_att_size_list_item_img_block[datasize="' + client_var + '"] div').click()
-                                    } else if (all_list_el[ell].querySelector('.inc_product_desc_att_size_list_item_img_block') != null) {
-                                        all_list_el[ell].querySelector('.inc_product_desc_att_size_list_item_img_block').click()
-                                    }
-                                }
-                                if (all_list_el[ell].querySelector('.inc_product_desc_att_color_block.inc_active') != null) {
-                                    if (prd_moduleb.querySelector('.inc_product_desc_att_color_list_item_img_block[data-cpid="' + main_idsd + '"]') != null) {
-                                        if (prd_moduleb.querySelector('.inc_product_desc_att_color_list_item_img_block[data-cpid="' + main_idsd + '"]') != null) {
-                                            prd_moduleb.querySelector('.inc_product_desc_att_color_list_item_img_block[data-cpid="' + main_idsd + '"]').click()
-                                        }
-                                    } else if (all_list_el[ell].querySelector('.inc_product_desc_att_color_list_item_img_block[datacolor="' + client_var + '"] div') != undefined) {
-                                        all_list_el[ell].querySelector('.inc_product_desc_att_color_list_item_img_block[datacolor="' + client_var + '"] div').click()
-                                    } else if (all_list_el[ell].querySelector('.inc_product_desc_att_color_list_item_img_block') != null) {
-                                        all_list_el[ell].querySelector('.inc_product_desc_att_color_list_item_img_block').click()
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    if (document.querySelector('.inc_bundle_avail_block img') != null && document.querySelector('.inc_pdp_product-main_block .inc_product_img_block img') != null) {
-                        document.querySelector('.inc_bundle_avail_block img').src = document.querySelector('.inc_pdp_product-main_block .inc_product_img_block img').getAttribute('data-src')
-                    }
-                    if (document.querySelector('.inc_bundle_avail_img.second img') != undefined && document.querySelectorAll('.inc_pdp_bundle_product_list_main_block .inc_product_showcase_block .inc_product_img_main_img img')[0] != undefined) {
-                        let secimg = document.querySelectorAll('.inc_pdp_bundle_product_list_main_block .inc_product_showcase_block .inc_product_img_main_img img')[0].src
-                        document.querySelector('.inc_bundle_avail_img.second img').src = secimg
-                    }
-                    if (document.querySelector('.inc_bundle_avail_img.third img') != undefined && document.querySelectorAll('.inc_pdp_bundle_product_list_main_block .inc_product_showcase_block .inc_product_img_main_img img')[1] != undefined) {
-                        let thirdimg_ = document.querySelectorAll('.inc_pdp_bundle_product_list_main_block .inc_product_showcase_block .inc_product_img_main_img img')[1].src
-                        document.querySelector('.inc_bundle_avail_img.third img').src = thirdimg_
-                    }
-                }, 500)
                 setTimeout(function() {
                     onloadpdp = true
                     onloadpdp_delete = true
@@ -3344,24 +3284,7 @@
         elQtyInput.setAttribute("onkeydown", "if(event.key==='.'){event.preventDefault();}");
         elQtyInput.setAttribute('onKeyPress', 'if(this.value.length==3) return false;');
         elQtyInput.setAttribute("oninput", "validity.valid||(value='');");
-        elQtyInput.addEventListener("keydown", function (event) {
-            let elmth = this
-            let keyCode = event.which || event.keyCode;
-            if (keyCode === 13) {
-                event.preventDefault();
-            } else if ((window.jQuery.inArray(event.keyCode, incallowedKeys) != -1) || (keyCode === 65 && (event.ctrlKey || event.metaKey)) || (keyCode >= 35 && keyCode <= 40)) {
-                return;
-            }
-            let charValue = String.fromCharCode(keyCode),
-                valid = /^[0-9]+$/.test(charValue);
-            if (!valid) {
-                event.preventDefault();
-            } else {
-                setTimeout(function () {
-                    qtyupdateInc(elmth, productBlock, elAddText)
-                }, 50);
-            }
-        });
+        
         elQtyInput.addEventListener('focusout', function () {
             let elmt = this
             setTimeout(function () {
@@ -3440,23 +3363,24 @@
             let main_id = productBlock.getAttribute('data-main_id');
             let pname = productBlock.querySelector('.inc_product_desc_title_text').innerText;
             let pprice = productBlock.querySelector('.inc_product_desc_ecirp_active_text').innerText.replace('£', '');
+            let updt = false;
             if (parseInt(elinput.value) == 1 && productDescQtyBlock.classList.contains('singleqty') == trueflag) {
                 if (elAddText.textContent == "Added" || elAddText.textContent == "Update" || elAddText.textContent == INC.config.AddedText || elAddText.textContent == INC.config.UpdateText) {
                     //document.querySelector('html').classList.remove('inc_overlay')
                     if (INC.config.pageType == "pdp" && blockType == "pdp") {
-                        INC.methods.updateBundleCart({
-                            sku: id,
-                            qty: qty
-                        }, "add", main_id, bundle_id, pname, pprice);
+                        updt = true
                     }
                 }
             } else {
                 if (elAddText.textContent == "Added" || elAddText.textContent == "Update" || elAddText.textContent == INC.config.AddedText || elAddText.textContent == INC.config.UpdateText) {
-                    INC.methods.updateBundleCart({
-                        sku: id,
-                        qty: qty
-                    }, "add", main_id, bundle_id, pname, pprice);
+                    updt = true
                 }
+            }
+            if(updt=trueflag){
+                INC.methods.updateBundleCart({
+                            sku: id,
+                            qty: qty
+                        }, "add", main_id, bundle_id, pname, pprice);
             }
             if (elinput.value == 1) {
                 elQtyBlock.classList.add('singleqty')
@@ -3480,17 +3404,17 @@
             modalProductBlock.querySelector('.inc_product_qty_input_text input').parentNode.parentNode.parentNode.parentNode.classList.remove('singleqty');
             productDescQtyBlock.classList.remove('singleqty')
             productModuleBlock.querySelector('.inc_product_showcase_block .inc_product_qty_block').classList.remove('singleqty')
-            let id = productBlock.getAttribute('data-id');
-            let qty = parseInt(elinpt.value);
-            let bundle_id = productBlock.getAttribute('data-bundle_id');
-            let main_id = productBlock.getAttribute('data-main_id');
+            let id1 = productBlock.getAttribute('data-id');
+            let qty1 = parseInt(elinpt.value);
+            let bundle_id1 = productBlock.getAttribute('data-bundle_id');
+            let main_id1 = productBlock.getAttribute('data-main_id');
             let pname = productBlock.querySelector('.inc_product_desc_title_text').innerText;
             let pprice = productBlock.querySelector('.inc_product_desc_ecirp_active_text').innerText.replace('£', '');
             if (elAddText.textContent == "Added" || elAddText.textContent == "Update" || elAddText.textContent == INC.config.AddedText || elAddText.textContent == INC.config.UpdateText) {
                 INC.methods.updateBundleCart({
-                    sku: id,
-                    qty: qty
-                }, "add", main_id, bundle_id, pname, pprice);
+                    sku: id1,
+                    qty: qty1
+                }, "add", main_id1, bundle_id1, pname, pprice);
             }
         });
     }
@@ -3705,21 +3629,19 @@
         if ((productObj.otherImageList != null) && productObj.otherImageList.length > 1) {
             prepareAdditionalimages(elImgGalleryListBlock, productObj, productBlock)
         }
-        elTitleTextBlock.addEventListener("click", function (e) {
-                e.preventDefault()
+        elTitleTextBlock.addEventListener("click", function (ev) {
+                ev.preventDefault()
                 document.querySelector('html').classList.add('inc_overlay');
-                this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.inc_product_modal_block').classList.add('inc_active')
+                ev.currentTarget.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.inc_product_modal_block').classList.add('inc_active')
                 if (document.querySelector('.sidebar_outer.sidebar_outer_active .inc_sidebar_modal_block') != null) {
                     document.querySelector('.sidebar_outer.sidebar_outer_active .inc_sidebar_modal_block').classList.add('overflow_visible')
                     document.querySelector('body').classList.add('inc_popup_open');
                 }
-                let trucheck = true;
-                if (productBlock.parentNode.parentNode.parentNode.classList.contains('inc_af_product-list_block') == trucheck) {
-                    document.querySelector('html').classList.add('inc_overlay');
-                }
+                document.querySelector('html').classList.add('inc_overlay');
                 productBlock.parentNode.parentNode.querySelector('.inc_product_modal_block .inc_product_info_main_block').classList.add('inc_active');
                 productBlock.parentNode.parentNode.querySelector('.inc_product_modal_block .inc_product_description_main_block').classList.remove('inc_active');
         });
+
         if (productObj.PromotionalMessage != null && productObj.PromotionalMessage != "") {
             elPromo.innerText = productObj.PromotionalMessage;
             elPromo.classList.add('avail')
@@ -3813,20 +3735,20 @@
             elAttColorBlock.classList.remove("show_dropdown");
         });
         elQtyInputMob.addEventListener("keydown", function (event) {
-            let elmth = this
-            let keyCode = event.which || event.keyCode;
+            let elmth11 = this
+            let keyCode1 = event.which || event.keyCode;
             if (keyCode === 13) {
                 event.preventDefault();
-            } else if ((window.jQuery.inArray(event.keyCode, incallowedKeys) != -1) || (keyCode === 65 && (event.ctrlKey || event.metaKey)) || (keyCode >= 35 && keyCode <= 40)) {
+            } else if ((window.jQuery.inArray(event.keyCode, incallowedKeys) != -1) || (keyCode1 === 65 && (event.ctrlKey || event.metaKey)) || (keyCode1 >= 35 && keyCode1 <= 40)) {
                 return;
             }
-            let charValue = String.fromCharCode(keyCode),
+            let charValue = String.fromCharCode(keyCode1),
                 valid = /^[0-9]+$/.test(charValue);
             if (!valid) {
                 event.preventDefault();
             } else {
                 setTimeout(function () {
-                    qtyupdateInc1(elmth, productBlock, elAddText)
+                    qtyupdateInc1(elmth11, productBlock, elAddText)
                 }, 50);
             }
         });
@@ -3865,17 +3787,17 @@
             showcaseProductBlock.querySelector('.inc_product_qty_block').querySelector('input').value = parseInt(_elm.value);
             modalProductBlock.querySelector('.inc_product_qty_input_text input').value = parseInt(_elm.value);
 
-            let id = prdblk.getAttribute('data-id');
-            let qty = parseInt(_elm.value);
-            let main_id = prdblk.getAttribute('data-main_id');
-            let bundle_id = prdblk.getAttribute('data-bundle_id');
-            let pname = prdblk.querySelector('.inc_product_desc_title_text').textContent;
-            let pprice = prdblk.querySelector('.inc_product_desc_ecirp_active_text').textContent.replace('£', '');
+            let id111 = prdblk.getAttribute('data-id');
+            let qty11 = parseInt(_elm.value);
+            let main_id11 = prdblk.getAttribute('data-main_id');
+            let bundle_id11 = prdblk.getAttribute('data-bundle_id');
+            let pname1 = prdblk.querySelector('.inc_product_desc_title_text').textContent;
+            let pprice11 = prdblk.querySelector('.inc_product_desc_ecirp_active_text').textContent.replace('£', '');
             if (eladtext.textContent == 'Added' || eladtext.textContent == "Update") {
                 INC.methods.updateBundleCart({
-                    sku: id,
-                    qty: qty
-                }, "add", main_id, bundle_id, pname, pprice);
+                    sku: id111,
+                    qty: qty11
+                }, "add", main_id11, bundle_id11, pname1, pprice11);
             }
             if (_elm.value == 1) {
                 elQtyMobBlock.classList.add('singleqty')
@@ -3901,23 +3823,25 @@
             let main_id = productBlock.getAttribute('data-main_id');
             let pname = productBlock.querySelector('.inc_product_desc_title_text').innerText;
             let pprice = productBlock.querySelector('.inc_product_desc_ecirp_active_text').innerText.replace('£', '');
+            let call_update=false;
             if (parseInt(elinput.value) == 1 && elQtyMobBlock.classList.contains('singleqty') == trueflag) {
                 if (elAddText.textContent == "Added" || elAddText.textContent == "Update" || elAddText.textContent == INC.config.AddedText || elAddText.textContent == INC.config.UpdateText) {
                     document.querySelector('html').classList.remove('inc_overlay')
                     if (INC.config.pageType == "pdp" && blockType == "pdp") {
-                        INC.methods.updateBundleCart({
-                            sku: id,
-                            qty: qty
-                        }, "add", main_id, bundle_id, pname, pprice);
+                        call_update = true
+                        
                     }
                 }
             } else {
                 if (elAddText.textContent == "Added" || elAddText.textContent == "Update" || elAddText.textContent == INC.config.AddedText || elAddText.textContent == INC.config.UpdateText) {
-                    INC.methods.updateBundleCart({
-                        sku: id,
-                        qty: qty
-                    }, "add", main_id, bundle_id, pname, pprice);
+                    call_update = true
                 }
+            }
+            if(call_update == true){
+                INC.methods.updateBundleCart({
+                    sku: id,
+                    qty: qty
+                }, "add", main_id, bundle_id, pname, pprice);
             }
             if (elinput.value == 1) {
                 elQtyMobBlock.classList.add('singleqty')
@@ -3940,17 +3864,17 @@
             modalProductBlock.querySelector('.inc_product_qty_input_text input').parentNode.parentNode.parentNode.parentNode.classList.remove('singleqty');
             elQtyMobBlock.classList.remove('singleqty')
             productModuleBlock.querySelector('.inc_product_showcase_block .inc_product_qty_block').classList.remove('singleqty')
-            let id = productBlock.getAttribute('data-id');
-            let qty = parseInt(elinpt.value);
-            let bundle_id = productBlock.getAttribute('data-bundle_id');
-            let main_id = productBlock.getAttribute('data-main_id');
-            let pname = productBlock.querySelector('.inc_product_desc_title_text').innerText;
-            let pprice = productBlock.querySelector('.inc_product_desc_ecirp_active_text').innerText.replace('£', '');
+            let id1_ = productBlock.getAttribute('data-id');
+            let qty1_ = parseInt(elinpt.value);
+            let bundle_id1_ = productBlock.getAttribute('data-bundle_id');
+            let main_id1_ = productBlock.getAttribute('data-main_id');
+            let pname1_ = productBlock.querySelector('.inc_product_desc_title_text').innerText;
+            let pprice1_ = productBlock.querySelector('.inc_product_desc_ecirp_active_text').innerText.replace('£', '');
             if (elAddText.textContent == "Added" || elAddText.textContent == "Update" || elAddText.textContent == INC.config.AddedText || elAddText.textContent == INC.config.UpdateText) {
                 INC.methods.updateBundleCart({
-                    sku: id,
-                    qty: qty
-                }, "add", main_id, bundle_id, pname, pprice);
+                    sku: id1_,
+                    qty: qty1_
+                }, "add", main_id1_, bundle_id1_, pname1_, pprice1_);
             }
         });
 
@@ -3986,83 +3910,7 @@
         if (productColorsObj["colorArray"].length > 0 && product0Obj["att0Array"].length > 0) {
             elAttBlock.classList.add('moreThanOne')
         }
-        if (product0Obj["att0Array"].length > 0) {
-            _parentblock.classList.add('variant_avail')
-            productBlock.querySelector('.inc_product_desc_att_zero_title_block').addEventListener('click', function (e) {
-                if (document.querySelector('.inc_product_desc_att_zero_block.show_dropdown') != e.currentTarget) {
-                    if (e.currentTarget.parentNode.classList.contains('show_dropdown') == falseflag) {
-                        zeroremshowdrop()
-                    }
-                }
-                colorshowdrop()
-                sizehowdrop()
-                thirshowdrop()
-                this.parentNode.classList.toggle('show_dropdown')
-            })
-        }
-        if (productColorsObj["colorArray"].length > 0) {
-            _parentblock.classList.add('variant_avail')
-            productBlock.querySelector('.inc_product_desc_att_color_title_block').addEventListener('click', function (e) {
-                if (document.querySelector('.inc_product_desc_att_color_block.show_dropdown') != e.currentTarget) {
-                    if (e.currentTarget.parentNode.classList.contains('show_dropdown') == falseflag) {
-                        colorshowdrop()
-                    }
-                }
-                zeroremshowdrop()
-                this.parentNode.classList.toggle('show_dropdown')
-            })
-        }
-        if (productSizesObj.sizeArray.length > 0) {
-            _parentblock.classList.add('variant_avail')
-            productBlock.querySelector('.inc_product_desc_att_size_block .inc_product_desc_att_size_title_block').addEventListener('click', function (e) {
-                if (document.querySelector('.inc_product_desc_att_size_block.show_dropdown') != e.currentTarget) {
-                    if (e.currentTarget.parentNode.classList.contains('show_dropdown') == falseflag) {
-                        sizehowdrop()
-                    }
-                }
-                thirshowdrop()
-                zeroremshowdrop()
-                this.parentNode.classList.toggle('show_dropdown')
-            })
-        }
-        if (product3Obj.att3Array.length > 0) {
-            _parentblock.classList.add('variant_avail')
-            productBlock.querySelector('.inc_product_desc_att_third_title_block').addEventListener('click', function (e) {
-                if (document.querySelector('.inc_product_desc_att_third_block.show_dropdown') != e.currentTarget) {
-                    if (e.currentTarget.parentNode.classList.contains('show_dropdown') == falseflag) {
-                        zeroremshowdrop()
-                        sizehowdrop()
-                    }
-                }
-                zeroremshowdrop()
-                sizehowdrop()
-                this.parentNode.classList.toggle('show_dropdown')
-            })
-        }
-
-        function zeroremshowdrop() {
-            if (document.querySelector('.inc_product_desc_att_zero_block.show_dropdown') != null) {
-                document.querySelector('.inc_product_desc_att_zero_block.show_dropdown').classList.remove('show_dropdown')
-            }
-        }
-
-        function colorshowdrop() {
-            if (document.querySelector('.inc_product_desc_att_color_block.show_dropdown') != null) {
-                document.querySelector('.inc_product_desc_att_color_block.show_dropdown').classList.remove('show_dropdown')
-            }
-        }
-
-        function sizehowdrop() {
-            if (document.querySelector('.inc_product_desc_att_size_block.show_dropdown') != null) {
-                document.querySelector('.inc_product_desc_att_size_block.show_dropdown').classList.remove('show_dropdown')
-            }
-        }
-
-        function thirshowdrop() {
-            if (document.querySelector('.inc_product_desc_att_third_block.show_dropdown') != null) {
-                document.querySelector('.inc_product_desc_att_third_block.show_dropdown').classList.remove('show_dropdown')
-            }
-        }
+        
         let sizezero = INC.dataStore.methods().getProductopt0Obj(findObj)
         if (productColorsObj["colorArray"].length == 0 && sizezero["att0Array"].length == 0) {
             elAttBlock.classList.add('attributes_not_avail')
@@ -6961,25 +6809,28 @@
         let event_type = "bundle_add_to_cart";
         let core_prod_id = "";
         let productIdsforTracking = []
+        let productIdsforTracking1 = []
         core_prod_id = mainProductId;
         let pageType = "100";
         let all_data = [];
         let bundlpos = "";
+        let bundlpos11 = "";
         for (let tc in INC.config.bundle_tracking) {
             if (INC.config.bundle_tracking.length == 1) {
-                productIdsforTracking.push(mainProductId)
-                productIdsforTracking.push(INC.config.bundle_tracking[tc].id)
+                productIdsforTracking1.push(mainProductId)
+                productIdsforTracking1.push(INC.config.bundle_tracking[tc].id)
                 if(document.querySelector('.inc_pdp_block .inc_product_module_block[data-main_id="'+INC.config.bundle_tracking[tc].id+'"]') != null){
-                    bundlpos = document.querySelector('.inc_pdp_block .inc_product_module_block[data-main_id="'+INC.config.bundle_tracking[tc].id+'"]').getAttribute('b-index')
+                    bundlpos11 = document.querySelector('.inc_pdp_block .inc_product_module_block[data-main_id="'+INC.config.bundle_tracking[tc].id+'"]').getAttribute('b-index')
                 }else if(document.querySelector('.inc_pdp_block .inc_product_module_block[data-sku="' + INC.config.bundle_tracking[tc].id + '"]') != null){
-                    bundlpos = document.querySelector('.inc_pdp_block .inc_product_module_block[data-sku="' + INC.config.bundle_tracking[tc].id + '"]').getAttribute('b-index')
+                    bundlpos11 = document.querySelector('.inc_pdp_block .inc_product_module_block[data-sku="' + INC.config.bundle_tracking[tc].id + '"]').getAttribute('b-index')
                 }
                 all_data.push({
                     id: parseInt(INC.config.bundle_tracking[tc].bid),
-                    product_ids: productIdsforTracking,
+                    product_ids: productIdsforTracking1,
                     product_id: core_prod_id,
-                    "bundle_pos": bundlpos
+                    "bundle_pos": bundlpos11
                 })
+                productIdsforTracking1 = []
                 productIdsforTracking = []
             } else {
                 if (mainProductId != INC.config.bundle_tracking[tc].id) {
@@ -7713,626 +7564,6 @@
             }
             if (modal_dots[INC.config.inc_slideIndex - 1] != null) {
                 modal_dots[INC.config.inc_slideIndex - 1].classList.add('inc_active');
-            }
-            if (arrow == "arrow") {
-                if (window.innerWidth < 480){
-                    if (modal_dots.length > 4) {
-                        let activedots = elm.querySelector(
-                            ".inc_product_modal_block .inc_product_img_gallery_list_block .inc_product_img_gallery_list_item_block.inc_active"
-                        );
-                        if (activedots != null) {
-                            let actind = activedots.getAttribute("index");
-                            if (actind == 3) {
-                                if (modal_dots.length >= 4) {
-                                    modal_dots[0].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                }
-                            } else if (actind == 4) {
-                                if (modal_dots.length >= 5) {
-                                    modal_dots[0].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[1].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                }
-                            } else if (actind == 5) {
-                                if (modal_dots.length >= 6) {
-                                    modal_dots[0].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[1].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[2].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                }
-                            } else if (actind == 6) {
-                                if (modal_dots.length >= 7) {
-                                    modal_dots[0].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[1].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[2].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[3].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                }
-                            } else if (actind == 7) {
-                                if (modal_dots.length >= 8) {
-                                    modal_dots[0].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[1].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[2].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[3].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[4].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                }
-                            } else if (actind == 8) {
-                                if (modal_dots.length >= 9) {
-                                    modal_dots[0].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[1].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[2].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[3].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[4].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[5].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                }
-                            } else if (actind == 9) {
-                                if (modal_dots.length >= 10) {
-                                    modal_dots[0].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[1].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[2].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[3].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[4].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[5].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[6].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                }
-                            } else if (actind == 10) {
-                                if (modal_dots.length >= 11) {
-                                    modal_dots[0].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[1].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[2].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[3].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[4].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[5].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[6].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[7].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                }
-                            }else if (actind == 11) {
-                                if (modal_dots.length >= 12) {
-                                    modal_dots[0].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[1].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[2].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[3].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[4].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[5].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[6].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[7].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[8].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                }
-                            }else if (actind == 12) {
-                                if (modal_dots.length >= 13) {
-                                    modal_dots[0].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[1].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[2].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[3].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[4].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[5].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[6].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[7].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[8].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[9].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                }
-                            }else if (actind == 13) {
-                                if (modal_dots.length >= 14) {
-                                    modal_dots[0].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[1].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[2].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[3].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[4].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[5].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[6].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[7].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[8].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[9].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[10].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                }
-                            }else {
-                                modal_dots[0].style.display = "flex";
-                                modal_dots[1].style.display = "flex";
-                                modal_dots[2].style.display = "flex";
-                                modal_dots[3].style.display = "flex";
-                                if (modal_dots[4] != undefined) {
-                                    modal_dots[4].style.display = "flex";
-                                }
-                                if (modal_dots[5] != undefined) {
-                                    modal_dots[5].style.display = "flex";
-                                }
-                                if (modal_dots[6] != undefined) {
-                                    modal_dots[6].style.display = "flex";
-                                }
-                            }
-                        }
-                    }
-                }else {
-                    if (modal_dots.length > 4) {
-                        let activedots = elm.querySelector(
-                            ".inc_product_modal_block .inc_product_img_gallery_list_block .inc_product_img_gallery_list_item_block.inc_active"
-                        );
-                        if (activedots != null) {
-                            let actind = activedots.getAttribute("index");
-                            if (actind == 4) {
-                                if (modal_dots.length >= 5) {
-                                    modal_dots[0].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                }
-                            } else if (actind == 5) {
-                                if (modal_dots.length >= 6) {
-                                    modal_dots[0].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[1].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                }
-                            } else if (actind == 6) {
-                                if (modal_dots.length >= 7) {
-                                    modal_dots[0].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[1].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[2].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                }
-                            } else if (actind == 7) {
-                                if (modal_dots.length >= 8) {
-                                    modal_dots[0].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[1].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[2].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[3].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                }
-                            } else if (actind == 8) {
-                                if (modal_dots.length >= 9) {
-                                    modal_dots[0].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[1].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[2].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[3].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[4].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                }
-                            } else if (actind == 9) {
-                                if (modal_dots.length >= 10) {
-                                    modal_dots[0].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[1].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[2].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[3].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[4].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[5].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                }
-                            } else if (actind == 10) {
-                                if (modal_dots.length >= 11) {
-                                    modal_dots[0].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[1].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[2].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[3].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[4].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[5].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[6].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                }
-                            }else if (actind == 11) {
-                                if (modal_dots.length >= 12) {
-                                    modal_dots[0].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[1].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[2].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[3].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[4].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[5].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[6].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[7].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                }
-                            } else if (actind == 12) {
-                                if (modal_dots.length >= 13) {
-                                    modal_dots[0].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[1].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[2].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[3].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[4].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[5].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[6].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[7].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[8].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                }
-                            }else if (actind == 13) {
-                                if (modal_dots.length >= 14) {
-                                    modal_dots[0].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[1].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[2].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[3].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[4].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[5].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[6].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[7].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[8].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                    modal_dots[9].setAttribute(
-                                        "style",
-                                        "display: none !important;"
-                                    );
-                                }
-                            }else {
-                                modal_dots[0].style.display = "flex";
-                                modal_dots[1].style.display = "flex";
-                                modal_dots[2].style.display = "flex";
-                                modal_dots[3].style.display = "flex";
-                                if (modal_dots[4] != undefined) {
-                                    modal_dots[4].style.display = "flex";
-                                }
-                                if (modal_dots[5] != undefined) {
-                                    modal_dots[5].style.display = "flex";
-                                }
-                                if (modal_dots[6] != undefined) {
-                                    modal_dots[6].style.display = "flex";
-                                }
-                                if (modal_dots[7] != undefined) {
-                                    modal_dots[7].style.display = "flex";
-                                }
-                                if (modal_dots[8] != undefined) {
-                                    modal_dots[8].style.display = "flex";
-                                }
-                                if (modal_dots[9] != undefined) {
-                                    modal_dots[9].style.display = "flex";
-                                }
-                                if (modal_dots[10] != undefined) {
-                                    modal_dots[10].style.display = "flex";
-                                }
-                                if (modal_dots[11] != undefined) {
-                                    modal_dots[11].style.display = "flex";
-                                }
-                                if (modal_dots[12] != undefined) {
-                                    modal_dots[12].style.display = "flex";
-                                }
-                                if (modal_dots[13] != undefined) {
-                                    modal_dots[13].style.display = "flex";
-                                }
-                            }
-                        }
-                    }
-                }
-               
             }
         }
     }
