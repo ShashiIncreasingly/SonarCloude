@@ -1770,28 +1770,15 @@
                 }
                 var width_slide = ""
                 var wid_sld = document.querySelector('.inc_af_block .inc_product_module_block').clientWidth
-                if (INC.config.pageType == "pdp") {
-                    if(window.innerWidth > 1205){
-                        width_slide = wid_sld;
-                    }else{
-                        width_slide = wid_sld;
-                    }
-                } else {
-                    width_slide = wid_sld;
-                }
+                width_slide = wid_sld;
                 if (INC.clientConfig.slidevalue_rec + cc_ounts < all_p_length) {
                     amBlock.parentNode.parentNode.querySelector('.inc_af_left_btn_block').setAttribute("style", "pointer-events: auto;opacity:1");
                     amBlock.parentNode.parentNode.querySelector('.inc_af_left_btn_img').setAttribute("style", "pointer-events: auto;opacity:1");
                     INC.clientConfig.slidevalue_rec++
                     var menu = null
                     INC.clientConfig.offset_rec = (parseInt(INC.clientConfig.offset_rec) - width_slide) + 'px';
-                    if (window.innerWidth < 500) {
-                        menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
-                        menu.setAttribute('style', 'left:' + INC.clientConfig.offset_rec + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
-                    } else {
-                        menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
-                        menu.setAttribute('style', 'left:' + INC.clientConfig.offset_rec + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
-                    }
+                    menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
+                    menu.setAttribute('style', 'left:' + INC.clientConfig.offset_rec + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
                     if (document.querySelector('.inc_af_product-list-dots-main_block .inc_dots.inc_active') != null) {
                         document.querySelector('.inc_af_product-list-dots-main_block .inc_dots.inc_active').classList.remove('inc_active')
                     }
@@ -1816,29 +1803,15 @@
                 }
                 var wid_sld = document.querySelector('.inc_af_block .inc_product_module_block').clientWidth
                 var width_slide = ""
-                if (INC.config.pageType == "pdp" && !INC.config.recommendation) {
-                    if(window.innerWidth > 1205){
-                        width_slide = wid_sld;
-                    }else{
-                        width_slide = wid_sld
-                    }
-                    
-                } else {
-                    width_slide = wid_sld;
-                }
+                width_slide = wid_sld
                 if (INC.clientConfig.slidevalue_rec > 0) {
                     amBlock.parentNode.parentNode.querySelector('.inc_af_right_btn_block').setAttribute("style", "pointer-events: auto;opacity:1");
                     amBlock.parentNode.parentNode.querySelector('.inc_af_right_btn_img').setAttribute("style", "pointer-events: auto;opacity:1");
                     INC.clientConfig.slidevalue_rec--
                     INC.clientConfig.offset_rec = (parseInt(INC.clientConfig.offset_rec) + width_slide) + 'px';
                     var menu = null
-                    if (window.innerWidth < 500) {
-                        menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
-                        menu.setAttribute('style', 'left:' + INC.clientConfig.offset_rec + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
-                    } else {
-                        menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
-                        menu.setAttribute('style', 'left:' + INC.clientConfig.offset_rec + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
-                    }
+                    menu = amBlock.parentNode.parentNode.querySelector('.inc_af_product-list_block');
+                    menu.setAttribute('style', 'left:' + INC.clientConfig.offset_rec + ';transition-duration:0.5s;-webkit-transition-duration:0.5s;-moz-transition-duration:0.5s;-ms-transition-duration:0.5s;-o-transition-duration:0.5s;')
                     if (document.querySelector('.inc_af_product-list-dots-main_block .inc_dots.inc_active') != null) {
                         document.querySelector('.inc_af_product-list-dots-main_block .inc_dots.inc_active').classList.remove('inc_active')
                     }
@@ -2142,15 +2115,11 @@
                 if (productBlocks.length > prd_length) {
                     pdpBlock.querySelector('.inc_pdp_bundle_product_right-btn_block').addEventListener("click", function() {
                         var prod_c = 2;
-                        var width_prod = 300;
+                        var width_prod = 310;
                         if (window.innerWidth <= 820) {
-                            width_prod = 300;
+                            width_prod = 310;
                         } else if (window.innerWidth > 1023) {
-                            if (window.innerWidth > 1023) {
-                                width_prod = 270;
-                            } else {
-                                width_prod = 270;
-                            }
+                            width_prod = 270;
                         }
 
                         if (INC.clientConfig.slidevalue + prod_c < productBlocks.length) {
@@ -2171,15 +2140,11 @@
                         }
                     });
                     pdpBlock.querySelector('.inc_pdp_bundle_product_left-btn_block').addEventListener("click", function() {
-                        var width_prod = 300;
+                        var width_prod = 310;
                         if (window.innerWidth <= 820) {
-                            width_prod = 300;
+                            width_prod = 310;
                         } else if (window.innerWidth > 1023) {
-                            if (window.innerWidth > 1023) {
-                                width_prod = 270;
-                            } else {
-                                width_prod = 270;
-                            }
+                            width_prod = 270;
                         }
                         if (INC.clientConfig.slidevalue == -1) {
                             INC.clientConfig.slidevalue = 0;
@@ -2312,7 +2277,7 @@
         var elBundleCartAddBtnBlock = pdpBlock.querySelector('.inc_pdp_bundle_cart_summary_add_btn_block');
         var elBundleCartAddBtncollectionBlock = pdpBlock.querySelector('.inc_pdp_bundle_cart_summary_add_btn_collection_block')
 
-        elBundleCartTitleText.innerText = INC.config.deviceType == "mobile" ? "Total Bundle Price " : "Total Bundle Price ";
+        elBundleCartTitleText.innerText = "Total Bundle Price ";
         elBundleCartAddedBlock.innerHTML = "";
         elBundleCartSummaryViewBtnText.innerText = "Added items";
 
@@ -2699,7 +2664,6 @@
                 }
             }
             let addCount = document.querySelectorAll('.inc_sidebar_cart_added_block .inc_cart_added_product_block').length 
-            document.querySelector('.inc_sidebar_cart_added_block').className.replace(/\binc_added_.+?/g, '');
             document.querySelector('.inc_sidebar_cart_added_block').classList.add("inc_added_"+addCount);
             if (sbBlock.querySelector('.inc_cart_added_product_block') == null) {
                 if (sbBlock.querySelector('.inc_header_title_text_block') != null) {
@@ -6792,16 +6756,7 @@
             var addProductURL = 'https://www.tillettsclothing.co.uk/cart/add'
             var params = ""
             console.log(productObj.option)
-            if (productObj.ProductType == "configurable") {
-                if (Object.keys(productObj.option).length == 2){
-                    params = '{"form_type":"product","utf8":"✓","id":"'+productObj.sku+'","quantity":'+dataStore.bundleCartProducts[bundleCartProduct]+',"add":""}'
-
-                } else {
-                    params = '{"form_type":"product","utf8":"✓","id":"'+productObj.sku+'","quantity":'+dataStore.bundleCartProducts[bundleCartProduct]+',"add":""}'
-                }
-            } else {
-                params = '{"form_type":"product","utf8":"✓","id":"'+productObj.sku+'","quantity":'+dataStore.bundleCartProducts[bundleCartProduct]+',"add":""}'
-            }
+            params = '{"form_type":"product","utf8":"✓","id":"'+productObj.sku+'","quantity":'+dataStore.bundleCartProducts[bundleCartProduct]+',"add":""}'
 
             formData.push(params)
             url_add.push(addProductURL)
@@ -7253,26 +7208,7 @@
         return ivid;
     }
 
-    INC.methods.getSizeCategoryType = (productObj) => {
-        let category = null
-
-        const categoryNames = ['leather', 'trousers', 'gloves', 'jackets', 'hats', 'wellington', 'outers-and-midlayers', 'bug-clothing', 'socks']
-        categoryNames.map((name) => {
-
-            let categoryCheck = productObj.categoryName.toLocaleLowerCase().includes(name)
-            let productNameCheck = null
-            if (categoryCheck) {
-                category = name
-            }
-            if (productNameCheck) {
-                category = name
-            }
-
-        })
-
-
-        return category
-    }
+   
 
     document.onclick = clickListener;
 
@@ -8189,10 +8125,17 @@
                 isSpecial = true
             }
         }
-        let elProductPrice = isSpecial ? document.querySelector('.product-add-to-cart__inner .original-price'): document.querySelector('.product-add-to-cart__inner .original-price')
-        let elSpecialPrice = isSpecial ? document.querySelector('.product-add-to-cart__inner .sale-price') : null
+        let elProductPrice = null
+        let elSpecialPrice = null
 
-        let clientSpecialPrice = elSpecialPrice ? Number(elSpecialPrice.innerText.replace(/[^0-9.-]+/g, "")) : null
+        if(isSpecial == trueflag){
+            elProductPrice =  document.querySelector('.product-add-to-cart__inner .original-price')
+            elSpecialPrice = document.querySelector('.product-add-to-cart__inner .sale-price')
+        }
+        let clientSpecialPrice = null
+        if(elSpecialPrice){
+            clientSpecialPrice =  Number(elSpecialPrice.innerText.replace(/[^0-9.-]+/g, ""))
+        }
         let clientProductPrice = Number(elProductPrice.innerText.replace(/[^0-9.-]+/g, ""))
 
 
