@@ -3546,10 +3546,10 @@
                                     parseInt(INC.clientConfig.offset) -
                                     width_prod +
                                     "px";
-                                var menu = pdpBlock.querySelector(
+                                var menu1 = pdpBlock.querySelector(
                                     ".inc_pdp_bundle_product_list_main_block"
                                 );
-                                menu.setAttribute(
+                                menu1.setAttribute(
                                     "style",
                                     "margin-left:" +
                                         INC.clientConfig.offset +
@@ -3617,10 +3617,10 @@
                                     parseInt(INC.clientConfig.offset) +
                                     width_prod +
                                     "px";
-                                var menu = pdpBlock.querySelector(
+                                var menu_ = pdpBlock.querySelector(
                                     ".inc_pdp_bundle_product_list_main_block"
                                 );
-                                menu.setAttribute(
+                                menu_.setAttribute(
                                     "style",
                                     "margin-left:" +
                                         INC.clientConfig.offset +
@@ -4321,42 +4321,6 @@
                         just_check_prod_block = elprd;
                     }
 
-                    if (just_check_prod_block != null) {
-                        if (
-                            just_check_prod_block.querySelector(
-                                ".inc_product_desc_att_size_list_item_img_block.inc_active div"
-                            ) != null
-                        ) {
-                            size = just_check_prod_block.querySelector(
-                                ".inc_product_desc_att_size_list_item_img_block.inc_active div"
-                            ).innerText;
-                            sizeLabel = just_check_prod_block
-                                .querySelector(
-                                    ".inc_product_desc_att_size_list_item_img_block"
-                                )
-                                .parentElement.parentElement.querySelector(
-                                    ".inc_product_desc_att_zero_title_text"
-                                ).innerText;
-                        }
-                        if (
-                            just_check_prod_block.querySelector(
-                                ".inc_product_desc_att_color_list_item_block.inc_active .inc_product_desc_att_color_list_item_img_block"
-                            ) != null
-                        ) {
-                            color = just_check_prod_block
-                                .querySelector(
-                                    ".inc_product_desc_att_color_list_item_block.inc_active .inc_product_desc_att_color_list_item_img_block"
-                                )
-                                .getAttribute("data-color");
-                            colorLabel = just_check_prod_block
-                                .querySelector(
-                                    ".inc_product_desc_att_color_list_item_block"
-                                )
-                                .parentElement.parentElement.querySelector(
-                                    ".inc_product_desc_att_color_title_text"
-                                ).innerText;
-                        }
-                    }
 
                     var sel_size = "";
                     if (color != "" && color != undefined && color != null) {
@@ -4755,11 +4719,11 @@
                     INC.clientConfig.slidevalue--;
                     INC.clientConfig.offset =
                         parseInt(INC.clientConfig.offset) + slide_w + "px";
-                    var menu =
+                    var menu_1 =
                         elRecommendedProductsListBlock.parentNode.parentNode.querySelector(
                             ".inc_recommended_products_list_block"
                         );
-                    menu.setAttribute(
+                        menu_1.setAttribute(
                         "style",
                         "margin-left:" +
                             INC.clientConfig.offset +
@@ -5172,42 +5136,6 @@
                             productObj.mainId +
                             '"]'
                     );
-                }
-                if (just_check_prod_block != null) {
-                    if (
-                        just_check_prod_block.querySelector(
-                            ".inc_product_desc_att_size_list_item_img_block.inc_active div"
-                        ) != null
-                    ) {
-                        size = just_check_prod_block.querySelector(
-                            ".inc_product_desc_att_size_list_item_img_block.inc_active div"
-                        ).innerText;
-                        sizeLabel = just_check_prod_block
-                            .querySelector(
-                                ".inc_product_desc_att_size_list_item_img_block"
-                            )
-                            .parentElement.parentElement.querySelector(
-                                ".inc_product_desc_att_zero_title_text"
-                            ).innerText;
-                    }
-                    if (
-                        just_check_prod_block.querySelector(
-                            ".inc_product_desc_att_color_list_item_block.inc_active .inc_product_desc_att_color_list_item_img_block"
-                        ) != null
-                    ) {
-                        color = just_check_prod_block
-                            .querySelector(
-                                ".inc_product_desc_att_color_list_item_block.inc_active .inc_product_desc_att_color_list_item_img_block"
-                            )
-                            .getAttribute("data-color");
-                        colorLabel = just_check_prod_block
-                            .querySelector(
-                                ".inc_product_desc_att_color_list_item_block"
-                            )
-                            .parentElement.parentElement.querySelector(
-                                ".inc_product_desc_att_color_title_text"
-                            ).innerText;
-                    }
                 }
                 if (btn_addtocart != undefined) {
                     if (
@@ -6419,11 +6347,6 @@
 
         elImgGalleryListBlock.innerHTML = "";
         productObj.otherImageList = [];
-        productObj.otherImageList.push(productObj.imageURLMain);
-        productObj.otherImageList.push(productObj.imageURLMain);
-        productObj.otherImageList.push(productObj.imageURLMain);
-        productObj.otherImageList.push(productObj.imageURLMain);
-        productObj.otherImageList.push(productObj.imageURLMain);
         productObj.otherImageList.push(productObj.imageURLMain);
         if (
             productObj.otherImageList != null &&
