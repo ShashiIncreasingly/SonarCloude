@@ -53,7 +53,7 @@
     INC.clientConfig.checkoutLink = "https://www.tillettsclothing.co.uk/cart";
     INC.config.affiliateURL = "";
     INC.config.pageType = "";
-    INC.config.ivid = ""
+    INC.config.ivid = "";
     INC.config.pdpaddedProductList = [];
     INC.config.inc_slideIndex = 1;
     INC.config.bundle_tracking = [];
