@@ -16,6 +16,7 @@
     INC.ENV = "prod";
     INC.debug = 0;
     INC.initStatus = "";
+
     INC.initStatusCP = "";
     var onloadpdp = false;
     var crypto = window.crypto || window.msCrypto;
@@ -9310,21 +9311,6 @@
                 }
             }
         }, 500);
-        // if (document.querySelector('.purchase-details__buttons .button').innerText == "Sold Out" || document.querySelector('.product__information__inner .modal_price .sold_out').innerText == 'Sold Out') {
-        //     if (document.querySelector('.inc_pdp_block') != null) {
-        //         document.querySelector('.inc_pdp_block').style.display = "none"
-        //         if (document.querySelector('.inc_bundle_avail_block') != null) {
-        //             document.querySelector('.inc_bundle_avail_block').setAttribute('style', 'display: none !important')
-        //         }
-        //     }
-        // } else {
-        //     if (document.querySelector('.inc_pdp_block') != null) {
-        //         document.querySelector('.inc_pdp_block').style.display = "block"
-        //         if (document.querySelector('.inc_bundle_avail_block') != null) {
-        //             document.querySelector('.inc_bundle_avail_block').style.display = "flex"
-        //         }
-        //     }
-        // }
     }
     setTimeout(function () {
         if (window.innerWidth < 769) {
@@ -10148,10 +10134,6 @@
                     }
                 }
             }
-            // }else {
-            //     var resp = localStorage.getItem('bundle_recs')
-            //     cb_tc(JSON.parse(resp),"recommendation");
-            // }
         };
         xhr.send(JSON.stringify(networkConfigObj["params"]));
     };
