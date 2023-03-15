@@ -1,3 +1,5 @@
+/* eslint-disable no-inner-declarations */
+/* eslint-disable no-case-declarations */
 
 (function () {
     "use strict";
@@ -1255,8 +1257,7 @@
                         mainProductListObj[childProductId]["option"]["0"] != null && mainProductListObj[childProductId]["option"]["0"] != undefined &&
                         findObj.colorText == mainProductListObj[childProductId]["option"]["0"].text) || (mainProductListObj[childProductId]["option"] !=
                             null && mainProductListObj[childProductId]["option"] != undefined && mainProductListObj[childProductId]["option"]["1"] !=
-                            null && mainProductListObj[childProductId]["option"]["1"] != undefined && findObj.sizeText == mainProductListObj[childProductId]
-                            ["option"]["1"].text)) {
+                            null && mainProductListObj[childProductId]["option"]["1"] != undefined && findObj.sizeText == mainProductListObj[childProductId]["option"]["1"].text)) {
                     childProductObj = mainProductListObj[childProductId];
                     return childProductObj;
                 }
@@ -1484,7 +1485,6 @@
                     cb(xhr.response);
                     if (INC.config.pageType == "pdp") {
                         let p_ids = INC.methods.getProductIdFromWebPage();
-                        let repd = JSON.parse(xhr.response);
                         INC.methods.irbReq_is_tc(p_ids, 10, "catalog_product_view");
                     }
                 } else {
@@ -2266,10 +2266,6 @@
                     header.style.textTransform = "none";
                 }
 
-                let pdpbundleel = document.querySelector(".product-slice.slice-large.slice-medium.slice-small.slice-tabs ");
-                if (window.innerWidth < 769) {
-                    pdpbundleel = document.querySelector(".product-slice.slice-large.slice-medium.slice-small.slice-tabs ");
-                }
                 INC.methods.clear();
                 if (productVisibleCount > 1) {
                     pdpBlock.querySelector(".inc_pdp_bundle_product_list_items_block").classList.add("inc_active");
@@ -2281,10 +2277,8 @@
                 pdpBlock.querySelector(".inc_pdp_bundle_block").appendChild(pdpBundleCartBlock);
                 let pdpBlockSibling = "";
                 pdpBlockSibling = document.querySelector(".product.info.detailed");
-                let pdpplacement = document.querySelector(".main-widget.yotpo-display-wrapper");
                 if (window.innerWidth < 768) {
                     pdpBlockSibling = document.querySelector(".product.info.detailed");
-                    pdpplacement = document.querySelector(".main-widget.yotpo-display-wrapper");
                 }
 
                 setTimeout(() => {
@@ -2315,12 +2309,7 @@
                 }, 0);
 
                 if (pdpBlockSibling != null) {
-                    if (window.innerWidth < 768) {
-                        pdpBlockSibling.parentNode.insertBefore(pdpBlock, pdpBlockSibling);
-                    } else {
-                        pdpBlockSibling.parentNode.insertBefore(pdpBlock, pdpBlockSibling);
-                    }
-
+                    pdpBlockSibling.parentNode.insertBefore(pdpBlock, pdpBlockSibling);
                 }
                 if (window.innerWidth < 820) {
                     if (document.querySelector('.inc_pdp_bundle_product_list_item_block') != null) {
@@ -2827,24 +2816,11 @@
                     }
 
                     sel_size = ""
-                    let english = /^[A-Za-z0-9]*$/;
                     for (let key in productObj.option) {
                         if (sel_size == "") {
-                            if (english.test(productObj.option[key].label)) {
-
-                                sel_size = capitalizeFirstLetter(productObj.option[key].label.split("Choose a ")[1]) + ": " + capitalizeFirstLetter(productObj.option[key].text)
-                            } else {
-                                sel_size = capitalizeFirstLetter(productObj.option[key].label.split("Choose a ")[1]) + ": " + capitalizeFirstLetter(productObj.option[key].text)
-                            }
-
+                            sel_size = capitalizeFirstLetter(productObj.option[key].label.split("Choose a ")[1]) + ": " + capitalizeFirstLetter(productObj.option[key].text)
                         } else {
-                            if (english.test(productObj.option[key].label)) {
-
-                                sel_size += ", " + capitalizeFirstLetter(productObj.option[key].label.split("Choose a ")[1]) + ": " + capitalizeFirstLetter(productObj.option[key].text)
-                            } else {
-                                sel_size += ", " + capitalizeFirstLetter(productObj.option[key].label.split("Choose a ")[1]) + ": " + capitalizeFirstLetter(productObj.option[key].text)
-                            }
-
+                            sel_size += ", " + capitalizeFirstLetter(productObj.option[key].label.split("Choose a ")[1]) + ": " + capitalizeFirstLetter(productObj.option[key].text)
                         }
                     }
                     
@@ -2859,6 +2835,7 @@
                     }
 
                     let addedhtml = '<div class="inc_cart_added_product_img_block"><div class="inc_cart_added_product_img"><img class="inc_lazy" src="' + productObj.imageURL + '" data-src="' + productObj.imageURL + '" alt="' + productObj.name + '"><div class="sidebar_product_quantity_label">' + qty + '</div></div></div><div class="inc_cart_added_product_desc_block"><div class="inc_cart_added_product_desc_title_block"><div class="inc_cart_added_product_desc_title_text_block"><div class="inc_cart_added_product_desc_title_text" title="Easidri Cooling Coat Wide Fit" style="text-transform: unset;">' + '<span>' + qty + 'x</span>' + productObj.name + '</div></div></div><div class="inc_cart_added_product_desc_ecirp_block"><div class="inc_cart_added_product_desc_ecirp_active_block"><div class="inc_cart_added_product_desc_ecirp_active_text_block"><div class="inc_cart_added_product_desc_ecirp_active_text">' + formatter.format(activePrice).replace('.00', ''); + ' </div><div class="inc_cart_added_product_desc_ecirp_active_text_msg"></div></div></div><div class="inc_cart_added_product_desc_ecirp_regular_block"><div class="inc_cart_added_product_desc_ecirp_regular_text_block"><div class="inc_cart_added_product_desc_ecirp_regular_text"></div></div></div></div><div class="inc_cart_added_product_desc_att_block"><div class="inc_cart_added_product_desc_att_color_block"><div class="inc_cart_added_product_desc_att_color_text_block"><div class="inc_cart_added_product_desc_att_color_text_block"></div></div></div><div class="inc_cart_added_product_desc_att_size_block"><div class="inc_cart_added_product_desc_att_size_text_block"><div class="inc_cart_added_product_desc_att_size_text">' + sel_size + '</div></div></div></div><div class="inc_cart_added_product_qty_block"></div></div>';
+
                     let productBlock = generate_html_tag("div", "inc_cart_added_product_block");
                     productBlock.innerHTML = addedhtml;
                     productBlock.setAttribute("data-id", productObj.id);
@@ -2930,7 +2907,7 @@
                 }
             }
             let addCount = document.querySelectorAll(".inc_sidebar_cart_added_block .inc_cart_added_product_block").length;
-            document.querySelector(".inc_sidebar_cart_added_block").className.replace(/\binc_added_.+?/g, "");
+            document.querySelector(".inc_sidebar_cart_added_block").className.replace('inc_added_', "");
             document.querySelector(".inc_sidebar_cart_added_block").classList.add("inc_added_" + addCount);
             if (sbBlock.querySelector(".inc_cart_added_product_block") == null) {
                 sbBlock.classList.add("oos_prod_avail");
@@ -3371,7 +3348,8 @@
                     rrpPrice = Number(productObj.rrpPrice.replace("£", "").replace("£", "")).toString();
                 }
 
-                let addedhtml = '<div class="inc_cart_added_product_img_block"><div class="inc_cart_added_product_img"><img class="inc_lazy" src="' + productObj.imageURL + '" data-src="' + productObj.imageURL + '" alt="' + productObj.name + '"><div class="sidebar_product_quantity_label">' + qty + '</div></div></div></div><div class="inc_cart_added_product_desc_block"><div class="inc_cart_added_product_desc_title_block"><div class="inc_cart_added_product_desc_title_text_block"><div class="inc_cart_added_product_desc_title_text" title="Easidri Cooling Coat Wide Fit" style="text-transform: unset;">' + '<span>' + qty + ' x </span>' + productObj.name + '</div></div></div><div class="inc_cart_added_product_desc_ecirp_block"><div class="inc_cart_added_product_desc_ecirp_active_block"><div class="inc_cart_added_product_desc_ecirp_active_text_block"><div class="inc_cart_added_product_desc_ecirp_active_text">' + formatter.format(activePrice).replace('.00', ''); + '</div><div class="inc_cart_added_product_desc_ecirp_active_text_msg"></div></div></div><div class="inc_cart_added_product_desc_ecirp_regular_block"><div class="inc_cart_added_product_desc_ecirp_regular_text_block"><div class="inc_cart_added_product_desc_ecirp_regular_text"></div></div></div></div><div class="inc_cart_added_product_desc_att_block"><div class="inc_cart_added_product_desc_att_color_block"><div class="inc_cart_added_product_desc_att_color_text_block"><div class="inc_cart_added_product_desc_att_color_text_block"></div></div></div><div class="inc_cart_added_product_desc_att_size_block"><div class="inc_cart_added_product_desc_att_size_text_block"><div class="inc_cart_added_product_desc_att_size_text">' + sel_size + '</div></div></div></div><div class="inc_cart_added_product_qty_block"></div>'; productBlock.innerHTML = addedhtml;
+                let addedhtml = '<div class="inc_cart_added_product_img_block"><div class="inc_cart_added_product_img"><img class="inc_lazy" src="' + productObj.imageURL + '" data-src="' + productObj.imageURL + '" alt="' + productObj.name + '"><div class="sidebar_product_quantity_label">' + qty + '</div></div></div></div><div class="inc_cart_added_product_desc_block"><div class="inc_cart_added_product_desc_title_block"><div class="inc_cart_added_product_desc_title_text_block"><div class="inc_cart_added_product_desc_title_text" title="Easidri Cooling Coat Wide Fit" style="text-transform: unset;">' + '<span>' + qty + ' x </span>' + productObj.name + '</div></div></div><div class="inc_cart_added_product_desc_ecirp_block"><div class="inc_cart_added_product_desc_ecirp_active_block"><div class="inc_cart_added_product_desc_ecirp_active_text_block"><div class="inc_cart_added_product_desc_ecirp_active_text">' + formatter.format(activePrice).replace('.00', ''); + '</div><div class="inc_cart_added_product_desc_ecirp_active_text_msg"></div></div></div><div class="inc_cart_added_product_desc_ecirp_regular_block"><div class="inc_cart_added_product_desc_ecirp_regular_text_block"><div class="inc_cart_added_product_desc_ecirp_regular_text"></div></div></div></div><div class="inc_cart_added_product_desc_att_block"><div class="inc_cart_added_product_desc_att_color_block"><div class="inc_cart_added_product_desc_att_color_text_block"><div class="inc_cart_added_product_desc_att_color_text_block"></div></div></div><div class="inc_cart_added_product_desc_att_size_block"><div class="inc_cart_added_product_desc_att_size_text_block"><div class="inc_cart_added_product_desc_att_size_text">' + sel_size + '</div></div></div></div><div class="inc_cart_added_product_qty_block"></div>';
+                productBlock.innerHTML = addedhtml;
                 productBlock.querySelector(".inc_cart_added_product_img img").setAttribute("onerror", "this.src='" + INC.config.noimage + "'");
                 let subtotalactiveprice = 0;
                 let subtotalregukarprice = 0;
@@ -4099,8 +4077,6 @@
         let activePrice = parseFloat(productObj.activePrice).toFixed(2).toString();
         let regularPrice = parseFloat(productObj.regularPrice).toFixed(2).toString();
         let rrpPrice = parseFloat(productObj.rrpPrice).toFixed(2).toString();
-        let wasPrice = parseFloat(productObj.wasPrice).toFixed(2).toString();
-        let savePrice = productObj.savePrice
         let totalsaveprc = get_discount_price(productObj.rrpPrice, productObj.activePrice);
 
         elPriceRegularText.innerText = "";
@@ -6322,8 +6298,6 @@
             let activePrice = parseFloat(productObj.activePrice).toFixed(2).toString();
             let regularPrice = parseFloat(productObj.regularPrice).toFixed(2).toString();
             let rrpPrice = parseFloat(productObj.rrpPrice).toFixed(2).toString();
-            let wasPrice = parseFloat(productObj.wasPrice).toFixed(2).toString();
-            let savePrice = productObj.savePrice
             let totalsaveprc = get_discount_price(productObj.rrpPrice, productObj.activePrice);
 
             elPriceActiveText.parentNode.parentNode.parentNode.classList.remove('is_special_ecirp')
@@ -6853,8 +6827,6 @@
             var productObj = INC.dataStore.methods().getProductById(findObj);
             var mainids = productBlock.getAttribute('data-main_id')
             var qty = productBlock.querySelector('input').value;
-            var addProductURL = '/on/demandware.store/Sites-ganni-Site/en_GB/Cart-AddProduct'
-            var params = ""
 
             setTimeout(function () {
                 if (document.querySelector('.inc_product_modal_block.inc_active') != null) {
@@ -6862,11 +6834,6 @@
                     document.querySelector('html').classList.remove('inc_overlay')
                 }
             }, 1500)
-            if (productObj.ProductType == "configurable") {
-                params = "pid=" + productObj.mainId + "&quantity=" + qty + "&options=%5B%5D"
-            } else {
-                params = "pid=" + productObj.mainId + "&quantity=" + qty + "&options=%5B%5D"
-            }
             var data0 = {}
 
             if (window.location.pathname != '/checkout/cart/') {
@@ -6907,7 +6874,7 @@
                     INC.config.disablebtn = true
                     addsuccess_(btn_addtocart, add_btn_click, productBlock, newbtntext, e)
                 },
-                error: function (res) {
+                error: function () {
                     add_btn_click.innerText = "Not Added";
                     btn_addtocart.innerText = "Not Added";
                     if (newbtntext != undefined) {
@@ -6956,6 +6923,7 @@
                 },
             });
 
+            // eslint-disable-next-line no-inner-declarations
             function addsuccess_(btn_t, addbtnt, addedprdblock, newbtn, e) {
                 INC.config.disablebtn = true
                 if (e.error == true) {
@@ -7274,7 +7242,6 @@
         var data3 = {};
         var data4 = {};
         var data5 = {};
-        var formData = []
         var total_length = Object.keys(dataStore.bundleCartProducts);
         Object.keys(dataStore.bundleCartProducts).forEach(function (bundleCartProduct) {
             var findObj = new INC.classes.FindObj({
@@ -7284,16 +7251,11 @@
             if (document.querySelector('.product-add-form form input[name=form_key]') != null) {
                 var token = document.querySelector('.product-add-form form input[name=form_key]').value;
             }
+            var productObj = ""
+            var addProductURL =""
             if (count_pr_to_add == 0) {
-                var productObj = INC.dataStore.methods().getProductById(findObj);
-                var addProductURL = 'https://www.leekes.co.uk/checkout/cart/add/uenc/' + btoa(productObj.url) + "/product/" + productObj.mainId + "/";
-                var params = "";
-                console.log(productObj.option)
-                if (productObj.ProductType == "configurable") {
-                    params = "pid=" + productObj.mainId + "&quantity=" + dataStore.bundleCartProducts[bundleCartProduct] + "&options=%5B%5D"
-                } else {
-                    params = "pid=" + productObj.mainId + "&quantity=" + dataStore.bundleCartProducts[bundleCartProduct] + "&options=%5B%5D"
-                }
+                productObj = INC.dataStore.methods().getProductById(findObj);
+                 addProductURL = 'https://www.leekes.co.uk/checkout/cart/add/uenc/' + btoa(productObj.url) + "/product/" + productObj.mainId + "/";
                 if (dataStore.bundleCartProducts[bundleCartProduct] == undefined) {
                     dataStore.bundleCartProducts[bundleCartProduct] = 1
                 }
@@ -7307,15 +7269,8 @@
                 formData.push(data0)
                 url_add.push(addProductURL)
             } else if (count_pr_to_add == 1) {
-                var productObj = INC.dataStore.methods().getProductById(findObj);
-                var addProductURL = 'https://www.leekes.co.uk/checkout/cart/add/uenc/' + btoa(productObj.url) + "/product/" + productObj.mainId + "/";
-                var params = ""
-                console.log(productObj.option)
-                if (productObj.ProductType == "configurable") {
-                    params = "pid=" + productObj.mainId + "&quantity=" + dataStore.bundleCartProducts[bundleCartProduct] + "&options=%5B%5D"
-                } else {
-                    params = "pid=" + productObj.mainId + "&quantity=" + dataStore.bundleCartProducts[bundleCartProduct] + "&options=%5B%5D"
-                }
+                 productObj = INC.dataStore.methods().getProductById(findObj);
+                 addProductURL = 'https://www.leekes.co.uk/checkout/cart/add/uenc/' + btoa(productObj.url) + "/product/" + productObj.mainId + "/";
                 if (dataStore.bundleCartProducts[bundleCartProduct] == undefined) {
                     dataStore.bundleCartProducts[bundleCartProduct] = 1
                 }
@@ -7328,15 +7283,8 @@
                 formData.push(data1)
                 url_add.push(addProductURL)
             } else if (count_pr_to_add == 2) {
-                var productObj = INC.dataStore.methods().getProductById(findObj);
-                var addProductURL = 'https://www.leekes.co.uk/checkout/cart/add/uenc/' + btoa(productObj.url) + "/product/" + productObj.mainId + "/";
-                var params = ""
-                console.log(productObj.option)
-                if (productObj.ProductType == "configurable") {
-                    params = "pid=" + productObj.mainId + "&quantity=" + dataStore.bundleCartProducts[bundleCartProduct] + "&options=%5B%5D"
-                } else {
-                    params = "pid=" + productObj.mainId + "&quantity=" + dataStore.bundleCartProducts[bundleCartProduct] + "&options=%5B%5D"
-                }
+                 productObj = INC.dataStore.methods().getProductById(findObj);
+                 addProductURL = 'https://www.leekes.co.uk/checkout/cart/add/uenc/' + btoa(productObj.url) + "/product/" + productObj.mainId + "/";
                 if (dataStore.bundleCartProducts[bundleCartProduct] == undefined) {
                     dataStore.bundleCartProducts[bundleCartProduct] = 1
                 }
@@ -7349,15 +7297,8 @@
                 formData.push(data2)
                 url_add.push(addProductURL)
             } else if (count_pr_to_add == 3) {
-                var productObj = INC.dataStore.methods().getProductById(findObj);
-                var addProductURL = 'https://www.leekes.co.uk/checkout/cart/add/uenc/' + btoa(productObj.url) + "/product/" + productObj.mainId + "/";
-                var params = ""
-                console.log(productObj.option)
-                if (productObj.ProductType == "configurable") {
-                    params = "pid=" + productObj.mainId + "&quantity=" + dataStore.bundleCartProducts[bundleCartProduct] + "&options=%5B%5D"
-                } else {
-                    params = "pid=" + productObj.mainId + "&quantity=" + dataStore.bundleCartProducts[bundleCartProduct] + "&options=%5B%5D"
-                }
+                 productObj = INC.dataStore.methods().getProductById(findObj);
+                 addProductURL = 'https://www.leekes.co.uk/checkout/cart/add/uenc/' + btoa(productObj.url) + "/product/" + productObj.mainId + "/";
                 if (dataStore.bundleCartProducts[bundleCartProduct] == undefined) {
                     dataStore.bundleCartProducts[bundleCartProduct] = 1
                 }
@@ -7370,15 +7311,8 @@
                 formData.push(data3)
                 url_add.push(addProductURL)
             } else if (count_pr_to_add == 4) {
-                var productObj = INC.dataStore.methods().getProductById(findObj);
-                var addProductURL = 'https://www.leekes.co.uk/checkout/cart/add/uenc/' + btoa(productObj.url) + "/product/" + productObj.mainId + "/";
-                var params = ""
-                console.log(productObj.option)
-                if (productObj.ProductType == "configurable") {
-                    params = "pid=" + productObj.mainId + "&quantity=" + dataStore.bundleCartProducts[bundleCartProduct] + "&options=%5B%5D"
-                } else {
-                    params = "pid=" + productObj.mainId + "&quantity=" + dataStore.bundleCartProducts[bundleCartProduct] + "&options=%5B%5D"
-                }
+                 productObj = INC.dataStore.methods().getProductById(findObj);
+                 addProductURL = 'https://www.leekes.co.uk/checkout/cart/add/uenc/' + btoa(productObj.url) + "/product/" + productObj.mainId + "/";
                 if (dataStore.bundleCartProducts[bundleCartProduct] == undefined) {
                     dataStore.bundleCartProducts[bundleCartProduct] = 1
                 }
@@ -7391,15 +7325,8 @@
                 formData.push(data4)
                 url_add.push(addProductURL)
             } else if (count_pr_to_add == 5) {
-                var productObj = INC.dataStore.methods().getProductById(findObj);
-                var addProductURL = 'https://www.leekes.co.uk/checkout/cart/add/uenc/' + btoa(productObj.url) + "/product/" + productObj.mainId + "/";
-                var params = ""
-                console.log(productObj.option)
-                if (productObj.ProductType == "configurable") {
-                    params = "pid=" + productObj.mainId + "&quantity=" + dataStore.bundleCartProducts[bundleCartProduct] + "&options=%5B%5D"
-                } else {
-                    params = "pid=" + productObj.mainId + "&quantity=" + dataStore.bundleCartProducts[bundleCartProduct] + "&options=%5B%5D"
-                }
+                 productObj = INC.dataStore.methods().getProductById(findObj);
+                 addProductURL = 'https://www.leekes.co.uk/checkout/cart/add/uenc/' + btoa(productObj.url) + "/product/" + productObj.mainId + "/";
                 if (dataStore.bundleCartProducts[bundleCartProduct] == undefined) {
                     dataStore.bundleCartProducts[bundleCartProduct] = 1
                 }
@@ -7425,7 +7352,7 @@
         INC.clientConfig.OOS_MESG = []
         var addurl = url_add
 
-        function suc1(btn_ca, re) {
+        function suc1(btn_ca) {
 
             if (formData[1] == undefined) {
                 loadsidebarajax(btn_ca, recsType)
@@ -7434,7 +7361,7 @@
                 callprodB()
             }
         }
-        function suc2(btn_ca, re) {
+        function suc2(btn_ca) {
 
             if (formData[2] == undefined) {
                 loadsidebarajax(btn_ca, recsType)
@@ -7443,7 +7370,7 @@
                 callprodC()
             }
         }
-        function suc3(btn_ca, re) {
+        function suc3(btn_ca) {
 
             if (formData[3] == undefined) {
                 loadsidebarajax(btn_ca, recsType)
@@ -7452,7 +7379,7 @@
                 callprodD()
             }
         }
-        function suc4(btn_ca, re) {
+        function suc4(btn_ca) {
 
             if (formData[4] == undefined) {
                 loadsidebarajax(btn_ca, recsType)
@@ -7461,7 +7388,7 @@
                 callprodE()
             }
         }
-        function suc5(btn_ca, re) {
+        function suc5(btn_ca) {
 
             if (formData[5] == undefined) {
                 loadsidebarajax(btn_ca, recsType)
@@ -7501,7 +7428,7 @@
                     }
                     suc2(btn_cart, e)
                 },
-                error: function (resp2, res) {
+                error: function () {
                     suc2(btn_cart)
                 },
             });
@@ -7567,11 +7494,10 @@
                     if (e.backUrl != undefined) {
                         prod_qty_notinstock(formData[5])
                     }
-                    var pids = formData[5].pid
                     loadsidebarajax(btn_cart, recsType)
 
                 },
-                error: function (resp6) {
+                error: function () {
                     loadsidebarajax(btn_cart)
                 },
             });
@@ -8589,50 +8515,6 @@
             }
         }
     }
-    // SWIPE FEATURE
-    let xDown = null;
-    let yDown = null;
-
-    function add_swipe(element) {
-        element.addEventListener("touchstart", handleTouchStart, {
-            passive: true,
-        });
-        element.addEventListener("touchmove", handleTouchMove, {
-            passive: true,
-        });
-    }
-
-    function handleTouchStart(evt) {
-        xDown = evt.touches[0].clientX;
-        yDown = evt.touches[0].clientY;
-    }
-
-    function handleTouchMove(evt) {
-        let prod_card = null;
-        if (!xDown || !yDown) {
-            return;
-        }
-        let xUp = evt.touches[0].clientX;
-        let yUp = evt.touches[0].clientY;
-        let xDiff = xDown - xUp;
-        let yDiff = yDown - yUp;
-        if (Math.abs(xDiff) + Math.abs(yDiff) > 150 || Math.abs(xDiff) + Math.abs(yDiff) < 150) {
-            if (Math.abs(xDiff) > Math.abs(yDiff)) {
-                /*most significant*/
-                if (xDiff > 0) {
-                    prod_card = evt.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
-                    slideTo(null, 0, prod_card, "left");
-                } else {
-                    /* right swipe */
-                    prod_card = evt.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
-                    slideTo(null, 0, prod_card, "right");
-                }
-            }
-            /* reset values */
-            xDown = null;
-            yDown = null;
-        }
-    }
 
     function attribute_listing(valueArray) {
         let items = valueArray;
@@ -8886,7 +8768,7 @@
         }
     }
 
-    function updateClientToBundleSize(element, type) {
+    function updateClientToBundleSize(element) {
         if (!document.querySelector(".inc_pdp_block")) return;
         let selectedValue = null;
         if (element.classList == "attributes-select") {
@@ -9199,7 +9081,7 @@
         var scrollableElement = document.body;
         scrollableElement.addEventListener('wheel', checkScrollDirection);
         document.addEventListener("touchmove", checkScrollDirection, false);
-        function checkScrollDirection(event) {
+        function checkScrollDirection() {
             if (document.querySelector(".inc_pdp_block") != null) {
                 var inc_div = document.querySelector(".inc_pdp_block");
                 if (inc_isOnScreen_page(jQuery('.inc_pdp_block')) && is_visible_elem_counter < 1) {
