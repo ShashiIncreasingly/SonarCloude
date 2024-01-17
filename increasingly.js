@@ -1474,9 +1474,6 @@
                     }
 
                 }
-
-
-
             } else {
                 if (bundleProductsArray.length > 0) {
                     let CartPos = ""
@@ -1782,15 +1779,6 @@
                 let rpdpBundleCartBlock = pdpBlock.querySelector('.inc_pdp_bundle_cart_block')
                 rpdpBundleCartBlock.parentNode.removeChild(rpdpBundleCartBlock);
                 pdpBlock.querySelector('.inc_pdp_bundle_block').appendChild(pdpBundleCartBlock);
-                let pdpBlockSibling_Cart = document.querySelector('#shopify-section-product-template .grid').nextSibling
-                let pdpplacement = document.querySelector('.main-widget.yotpo-display-wrapper')
-                if (window.innerWidth < 769) {
-                    if (document.querySelector('.product-single__description')) {
-                        pdpplacement = document.querySelector('.product-single__description')
-                    } else {
-                        pdpplacement = document.querySelector('.main-widget.yotpo-display-wrapper')
-                    }
-                }
                 let client_var_size = "";
                 let client_var = "";
                 let swatch1 = '';
@@ -1843,8 +1831,8 @@
                     }
                 }
 
-                pdpBlockSibling_Cart = document.querySelector('.cbb-also-bought-container')
-                pdpplacement = document.querySelector('.main-widget.yotpo-display-wrapper')
+                var pdpBlockSibling = document.querySelector('.cbb-also-bought-container')
+                var pdpplacement = document.querySelector('.main-widget.yotpo-display-wrapper')
                 if (window.innerWidth < 769) {
                     pdpplacement = document.querySelector('.cbb-also-bought-container')
                 }
@@ -1855,23 +1843,23 @@
                         }
                     }
                     pdpplacement.parentNode.insertBefore(pdpBlock, pdpplacement)
-                } else if (pdpBlockSibling_Cart != null) {
+                } else if (pdpBlockSibling != null) {
                     if (pdpbundleel != null) {
                         if (document.querySelector('.inc_bundle_avail_block') == null) {
                             pdpbundleel.parentNode.insertBefore(inc_bundle_avail_block, pdpbundleel)
                         }
                     }
 
-                    pdpBlockSibling_Cart.parentNode.insertBefore(pdpBlock, pdpBlockSibling_Cart)
+                    pdpBlockSibling.parentNode.insertBefore(pdpBlock, pdpBlockSibling)
                 } else {
-                    var pdpBlockSibling_Cart1 = document.querySelector('#shopify-section-footer-promotions')
+                    var pdpBlockSibling_1 = document.querySelector('#shopify-section-footer-promotions')
                     if (pdpbundleel != null) {
                         if (document.querySelector('.inc_bundle_avail_block') == null) {
                             pdpbundleel.parentNode.insertBefore(inc_bundle_avail_block, pdpbundleel)
                         }
                     }
 
-                    pdpBlockSibling_Cart1.parentNode.insertBefore(pdpBlock, pdpBlockSibling_Cart1)
+                    pdpBlockSibling_1.parentNode.insertBefore(pdpBlock, pdpBlockSibling_1)
                 }
 
                 let elProductAddBlock = pdpBlock.querySelectorAll('.inc_product_desc_add_block')
