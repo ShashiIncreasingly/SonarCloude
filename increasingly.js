@@ -682,7 +682,7 @@
                                 } else {
                                     callclrobj = true
                                 }
-                                if (callclrobj == true) {
+                                if (callclrobj == trueflag) {
                                     colordata(productColorArrayObj, productListObj, mainProductId, childProductId, att_type)
                                 }
                             }
@@ -1449,27 +1449,27 @@
             }
 
             if (PDP_type == "PDP" && INC.methods.detectPageType() !== 'cartPage') {
-                let pdpBlockSibling = document.querySelector('#shopify-section-product-template .grid').nextSibling
+                let pdpBlockSibling_Cart = document.querySelector('#shopify-section-product-template .grid').nextSibling
                 if (window.innerWidth < 769) {
                     if (document.querySelector('.inc_pdp_block') != null) {
-                        pdpBlockSibling = document.querySelector('.inc_pdp_block')
-                        pdpBlockSibling.parentNode.insertBefore(amBlock, pdpBlockSibling.nextSibling)
+                        pdpBlockSibling_Cart = document.querySelector('.inc_pdp_block')
+                        pdpBlockSibling_Cart.parentNode.insertBefore(amBlock, pdpBlockSibling_Cart.nextSibling)
                     } else {
                         if (document.querySelector('.product-single__description')) {
-                            pdpBlockSibling = document.querySelector('.product-single__description')
-                            pdpBlockSibling.parentNode.insertBefore(amBlock, pdpBlockSibling)
+                            pdpBlockSibling_Cart = document.querySelector('.product-single__description')
+                            pdpBlockSibling_Cart.parentNode.insertBefore(amBlock, pdpBlockSibling_Cart)
                         }
                     }
                 } else {
                     if (document.querySelector('.inc_pdp_block') != null) {
-                        pdpBlockSibling = document.querySelector('.inc_pdp_block')
-                        pdpBlockSibling.parentNode.insertBefore(amBlock, pdpBlockSibling.nextSibling)
+                        pdpBlockSibling_Cart = document.querySelector('.inc_pdp_block')
+                        pdpBlockSibling_Cart.parentNode.insertBefore(amBlock, pdpBlockSibling_Cart.nextSibling)
                     } else {
-                        if (pdpBlockSibling != null) {
-                            pdpBlockSibling.parentNode.insertBefore(amBlock, pdpBlockSibling)
+                        if (pdpBlockSibling_Cart != null) {
+                            pdpBlockSibling_Cart.parentNode.insertBefore(amBlock, pdpBlockSibling_Cart)
                         } else {
-                            pdpBlockSibling = document.querySelector('.product-single__description');
-                            pdpBlockSibling.parentNode.insertBefore(amBlock, pdpBlockSibling)
+                            pdpBlockSibling_Cart = document.querySelector('.product-single__description');
+                            pdpBlockSibling_Cart.parentNode.insertBefore(amBlock, pdpBlockSibling_Cart)
                         }
                     }
 
@@ -1782,7 +1782,7 @@
                 let rpdpBundleCartBlock = pdpBlock.querySelector('.inc_pdp_bundle_cart_block')
                 rpdpBundleCartBlock.parentNode.removeChild(rpdpBundleCartBlock);
                 pdpBlock.querySelector('.inc_pdp_bundle_block').appendChild(pdpBundleCartBlock);
-                let pdpBlockSibling = document.querySelector('#shopify-section-product-template .grid').nextSibling
+                let pdpBlockSibling_Cart = document.querySelector('#shopify-section-product-template .grid').nextSibling
                 let pdpplacement = document.querySelector('.main-widget.yotpo-display-wrapper')
                 if (window.innerWidth < 769) {
                     if (document.querySelector('.product-single__description')) {
@@ -1843,7 +1843,7 @@
                     }
                 }
 
-                pdpBlockSibling = document.querySelector('.cbb-also-bought-container')
+                pdpBlockSibling_Cart = document.querySelector('.cbb-also-bought-container')
                 pdpplacement = document.querySelector('.main-widget.yotpo-display-wrapper')
                 if (window.innerWidth < 769) {
                     pdpplacement = document.querySelector('.cbb-also-bought-container')
@@ -1855,23 +1855,23 @@
                         }
                     }
                     pdpplacement.parentNode.insertBefore(pdpBlock, pdpplacement)
-                } else if (pdpBlockSibling != null) {
+                } else if (pdpBlockSibling_Cart != null) {
                     if (pdpbundleel != null) {
                         if (document.querySelector('.inc_bundle_avail_block') == null) {
                             pdpbundleel.parentNode.insertBefore(inc_bundle_avail_block, pdpbundleel)
                         }
                     }
 
-                    pdpBlockSibling.parentNode.insertBefore(pdpBlock, pdpBlockSibling)
+                    pdpBlockSibling_Cart.parentNode.insertBefore(pdpBlock, pdpBlockSibling_Cart)
                 } else {
-                    var pdpBlockSibling1 = document.querySelector('#shopify-section-footer-promotions')
+                    var pdpBlockSibling_Cart1 = document.querySelector('#shopify-section-footer-promotions')
                     if (pdpbundleel != null) {
                         if (document.querySelector('.inc_bundle_avail_block') == null) {
                             pdpbundleel.parentNode.insertBefore(inc_bundle_avail_block, pdpbundleel)
                         }
                     }
 
-                    pdpBlockSibling1.parentNode.insertBefore(pdpBlock, pdpBlockSibling1)
+                    pdpBlockSibling_Cart1.parentNode.insertBefore(pdpBlock, pdpBlockSibling_Cart1)
                 }
 
                 let elProductAddBlock = pdpBlock.querySelectorAll('.inc_product_desc_add_block')
@@ -3620,11 +3620,6 @@
         let productSizesObj = INC.dataStore.methods().getProductColorsObj_(findObj, null, 2);
         let product3Obj = INC.dataStore.methods().getProductColorsObj_(findObj, null, 3);
 
-        // let productColorsObj = INC.dataStore.methods().getProductColorsObj_(findObj,null,0);
-        // let product0Obj = INC.dataStore.methods().getProductColorsObj_(findObj,null,1);
-        // let productSizesObj = INC.dataStore.methods().getProductSizesObj(findObj);
-        // let product3Obj = INC.dataStore.methods().getProductopt3Obj(findObj);
-
         elAtt0ListBlock.innerHTML = "";
         elAttSizeListBlock.innerHTML = "";
         elAttColorListBlock.innerHTML = "";
@@ -4361,11 +4356,10 @@
         });
         if (INC.dataStore.methods().getProductColorsObj_(findObj, null, 0).colorArray.length == 0 && INC.dataStore.methods().getProductColorsObj_(findObj, null, 1).colorArray.length == 0) {
             elHeader.querySelector('.inc_product_header_title_text').innerText = "Overview";
-        } else {
-            if (INC.dataStore.methods().getProductColorsObj_(findObj, null, 1).colorArray.length > 0 || INC.dataStore.methods().getProductColorsObj_(findObj, null, 0).colorArray.length > 0) {
-                elHeader.querySelector('.inc_product_header_title_text').innerText = "Overview";
-            }
+        } else if (INC.dataStore.methods().getProductColorsObj_(findObj, null, 1).colorArray.length > 0 || INC.dataStore.methods().getProductColorsObj_(findObj, null, 0).colorArray.length > 0) {
+            elHeader.querySelector('.inc_product_header_title_text').innerText = "Overview";
         }
+        
         let inc_product_header_title_block_1 = productBlock.querySelector('.inc_product_header_title_block_1')
         let inc_product_header_title_text_1 = productBlock.querySelector('.inc_product_header_title_text_1')
         inc_product_header_title_text_1.innerText = "Description";
@@ -4606,10 +4600,8 @@
                     elAtt0Block.parentNode.parentNode.parentNode.classList.add('dropdownstyle')
                 }
             }
-        } else {
-            if (product0Obj["colorArray"][0].label == "Leather" || product0Obj["colorArray"][0].label == "colour" || product0Obj["colorArray"][0].label == "Colour" || product0Obj["colorArray"][0].label == 'Colour:' || product0Obj["colorArray"][0].label == 'Fabric' || product0Obj["colorArray"][0].label == 'Marble' || product0Obj["colorArray"][0].label == "Finish") {
-                elAtt0Block.parentNode.parentNode.parentNode.classList.add('dropdownstyle')
-            }
+        } else if (product0Obj["colorArray"][0].label == "Leather" || product0Obj["colorArray"][0].label == "colour" || product0Obj["colorArray"][0].label == "Colour" || product0Obj["colorArray"][0].label == 'Colour:' || product0Obj["colorArray"][0].label == 'Fabric' || product0Obj["colorArray"][0].label == 'Marble' || product0Obj["colorArray"][0].label == "Finish") {
+            elAtt0Block.parentNode.parentNode.parentNode.classList.add('dropdownstyle')
         }
 
         elAtt0Block.classList.add("inc_active");
