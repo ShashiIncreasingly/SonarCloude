@@ -1831,8 +1831,8 @@
                     }
                 }
 
-                var pdpBlockSibling = document.querySelector('.cbb-also-bought-container')
-                var pdpplacement = document.querySelector('.main-widget.yotpo-display-wrapper')
+                let pdpBlockSibling = document.querySelector('.cbb-also-bought-container')
+                let pdpplacement = document.querySelector('.main-widget.yotpo-display-wrapper')
                 if (window.innerWidth < 769) {
                     pdpplacement = document.querySelector('.cbb-also-bought-container')
                 }
@@ -1852,7 +1852,7 @@
 
                     pdpBlockSibling.parentNode.insertBefore(pdpBlock, pdpBlockSibling)
                 } else {
-                    var pdpBlockSibling_1 = document.querySelector('#shopify-section-footer-promotions')
+                    let pdpBlockSibling_1 = document.querySelector('#shopify-section-footer-promotions')
                     if (pdpbundleel != null) {
                         if (document.querySelector('.inc_bundle_avail_block') == null) {
                             pdpbundleel.parentNode.insertBefore(inc_bundle_avail_block, pdpbundleel)
@@ -4342,9 +4342,7 @@
         findObj = new INC.classes.FindObj({
             mainId: productObj.mainId
         });
-        if (INC.dataStore.methods().getProductColorsObj_(findObj, null, 0).colorArray.length == 0 && INC.dataStore.methods().getProductColorsObj_(findObj, null, 1).colorArray.length == 0) {
-            elHeader.querySelector('.inc_product_header_title_text').innerText = "Overview";
-        } else if (INC.dataStore.methods().getProductColorsObj_(findObj, null, 1).colorArray.length > 0 || INC.dataStore.methods().getProductColorsObj_(findObj, null, 0).colorArray.length > 0) {
+        if ((INC.dataStore.methods().getProductColorsObj_(findObj, null, 0).colorArray.length == 0 && INC.dataStore.methods().getProductColorsObj_(findObj, null, 1).colorArray.length == 0) || INC.dataStore.methods().getProductColorsObj_(findObj, null, 1).colorArray.length > 0 || INC.dataStore.methods().getProductColorsObj_(findObj, null, 0).colorArray.length > 0) {
             elHeader.querySelector('.inc_product_header_title_text').innerText = "Overview";
         }
         
