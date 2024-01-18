@@ -159,22 +159,7 @@
         switch (INC.config.pageType) {
             case "pdp":
                 let productId = INC.methods.getProductIdFromWebPage();
-                if (document.querySelector('.btn.btn--full.add-to-cart') != null) {
-                    if (document.querySelector('.btn.btn--full.add-to-cart span') != null) {
-                        if (document.querySelector('.btn.btn--full.add-to-cart span').innerText.trim() == "Sold Out" || document.querySelector('.btn.btn--full.add-to-cart span').innerText.trim() == "SOLD OUT") {
-                            oosproduct(productId)
-                            INC.methods.irbReq(productId, 5, "catalog_product_view");
-                        } else {
-                            INC.methods.irbReq(productId, 5, "catalog_product_view");
-                        }
-                    } else {
-                        INC.methods.irbReq(productId, 5, "catalog_product_view");
-                    }
-                } else {
-                    INC.methods.irbReq(productId, 5, "catalog_product_view");
-                }
-
-
+                INC.methods.irbReq(productId, 5, "catalog_product_view");
                 break;
             case "cartPage":
                 if (cartpageprodids().length > 0) {
